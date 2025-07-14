@@ -1,0 +1,89 @@
+@include mediaTo($size960) {
+    .create_fields {
+        .combo_field {
+            gap: 16px;
+        }
+        .group_col {
+            padding: 16px;
+            &:first-child {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-right: 0;
+            }
+            &:not(:first-child) {
+                max-width: 50%;
+                flex: 0 0 50%;
+            }
+            &.has_bg {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            &:nth-child(2) {
+                padding-left: 0;
+            }
+        }
+        .fields_group:has(.field_col) {
+            margin-left: -10px;
+            margin-right: -10px;
+            .group_subtitle {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+        .field_col {
+            padding-left: 10px;
+            padding-right: 10px;
+            @include colSize(6);
+        }
+        
+        .add_btns {
+            gap: 16px;
+        }
+        .checkbox_list {
+            justify-content: flex-start;
+        }
+    }
+}
+
+@include mediaTo($size576) {
+    .create_fields {
+        .field_row {
+            max-width: 100%;
+        }
+    }
+
+    .create_fields {
+        .combo_field {
+            display: block;
+            .check_block {
+                margin-top: 10px;
+            }
+        }
+        .group_col {
+
+            &:not(:first-child) {
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+            &:nth-child(2) {
+                padding-right: 0;
+            }
+        }
+        .small_row {
+            max-width: 100%;
+        }
+        .field_col {
+            @include colSize(12);
+        }
+    }
+
+    .create_actions {
+        flex-wrap: wrap;
+        .standard_btn {
+            @include colSize(12);
+            text-align: center;
+            justify-content: center;
+        }
+    }
+
+}

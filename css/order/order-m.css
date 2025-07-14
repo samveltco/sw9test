@@ -1,0 +1,151 @@
+@media screen and (max-width: 1024px) {
+  .header .profile_btn {
+    gap: 20px;
+  }
+  .header .profile_inner {
+    padding: 20px 0;
+    max-width: 100vw;
+  }
+  .header .profile_inner.opened {
+    width: 480px;
+  }
+  .header .profile_head {
+    width: 480px;
+    padding: 0 20px 20px;
+    max-width: 100vw;
+  }
+  .header .profile_content {
+    width: 480px;
+    padding-left: 20px;
+    margin-right: 0;
+    max-width: 100vw;
+  }
+  .header .about_user,
+.header .profile_contacts li {
+    gap: 8px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header {
+    padding-left: 64px;
+  }
+
+  .sidebar {
+    width: 0;
+  }
+  .sidebar_inner, .sidebar:before {
+    width: 0;
+  }
+  .sidebar_menu a span, .sidebar_menu button span,
+.sidebar .logout_btn span {
+    opacity: 1;
+  }
+
+  .menu_btn_block {
+    width: 64px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .sidebar:before {
+    display: none;
+  }
+  .sidebar_inner {
+    background: #19252F;
+  }
+  .sidebar.opened .sidebar_inner {
+    width: 100vw;
+  }
+
+  .header {
+    justify-content: space-between;
+  }
+  .header .welcome_block {
+    display: none;
+  }
+  .header:before {
+    display: block;
+    content: "";
+  }
+}
+@media screen and (max-width: 1024px) {
+  .create_fields .combo_field {
+    gap: 16px;
+  }
+  .create_fields .group_col {
+    padding: 16px;
+  }
+  .create_fields .group_col:first-child {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 0;
+  }
+  .create_fields .group_col:not(:first-child) {
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+  .create_fields .group_col.has_bg {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .create_fields .group_col:nth-child(2) {
+    padding-left: 0;
+  }
+  .create_fields .fields_group:has(.field_col) {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .create_fields .fields_group:has(.field_col) .group_subtitle {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .create_fields .field_col {
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .create_fields .add_btns {
+    gap: 16px;
+  }
+  .create_fields .checkbox_list {
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 575px) {
+  .create_fields .field_row {
+    max-width: 100%;
+  }
+
+  .create_fields .combo_field {
+    display: block;
+  }
+  .create_fields .combo_field .check_block {
+    margin-top: 10px;
+  }
+  .create_fields .group_col:not(:first-child) {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  .create_fields .group_col:nth-child(2) {
+    padding-right: 0;
+  }
+  .create_fields .small_row {
+    max-width: 100%;
+  }
+  .create_fields .field_col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .create_actions {
+    flex-wrap: wrap;
+  }
+  .create_actions .standard_btn {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=order-m.css.map */

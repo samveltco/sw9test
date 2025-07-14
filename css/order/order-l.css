@@ -1,0 +1,78 @@
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+  .create_fields .combo_field {
+    gap: 24px;
+  }
+  .create_fields .group_col {
+    padding: 20px;
+  }
+  .create_fields .group_col:first-child {
+    padding-left: 0;
+    flex: 0 0 46%;
+    max-width: 46%;
+  }
+  .create_fields .group_col:not(:first-child) {
+    max-width: 27%;
+    flex: 0 0 27%;
+  }
+  .create_fields .group_col.has_bg {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .create_fields .fields_group:has(.field_col) {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .create_fields .fields_group:has(.field_col) .group_subtitle {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .create_fields .field_col {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .create_fields .add_btns {
+    gap: 32px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .create_fields .combo_field {
+    display: block;
+  }
+  .create_fields .combo_field .check_btn {
+    margin-top: 10px;
+  }
+  .create_fields .group_col {
+    padding: 20px;
+  }
+  .create_fields .group_col:first-child {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+  .create_fields .group_col:not(:first-child) {
+    max-width: 33.33%;
+    flex: 0 0 33.33%;
+  }
+  .create_fields .group_col.has_bg {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .create_fields .fields_group:has(.field_col) {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  .create_fields .fields_group:has(.field_col) .group_subtitle {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .create_fields .field_col {
+    padding-left: 16px;
+    padding-right: 16px;
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+  .create_fields .add_btns {
+    gap: 24px;
+  }
+}
+
+/*# sourceMappingURL=order-l.css.map */

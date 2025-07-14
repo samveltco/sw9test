@@ -1,0 +1,596 @@
+<!DOCTYPE HTML>
+<html lang="hy">
+ 	<head>
+  		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="description" content="some description about project">
+		
+  		<title>Project Name</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="css/order/order.css">
+		<link rel="stylesheet" media="screen and (min-width: 1025px)" href="css/order/order-l.css">
+		<link rel="stylesheet" media="screen and (max-width: 1024px)" href="css/order/order-m.css">
+
+ 	</head>
+ 	<body>
+		<div class="root">
+			<div class="header">
+				<div class="welcome_block">
+					<div class="welcome_words">
+						Hey <span class="user_name">Mani,</span> welcome back! 
+					</div>
+					<div class="welcome_info">Welcome to The 209 Group</div>
+					<div class="available_funds">Funds Available: $1,268.22</div>
+				</div>
+				<div class="notifications">
+					<button class="notif_btn icon_notif" aria-label="notifications">
+						<span class="count_block">6</span>
+					</button>
+				</div>
+				<div class="profile_block">
+					<button class="profile_btn" aria-label="profile" onclick="showProfileModal()">
+						<img src="images/avatar.jpg" alt="" title="" width="44" height="44"/>
+						<span class="user_info">
+							<span class="user_name">Moni Roy</span>
+							<span class="user_type">Client</span>
+						</span>
+					</button>
+					<div class="profile_inner">
+						<div class="profile_head">
+							<div class="profile_title">Might Deployment Solutions</div>
+							<button class="close_btn icon_close" aria-label="close" onclick="hideProfileModal()"></button> 
+						</div>
+						<div class="profile_content">
+							<div class="profile_main">
+								<div class="info_block">
+									<div class="user_position">Might Deployment Solutions</div>
+									<div class="user_name">Stephanie Bledsoe</div>
+									<div class="sign_info">Date Registered: 10/7/2020</div>
+									<div class="sign_info">Last Login: 7/9/2025, 2:08:32 PM</div>
+								</div>
+								<div class="image_block">
+									<img src="images/avatar.jpg" alt="" title="" width="84" height="84"/>
+								</div>
+							</div>
+							<ul class="profile_contacts">
+								<li>
+									<div class="profile_label">Address</div>
+									<div class="profile_info">3075 6th St SW, Loveland, Colorado 80537</div>
+								</li>
+								<li>
+									<div class="profile_label">Website</div>
+									<div class="profile_info">
+										<a href="www.sourcew9.com" target="_blank">www.sourcew9.com</a>
+									</div>
+								</li>
+								<li>
+									<div class="profile_label">Phone</div>
+									<div class="profile_info">
+										<a href="tel:4022022996">(402) 202-2996</a>
+									</div>
+								</li>
+								<li>
+									<div class="profile_label">Email</div>
+									<div class="profile_info">
+										<a href="mailto:stephanieb@mightdeployment.com">stephanieb@mightdeployment.com</a>
+									</div>
+								</li>
+							</ul>
+							<div class="about_user">
+								<div class="profile_label">Bio / About:</div>
+								<div class="profile_info">We are a service project management company that handles networking, POS, and cabling work.</div>
+							</div>
+							<div class="profile_actions">
+								<button class="standard_btn light_btn icon_plus" aria-label="add new role">Add new note</button>
+								<button class="standard_btn dark_btn icon_edit" aria-label="edit">Edit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="sidebar">
+					<div class="menu_btn_block">
+						<button class="menu_btn icon_menu" aria-label="sidebar toggle" onclick="toggleSidebar()"></button>
+					</div>
+					<div class="sidebar_inner">
+						<div class="sidebar_menu">
+							<a href="" class="icon_dashboard current">
+								<span>Dashboard</span>
+							</a>
+							<a href="" class="icon_products">
+								<span>Find Contractor</span>
+							</a>
+							<a href="" class="icon_contact">
+								<span>Preferred</span>
+							</a>
+							<a href="" class="icon_stock">
+								<span>Manage Custom Fields</span>
+							</a>
+							<a href="" class="icon_file">
+								<span>PM Tools</span>
+							</a>
+							<a href="" class="icon_contact">
+								<span>Manage Teams</span>
+							</a>
+							<a href="" class="icon_chart">
+								<span>User Management</span>
+							</a>
+							<a href="" class="icon_chat">
+								<span>Manage founds</span>
+							</a>
+						<a href="" class="icon_invoice">
+								<span>Payment Methods</span>
+							</a>
+							
+							
+							<a href="" class="icon_lists">
+								<span>Templates</span>
+							</a>
+						</div>
+						<button class="logout_btn icon_logout" aria-label="logout">
+							<span>Log out</span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="welcome_block">
+					<div class="welcome_words">
+						Hey <span class="user_name">Mani,</span> welcome back! 
+					</div>
+					<div class="welcome_info">Welcome to The 209 Group</div>
+					<div class="available_funds">Funds Available: $1,268.22</div>
+				</div>
+
+				<h1 class="page_title icon_plus">Create work order</h1>
+
+				<div class="create_fields">
+					<div class="fields_group">
+						<divc class="field_row">
+							<div class="field_name">
+								<label for="use_template">Use Template</label>
+							</div>
+							<div class="field_block">
+								<select name="use_template" id="use_template">
+									<option>Select</option>
+									<option value="1">Value 1</option>
+									<option value="2">Value 2</option>
+									<option value="3">Value 3</option>
+									<option value="4">Value 4</option>
+								</select>
+							</div>
+						</divc>
+					</div>
+					<div class="fields_group">
+						<div class="group_col">
+							<div class="group_name">Base Pay</div>
+							<div class="combo_field">
+								<div class="small_row">
+									<div class="field_name">
+										<label for="amount">Amount*</label>
+									</div>
+									<div class="field_block">
+										<input id="amount" name="amount" type="text" maxlength="10" placeholder="$0.00"/>
+									</div>
+								</div>
+								<div class="check_block">
+									<label class="check_btn">
+										<input type="checkbox" name="pay_base_rate_as_minimum"/>
+										Pay Base Rate As Minimum
+									</label>
+								</div>
+							</div>
+							<div class="combo_field">
+								<div class="small_row">
+									<div class="field_name">
+										<label for="qty">Qty*</label>
+									</div>
+									<div class="field_block">
+										<input id="qty" name="qty" type="text" maxlength="10" placeholder="$0.00"/>
+									</div>
+								</div>
+								<div class="check_block">
+									<label class="check_btn">
+										<input type="checkbox" name="pay_outside_of_app"/>
+										Pay Outside Of App
+									</label>
+								</div>
+							</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="estpay">Est.Pay</label>
+								</div>
+								<div class="field_block">
+									<input id="estpay" name="estpay" type="text" maxlength="10" placeholder="$0.00" disabled/>
+								</div>
+							</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="per">Per*</label>
+								</div>
+								<div class="field_block">
+									<input id="per" name="per" type="text" maxlength="10" placeholder="$0.00"/>
+									<span class="step_btns">
+										<span class="icon_stepup"></span>
+										<span class="icon_stepdown"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="group_col">
+							<div class="group_name">How Pay is Divided</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="soft_skills">Soft Skills*</label>
+								</div>
+								<div class="field_block">
+									<input id="soft_skills" name="soft_skills" type="text" maxlength="10" placeholder="$0.00"/>
+								</div>
+							</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="work">Work*</label>
+								</div>
+								<div class="field_block">
+									<input id="work" name="work" type="text" maxlength="10" placeholder="00"/>
+								</div>
+							</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="deliverables">Deliverables*</label>
+								</div>
+								<div class="field_block">
+									<input id="deliverables" name="deliverables" type="text" maxlength="10" placeholder="00"/>
+								</div>
+							</div>
+						</div>
+						<div class="group_col has_bg">
+							<div class="group_name">Variable Pay (Optional)</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="amount2">Amount*</label>
+								</div>
+								<div class="field_block">
+									<input id="amount2" name="amount2" type="text" maxlength="10" placeholder="$0.00"/>
+								</div>
+							</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="per2">Per*</label>
+								</div>
+								<div class="field_block">
+									<input id="per2" name="per2" type="text" maxlength="10" placeholder="$0.00"/>
+									<span class="step_btns">
+										<span class="icon_stepup"></span>
+										<span class="icon_stepdown"></span>
+									</span>
+								</div>
+							</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="after">After</label>
+								</div>
+								<div class="field_block">
+									<input id="after" name="after" type="text" maxlength="10" placeholder="00"/>
+								</div>
+							</div>
+							<div class="small_row">
+								<div class="field_name">
+									<label for="max_qty">Max Qty*</label>
+								</div>
+								<div class="field_block">
+									<input id="max_qty" name="max_qty" type="text" maxlength="10" placeholder="00"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="funds_info">
+						<div class="info_row">
+							<div class="fund_type">Funds Required</div>
+							<div class="fund_size">$0.00</div>
+						</div>
+						<div class="info_row">
+							<div class="fund_type">Funds Available</div>
+							<div class="fund_size">$1,268.22</div>
+						</div>
+					</div>
+					<div class="fields_group">
+						<div class="field_col">
+							<label class="field_name" for="company_wo_id">Company WO ID*</label>
+							<div class="field_block">
+								<input type="text" name="company_wo_id" id="company_wo_id" maxlength="50" placeholder="Company WO ID"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="title">Title</label>
+							<div class="field_block">
+								<input type="text" name="title" id="title" maxlength="50" placeholder="Title"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="project">Select Project <button aria-label="Create Project">Create Project</button></label>
+							<div class="field_block">
+								<select name="project" id="project">
+									<option>Select</option>
+									<option value="1">Value 1</option>
+									<option value="2">Value 2</option>
+									<option value="3">Value 3</option>
+									<option value="4">Value 4</option>
+								</select>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="company">Select Company <button aria-label="Create Company">Create Company</button></label>
+							<div class="field_block">
+								<select name="company" id="company">
+									<option>Select</option>
+									<option value="1">Value 1</option>
+									<option value="2">Value 2</option>
+									<option value="3">Value 3</option>
+									<option value="4">Value 4</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="add_btns">
+						<button class="standard_btn icon_plus" aria-label="add custom field">Add custom field</button>
+						<button class="standard_btn icon_plus" aria-label="Add Required Steps">Add Required Steps</button>
+						<button class="standard_btn icon_plus" aria-label="Add Client Approval Code">Add Client Approval Code</button>
+					</div>
+					<div class="fields_group">
+						<div class="field_col">
+							<label class="field_name" for="date_start">Date*</label>
+							<div class="field_block">
+								<input type="date" name="date_start" id="date_start" maxlength="50" placeholder="Title"/>
+							</div>
+							<div class="field_block">
+								<input type="date" name="date_end" id="date_end" maxlength="50" placeholder="Title"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="time">Time*</label>
+							<div class="field_block">
+								<select name="time_start" id="time_start">
+									<option>00:00</option>
+									<option value="1">01:00</option>
+									<option value="2">02:00</option>
+									<option value="3">03:00</option>
+									<option value="4">04:00</option>
+								</select>
+							</div>
+							<div class="field_block">
+								<select name="time_end" id="time_end">
+									<option>00:00</option>
+									<option value="1">01:00</option>
+									<option value="2">02:00</option>
+									<option value="3">03:00</option>
+									<option value="4">04:00</option>
+								</select>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="site_id">Site ID*</label>
+							<div class="field_block">
+								<input type="text" name="site_id" id="site_id" maxlength="50" placeholder="Site ID"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="site_name">Site Name*</label>
+							<div class="field_block">
+								<input type="text" name="site_name" id="site_name" maxlength="50" placeholder="Site Name"/>
+							</div>
+						</div>
+					</div>
+					<div class="fields_group">
+						<div class="group_subtitle">Site Address</div>
+						<div class="field_col">
+							<label class="field_name" for="street_address">Street Address*</label>
+							<div class="field_block">
+								<input type="text" name="street_address" id="street_address" maxlength="50" placeholder="Street Address"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="bidg_suite">Bldg, Suite, Etc.</label>
+							<div class="field_block">
+								<input type="text" name="bidg_suite" id="bidg_suite" maxlength="50" placeholder="Bldg, Suite, Etc."/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="city">City</label>
+							<div class="field_block">
+								<input type="text" name="city" id="city" maxlength="50" placeholder="City"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="state">State</label>
+							<div class="field_block">
+								<select name="state" id="state">
+									<option>State</option>
+									<option value="1">Value 1</option>
+									<option value="2">Value 2</option>
+									<option value="3">Value 3</option>
+									<option value="4">Value 4</option>
+								</select>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="zip">Zip</label>
+							<div class="field_block">
+								<input type="text" name="zip" id="zip" maxlength="50" placeholder="Zip"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="country">Country</label>
+							<div class="field_block">
+								<select name="country" id="country">
+									<option>Country</option>
+									<option value="1">Value 1</option>
+									<option value="2">Value 2</option>
+									<option value="3">Value 3</option>
+									<option value="4">Value 4</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="separate">OR</div>
+					<div class="checkbox_list">
+						<label class="check_btn">
+							<input type="checkbox" name="remote_wfh"/>
+							Remote/WFH
+						</label>
+						<label class="check_btn">
+							<input type="checkbox" name="project_manager"/>
+							Project Manager
+						</label>
+						<label class="check_btn">
+							<input type="checkbox" name="project_coordinator"/>
+							Project Coordinator
+						</label>
+						<label class="check_btn">
+							<input type="checkbox" name="project_administrator"/>
+							Project Administrator
+						</label>
+						<label class="check_btn">
+							<input type="checkbox" name="other_misc"/>
+							Other/Misc.
+						</label>
+					</div>
+					<div class="fields_group">
+						<div class="field_col">
+							<label class="field_name" for="work_type">Work Type*</label>
+							<div class="field_block">
+								<select name="work_type" id="work_type">
+									<option>Work Type</option>
+									<option value="1">Value 1</option>
+									<option value="2">Value 2</option>
+									<option value="3">Value 3</option>
+									<option value="4">Value 4</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="fields_group">
+						<div class="field_col">
+							<label class="field_name" for="work_description">Work Description*</label>
+							<div class="field_block">
+								<textarea name="work_description" id="work_description" maxlength="500" placeholder="Type here"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="fields_group">
+						<div class="field_col">
+							<label class="field_name" for="total_required">Total Required*</label>
+							<div class="field_block">
+								<textarea name="total_required" id="total_required" maxlength="500" placeholder="Type here"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="fields_group">
+						<div class="field_col">
+							<label class="field_name" for="confidential_information">Confidential Information: (Shown ONLY After Assigned)</label>
+							<div class="field_block">
+								<textarea name="confidential_information" id="confidential_information" maxlength="500" placeholder="Type here"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="fields_group">
+						<div class="group_subtitle">Contact Info*</div>
+						<div class="field_col">
+							<label class="field_name" for="name">Name</label>
+							<div class="field_block">
+								<input type="text" name="name" id="name" maxlength="50" placeholder="Name"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="role">Role</label>
+							<div class="field_block">
+								<input type="text" name="role" id="role" maxlength="50" placeholder="Role"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="email">Email</label>
+							<div class="field_block">
+								<input type="text" name="email" id="email" maxlength="50" placeholder="Email"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="phone">Other phone</label>
+							<div class="field_block">
+								<input type="text" name="phone" id="phone" maxlength="50" placeholder="Phone"/>
+							</div>
+						</div>
+						<div class="field_col">
+							<label class="field_name" for="mobile">Mobile</label>
+							<div class="field_block">
+								<input type="text" name="mobile" id="mobile" maxlength="50" placeholder="Mobile"/>
+							</div>
+						</div>
+						<div class="add_btns">
+							<button class="standard_btn icon_plus" aria-label="add">Add</button>
+						</div>
+					</div>
+					<div class="fields_group">
+						<div class="field_col">
+							<label class="field_name" for="notification_team">Select Team for Notification</label>
+							<div class="field_block">
+								<select name="notification_team" id="notification_team">
+									<option>Select</option>
+									<option value="1">Value 1</option>
+									<option value="2">Value 2</option>
+									<option value="3">Value 3</option>
+									<option value="4">Value 4</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="fields_group">
+						<label class="check_btn">
+							<input type="checkbox" name="deliverables_required"/>
+							Deliverables Required
+						</label>
+					</div>
+					<div class="fields_group">
+						<div class="add_btns">
+							<label class="standard_btn icon_upload">
+								<input type="file" name="file_attach"/>
+								Drag and drop your fail here or click here to add file
+							</label>
+						</div>
+					</div>
+					<div class="fields_group">
+						<label class="check_btn">
+							<input type="checkbox" name="create_template"/>
+							Create Template
+						</label>
+					</div>
+				</div>
+				<div class="create_actions">
+					<button class="standard_btn dark_btn" aria-label="cancel">Cancel</button>
+					<button class="standard_btn light_btn" aria-label="save as draft">Save as draft</button>
+					<button class="standard_btn lightest_btn" aria-label="save and publish">Save &#38; Publish</button>
+				</div>
+		
+			</div>
+			
+		</div>
+
+		<script>
+			toggleSidebar = function() {
+				document.querySelector('.sidebar').classList.toggle('opened')
+			}
+
+			showProfileModal = function() {
+				document.querySelector('.profile_inner').classList.add('opened')
+			}
+
+			hideProfileModal = function() {
+				document.querySelector('.profile_inner').classList.remove('opened')
+			}
+
+		</script>
+ 	</body>
+</html>

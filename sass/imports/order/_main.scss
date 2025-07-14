@@ -1,0 +1,234 @@
+.create_actions {
+    margin-top: 60px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.page_title {
+    margin: 0;
+    color: $white;
+    @include fontSize(20);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &:before {
+        display: block;
+        font-size: 2.4rem;
+    }
+}
+
+.create_fields {
+    .fields_group {
+        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        &:has(.field_col) {
+            margin-left: -30px;
+            margin-right: -30px;
+            .group_subtitle {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+        .add_btns:first-child:last-child {
+            margin-top: 0;
+        }
+    }
+    .field_row {
+        max-width: 434px;
+        flex: 0 0 100%;
+    }
+    .small_row {
+        max-width: 245px;
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        .field_name {
+            flex: 0 0 46.5%;
+            max-width: 46.5%;
+            color: $white;
+        }
+        .field_block {
+            flex: 1;
+            width: 50%;
+        }
+    }
+    .combo_field {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+        margin-top: 20px;
+        .small_row {
+            margin-top: 0
+        }
+    }
+    .half_col {
+        @include colSize(6);
+    }
+    .quarter_col {
+        @include colSize(3);
+    }
+    .group_name {
+        @include fontSize(20);
+        font-weight: 700;
+        color: $white;
+    }
+    .group_col {
+        padding: 27px 55px;
+        &:first-child {
+            padding-left: 0;
+            flex: 0 0 43%;
+            max-width: 43%;
+        }
+        &:not(:first-child) {
+            max-width: 28.5%;
+            flex: 0 0 28.5%;
+        }
+        &.has_bg {
+            background: $coverBg;
+            border-radius: 20px;
+            padding-left: 65px;
+            padding-right: 65px;
+            .group_name {
+                text-align: center;
+            }
+            > * {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+
+    .funds_info {
+        padding: 30px 0;
+        @include fontSize(20);
+        font-weight: 700;
+        .info_row {
+            display: flex;
+            justify-content: flex-end;
+            text-align: right;
+            gap: 20px;
+            &:not(:first-child) {
+                margin-top: 8px;
+            }
+        }
+        .fund_type {
+            color: $white;
+        }
+        .fund_size {
+            color: $secondColor;
+        }
+    }
+
+    .field_col {
+        @include colSize(3);
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-bottom: 20px;
+        &:has(textarea) {
+            @include colSize(12);
+        }
+        .field_name {
+            color: $white;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+            a, button {
+                display: inline;
+                color: $secondColor;
+                border: none;
+                background: transparent;
+                padding: 0;
+                margin-left: 10px;
+                text-decoration: underline;
+                font-weight: inherit;
+                @extend %lightHover;
+            }
+        }
+        &:has(.field_block:nth-child(3)) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            .field_name {
+                margin-bottom: 2px;
+                @include colSize(12);
+            }
+            .field_block {
+                flex: 1;
+                width: 40%;
+            }
+        }
+        textarea {
+            height: 150px;
+        }
+        + .add_btns {
+            margin-top: 31px;
+        }
+    }
+
+    .add_btns {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        .standard_btn {
+            color: rgba($mainBg, 0.8);
+            background: rgba($light, 0.5);
+            @extend %all300;
+            @media(hover:hover) {
+                &:hover {
+                     color: $mainBg;
+                    background: $light;
+                }
+               
+            }
+            &:before {
+                color: $mainBg;
+                background: $light;
+                @extend %centerBlock;
+                height: 100%;
+                aspect-ratio: 1;
+                margin-left: -20px;
+                margin-right: 8px;
+                border-radius: 50%
+            }
+            
+        }
+        
+    }
+
+    .group_subtitle {
+        color: $white;
+        margin-bottom: 10px;
+        @include colSize(12);
+    }
+    .separate {
+        display: flex;
+        align-items: center;
+        margin-top: 60px;
+        color: $white;
+        gap: 40px;
+        font-weight: 700;
+        &:before,
+        &:after {
+            display: block;
+            content: "";
+            flex: 1;
+            border-top: 1px solid $border;
+        }
+    }
+    .checkbox_list {
+        padding-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 -12px;
+        .check_btn {
+            margin: 12px;
+            white-space: nowrap;
+        }
+
+    }
+}
+

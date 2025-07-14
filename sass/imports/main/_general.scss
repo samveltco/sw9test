@@ -1,0 +1,529 @@
+html {
+    height: 100%;
+    font-size: 10px;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+}
+ 
+body {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 140%;
+    color: $textColor;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100%;
+    font-family: "Poppins", sans-serif;
+    background: $mainBg;
+    @include mediaFrom($size768) {
+        &:has(.sidebar) {
+            padding-left: 85px;
+        }
+    }
+    
+
+    &:has(.profile_inner.opened),
+    &:has(.filter_inner.opened),
+    &:has(.modal_block.showed) {
+        overflow: hidden;
+    }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box; 
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+input, 
+select, 
+textarea, 
+button, 
+a, 
+.slick-slide {
+   outline: none !important;
+}
+
+a,
+a:focus,
+a:hover,
+button:hover {
+    text-decoration: none;
+}
+
+a {
+    color: $siteColor;
+    &:not([href]) {
+        pointer-events: none;
+    }
+}
+
+button {
+    cursor: pointer;
+    display: block;
+}
+
+img	{
+    max-height: none;
+    border: none;
+}
+
+input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input,
+textarea,
+button {
+    font-family: inherit;
+    font-size: 100%;
+}
+
+.page_row {
+    display: flex;
+    flex-wrap: wrap;
+    @include rowMargin;
+    .cb {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.page_container {
+    width: 100%;
+    margin: 0 auto;
+    @include containerPadding;
+    @include mediaFrom($size1600) {
+        max-width: $container1920 + 2*$containerPadding;
+    }
+    @include mediaRange($size1440, $size1600) {
+        max-width: $container1600 + 2*$containerPadding;
+    }
+    @include mediaRange($size1280, $size1440) {
+        max-width: $container1440 + 2*$containerPadding;
+    }
+    @include mediaRange($size960, $size1280) {
+        max-width: $container1280 + 2*$containerPadding;
+    }
+}
+
+.individual_hint,
+.drop_list,
+.drop_block {
+    display: none;
+}
+.error_hint {
+    display: block;
+    max-height: 0;
+    @extend %all300;
+    overflow: hidden;
+    color: $error;
+}
+.help-block.form-error {
+    display: none !important;
+}
+.has-error {
+    .error_hint,
+    ~ .error_hint {
+        max-height: 60px;
+   }
+}
+
+.field_block {
+    position: relative;
+    @include placeholder {
+        color: rgba($white, 0.4);
+    }
+    input,
+    textarea,
+    select {
+        width: 100%;
+        border: 1px solid rgba($textColor, 0.12);
+        background: $blue2;
+        padding: 8px 16px;
+        border-radius: 20px;
+        color: $white;
+        &:focus {
+            background: $mainBg;
+            color: rgba($white, 0.5);
+        }
+    }
+    textarea {
+        resize: none;
+        display: block;
+    }
+    select,
+    input {
+        height: 40px;
+        @include mediaTo($size960) {
+            height: 36px;
+        }
+    }
+    input:disabled {
+        border-color: transparent;
+        background: transparent;
+        color: $textColor;
+        opacity: 0.5;
+    }
+    .error_message {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 0 16px;
+        margin-top: 4px;
+        color: $error;
+        @include fontSize(12);
+        font-weight: 275;
+    }
+    .step_btns {
+        position: absolute;
+        right: 16px;
+        top: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        width: 20px;
+        &:before {
+            border-top: 2px solid;
+            content: "";
+            display: block;
+            border-radius: 2px;
+            margin: 2px 0;
+            order: 1;
+        }
+        span {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            font-size: 0.8rem;
+            cursor: pointer;
+            @extend %textUnSelect;
+            @extend %lightHover;
+            &:first-child {
+                align-items: flex-end;
+            }
+            &:nth-child(2) {
+                align-items: flex-start;
+                order: 3;
+            }
+        }
+    }
+}
+
+.field_row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    &:not(:first-of-type) {
+        margin-top: 20px;
+    }
+    .field_name {
+        flex: 0 0 35%;
+        max-width: 35%;
+        align-self: center;
+        label {
+            color: $white;
+            font-weight: 700;
+        }
+    }
+    
+    .field_hint {
+        font-weight: 275;
+        margin-top: 2px;
+    }
+    .field_block {
+        flex: 1;
+        width: 20%;
+        input {
+            width: 100%;
+        }
+        textarea {
+            height: 113px;
+        }
+       
+    }
+
+    &:has(textarea) {
+        align-items: flex-start;
+        
+    }
+
+    @include mediaTo($size576) {
+        flex-wrap: wrap;
+        gap: 4px;
+        .field_name {
+            @include colSize(12);
+            label:first-child:last-child {
+                height: auto;
+                margin-top: 0
+            }
+        }
+        .field_block {
+            @include colSize(12);
+            + .field_block {
+                margin-top: 8px;
+            }
+        }
+    }
+}
+
+.close_btn {
+    color: rgba($light, 0.5);
+    @extend %linkTypeBtn;
+    font-size: 2.4rem;
+    @extend %lightHover;
+    &:before {
+        display: block;
+    }
+    @include mediaTo($size960) {
+        padding: 12px;
+        margin: -12px -12px -12px auto;
+    }
+}
+
+.check_btn {
+    display: inline-flex;
+    vertical-align: top;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+    @extend %textUnSelect;
+    cursor: pointer;
+    @extend %iconElement;
+    @extend .icon_check;
+    color: $white;
+    input {
+        @extend %maskedInput;
+    }
+    &:before {
+        display: block;
+        font-size: 0;
+        min-width: 16px;
+        aspect-ratio: 1;
+        border-radius: 3px;
+        color: $textColor;
+        outline: 1px solid;
+        outline-offset: -1px;
+        margin-top: 2px;
+        @include animStyle(color 0.3s);
+    }
+    &:has(:checked):before {
+        font-size: 1.6rem;
+    }
+    @media(hover:hover) {
+        &:hover:before {
+            color: $white;
+        }
+    }
+}
+.cb {
+    display: block;
+    clear: both;
+}
+
+.secondary_btn {
+    @extend %secondaryBtn;
+}
+
+.standard_text {
+	@extend %standardText;
+}
+
+.hidden_label {
+    display: none;
+}
+
+@keyframes loadAnimation {
+    9% {
+        box-shadow: none;
+    }
+    10% {
+        box-shadow: -8px 0 0;
+    }
+    35% {
+        box-shadow: -8px 0 0;
+    }
+    35.1% {
+        box-shadow: -8px 0 0, 8px 0 0;
+    }
+    60% {
+        box-shadow: -8px 0 0, 8px 0 0;
+    }
+    60.1% {
+        box-shadow: -8px 0 0, 8px 0 0, 24px 0 0;
+    }
+    85% {
+        box-shadow: -8px 0 0, 8px 0 0, 24px 0 0;
+    }
+    85.1% {
+        box-shadow: none
+    }
+    100% {
+        box-shadow: none
+    }
+}
+
+.content {
+    padding: 30px 20px;
+    flex: 1;
+    @include mediaFrom($size576) {
+        .welcome_block {
+            display: none;
+        }
+    }
+    @include mediaTo($size576) {
+        padding-top: 16px;
+        .welcome_block {
+            padding-bottom: 12px;
+        }
+    }
+}
+
+.standard_btn {
+    height: 40px;
+    border: 1px solid rgba($textColor, 0.12);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 8px;
+    @extend %iconElement;
+    border-radius: 20px;
+    &:before {
+        display: block;
+    }
+    @include mediaTo($size960) {
+        height: 36px;
+    }
+    &:has(input) {
+        position: relative;
+        input {
+            @extend %coverLayer;
+            opacity: 0;
+            z-index: 1;
+        }
+    }
+}
+
+.light_btn {
+    background: $secondColor;
+}
+
+.dark_btn {
+    background: $siteColor;
+}
+
+.lightest_btn {
+    background: $light;
+}
+
+.curry_btn {
+    background-color: #9C970A;
+}
+.orange_btn {
+    background-color: #FD9A56;
+}
+.green_btn {
+    background-color: #00B69B;
+}
+
+.light_btn,
+.dark_btn {
+    color: rgba($white, 0.8);
+    @extend %lightHover;
+    &:before {
+        color: $white;
+    }
+}
+
+.lightest_btn,
+.curry_btn,
+.orange_btn,
+.green_btn {
+    color: rgba($mainBg, 0.8);
+    @extend %darkHover;
+    &:before {
+        color: $mainBg;
+    }
+}
+
+.primary_btn {
+    @extend .standard_btn;
+    color: $secondColor;
+    background: $mainBg;
+    @extend %standardBgHover;
+}
+
+.modal {
+    &_block {
+        @include popupBlock($mainBg, 0.8);
+        @include popupFade(0.5s);
+        padding: 0 20px;
+    }
+    &_container {
+        @include popupContainer($coverBg, 514px, 40px);
+        border-radius: 20px;
+        margin: 0 auto;
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
+    }
+    &_head {
+        display: flex;
+        flex-wrap: wrap;
+        color: $light;
+        gap: 10px;
+        align-items: flex-start;
+        padding-bottom: 20px;
+    }
+    &_body {
+        margin: auto 0;
+    }
+
+    &_title {
+        @include fontSize(20);
+        font-weight: 700;
+        flex: 1;
+    }
+    
+    &_subtitle {
+        order: 1;
+        @include fontSize(12);
+        @include colSize(12);
+    }
+
+    .close_btn {
+        margin-top: 3px;
+    }
+
+    &_footer {
+        margin-top: auto;
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        padding-top: 20px;
+    }
+
+    @include mediaTo($size960) {
+        &_container {
+            width: 480px;
+            min-height: 520px;
+            padding: 20px;
+            max-width: 100%;
+        }
+    }
+}
