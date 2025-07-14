@@ -575,7 +575,7 @@ button {
 }
 @media screen and (max-width: 1024px) {
   .field_block select,
-.field_block input {
+  .field_block input {
     height: 36px;
   }
 }
@@ -1856,7 +1856,6 @@ button {
   .search_actions .standard_btn:before, .search_actions .primary_btn:before {
     font-size: 1.6rem;
   }
-
   .card_item .card_body {
     padding-top: 34px;
     position: relative;
@@ -1953,24 +1952,21 @@ button {
 
 @media (hover: hover) {
   .lightest_btn:hover,
-.curry_btn:hover,
-.orange_btn:hover,
-.green_btn:hover {
+  .curry_btn:hover,
+  .orange_btn:hover,
+  .green_btn:hover {
     color: #000000;
   }
-
   .field_block .step_btns span:hover, .close_btn:hover, .light_btn:hover,
-.dark_btn:hover, .header .profile_btn:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
-.sidebar .logout_btn:hover, .menu_btn:hover, .search_btn:hover, .switch_actions .actions_list button:hover, .switch_btns button:hover, .sort_type:hover, .filter_btn:hover,
-.reset_btn:hover, .paging a:hover, .paging button:hover, .card_item a.message_count:hover,
-.card_item button.message_count:hover {
+  .dark_btn:hover, .header .profile_btn:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
+  .sidebar .logout_btn:hover, .menu_btn:hover, .search_btn:hover, .switch_actions .actions_list button:hover, .switch_btns button:hover, .sort_type:hover, .filter_btn:hover,
+  .reset_btn:hover, .paging a:hover, .paging button:hover, .card_item a.message_count:hover,
+  .card_item button.message_count:hover {
     color: #ffffff;
   }
-
   .paging a.prev_page:hover, .paging a.next_page:hover, .paging button.prev_page:hover, .paging button.next_page:hover {
     color: #11BCF2;
   }
-
   .primary_btn:hover {
     background: #11BCF2;
     color: #ffffff;

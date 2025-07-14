@@ -568,7 +568,7 @@ button {
 }
 @media screen and (max-width: 1024px) {
   .field_block select,
-.field_block input {
+  .field_block input {
     height: 36px;
   }
 }
@@ -1649,18 +1649,16 @@ button {
 
 @media (hover: hover) {
   .lightest_btn:hover,
-.curry_btn:hover,
-.orange_btn:hover,
-.green_btn:hover {
+  .curry_btn:hover,
+  .orange_btn:hover,
+  .green_btn:hover {
     color: #000000;
   }
-
   .field_block .step_btns span:hover, .close_btn:hover, .light_btn:hover,
-.dark_btn:hover, .header .profile_btn:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
-.sidebar .logout_btn:hover, .menu_btn:hover, .create_fields .field_col .field_name a:hover, .create_fields .field_col .field_name button:hover {
+  .dark_btn:hover, .header .profile_btn:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
+  .sidebar .logout_btn:hover, .menu_btn:hover, .create_fields .field_col .field_name a:hover, .create_fields .field_col .field_name button:hover {
     color: #ffffff;
   }
-
   .primary_btn:hover {
     background: #11BCF2;
     color: #ffffff;
