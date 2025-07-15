@@ -5,7 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover"/>
 		<meta name="format-detection" content="telephone=no"/>
 		<meta name="description" content="some description about project">
-		
   		<title>Project Name</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,8 +108,20 @@
 								<div class="profile_info">We are a service project management company that handles networking, POS, and cabling work.</div>
 							</div>
 							<div class="profile_actions">
-								<button class="standard_btn light_btn icon_plus" aria-label="add new role">Add new note</button>
+								<button class="standard_btn light_btn icon_plus" aria-label="add new role" onclick="NewNoteShow()">Add new note</button>
 								<button class="standard_btn dark_btn icon_edit" aria-label="edit">Edit</button>
+							</div>
+							<div class="new_note">
+								<div class="field_col">
+									<label class="field_name" for="total_required">Add new note</label>
+									<div class="field_block">
+										<textarea name="total_required" id="total_required" maxlength="500" placeholder="Type here"></textarea>
+									</div>
+								</div>
+								<div class="profile_actions">
+									<button class="standard_btn dark_btn" aria-label="cancel" onclick="NewNoteHidden()">Cancel</button>
+									<button class="standard_btn lightest_btn" aria-label="save and publish">Save &#38; Publish</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -146,11 +157,9 @@
 							<a href="" class="icon_chat">
 								<span>Manage founds</span>
 							</a>
-						<a href="" class="icon_invoice">
+						    <a href="" class="icon_invoice">
 								<span>Payment Methods</span>
 							</a>
-							
-							
 							<a href="" class="icon_lists">
 								<span>Templates</span>
 							</a>
@@ -964,6 +973,16 @@
 			hideModal = function() {
 				document.querySelector('.modal_block').classList.remove('showed')
 			}
+
+
+			NewNoteShow = function() {
+				document.querySelector('.new_note').classList.add('showed')
+			}
+
+			NewNoteHidden = function() {
+				document.querySelector('.new_note').classList.remove('showed')
+			}
+
 		</script>
  	</body>
 </html>

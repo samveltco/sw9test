@@ -947,6 +947,30 @@ button {
   }
 }
 
+.new_note {
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 24px;
+}
+.new_note textarea {
+  height: 100px;
+}
+.new_note .field_col {
+  color: #ffffff;
+  font-weight: 700;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.new_note.showed {
+  opacity: 1;
+  -o-transition: height 0s 0.5s, opacity 0.5s;
+  -ms-transition: height 0s 0.5s, opacity 0.5s;
+  -moz-transition: height 0s 0.5s, opacity 0.5s;
+  -webkit-transition: height 0s 0.5s, opacity 0.5s;
+  transition: height 0s 0.5s, opacity 0.5s;
+}
+
 .header {
   z-index: 100;
   position: sticky;
@@ -1369,6 +1393,14 @@ button {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
+}
+.create_actions .dark_btn {
+  color: #CFCFCF;
+  background: #23425A;
+}
+.create_actions .light_btn {
+  color: #19252F;
+  background: #0A6D9C;
 }
 
 .page_title {

@@ -527,3 +527,24 @@ button {
         }
     }
 }
+
+.new_note{
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 24px;
+    textarea{
+        height: 100px;
+    }
+
+    .field_col{
+        color: $white;
+        font-weight: 700;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+    &.showed {
+        opacity: 1;
+        @include animStyles(height 0s 0.5s, opacity 0.5s);
+    }
+}

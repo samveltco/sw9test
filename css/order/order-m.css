@@ -21,7 +21,7 @@
     max-width: 100vw;
   }
   .header .about_user,
-.header .profile_contacts li {
+  .header .profile_contacts li {
     gap: 8px;
   }
 }
@@ -29,7 +29,6 @@
   .header {
     padding-left: 64px;
   }
-
   .sidebar {
     width: 0;
   }
@@ -37,10 +36,9 @@
     width: 0;
   }
   .sidebar_menu a span, .sidebar_menu button span,
-.sidebar .logout_btn span {
+  .sidebar .logout_btn span {
     opacity: 1;
   }
-
   .menu_btn_block {
     width: 64px;
   }
@@ -55,7 +53,6 @@
   .sidebar.opened .sidebar_inner {
     width: 100vw;
   }
-
   .header {
     justify-content: space-between;
   }
@@ -115,7 +112,6 @@
   .create_fields .field_row {
     max-width: 100%;
   }
-
   .create_fields .combo_field {
     display: block;
   }
@@ -136,7 +132,6 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
-
   .create_actions {
     flex-wrap: wrap;
   }

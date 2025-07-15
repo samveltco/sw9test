@@ -954,6 +954,30 @@ button {
   }
 }
 
+.new_note {
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 24px;
+}
+.new_note textarea {
+  height: 100px;
+}
+.new_note .field_col {
+  color: #ffffff;
+  font-weight: 700;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.new_note.showed {
+  opacity: 1;
+  -o-transition: height 0s 0.5s, opacity 0.5s;
+  -ms-transition: height 0s 0.5s, opacity 0.5s;
+  -moz-transition: height 0s 0.5s, opacity 0.5s;
+  -webkit-transition: height 0s 0.5s, opacity 0.5s;
+  transition: height 0s 0.5s, opacity 0.5s;
+}
+
 .header {
   z-index: 100;
   position: sticky;
@@ -1740,6 +1764,9 @@ button {
   border: 1px solid #23425A;
   border-radius: 14px;
   padding: 20px 16px;
+}
+.card_item:has(:checked) {
+  border-color: #11BCF2;
 }
 .card_item:not(:first-child) {
   margin-top: 20px;
