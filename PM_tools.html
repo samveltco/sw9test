@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" content="some description about project">
-
     <title>Vaylant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,13 +130,13 @@
                     <a href="" class="icon_products">
                         <span>Find Contractor</span>
                     </a>
-                    <a href="preferred.html" class="icon_contact current">
+                    <a href="preferred.html" class="icon_contact">
                         <span>Preferred</span>
                     </a>
                     <a href="manage_custom.html" class="icon_stock">
                         <span>Manage Custom Fields</span>
                     </a>
-                    <a href="PM_tools.html" class="icon_file">
+                    <a href="PM_tools.html" class="icon_file current">
                         <span>PM Tools</span>
                     </a>
                     <a href="manage_teams.html" class="icon_contact">
@@ -172,106 +171,35 @@
             <div class="welcome_info">Welcome to The 209 Group</div>
             <div class="available_funds">Funds Available: $1,268.22</div>
         </div>
-        <div class="preferred_section">
+        <div class="tools_section">
             <div class="head_section">
-                <h1 class="page_title">Preferred Contractor Groups</h1>
-                <button class="standard_btn icon_plus curry_btn" aria-label="Create work order" onclick="showModal()">Add group</button>
+                <h1 class="page_title">PM Tools</h1>
+                <div class="block_sub">These features are in beta testing. Inquire with</div>
+                <div class="block_sub"><a href="mailto:support@sourcew9.com">support@sourcew9.com</a>if interested in being a beta client</div>
             </div>
-            <table class="custom_table">
-                <thead>
-                <tr>
-                    <th class="name">Group name</th>
-                    <th class="value">Members</th>
-                    <th class="type">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">asdas</td>
-                    <td data-th="Action">
-                        <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">asdas</td>
-                    <td data-th="Action">
-                        <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">asdas</td>
-                    <td data-th="Action">
-                        <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">asdas</td>
-                    <td data-th="Action">
-                        <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <ul class="tools_list">
+                <li>
+                    <div class="block_tools">
+                        <div class="page_title icon_sitemap">Site Routing</div>
+                        <a href="" class="btn_link">Route your site list</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="block_tools">
+                        <div class="page_title icon_curve">Project Control Center</div>
+                        <a href="" class="btn_link">Track everything about your project</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="block_tools">
+                        <div class="page_title icon_bulb">SW9STEIN</div>
+                        <a href="" class="btn_link">Ask SW9 AI</a>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
-
-<div class="popup_block">
-    <div class="popup_container">
-        <div class="popup_head">
-            <div class="popup_title">Add group</div>
-            <button class="close_btn icon_close" aria-label="close" onclick="hideModal()"></button>
-        </div>
-        <div class="popup_body">
-            <div class="field_row">
-                <div class="field_name">
-                    <label for="groupName">Group name</label>
-                </div>
-                <div class="field_block">
-                    <input id="groupName" type="text" name="groupName" maxlength="50" placeholder="Type her..." />
-                </div>
-            </div>
-            <div class="field_row">
-                <div class="field_name">
-                    <label for="groupType">Group type</label>
-                </div>
-                <div class="field_block">
-                    <select id="groupType" name="groupType">
-                        <option>Select</option>
-                        <option value="1">Value 1</option>
-                        <option value="2">Value 2</option>
-                        <option value="3">Value 3</option>
-                        <option value="4">Value 4</option>
-                        <option value="5">Value 5</option>
-                        <option value="6">Value 6</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="popup_footer">
-                <button class="standard_btn dark_btn" aria-label="cancel">Cancel</button>
-                <button class="standard_btn light_btn" aria-label="save as draft">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script src="js/main.js"></script>
 </body>
 </html>

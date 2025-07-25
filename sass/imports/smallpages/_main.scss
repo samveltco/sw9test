@@ -1,0 +1,141 @@
+.head_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.management_section,
+.manage_teams_section,
+.manage_section,
+.preferred_section {
+    max-width: 882px;
+
+    .head_section {
+        margin-bottom: 40px;
+    }
+
+    .custom_table {
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+        width: 100%;
+
+        thead th:last-child,
+        tbody td:last-child {
+            width: 22%;
+        }
+
+        tbody td {
+            padding: 10px 10px 10px 0;
+            border-top: 1px solid $grayCf;
+        }
+
+        thead th {
+            padding: 0 10px 10px 0;
+        }
+    }
+
+    //manage page css
+    &.manage_section {
+        .custom_table tbody {
+            td:first-child {
+                width: 80%;
+            }
+        }
+    }
+
+    //manage page css
+
+    //management user page css
+    &.management_section {
+        max-width: 100%;
+        thead th,
+        tbody td{
+            width: 16%;
+        }
+    }
+
+    //management user page css
+}
+
+.tools_section {
+    .head_section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        a {
+            color: $light;
+            padding-right: 3px;
+            @extend %siteColorHover;
+        }
+    }
+
+    .block_sub {
+        font-size: 100%;
+        line-height: 18px;
+        color: $white;
+        margin-bottom: 5px;
+        display: block;
+        text-align: center;
+    }
+
+    .tools_list {
+        @include standardList;
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            margin-bottom: 30px;
+        }
+    }
+
+    .block_tools {
+        background: $lightTitle;
+        border-radius: 20px;
+        min-height: 140px;
+        flex-direction: column;
+        padding: 20px;
+        @extend %centerBlock;
+        height: 100%;
+
+        .btn_link {
+            text-align: center;
+            color: $blue04;
+            background: none;
+            border: none;
+            @extend %opacityHover;
+        }
+
+        .page_title {
+            color: $blue2;
+            font-weight: 700;
+            margin-bottom: 8px;
+
+            &:before {
+                color: $blue2;
+                font-size: 2.4rem;
+            }
+        }
+    }
+}
+
+body:has(.manage_teams_section) {
+    .popup_block .field_row:has(.checkbox_list) {
+        flex-direction: column;
+
+        .field_name {
+            align-self: unset;
+        }
+    }
+
+    .checkbox_list {
+        display: flex;
+        flex-direction: column;
+
+        .check_btn {
+            margin-bottom: 26px;
+        }
+    }
+}

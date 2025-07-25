@@ -1,0 +1,96 @@
+@include mediaTo($size960) {
+    .tools_section .tools_list {
+        margin: 40px -10px 0;
+
+        li {
+            @include colSize(6);
+            padding: 0 10px;
+        }
+    }
+}
+
+@include mediaTo($size768) {
+    .management_section,
+    .manage_teams_section,
+    .manage_section,
+    .preferred_section {
+        .head_section {
+            flex-direction: column;
+            align-items: baseline;
+        }
+
+        .standard_btn {
+            margin-top: 20px;
+        }
+    }
+    .tools_section .tools_list {
+        li {
+            @include colSize(12);
+        }
+    }
+
+    .management_section {
+        margin-left: 0;
+        margin-right: 0;
+        display: block;
+        width: 100%;
+
+        tbody,
+        tr {
+            display: block;
+            width: 100%;
+            margin: 0;
+
+        }
+
+        thead {
+            display: none;
+        }
+
+        tbody {
+            td, th {
+                display: flex;
+                border: none;
+                padding: 0 0 15px !important;
+                margin-bottom: 15px;
+                border-bottom: 1px solid $grayCf;
+                text-align: right;
+                width: auto !important;
+                border-top: 0 !important;
+
+                &:before {
+                    display: block;
+                    content: attr(data-th) ':';
+                    color: $textColor;
+                    text-align: left;
+                    margin-right: auto;
+                    padding-right: 10px;
+                }
+
+            }
+        }
+    }
+}
+
+
+@include mediaTo($size576) {
+    body:has(.manage_teams_section) .checkbox_list {
+        margin-top: 10px;
+    }
+    .management_section,
+    .manage_teams_section,
+    .manage_section,
+    .preferred_section {
+
+        .custom_table {
+            thead th:last-child,
+            tbody td:last-child {
+                width: unset;
+            }
+
+            tbody td {
+                border-top: 0;
+            }
+        }
+    }
+}

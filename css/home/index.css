@@ -224,6 +224,18 @@
   content: "\e90d";
 }
 
+.icon_bulb:before {
+  content: "\e90e";
+}
+
+.icon_curve:before {
+  content: "\e90f";
+}
+
+.icon_sitemap:before {
+  content: "\e91a";
+}
+
 .card_item .card_details, .paging ul, .header .profile_contacts {
   padding: 0;
   margin: 0;
@@ -729,7 +741,7 @@ button {
 }
 @media screen and (max-width: 1024px) {
   .close_btn {
-    padding: 12px;
+    padding: 0 12px;
     margin: -12px -12px -12px auto;
   }
 }
@@ -808,7 +820,7 @@ button {
   }
 }
 .content {
-  padding: 30px 20px;
+  padding: 36px 20px;
   flex: 1;
 }
 @media screen and (min-width: 576px) {
@@ -1076,6 +1088,12 @@ button {
   width: max-content;
   max-width: 100%;
   overflow: auto;
+  font-size: 1.2rem;
+  line-height: 18px;
+}
+.custom_table .row_block {
+  display: flex;
+  align-items: center;
 }
 .custom_table a,
 .custom_table .icon_delete,
@@ -2271,7 +2289,7 @@ button {
 .card_item button.message_count, .lightest_btn,
 .curry_btn,
 .orange_btn,
-.green_btn, .modal_import .import_link, .custom_table a:before,
+.green_btn, .check_btn, .modal_import .import_link, .custom_table a:before,
 .custom_table .icon_delete:before,
 .custom_table .icon_pencil:before,
 .custom_table .icon_close:before {
@@ -2308,7 +2326,7 @@ button {
   visibility: hidden;
 }
 
-.modal_import .import_link:active, .custom_table a:active:before,
+.check_btn:active, .modal_import .import_link:active, .custom_table a:active:before,
 .custom_table .icon_delete:active:before,
 .custom_table .icon_pencil:active:before,
 .custom_table .icon_close:active:before {
@@ -2340,7 +2358,7 @@ button {
 }
 
 @media (hover: hover) {
-  .modal_import .import_link:hover, .custom_table a:hover:before,
+  .check_btn:hover, .modal_import .import_link:hover, .custom_table a:hover:before,
   .custom_table .icon_delete:hover:before,
   .custom_table .icon_pencil:hover:before,
   .custom_table .icon_close:hover:before {
