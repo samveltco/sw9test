@@ -233,6 +233,35 @@
     &.opened {
         width: 514px;
     }
+    .filter_shadow {
+        background: linear-gradient(180deg, rgba(25, 40, 51, 0) 0%, #192833 62.28%);
+        position: absolute;
+        left: 0;
+        right: 30px;
+        height: 214px;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1;
+        @include animStyle(opacity 0.15s);
+        &.top_shadow {
+            top: 0;
+            @extend %horizontalRotate;
+        }
+        &.bottom_shadow {
+            bottom: 0;
+        }
+        &.showed {
+            opacity: 1;
+        }
+    }
+    .actions_block {
+        @include zIndex(3);
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        padding: 24px 40px 0;
+        width: 514px;
+    }
 }
 .filter_head {
     display: flex;
@@ -240,6 +269,7 @@
     gap: 20px;
     width: 514px;
     padding: 0 40px 24px;
+    @include zIndex(3);
     .close_btn {
         margin-left: auto;
         order: 3;
@@ -277,18 +307,18 @@
     padding-right: 20px;
     margin-right: 20px;
     @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
-    .actions_block {
-        position: sticky;
-        bottom: 0;
-        display: flex;
-        justify-content: flex-end;
-        gap: 16px;
-        padding-top: 24px;
-        background: $coverBg;
-    }
-    &::-webkit-scrollbar-track {
-        margin-bottom: 64px;
-    }
+    //.actions_block {
+    //    position: sticky;
+    //    bottom: 0;
+    //    display: flex;
+    //    justify-content: flex-end;
+    //    gap: 16px;
+    //    padding-top: 24px;
+    //    background: $coverBg;
+    //}
+    //&::-webkit-scrollbar-track {
+    //    margin-bottom: 64px;
+    //}
 }
 
 
@@ -337,6 +367,31 @@
 
 .cards_list {
     margin-top: 40px;
+}
+
+.cards_list {
+    margin-top: 40px;
+    .shadow_block {
+        position: fixed;
+        z-index: 5;
+        pointer-events: none;
+        height: 161px;
+        right: 0;
+        left: 85px;
+        background: linear-gradient(180deg, rgba(27, 36, 49, 0) 0%, #1B2431 100%);
+        opacity: 0;
+        @include animStyle(opacity 0.15s);
+        &.bottom_shadow {
+            bottom: 0;
+        }
+        &.top_shadow {
+            top: 71px;
+            @extend %horizontalRotate;
+        }
+        &.showed {
+            opacity: 1;
+        }
+    }
 }
 
 .card_item {

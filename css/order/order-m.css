@@ -95,6 +95,10 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+  .create_fields .fields_group:has(.field_col ~ .add_btns) .add_btns {
+    margin-top: 15px;
+  }
+  .create_fields .fields_group:has(.field_col ~ .add_btns) .add_btns,
   .create_fields .field_col {
     padding-left: 10px;
     padding-right: 10px;
@@ -104,12 +108,19 @@
   .create_fields .add_btns {
     gap: 16px;
   }
+  .create_fields .fields_group,
+  .create_fields .separate {
+    margin-top: 20px;
+  }
   .create_fields .checkbox_list {
     justify-content: flex-start;
   }
 }
 @media screen and (max-width: 575px) {
   .create_fields .field_row {
+    max-width: 100%;
+  }
+  .create_fields .fields_group:has(table, .block_title) {
     max-width: 100%;
   }
   .create_fields .combo_field {

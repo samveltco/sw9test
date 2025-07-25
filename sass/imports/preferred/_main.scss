@@ -1,0 +1,40 @@
+.head_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.manage_section,
+.preferred_section {
+    max-width: 882px;
+
+    .head_section {
+        margin-bottom: 40px;
+    }
+
+    .custom_table {
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+        width: 100%;
+
+        tbody td {
+            padding: 10px 10px 10px 0;
+            border-top: 1px solid $grayCf;
+        }
+
+        thead th {
+            padding: 0 10px 10px 0;
+        }
+    }
+
+    //manage page css
+    &.manage_section {
+        .custom_table tbody {
+            td:first-child {
+                width: 80%;
+            }
+        }
+    }
+    //manage page css
+}

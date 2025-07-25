@@ -1,0 +1,22 @@
+@include mediaTo($size768) {
+    .manage_section,
+    .preferred_section {
+        .head_section {
+            flex-direction: column;
+            align-items: baseline;
+        }
+
+        .standard_btn {
+            margin-top: 20px;
+        }
+    }
+}
+
+@include mediaTo($size576) {
+    .manage_section,
+    .preferred_section {
+        .custom_table tbody td {
+            border-top: 0;
+        }
+    }
+}

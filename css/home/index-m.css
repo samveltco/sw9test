@@ -136,6 +136,15 @@
   .filter_inner.opened {
     width: 480px;
   }
+  .filter_inner .filter_shadow {
+    right: 20px;
+  }
+  .filter_inner .actions_block {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 480px;
+    max-width: 100vw;
+  }
   .filter_head {
     width: 480px;
     padding: 0 20px 20px;
@@ -214,6 +223,9 @@
     margin-right: -20px;
     border-radius: 0;
   }
+  .cards_list .shadow_block {
+    left: 0;
+  }
 }
 @media screen and (max-width: 575px) {
   .filter_paging {
@@ -267,6 +279,9 @@
     align-items: flex-end;
     gap: 12px;
     font-weight: 275;
+  }
+  .cards_list .shadow_block.top_shadow {
+    top: 64px;
   }
 }
 

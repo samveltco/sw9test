@@ -3,6 +3,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 16px;
+
     .dark_btn {
         color: $textColor;
         background: $blue2;
@@ -14,25 +15,37 @@
     }
 }
 
-.page_title {
-    margin: 0;
-    color: $white;
-    @include fontSize(20);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-    &:before {
-        display: block;
-        font-size: 2.4rem;
-    }
-}
-
 .create_fields {
     .fields_group {
         margin-top: 40px;
         display: flex;
         flex-wrap: wrap;
+
+        .row_block {
+            display: flex;
+            align-items: center;
+
+        }
+
+        &:has(table, .block_title) {
+            flex-direction: column;
+            width: 100%;
+
+            .block_title {
+                color: rgba($light, 80%);
+                font-weight: 275;
+                @include fontSizeHeight(12, 15);
+                margin-bottom: 8px;
+                display: block;
+            }
+        }
+
+        &:has(.field_col ~ .add_btns) {
+            .add_btns {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
 
         &:has(.field_col) {
             margin-left: -30px;
@@ -207,39 +220,6 @@
         }
     }
 
-    .add_btns {
-        margin-top: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-
-        .standard_btn {
-            color: rgba($mainBg, 0.8);
-            background: rgba($light, 0.5);
-            @extend %all300;
-            @media(hover: hover) {
-                &:hover {
-                    color: $mainBg;
-                    background: $light;
-                }
-
-            }
-
-            &:before {
-                color: $mainBg;
-                background: $light;
-                @extend %centerBlock;
-                height: 100%;
-                aspect-ratio: 1;
-                margin-left: -20px;
-                margin-right: 8px;
-                border-radius: 50%
-            }
-
-        }
-
-    }
-
     .group_subtitle {
         color: $white;
         margin-bottom: 10px;
@@ -276,5 +256,82 @@
         }
 
     }
+}
+
+.custom_fields {
+    .modal_body {
+        margin: 20px 0;
+    }
+
+    .field_col {
+        max-width: 282px;
+        margin: 0 auto 20px;
+
+        &:has(textarea) {
+            @include colSize(12);
+        }
+
+        .field_name {
+            color: $white;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+
+            a, button {
+                display: inline;
+                color: $secondColor;
+                border: none;
+                background: transparent;
+                padding: 0;
+                margin-left: 10px;
+                text-decoration: underline;
+                font-weight: inherit;
+                @extend %lightHover;
+            }
+        }
+
+        &:has(.field_block:nth-child(3)) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            .field_name {
+                margin-bottom: 2px;
+                @include colSize(12);
+            }
+
+            .field_block {
+                flex: 1;
+                width: 40%;
+            }
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        + .add_btns {
+            margin-top: 31px;
+        }
+    }
+
+    .separate {
+        display: flex;
+        align-items: center;
+        margin: 16px auto;
+        color: $white;
+        gap: 16px;
+        font-weight: 700;
+        max-width: 350px;
+
+        &:before,
+        &:after {
+            display: block;
+            content: "";
+            flex: 1;
+            border-top: 1px solid $border;
+        }
+    }
+
 }
 

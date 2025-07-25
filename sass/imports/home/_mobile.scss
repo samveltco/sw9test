@@ -75,6 +75,15 @@
         &.opened {
             width: 480px;
         }
+        .filter_shadow {
+            right: 20px;
+        }
+        .actions_block {
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 480px;
+            max-width: 100vw;
+        }
     }
     .filter_head {
         width: 480px;
@@ -163,6 +172,9 @@
         margin-right: -20px;
         border-radius: 0;
     }
+    .cards_list .shadow_block {
+        left: 0;
+    }
 }
 
 @include mediaTo($size576) {
@@ -219,5 +231,7 @@
         }
     }
 
-    
+    .cards_list .shadow_block.top_shadow {
+        top: 64px;
+    }
 }

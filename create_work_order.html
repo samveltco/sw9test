@@ -122,16 +122,16 @@
 					</div>
 					<div class="sidebar_inner">
 						<div class="sidebar_menu">
-							<a href="" class="icon_dashboard current">
+							<a href="index.html" class="icon_dashboard current">
 								<span>Dashboard</span>
 							</a>
 							<a href="" class="icon_products">
 								<span>Find Contractor</span>
 							</a>
-							<a href="" class="icon_contact">
+							<a href="preferred.html" class="icon_contact">
 								<span>Preferred</span>
 							</a>
-							<a href="" class="icon_stock">
+							<a href="manage_custom.html" class="icon_stock">
 								<span>Manage Custom Fields</span>
 							</a>
 							<a href="" class="icon_file">
@@ -362,9 +362,62 @@
 						</div>
 					</div>
 					<div class="add_btns">
-						<button class="standard_btn icon_plus" aria-label="add custom field">Add custom field</button>
+						<button class="standard_btn icon_plus" aria-label="add custom field" onclick="showModal()">Add custom field</button>
 						<button class="standard_btn icon_plus" aria-label="Add Required Steps">Add Required Steps</button>
 						<button class="standard_btn icon_plus" aria-label="Add Client Approval Code">Add Client Approval Code</button>
+					</div>
+					<div class="fields_group">
+						<div class="block_title">Custom filds</div>
+						<table class="custom_table">
+							<thead>
+							<tr>
+								<th class="name">Name</th>
+								<th class="value">Value</th>
+								<th class="type">Type</th>
+								<th class="action">Action</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td data-th="Name" >Reference #</td>
+								<td data-th="Value" >asdas</td>
+								<td data-th="Type">Show to contractor upon assignment</td>
+								<td data-th="Action">
+									<div class="row_block">
+										<a href="" class="icon_pencil">edit</a>
+										<a href="" class="icon_delete">close</a>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+						<div class="block_title">Add Required Steps</div>
+						<table class="custom_table">
+							<thead>
+							<tr>
+								<th class="arrival">NamPre Arrival Requirements</th>
+								<th class="site">On Site Requirements</th>
+								<th class="completion">Completion Requirements</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td data-th="NamPre Arrival Requirements">Name 1<a href="" class="icon_close">close</a></td>
+								<td data-th="On Site Requirements">Name 2<a href="" class="icon_close">close</a></td>
+								<td data-th="Completion Requirements">Name 3 <a href="" class="icon_close">close</a></td>
+							</tr>
+							<tr>
+								<td data-th="NamPre Arrival Requirements"></td>
+								<td data-th="On Site Requirements">Name <a href="" class="icon_close">close</a></td>
+								<td data-th="Completion Requirements">Name <a href="" class="icon_close">close</a></td>
+							</tr>
+							<tr>
+								<td data-th="NamPre Arrival Requirements"></td>
+								<td data-th="On Site Requirements">Name <a href="" class="icon_close">close</a></td>
+								<td data-th="Completion Requirements"></td>
+							</tr>
+							</tbody>
+						</table>
 					</div>
 					<div class="fields_group">
 						<div class="field_col">
@@ -598,24 +651,62 @@
 					<button class="standard_btn light_btn" aria-label="save as draft">Save as draft</button>
 					<button class="standard_btn lightest_btn" aria-label="save and publish">Save &#38; Publish</button>
 				</div>
-		
 			</div>
-			
 		</div>
 
-		<script>
-			toggleSidebar = function() {
-				document.querySelector('.sidebar').classList.toggle('opened')
-			}
+		<div class="modal_block custom_fields">
+			<div class="modal_container">
+				<div class="modal_head">
+					<div class="modal_title">Custom Field</div>
+					<button class="close_btn icon_close" aria-label="close" onclick="hideModal()"></button>
+				</div>
+				<div class="modal_body">
+					<div class="field_col">
+						<label class="field_name" for="project1">Select Custom Field</label>
+						<div class="field_block">
+							<select name="project" id="project1">
+								<option>Select</option>
+								<option value="1">Value 1</option>
+								<option value="2">Value 2</option>
+								<option value="3">Value 3</option>
+								<option value="4">Value 4</option>
+							</select>
+						</div>
+					</div>
+					<div class="separate">OR</div>
+					<div class="field_col">
+						<label class="field_name" for="name1">Name*</label>
+						<div class="field_block">
+							<input type="text" name="company_wo_id" id="name1" maxlength="50" placeholder="Field name"/>
+						</div>
+					</div>
+					<br />
+					<br />
+					<div class="field_col">
+						<label class="field_name" for="Value">Value</label>
+						<div class="field_block">
+							<input type="text" name="company_wo_id" id="Value" maxlength="50" placeholder="Field name"/>
+						</div>
+					</div>
+					<div class="field_col">
+						<label class="field_name" for="type">Type*</label>
+						<div class="field_block">
+							<select name="project" id="type">
+								<option>Select</option>
+								<option value="1">Value 1</option>
+								<option value="2">Value 2</option>
+								<option value="3">Value 3</option>
+								<option value="4">Value 4</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal_footer">
+					<button class="standard_btn dark_btn" aria-label="add">Add</button>
+				</div>
+			</div>
+		</div>
 
-			showProfileModal = function() {
-				document.querySelector('.profile_inner').classList.add('opened')
-			}
-
-			hideProfileModal = function() {
-				document.querySelector('.profile_inner').classList.remove('opened')
-			}
-
-		</script>
+		<script src="js/main.js"></script>
  	</body>
 </html>

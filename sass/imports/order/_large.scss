@@ -27,7 +27,7 @@
                 padding-right: 20px;
             }
         }
-        
+        .fields_group:has(.field_col ~ .add_btns) .add_btns,
         .field_col {
             padding-left: 20px;
             padding-right: 20px;
@@ -69,6 +69,7 @@
                 padding-right: 16px;
             }
         }
+        .fields_group:has(.field_col ~ .add_btns) .add_btns,
         .field_col {
             padding-left: 16px;
             padding-right: 16px;
