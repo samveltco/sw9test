@@ -98,7 +98,7 @@
         align-items: center;
         text-align: left;
         color: $lightTitle;
-        @extend %lightHover;
+        @extend %standardHover;
         gap: 16px;
         @include fontSize(12);
 

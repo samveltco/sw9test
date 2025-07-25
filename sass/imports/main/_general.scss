@@ -482,15 +482,15 @@ button {
 }
 
 .curry_btn {
-    background-color: #9C970A;
+    background-color: $B3;
 }
 
 .orange_btn {
-    background-color: #FD9A56;
+    background-color: $B2;
 }
 
 .green_btn {
-    background-color: #00B69B;
+    background-color: $B1;
 }
 
 .light_btn,
@@ -828,7 +828,7 @@ button {
     }
 
     .light_btn {
-        color: $white;
+        color: rgba($white,80%);
         background: $siteColor;
     }
 

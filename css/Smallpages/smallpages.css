@@ -337,8 +337,8 @@
 }
 
 .secondary_btn {
-  outline: 1px solid #0A6D9C !important;
-  color: #0A6D9C;
+  outline: 1px solid #085C7D !important;
+  color: #085C7D;
   background: transparent;
 }
 .loading.secondary_btn {
@@ -422,7 +422,7 @@ button:hover {
 }
 
 a {
-  color: #0A6D9C;
+  color: #085C7D;
 }
 a:not([href]) {
   pointer-events: none;
@@ -848,11 +848,11 @@ button {
 }
 
 .light_btn {
-  background: #11BCF2;
+  background: #0484BB;
 }
 
 .dark_btn {
-  background: #0A6D9C;
+  background: #085C7D;
 }
 
 .lightest_btn {
@@ -860,15 +860,15 @@ button {
 }
 
 .curry_btn {
-  background-color: #9C970A;
+  background-color: #C46510;
 }
 
 .orange_btn {
-  background-color: #FD9A56;
+  background-color: #B79A08;
 }
 
 .green_btn {
-  background-color: #00B69B;
+  background-color: #06BA98;
 }
 
 .light_btn,
@@ -894,7 +894,7 @@ button {
 }
 
 .primary_btn {
-  color: #11BCF2;
+  color: #0484BB;
   background: #19252F;
 }
 
@@ -1211,8 +1211,8 @@ button {
   background: #23425A;
 }
 .popup_block .light_btn {
-  color: #ffffff;
-  background: #0A6D9C;
+  color: rgba(255, 255, 255, 0.8);
+  background: #085C7D;
 }
 .popup_block .popup_footer {
   padding-top: 20px;
@@ -1271,7 +1271,7 @@ button {
   font-size: 71.42%;
 }
 .header .available_funds {
-  color: #11BCF2;
+  color: #0484BB;
   font-size: 71.42%;
 }
 .header .notif_btn {
@@ -1509,7 +1509,7 @@ button {
   font-size: 71.42%;
 }
 .welcome_block .available_funds {
-  color: #11BCF2;
+  color: #0484BB;
   font-size: 71.42%;
 }
 
@@ -1636,7 +1636,7 @@ button {
 }
 .sidebar_menu a.current, .sidebar_button a.current,
 .sidebar .logout_btn.current {
-  color: #11BCF2;
+  color: #0484BB;
   position: relative;
   pointer-events: none;
 }
@@ -1846,8 +1846,8 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
   transition: opacity 0.3s;
 }
 
-.field_block .step_btns span, .close_btn, .light_btn,
-.dark_btn, .header .profile_btn, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
+.header .profile_btn, .field_block .step_btns span, .close_btn, .light_btn,
+.dark_btn, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
 .sidebar .logout_btn, .menu_btn, .lightest_btn,
 .curry_btn,
 .orange_btn,
@@ -1892,7 +1892,7 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
 .custom_table .icon_delete:active:before,
 .custom_table .icon_pencil:active:before,
 .custom_table .icon_close:active:before, .tools_section .head_section a:active {
-  color: #0A6D9C;
+  color: #085C7D;
 }
 
 .tools_section .block_tools .btn_link:active {
@@ -1907,13 +1907,17 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
 }
 
 .field_block .step_btns span:active, .close_btn:active, .light_btn:active,
-.dark_btn:active, .header .profile_btn:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
+.dark_btn:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
 .sidebar .logout_btn:active, .menu_btn:active {
   color: #ffffff;
 }
 
+.header .profile_btn:active {
+  color: #0484BB;
+}
+
 .primary_btn:active {
-  background: #11BCF2;
+  background: #0484BB;
   color: #ffffff;
 }
 
@@ -1922,7 +1926,7 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
   .custom_table .icon_delete:hover:before,
   .custom_table .icon_pencil:hover:before,
   .custom_table .icon_close:hover:before, .tools_section .head_section a:hover {
-    color: #0A6D9C;
+    color: #085C7D;
   }
   .tools_section .block_tools .btn_link:hover {
     opacity: 0.7;
@@ -1934,12 +1938,15 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
     color: #000000;
   }
   .field_block .step_btns span:hover, .close_btn:hover, .light_btn:hover,
-  .dark_btn:hover, .header .profile_btn:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
+  .dark_btn:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
   .sidebar .logout_btn:hover, .menu_btn:hover {
     color: #ffffff;
   }
+  .header .profile_btn:hover {
+    color: #0484BB;
+  }
   .primary_btn:hover {
-    background: #11BCF2;
+    background: #0484BB;
     color: #ffffff;
   }
 }
