@@ -321,50 +321,6 @@
     //}
 }
 
-
-.paging {
-    margin-left: auto;
-    ul {
-        @extend %standardList;
-        display: flex;
-        color: $white;
-        gap: 8px;
-    }
-    a, button, span {
-        display: block;
-        padding: 0 8px 4px;
-        @include fontSize(12);
-        font-weight: 700;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid;
-        color: rgba($white, 0.2);
-        &.current_page {
-            color: $secondColor;
-            pointer-events: none;
-        }
-    }
-    a, button {
-        @extend %lightHover;
-        
-        &.prev_page,
-        &.next_page {
-            font-size: 0;
-            color: $white;
-            @extend %standardHover;
-            &.inactive {
-                opacity: 0.5;
-                pointer-events: none;
-            }
-            &:before {
-                display: block;
-                font-size: 1.2rem;
-                line-height: 1.5em;
-            }
-        }
-    }
-}
-
 .cards_list {
     margin-top: 40px;
 }

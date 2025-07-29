@@ -1,4 +1,26 @@
 @include mediaTo($size960) {
+
+    .payment_section {
+        &.payment_section {
+            .payment_list {
+                margin-bottom: 40px;
+            }
+
+            &:not(.head_section) > .page_title {
+                margin-bottom: 20px;
+            }
+        }
+
+        .payment_list {
+            margin: 40px -10px 40px;
+
+            li {
+                @include colSize(6);
+                padding: 0 10px;
+            }
+        }
+    }
+
     .tools_section .tools_list {
         margin: 40px -10px 0;
 
@@ -11,7 +33,7 @@
 
 @include mediaTo($size768) {
     .management_section,
-    .manage_teams_section,
+    .payment_section,
     .manage_section,
     .preferred_section {
         .head_section {
@@ -22,8 +44,19 @@
         .standard_btn {
             margin-top: 20px;
         }
+
+        .paging {
+            display: block;
+            margin-top: 25px;
+        }
     }
     .tools_section .tools_list {
+        li {
+            @include colSize(12);
+        }
+    }
+
+    .payment_section .payment_list {
         li {
             @include colSize(12);
         }
@@ -77,8 +110,11 @@
     body:has(.manage_teams_section) .checkbox_list {
         margin-top: 10px;
     }
+    .popup_block:has(.status_day) .card_date {
+        width: 100%;
+    }
     .management_section,
-    .manage_teams_section,
+    .payment_section,
     .manage_section,
     .preferred_section {
 
@@ -90,6 +126,20 @@
 
             tbody td {
                 border-top: 0;
+            }
+        }
+
+        &.payment_section {
+            .payment_list {
+                margin-bottom: 20px;
+            }
+        }
+
+        &.manage_section {
+            .custom_table tbody {
+                td:first-child {
+                    width: 100%;
+                }
             }
         }
     }

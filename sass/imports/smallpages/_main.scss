@@ -5,6 +5,7 @@
 }
 
 .management_section,
+.payment_section,
 .manage_teams_section,
 .manage_section,
 .preferred_section {
@@ -42,6 +43,20 @@
                 width: 80%;
             }
         }
+
+        &.template_table {
+            .custom_table {
+                thead th:last-child {
+                    text-align: end;
+                    margin-left: auto;
+                }
+
+                .row_block {
+                    justify-content: flex-end;
+                    margin: 0 -10px;
+                }
+            }
+        }
     }
 
     //manage page css
@@ -57,6 +72,180 @@
     }
 
     //management user page css
+
+    &.payment_section {
+        max-width: 100%;
+
+        .block_sub {
+            font-size: 100%;
+            line-height: 18px;
+            color: $white;
+            margin-bottom: 5px;
+            display: block;
+            text-align: center;
+        }
+
+        .payment_list {
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 80px;
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+                margin-bottom: 30px;
+            }
+        }
+
+        &:not(.head_section) > .page_title {
+            margin-bottom: 40px;
+        }
+
+        .block_tools {
+            background: $lightTitle;
+            border-radius: 20px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 27px;
+            height: 100%;
+
+            .btn_link {
+                text-align: center;
+                color: $blue04;
+                background: none;
+                border: none;
+                @extend %opacityHover;
+            }
+
+            .page_title {
+                color: $blue2;
+                font-weight: 700;
+                margin-bottom: 8px;
+                display: flex;
+                flex-direction: column;
+                align-items: baseline;
+                gap: unset;
+
+                &:before {
+                    color: $blue2;
+                    font-size: 2.4rem;
+                }
+            }
+        }
+
+        .expires_block {
+            @include fontSizeHeight(12, 16);
+            color: $blue2;
+        }
+
+        .row_block {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px -10px 0;
+
+            &:has(> a:only-child) {
+                justify-content: flex-end;
+            }
+
+            .icon_delete,
+            .icon_stars,
+            .icon_pencil,
+            button,
+            a {
+                display: flex;
+                align-items: center;
+                color: $secondColor;
+                background: none;
+                border: none;
+                @include fontSizeHeight(14, 20);
+                padding: 0 10px;
+
+                &:before {
+                    padding-right: 8px;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+
+
+    .all_price {
+        font-weight: 700;
+        @include fontSizeHeight(14, 20);
+        color: $white;
+        margin-top: 20px;
+        margin-left: auto;
+        text-align: end;
+    }
+
+    .paging {
+        margin-top: 40px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.verification_info {
+    color: $white;
+    @include fontSizeHeight(14, 20);
+    margin: 30px 0 10px;
+}
+
+.separate {
+    display: flex;
+    align-items: center;
+    margin: 16px auto;
+    color: $white;
+    gap: 16px;
+    font-weight: 700;
+
+    &:before,
+    &:after {
+        display: block;
+        content: "";
+        flex: 1;
+        border-top: 1px solid $border;
+    }
+
+    @include mediaTo($size960) {
+        margin-top: 20px;
+    }
+}
+
+.popup_block:has(.status_day) {
+    .card_date {
+        width: 65%;
+    }
+}
+
+.status_day {
+    background: $secondColor;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 700;
+    @include fontSizeHeight(14, 20);
+    color: $white;
+    min-height: 21px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px;
+}
+
+.field_price {
+    @include fontSizeHeight(14, 20);
+    color: $white;
+}
+
+.field_total {
+    font-weight: 700;
+    @include fontSizeHeight(14, 20);
+    color: $white;
+    width: 40%;
+    padding-right: 10px;
 }
 
 .tools_section {

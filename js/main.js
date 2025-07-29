@@ -23,10 +23,18 @@ if (
     }
 
     showModal = function () {
-        document.querySelector('.popup_block')?.classList.add('showed');
+        document.querySelector('.modal_block')?.classList.add('showed');
     }
 
     hideModal = function () {
+        document.querySelector('.modal_block')?.classList.remove('showed');
+    }
+
+    showPopup = function () {
+        document.querySelector('.popup_block')?.classList.add('showed');
+    }
+
+    hidePopup = function () {
         document.querySelector('.popup_block')?.classList.remove('showed');
     }
 

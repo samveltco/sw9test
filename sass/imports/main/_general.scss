@@ -96,6 +96,7 @@ button {
 
 .page_title {
     margin: 0;
+    font-weight: 700;
     color: $white;
     @include fontSize(20);
     display: flex;
@@ -339,7 +340,7 @@ button {
     display: inline-flex;
     vertical-align: top;
     align-items: flex-start;
-    gap: 16px;
+    gap: 13px;
     position: relative;
     overflow: hidden;
     @extend %textUnSelect;
@@ -789,8 +790,8 @@ button {
         align-items: flex-start;
         justify-content: space-between;
         gap: 20px;
-        width: 514px;
-        padding: 0 40px 24px;
+       // width: 514px;
+        padding: 0 0 24px;
     }
 
     .popup_title {
@@ -803,7 +804,7 @@ button {
         margin-top: 3px;
     }
 
-    .popup_body {
+    .popup_container {
         flex: 1;
         width: 494px;
         position: relative;
@@ -828,7 +829,7 @@ button {
     }
 
     .light_btn {
-        color: rgba($white,80%);
+        color: rgba($white, 80%);
         background: $siteColor;
     }
 
@@ -855,12 +856,12 @@ button {
 
         }
         .popup_head {
-            width: 480px;
-            padding: 0 20px 20px;
+          //  width: 480px;
+            padding: 0 0 20px;
             max-width: 100vw;
         }
 
-        .popup_body {
+        .popup_container {
             width: 480px;
             padding-left: 20px;
             margin-right: 0;
@@ -869,5 +870,65 @@ button {
     }
 }
 
+.paging {
+    margin-left: auto;
 
+    ul {
+        @extend %standardList;
+        display: flex;
+        color: $white;
+        gap: 8px;
+    }
+
+    a, button, span {
+        display: block;
+        padding: 0 8px 4px;
+        @include fontSize(12);
+        font-weight: 700;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid;
+        color: rgba($white, 0.2);
+
+        &.current_page {
+            color: $secondColor;
+            pointer-events: none;
+        }
+    }
+
+    a, button {
+        @extend %lightHover;
+
+        &.prev_page,
+        &.next_page {
+            font-size: 0;
+            color: $white;
+            @extend %standardHover;
+
+            &.inactive {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+
+            &:before {
+                display: block;
+                font-size: 1.2rem;
+                line-height: 1.5em;
+            }
+        }
+    }
+
+    @include mediaTo($size960) {
+        ul {
+            height: 36px;
+            align-items: center;
+        }
+    }
+    @include mediaTo($size768) {
+        @include colSize(12);
+        ul {
+            justify-content: space-between;
+        }
+    }
+}
 

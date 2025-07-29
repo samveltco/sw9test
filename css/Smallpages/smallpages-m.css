@@ -65,6 +65,20 @@
   }
 }
 @media screen and (max-width: 1024px) {
+  .payment_section.payment_section .payment_list {
+    margin-bottom: 40px;
+  }
+  .payment_section.payment_section:not(.head_section) > .page_title {
+    margin-bottom: 20px;
+  }
+  .payment_section .payment_list {
+    margin: 40px -10px 40px;
+  }
+  .payment_section .payment_list li {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 10px;
+  }
   .tools_section .tools_list {
     margin: 40px -10px 0;
   }
@@ -76,19 +90,30 @@
 }
 @media screen and (max-width: 768px) {
   .management_section .head_section,
-  .manage_teams_section .head_section,
+  .payment_section .head_section,
   .manage_section .head_section,
   .preferred_section .head_section {
     flex-direction: column;
     align-items: baseline;
   }
   .management_section .standard_btn,
-  .manage_teams_section .standard_btn,
+  .payment_section .standard_btn,
   .manage_section .standard_btn,
   .preferred_section .standard_btn {
     margin-top: 20px;
   }
+  .management_section .paging,
+  .payment_section .paging,
+  .manage_section .paging,
+  .preferred_section .paging {
+    display: block;
+    margin-top: 25px;
+  }
   .tools_section .tools_list li {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .payment_section .payment_list li {
     flex: 0 0 100%;
     max-width: 100%;
   }
@@ -130,10 +155,13 @@
   body:has(.manage_teams_section) .checkbox_list {
     margin-top: 10px;
   }
+  .popup_block:has(.status_day) .card_date {
+    width: 100%;
+  }
   .management_section .custom_table thead th:last-child,
   .management_section .custom_table tbody td:last-child,
-  .manage_teams_section .custom_table thead th:last-child,
-  .manage_teams_section .custom_table tbody td:last-child,
+  .payment_section .custom_table thead th:last-child,
+  .payment_section .custom_table tbody td:last-child,
   .manage_section .custom_table thead th:last-child,
   .manage_section .custom_table tbody td:last-child,
   .preferred_section .custom_table thead th:last-child,
@@ -141,10 +169,22 @@
     width: unset;
   }
   .management_section .custom_table tbody td,
-  .manage_teams_section .custom_table tbody td,
+  .payment_section .custom_table tbody td,
   .manage_section .custom_table tbody td,
   .preferred_section .custom_table tbody td {
     border-top: 0;
+  }
+  .management_section.payment_section .payment_list,
+  .payment_section.payment_section .payment_list,
+  .manage_section.payment_section .payment_list,
+  .preferred_section.payment_section .payment_list {
+    margin-bottom: 20px;
+  }
+  .management_section.manage_section .custom_table tbody td:first-child,
+  .payment_section.manage_section .custom_table tbody td:first-child,
+  .manage_section.manage_section .custom_table tbody td:first-child,
+  .preferred_section.manage_section .custom_table tbody td:first-child {
+    width: 100%;
   }
 }
 

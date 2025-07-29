@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" content="some description about project">
-
     <title>Vaylant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -140,7 +139,7 @@
                     <a href="PM_tools.html" class="icon_file">
                         <span>PM Tools</span>
                     </a>
-                    <a href="manage_teams.html" class="icon_contact current">
+                    <a href="manage_teams.html" class="icon_contact">
                         <span>Manage Teams</span>
                     </a>
                     <a href="user_management.html" class="icon_chart">
@@ -149,7 +148,7 @@
                     <a href="transaction_history.html" class="icon_chat">
                         <span>Manage founds</span>
                     </a>
-                    <a href="payment_methode.html" class="icon_invoice">
+                    <a href="payment_methode.html" class="icon_invoice current">
                         <span>Payment Methods</span>
                     </a>
                     <a href="templates.html" class="icon_lists">
@@ -170,119 +169,134 @@
             <div class="welcome_info">Welcome to The Valyant Group</div>
             <div class="available_funds">Funds Available: $1,268.22</div>
         </div>
-        <div class="manage_teams_section">
+        <div class="payment_section">
             <div class="head_section">
-                <h1 class="page_title">Manage Teams</h1>
-                <button class="standard_btn icon_plus orange_btn" aria-label="Create work order" onclick="showPopup()">Add Team</button>
+                <h1 class="page_title">Payment Methode</h1>
+                <button class="standard_btn icon_card green_btn" aria-label="Create work order" onclick="showPopup()">Add Payment Methode</button>
             </div>
-            <table class="custom_table">
-                <thead>
-                <tr>
-                    <th class="name">Team name</th>
-                    <th class="value">Members</th>
-                    <th class="type">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">12</td>
-                    <td data-th="Action">
+            <ul class="payment_list">
+                <li>
+                    <div class="block_tools">
+                        <div class="page_title">Visa card ending in <div>4xxxxxxxxxxx1111</div></div>
+                        <div class="expires_block">Expires 01 /23</div>
                         <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
+                            <a href="" class="icon_stars">Make Primary</a>
+                            <a href="" class="icon_delete">Remove</a>
+                            <a href="" class="icon_pencil">Edit</a>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">8</td>
-                    <td data-th="Action">
+                    </div>
+                </li>
+                <li>
+                    <div class="block_tools">
+                        <div class="page_title">Visa card ending in <div>4xxxxxxxxxxx1111</div></div>
+                        <div class="expires_block">Expires 01 /23</div>
                         <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
+                            <a href="" class="icon_stars">Make Primary</a>
+                            <a href="" class="icon_delete">Remove</a>
+                            <a href="" class="icon_pencil">Edit</a>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">2</td>
-                    <td data-th="Action">
+                    </div>
+                </li>
+                <li>
+                    <div class="block_tools">
+                        <div class="page_title">Visa card ending in <div>4xxxxxxxxxxx1111</div></div>
+                        <div class="expires_block">Expires 01 /23</div>
                         <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
+                            <a href="" class="icon_stars">Make Primary</a>
+                            <a href="" class="icon_delete">Remove</a>
+                            <a href="" class="icon_pencil">Edit</a>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">1</td>
-                    <td data-th="Action">
+                    </div>
+                </li>
+            </ul>
+            <div class="page_title">Bank Info</div>
+            <ul class="payment_list">
+                <li>
+                    <div class="block_tools">
+                        <div class="page_title">FNBO</div>
+                        <div class="expires_block">Verification status: unverified</div>
                         <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
+                            <a href="" class="icon_delete">Remove</a>
                         </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
-
 <div class="popup_block">
     <div class="popup_container">
         <div class="popup_head">
-            <div class="popup_title">Add team</div>
+            <div class="popup_title">Add Payment Methode</div>
             <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>
         </div>
         <div class="popup_body">
             <div class="field_row">
                 <div class="field_name">
-                    <label for="teamName">Team name</label>
+                    <label for="bank">Bank Account</label>
                 </div>
                 <div class="field_block">
-                    <input id="teamName" type="text" name="teamName" maxlength="50" placeholder="Type her..." />
+                    <select id="bank" name="bank">
+                        <option>Select</option>
+                        <option value="1">Value 1</option>
+                        <option value="2">Value 2</option>
+                        <option value="3">Value 3</option>
+                        <option value="4">Value 4</option>
+                        <option value="5">Value 5</option>
+                        <option value="6">Value 6</option>
+                    </select>
+                </div>
+            </div>
+            <div class="separate">OR</div>
+            <div class="field_row">
+                <div class="field_name">
+                    <label>Enter New Card info</label>
                 </div>
             </div>
             <div class="field_row">
                 <div class="field_name">
-                    <label for="Members">Members</label>
+                    <label for="bankName">Bank Name*</label>
                 </div>
-                <div class="checkbox_list">
-                    <label class="check_btn">
-                        <input type="checkbox" name="remote_wfh"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="project_manager"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="project_coordinator"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="project_administrator"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="other_misc"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="project_administrator"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="other_misc"/>
-                        Stephanie Bledsoe
-                    </label>
+                <div class="field_block">
+                    <input id="bankName" type="text" name="bankName" maxlength="50" placeholder="Type here..." />
                 </div>
             </div>
+            <div class="field_row">
+                <div class="field_name">
+                    <label for="checking">Checking or Savings Acct*</label>
+                </div>
+                <div class="field_block">
+                    <select id="checking" name="existingCard">
+                        <option>Select</option>
+                        <option value="1">Value 1</option>
+                        <option value="2">Value 2</option>
+                        <option value="3">Value 3</option>
+                        <option value="4">Value 4</option>
+                        <option value="5">Value 5</option>
+                        <option value="6">Value 6</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field_row">
+                <div class="field_name">
+                    <label for="ruting">Routing*</label>
+                </div>
+                <div class="field_block">
+                    <input id="ruting" type="text" name="ruting" maxlength="50" placeholder="Type here..." />
+                </div>
+            </div>
+            <div class="field_row">
+                <div class="field_name">
+                    <label for="account">Account*</label>
+                </div>
+                <div class="field_block">
+                    <input id="account" type="text" name="account" maxlength="50" placeholder="Type here..." />
+                </div>
+            </div>
+            <div class="verification_info">Verification of micro deposits usually takes 2-3 days</div>
             <div class="popup_footer">
                 <button class="standard_btn dark_btn" aria-label="cancel">Cancel</button>
-                <button class="standard_btn light_btn" aria-label="save as draft">Save</button>
+                <button class="standard_btn light_btn" aria-label="Save & Verify">Save & Verify</button>
             </div>
         </div>
     </div>

@@ -110,10 +110,6 @@
   .reset_btn {
     height: 36px;
   }
-  .paging ul {
-    height: 36px;
-    align-items: center;
-  }
   .sort_label {
     white-space: nowrap;
   }
@@ -210,13 +206,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 4px;
-  }
-  .paging {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .paging ul {
-    justify-content: space-between;
   }
   .card_item {
     margin-left: -20px;

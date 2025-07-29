@@ -46,10 +46,7 @@
     .reset_btn {
         height: 36px;
     }
-    .paging ul {
-        height: 36px;
-        align-items: center;
-    }
+
     .sort_label {
         white-space: nowrap;
     }
@@ -161,12 +158,7 @@
         justify-content: space-between;
         gap: 4px
     }
-    .paging {
-        @include colSize(12);
-        ul {
-            justify-content: space-between;
-        }
-    }
+
     .card_item {
         margin-left: -20px;
         margin-right: -20px;

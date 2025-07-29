@@ -236,7 +236,19 @@
   content: "\e91a";
 }
 
-.header .profile_contacts {
+.icon_card:before {
+  content: "\e91b";
+}
+
+.icon_copy2:before {
+  content: "\e91c";
+}
+
+.icon_stars:before {
+  content: "\e91d";
+}
+
+.header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -453,6 +465,7 @@ button {
 
 .page_title {
   margin: 0;
+  font-weight: 700;
   color: #ffffff;
   font-size: 142.85%;
   display: flex;
@@ -735,7 +748,7 @@ button {
   display: inline-flex;
   vertical-align: top;
   align-items: flex-start;
-  gap: 16px;
+  gap: 13px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -1169,8 +1182,7 @@ button {
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
-  width: 514px;
-  padding: 0 40px 24px;
+  padding: 0 0 24px;
 }
 .popup_block .popup_title {
   color: #B4D4DD;
@@ -1180,7 +1192,7 @@ button {
 .popup_block .close_btn {
   margin-top: 3px;
 }
-.popup_block .popup_body {
+.popup_block .popup_container {
   flex: 1;
   width: 494px;
   position: relative;
@@ -1190,19 +1202,19 @@ button {
   padding-right: 20px;
   margin-right: 20px;
 }
-.popup_block .popup_body::-webkit-scrollbar {
+.popup_block .popup_container::-webkit-scrollbar {
   width: 4px;
   height: 4px;
 }
-.popup_block .popup_body::-webkit-scrollbar-track {
+.popup_block .popup_container::-webkit-scrollbar-track {
   background: #19252F;
   border-radius: 2px;
 }
-.popup_block .popup_body::-webkit-scrollbar-thumb {
+.popup_block .popup_container::-webkit-scrollbar-thumb {
   background: #23425A;
   border-radius: 2px;
 }
-.popup_block .popup_body:has(.new_note.showed) .standard_btn.light_btn.icon_plus, .popup_block .popup_body:has(.new_note.showed) .light_btn.icon_plus.primary_btn {
+.popup_block .popup_container:has(.new_note.showed) .standard_btn.light_btn.icon_plus, .popup_block .popup_container:has(.new_note.showed) .light_btn.icon_plus.primary_btn {
   pointer-events: none;
   opacity: 12%;
 }
@@ -1238,15 +1250,65 @@ button {
     width: 480px;
   }
   .popup_block .popup_head {
-    width: 480px;
-    padding: 0 20px 20px;
+    padding: 0 0 20px;
     max-width: 100vw;
   }
-  .popup_block .popup_body {
+  .popup_block .popup_container {
     width: 480px;
     padding-left: 20px;
     margin-right: 0;
     max-width: 100vw;
+  }
+}
+
+.paging {
+  margin-left: auto;
+}
+.paging ul {
+  display: flex;
+  color: #ffffff;
+  gap: 8px;
+}
+.paging a, .paging button, .paging span {
+  display: block;
+  padding: 0 8px 4px;
+  font-size: 85.71%;
+  font-weight: 700;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid;
+  color: rgba(255, 255, 255, 0.2);
+}
+.paging a.current_page, .paging button.current_page, .paging span.current_page {
+  color: #0484BB;
+  pointer-events: none;
+}
+.paging a.prev_page, .paging a.next_page, .paging button.prev_page, .paging button.next_page {
+  font-size: 0;
+  color: #ffffff;
+}
+.paging a.prev_page.inactive, .paging a.next_page.inactive, .paging button.prev_page.inactive, .paging button.next_page.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.paging a.prev_page:before, .paging a.next_page:before, .paging button.prev_page:before, .paging button.next_page:before {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.5em;
+}
+@media screen and (max-width: 1024px) {
+  .paging ul {
+    height: 36px;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .paging {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .paging ul {
+    justify-content: space-between;
   }
 }
 
@@ -1706,18 +1768,21 @@ button {
 }
 
 .management_section,
+.payment_section,
 .manage_teams_section,
 .manage_section,
 .preferred_section {
   max-width: 882px;
 }
 .management_section .head_section,
+.payment_section .head_section,
 .manage_teams_section .head_section,
 .manage_section .head_section,
 .preferred_section .head_section {
   margin-bottom: 40px;
 }
 .management_section .custom_table,
+.payment_section .custom_table,
 .manage_teams_section .custom_table,
 .manage_section .custom_table,
 .preferred_section .custom_table {
@@ -1728,6 +1793,8 @@ button {
 }
 .management_section .custom_table thead th:last-child,
 .management_section .custom_table tbody td:last-child,
+.payment_section .custom_table thead th:last-child,
+.payment_section .custom_table tbody td:last-child,
 .manage_teams_section .custom_table thead th:last-child,
 .manage_teams_section .custom_table tbody td:last-child,
 .manage_section .custom_table thead th:last-child,
@@ -1737,6 +1804,7 @@ button {
   width: 22%;
 }
 .management_section .custom_table tbody td,
+.payment_section .custom_table tbody td,
 .manage_teams_section .custom_table tbody td,
 .manage_section .custom_table tbody td,
 .preferred_section .custom_table tbody td {
@@ -1744,18 +1812,37 @@ button {
   border-top: 1px solid rgba(207, 207, 207, 0.1215686275);
 }
 .management_section .custom_table thead th,
+.payment_section .custom_table thead th,
 .manage_teams_section .custom_table thead th,
 .manage_section .custom_table thead th,
 .preferred_section .custom_table thead th {
   padding: 0 10px 10px 0;
 }
 .management_section.manage_section .custom_table tbody td:first-child,
+.payment_section.manage_section .custom_table tbody td:first-child,
 .manage_teams_section.manage_section .custom_table tbody td:first-child,
 .manage_section.manage_section .custom_table tbody td:first-child,
 .preferred_section.manage_section .custom_table tbody td:first-child {
   width: 80%;
 }
+.management_section.manage_section.template_table .custom_table thead th:last-child,
+.payment_section.manage_section.template_table .custom_table thead th:last-child,
+.manage_teams_section.manage_section.template_table .custom_table thead th:last-child,
+.manage_section.manage_section.template_table .custom_table thead th:last-child,
+.preferred_section.manage_section.template_table .custom_table thead th:last-child {
+  text-align: end;
+  margin-left: auto;
+}
+.management_section.manage_section.template_table .custom_table .row_block,
+.payment_section.manage_section.template_table .custom_table .row_block,
+.manage_teams_section.manage_section.template_table .custom_table .row_block,
+.manage_section.manage_section.template_table .custom_table .row_block,
+.preferred_section.manage_section.template_table .custom_table .row_block {
+  justify-content: flex-end;
+  margin: 0 -10px;
+}
 .management_section.management_section,
+.payment_section.management_section,
 .manage_teams_section.management_section,
 .manage_section.management_section,
 .preferred_section.management_section {
@@ -1763,6 +1850,8 @@ button {
 }
 .management_section.management_section thead th,
 .management_section.management_section tbody td,
+.payment_section.management_section thead th,
+.payment_section.management_section tbody td,
 .manage_teams_section.management_section thead th,
 .manage_teams_section.management_section tbody td,
 .manage_section.management_section thead th,
@@ -1770,6 +1859,266 @@ button {
 .preferred_section.management_section thead th,
 .preferred_section.management_section tbody td {
   width: 16%;
+}
+.management_section.payment_section,
+.payment_section.payment_section,
+.manage_teams_section.payment_section,
+.manage_section.payment_section,
+.preferred_section.payment_section {
+  max-width: 100%;
+}
+.management_section.payment_section .block_sub,
+.payment_section.payment_section .block_sub,
+.manage_teams_section.payment_section .block_sub,
+.manage_section.payment_section .block_sub,
+.preferred_section.payment_section .block_sub {
+  font-size: 100%;
+  line-height: 18px;
+  color: #ffffff;
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+}
+.management_section.payment_section .payment_list,
+.payment_section.payment_section .payment_list,
+.manage_teams_section.payment_section .payment_list,
+.manage_section.payment_section .payment_list,
+.preferred_section.payment_section .payment_list {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 80px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.management_section.payment_section .payment_list li,
+.payment_section.payment_section .payment_list li,
+.manage_teams_section.payment_section .payment_list li,
+.manage_section.payment_section .payment_list li,
+.preferred_section.payment_section .payment_list li {
+  margin-bottom: 30px;
+}
+.management_section.payment_section:not(.head_section) > .page_title,
+.payment_section.payment_section:not(.head_section) > .page_title,
+.manage_teams_section.payment_section:not(.head_section) > .page_title,
+.manage_section.payment_section:not(.head_section) > .page_title,
+.preferred_section.payment_section:not(.head_section) > .page_title {
+  margin-bottom: 40px;
+}
+.management_section.payment_section .block_tools,
+.payment_section.payment_section .block_tools,
+.manage_teams_section.payment_section .block_tools,
+.manage_section.payment_section .block_tools,
+.preferred_section.payment_section .block_tools {
+  background: #EAFBFE;
+  border-radius: 20px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 27px;
+  height: 100%;
+}
+.management_section.payment_section .block_tools .btn_link,
+.payment_section.payment_section .block_tools .btn_link,
+.manage_teams_section.payment_section .block_tools .btn_link,
+.manage_section.payment_section .block_tools .btn_link,
+.preferred_section.payment_section .block_tools .btn_link {
+  text-align: center;
+  color: #0484BB;
+  background: none;
+  border: none;
+}
+.management_section.payment_section .block_tools .page_title,
+.payment_section.payment_section .block_tools .page_title,
+.manage_teams_section.payment_section .block_tools .page_title,
+.manage_section.payment_section .block_tools .page_title,
+.preferred_section.payment_section .block_tools .page_title {
+  color: #23425A;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: unset;
+}
+.management_section.payment_section .block_tools .page_title:before,
+.payment_section.payment_section .block_tools .page_title:before,
+.manage_teams_section.payment_section .block_tools .page_title:before,
+.manage_section.payment_section .block_tools .page_title:before,
+.preferred_section.payment_section .block_tools .page_title:before {
+  color: #23425A;
+  font-size: 2.4rem;
+}
+.management_section.payment_section .expires_block,
+.payment_section.payment_section .expires_block,
+.manage_teams_section.payment_section .expires_block,
+.manage_section.payment_section .expires_block,
+.preferred_section.payment_section .expires_block {
+  font-size: 85.71%;
+  line-height: 1.33em;
+  color: #23425A;
+}
+.management_section.payment_section .row_block,
+.payment_section.payment_section .row_block,
+.manage_teams_section.payment_section .row_block,
+.manage_section.payment_section .row_block,
+.preferred_section.payment_section .row_block {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px -10px 0;
+}
+.management_section.payment_section .row_block:has(> a:only-child),
+.payment_section.payment_section .row_block:has(> a:only-child),
+.manage_teams_section.payment_section .row_block:has(> a:only-child),
+.manage_section.payment_section .row_block:has(> a:only-child),
+.preferred_section.payment_section .row_block:has(> a:only-child) {
+  justify-content: flex-end;
+}
+.management_section.payment_section .row_block .icon_delete,
+.management_section.payment_section .row_block .icon_stars,
+.management_section.payment_section .row_block .icon_pencil,
+.management_section.payment_section .row_block button,
+.management_section.payment_section .row_block a,
+.payment_section.payment_section .row_block .icon_delete,
+.payment_section.payment_section .row_block .icon_stars,
+.payment_section.payment_section .row_block .icon_pencil,
+.payment_section.payment_section .row_block button,
+.payment_section.payment_section .row_block a,
+.manage_teams_section.payment_section .row_block .icon_delete,
+.manage_teams_section.payment_section .row_block .icon_stars,
+.manage_teams_section.payment_section .row_block .icon_pencil,
+.manage_teams_section.payment_section .row_block button,
+.manage_teams_section.payment_section .row_block a,
+.manage_section.payment_section .row_block .icon_delete,
+.manage_section.payment_section .row_block .icon_stars,
+.manage_section.payment_section .row_block .icon_pencil,
+.manage_section.payment_section .row_block button,
+.manage_section.payment_section .row_block a,
+.preferred_section.payment_section .row_block .icon_delete,
+.preferred_section.payment_section .row_block .icon_stars,
+.preferred_section.payment_section .row_block .icon_pencil,
+.preferred_section.payment_section .row_block button,
+.preferred_section.payment_section .row_block a {
+  display: flex;
+  align-items: center;
+  color: #0484BB;
+  background: none;
+  border: none;
+  font-size: 100%;
+  line-height: 1.42em;
+  padding: 0 10px;
+}
+.management_section.payment_section .row_block .icon_delete:before,
+.management_section.payment_section .row_block .icon_stars:before,
+.management_section.payment_section .row_block .icon_pencil:before,
+.management_section.payment_section .row_block button:before,
+.management_section.payment_section .row_block a:before,
+.payment_section.payment_section .row_block .icon_delete:before,
+.payment_section.payment_section .row_block .icon_stars:before,
+.payment_section.payment_section .row_block .icon_pencil:before,
+.payment_section.payment_section .row_block button:before,
+.payment_section.payment_section .row_block a:before,
+.manage_teams_section.payment_section .row_block .icon_delete:before,
+.manage_teams_section.payment_section .row_block .icon_stars:before,
+.manage_teams_section.payment_section .row_block .icon_pencil:before,
+.manage_teams_section.payment_section .row_block button:before,
+.manage_teams_section.payment_section .row_block a:before,
+.manage_section.payment_section .row_block .icon_delete:before,
+.manage_section.payment_section .row_block .icon_stars:before,
+.manage_section.payment_section .row_block .icon_pencil:before,
+.manage_section.payment_section .row_block button:before,
+.manage_section.payment_section .row_block a:before,
+.preferred_section.payment_section .row_block .icon_delete:before,
+.preferred_section.payment_section .row_block .icon_stars:before,
+.preferred_section.payment_section .row_block .icon_pencil:before,
+.preferred_section.payment_section .row_block button:before,
+.preferred_section.payment_section .row_block a:before {
+  padding-right: 8px;
+  font-size: 1.4rem;
+}
+.management_section .all_price,
+.payment_section .all_price,
+.manage_teams_section .all_price,
+.manage_section .all_price,
+.preferred_section .all_price {
+  font-weight: 700;
+  font-size: 100%;
+  line-height: 1.42em;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-left: auto;
+  text-align: end;
+}
+.management_section .paging,
+.payment_section .paging,
+.manage_teams_section .paging,
+.manage_section .paging,
+.preferred_section .paging {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.verification_info {
+  color: #ffffff;
+  font-size: 100%;
+  line-height: 1.42em;
+  margin: 30px 0 10px;
+}
+
+.separate {
+  display: flex;
+  align-items: center;
+  margin: 16px auto;
+  color: #ffffff;
+  gap: 16px;
+  font-weight: 700;
+}
+.separate:before, .separate:after {
+  display: block;
+  content: "";
+  flex: 1;
+  border-top: 1px solid #D9D9D9;
+}
+@media screen and (max-width: 1024px) {
+  .separate {
+    margin-top: 20px;
+  }
+}
+
+.popup_block:has(.status_day) .card_date {
+  width: 65%;
+}
+
+.status_day {
+  background: #0484BB;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 100%;
+  line-height: 1.42em;
+  color: #ffffff;
+  min-height: 21px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+}
+
+.field_price {
+  font-size: 100%;
+  line-height: 1.42em;
+  color: #ffffff;
+}
+
+.field_total {
+  font-weight: 700;
+  font-size: 100%;
+  line-height: 1.42em;
+  color: #ffffff;
+  width: 40%;
+  padding-right: 10px;
 }
 
 .tools_section .head_section {
@@ -1838,7 +2187,11 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
   margin-bottom: 26px;
 }
 
-.tools_section .block_tools .btn_link {
+.management_section.payment_section .block_tools .btn_link,
+.payment_section.payment_section .block_tools .btn_link,
+.manage_teams_section.payment_section .block_tools .btn_link,
+.manage_section.payment_section .block_tools .btn_link,
+.preferred_section.payment_section .block_tools .btn_link, .tools_section .block_tools .btn_link {
   -o-transition: opacity 0.3s;
   -ms-transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
@@ -1846,8 +2199,8 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
   transition: opacity 0.3s;
 }
 
-.header .profile_btn, .field_block .step_btns span, .close_btn, .light_btn,
-.dark_btn, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
+.paging a.prev_page, .paging a.next_page, .paging button.prev_page, .paging button.next_page, .header .profile_btn, .field_block .step_btns span, .close_btn, .light_btn,
+.dark_btn, .paging a, .paging button, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
 .sidebar .logout_btn, .menu_btn, .lightest_btn,
 .curry_btn,
 .orange_btn,
@@ -1895,7 +2248,7 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
   color: #085C7D;
 }
 
-.tools_section .block_tools .btn_link:active {
+.payment_section.payment_section .block_tools .btn_link:active, .tools_section .block_tools .btn_link:active {
   opacity: 0.7;
 }
 
@@ -1907,12 +2260,12 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
 }
 
 .field_block .step_btns span:active, .close_btn:active, .light_btn:active,
-.dark_btn:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
+.dark_btn:active, .paging a:active, .paging button:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
 .sidebar .logout_btn:active, .menu_btn:active {
   color: #ffffff;
 }
 
-.header .profile_btn:active {
+.paging a.prev_page:active, .paging a.next_page:active, .paging button.prev_page:active, .paging button.next_page:active, .header .profile_btn:active {
   color: #0484BB;
 }
 
@@ -1928,7 +2281,7 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
   .custom_table .icon_close:hover:before, .tools_section .head_section a:hover {
     color: #085C7D;
   }
-  .tools_section .block_tools .btn_link:hover {
+  .payment_section.payment_section .block_tools .btn_link:hover, .tools_section .block_tools .btn_link:hover {
     opacity: 0.7;
   }
   .lightest_btn:hover,
@@ -1938,11 +2291,11 @@ body:has(.manage_teams_section) .checkbox_list .check_btn {
     color: #000000;
   }
   .field_block .step_btns span:hover, .close_btn:hover, .light_btn:hover,
-  .dark_btn:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
+  .dark_btn:hover, .paging a:hover, .paging button:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
   .sidebar .logout_btn:hover, .menu_btn:hover {
     color: #ffffff;
   }
-  .header .profile_btn:hover {
+  .paging a.prev_page:hover, .paging a.next_page:hover, .paging button.prev_page:hover, .paging button.next_page:hover, .header .profile_btn:hover {
     color: #0484BB;
   }
   .primary_btn:hover {

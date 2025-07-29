@@ -140,7 +140,7 @@
                     <a href="PM_tools.html" class="icon_file">
                         <span>PM Tools</span>
                     </a>
-                    <a href="manage_teams.html" class="icon_contact current">
+                    <a href="manage_teams.html" class="icon_contact">
                         <span>Manage Teams</span>
                     </a>
                     <a href="user_management.html" class="icon_chart">
@@ -152,7 +152,7 @@
                     <a href="payment_methode.html" class="icon_invoice">
                         <span>Payment Methods</span>
                     </a>
-                    <a href="templates.html" class="icon_lists">
+                    <a href="templates.html" class="icon_lists current">
                         <span>Templates</span>
                     </a>
                 </div>
@@ -170,57 +170,59 @@
             <div class="welcome_info">Welcome to The Valyant Group</div>
             <div class="available_funds">Funds Available: $1,268.22</div>
         </div>
-        <div class="manage_teams_section">
+        <div class="manage_section template_table">
             <div class="head_section">
-                <h1 class="page_title">Manage Teams</h1>
-                <button class="standard_btn icon_plus orange_btn" aria-label="Create work order" onclick="showPopup()">Add Team</button>
+                <h1 class="page_title">Templates</h1>
+                <button class="standard_btn icon_plus green_btn" aria-label="Create work order" onclick="showPopup()">Add Templates</button>
             </div>
             <table class="custom_table">
                 <thead>
                 <tr>
-                    <th class="name">Team name</th>
-                    <th class="value">Members</th>
+                    <th class="name">Template Name</th>
                     <th class="type">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">12</td>
+                    <td data-th="Template Name">Gerald</td>
                     <td data-th="Action">
                         <div class="row_block">
                             <a href="" class="icon_pencil">edit</a>
                             <a href="" class="icon_delete">close</a>
+                            <a href="" class="icon_copy2">copy</a>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">8</td>
+                    <td data-th="Template Name">Manager</td>
                     <td data-th="Action">
                         <div class="row_block">
                             <a href="" class="icon_pencil">edit</a>
                             <a href="" class="icon_delete">close</a>
+                            <a href="" class="icon_copy2">copy</a>
+
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">2</td>
+                    <td data-th="Template Name">Tester2</td>
                     <td data-th="Action">
                         <div class="row_block">
                             <a href="" class="icon_pencil">edit</a>
                             <a href="" class="icon_delete">close</a>
+                            <a href="" class="icon_copy2">copy</a>
+
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td data-th="Name">Reference #</td>
-                    <td data-th="Value">1</td>
+                    <td data-th="Template Name">SW9</td>
                     <td data-th="Action">
                         <div class="row_block">
                             <a href="" class="icon_pencil">edit</a>
                             <a href="" class="icon_delete">close</a>
+                            <a href="" class="icon_copy2">copy</a>
+
                         </div>
                     </td>
                 </tr>
@@ -233,51 +235,16 @@
 <div class="popup_block">
     <div class="popup_container">
         <div class="popup_head">
-            <div class="popup_title">Add team</div>
+            <div class="popup_title">Create custom field</div>
             <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>
         </div>
         <div class="popup_body">
             <div class="field_row">
                 <div class="field_name">
-                    <label for="teamName">Team name</label>
+                    <label for="name">Name</label>
                 </div>
                 <div class="field_block">
-                    <input id="teamName" type="text" name="teamName" maxlength="50" placeholder="Type her..." />
-                </div>
-            </div>
-            <div class="field_row">
-                <div class="field_name">
-                    <label for="Members">Members</label>
-                </div>
-                <div class="checkbox_list">
-                    <label class="check_btn">
-                        <input type="checkbox" name="remote_wfh"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="project_manager"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="project_coordinator"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="project_administrator"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="other_misc"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="project_administrator"/>
-                        Stephanie Bledsoe
-                    </label>
-                    <label class="check_btn">
-                        <input type="checkbox" name="other_misc"/>
-                        Stephanie Bledsoe
-                    </label>
+                    <input id="name" type="text" name="name" maxlength="50" placeholder="Type her..." />
                 </div>
             </div>
             <div class="popup_footer">
