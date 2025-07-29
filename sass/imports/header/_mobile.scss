@@ -68,6 +68,9 @@
             width: 100vw;
         }
     }
+    body:has(.sidebar.opened){
+        overflow: hidden;
+    }
 
     .header {
         justify-content: space-between;
