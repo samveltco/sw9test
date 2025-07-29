@@ -55,6 +55,7 @@
   }
   body:has(.sidebar.opened) {
     overflow: hidden;
+    background: #19252F;
   }
   .header {
     justify-content: space-between;

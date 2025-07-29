@@ -70,6 +70,7 @@
     }
     body:has(.sidebar.opened){
         overflow: hidden;
+        background: $mainBg;
     }
 
     .header {
