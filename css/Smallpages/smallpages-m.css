@@ -90,6 +90,7 @@
 }
 @media screen and (max-width: 768px) {
   .management_section .head_section,
+  .manage_teams_section .head_section,
   .payment_section .head_section,
   .manage_section .head_section,
   .preferred_section .head_section {
@@ -97,12 +98,14 @@
     align-items: baseline;
   }
   .management_section .standard_btn,
+  .manage_teams_section .standard_btn,
   .payment_section .standard_btn,
   .manage_section .standard_btn,
   .preferred_section .standard_btn {
     margin-top: 20px;
   }
   .management_section .paging,
+  .manage_teams_section .paging,
   .payment_section .paging,
   .manage_section .paging,
   .preferred_section .paging {
@@ -158,6 +161,11 @@
   .popup_block:has(.status_day) .card_date {
     width: 100%;
   }
+  .manage_section.manage_section.template_table .custom_table .row_block {
+    margin: 0;
+  }
+  .manage_teams_section .custom_table thead th:last-child,
+  .manage_teams_section .custom_table tbody td:last-child,
   .management_section .custom_table thead th:last-child,
   .management_section .custom_table tbody td:last-child,
   .payment_section .custom_table thead th:last-child,
@@ -168,18 +176,48 @@
   .preferred_section .custom_table tbody td:last-child {
     width: unset;
   }
+  .manage_teams_section .custom_table tbody td,
   .management_section .custom_table tbody td,
   .payment_section .custom_table tbody td,
   .manage_section .custom_table tbody td,
   .preferred_section .custom_table tbody td {
     border-top: 0;
   }
+  .manage_teams_section .custom_table .icon_delete,
+  .manage_teams_section .custom_table .icon_stars,
+  .manage_teams_section .custom_table .icon_pencil,
+  .manage_teams_section .custom_table button,
+  .manage_teams_section .custom_table a,
+  .management_section .custom_table .icon_delete,
+  .management_section .custom_table .icon_stars,
+  .management_section .custom_table .icon_pencil,
+  .management_section .custom_table button,
+  .management_section .custom_table a,
+  .payment_section .custom_table .icon_delete,
+  .payment_section .custom_table .icon_stars,
+  .payment_section .custom_table .icon_pencil,
+  .payment_section .custom_table button,
+  .payment_section .custom_table a,
+  .manage_section .custom_table .icon_delete,
+  .manage_section .custom_table .icon_stars,
+  .manage_section .custom_table .icon_pencil,
+  .manage_section .custom_table button,
+  .manage_section .custom_table a,
+  .preferred_section .custom_table .icon_delete,
+  .preferred_section .custom_table .icon_stars,
+  .preferred_section .custom_table .icon_pencil,
+  .preferred_section .custom_table button,
+  .preferred_section .custom_table a {
+    padding: 0 0 0 15px;
+  }
+  .manage_teams_section.payment_section .payment_list,
   .management_section.payment_section .payment_list,
   .payment_section.payment_section .payment_list,
   .manage_section.payment_section .payment_list,
   .preferred_section.payment_section .payment_list {
     margin-bottom: 20px;
   }
+  .manage_teams_section.manage_section .custom_table tbody td:first-child,
   .management_section.manage_section .custom_table tbody td:first-child,
   .payment_section.manage_section .custom_table tbody td:first-child,
   .manage_section.manage_section .custom_table tbody td:first-child,

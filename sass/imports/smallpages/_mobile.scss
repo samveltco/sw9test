@@ -33,6 +33,7 @@
 
 @include mediaTo($size768) {
     .management_section,
+    .manage_teams_section,
     .payment_section,
     .manage_section,
     .preferred_section {
@@ -113,6 +114,14 @@
     .popup_block:has(.status_day) .card_date {
         width: 100%;
     }
+
+
+    .manage_section.manage_section.template_table .custom_table .row_block {
+        margin: 0;
+    }
+
+
+    .manage_teams_section,
     .management_section,
     .payment_section,
     .manage_section,
@@ -126,6 +135,15 @@
 
             tbody td {
                 border-top: 0;
+            }
+
+
+            .icon_delete,
+            .icon_stars,
+            .icon_pencil,
+            button,
+            a {
+                padding: 0 0 0 15px;
             }
         }
 

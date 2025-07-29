@@ -754,6 +754,7 @@ button {
                 &:before {
                     display: block;
                     content: attr(data-th) ':';
+                    font-weight: 700;
                     color: $textColor;
                     text-align: left;
                     margin-right: auto;
