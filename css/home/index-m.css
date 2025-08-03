@@ -172,6 +172,7 @@
 }
 @media screen and (min-width: 576px) and (max-width: 1024px) {
   .card_item .card_main,
+  .card_item .check_info,
   .card_item .assign_info {
     flex: 0 0 50%;
     max-width: 50%;
@@ -246,6 +247,7 @@
   .card_item .card_main,
   .card_item .assign_info,
   .card_item .start_end,
+  .card_item .check_info,
   .card_item .price_info {
     flex: 0 0 100%;
     max-width: 100%;

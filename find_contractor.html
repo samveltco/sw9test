@@ -286,10 +286,10 @@
             </div>
             <div class="sidebar_inner">
                 <div class="sidebar_menu">
-                    <a href="index.html" class="icon_dashboard current">
+                    <a href="index.html" class="icon_dashboard">
                         <span>Dashboard</span>
                     </a>
-                    <a href="" class="icon_products">
+                    <a href="find_contractor.html" class="icon_products current">
                         <span>Find Contractor</span>
                     </a>
                     <a href="preferred.html" class="icon_contact">
@@ -339,802 +339,492 @@
                 <div class="field_block">
                     <input type="text" name="zip_code" maxlength="8" aria-label="zip code" placeholder="Zip code"/>
                 </div>
+                <div class="field_block range_block">
+                    <label for="distance_range" class="range_label"><span id="rangeValue">60</span> miles</label>
+                    <input type="range" id="distance_range" name="distance" min="0" max="100" value="60" oninput="document.getElementById('rangeValue').innerText = this.value"/>
+                </div>
                 <button class="search_btn icon_search" aria-label="search"></button>
             </form>
-            <div class="btns_block">
-                <button class="standard_btn icon_plus curry_btn" aria-label="Create work order">Create work order</button>
-                <button class="standard_btn icon_import orange_btn" aria-label="Import work order(s)" onclick="importShow()">Import work order(s)</button>
-                <button class="standard_btn icon_export green_btn" aria-label="Export EXCEL">Export EXCEL</button>
-            </div>
         </div>
-        <div class="switch_actions">
-            <div class="switch_btns">
-                <button class="selected" aria-label="all">All <span class="count_block">(84)</span></button>
-                <button aria-label="Draft">Draft <span class="count_block">(20)</span></button>
-                <button aria-label="Available">Available <span class="count_block">(11)</span></button>
-                <button aria-label="Routed">Routed <span class="count_block">(1)</span></button>
-                <button aria-label="Completed">Completed <span class="count_block">(3)</span></button>
-                <button aria-label="Paid">Paid <span class="count_block">(7)</span></button>
-            </div>
-            <div class="actions_list">
-                <button aria-label="name" class="icon_fist"></button>
-                <button aria-label="name1" class="icon_palm"></button>
-                <button aria-label="name2" class="icon_messages" onclick="showModal()"></button>
-                <button aria-label="name3" class="icon_quarters"></button>
-                <button aria-label="name4" class="icon_add"></button>
-                <button aria-label="name5" class="icon_pencil"></button>
-            </div>
-            <div class="check_block">
-                <label class="check_btn">
-                    <input type="checkbox" name="select_all"/>
-                </label>
-            </div>
-        </div>
-        <div class="filter_paging">
-            <div class="sorting_block">
-                <label class="sort_select">
-                    <span class="sort_label icon_sort">Sort by:</span>
-                    <select name="sort_by" aria-label="sort by">
-                        <option value="start_date">Start date</option>
-                        <option value="price">Price</option>
-                    </select>
-                </label>
-                <label class="sort_type">
-                    <input type="checkbox" name="ascending"/>
-                    <span class="sort_label">Ascending</span>
-                </label>
-            </div>
-
-            <div class="filter_block">
-                <button class="filter_btn icon_filter" aria-label="filter" onclick="showFilter()">FIlter <span class="count_block">(2)</span></button>
-                <button class="reset_btn icon_clear" aria-label="reset" disabled>Reset filter</button>
-                <div class="filter_inner">
-                    <div class="filter_head">
-                        <div class="filter_name icon_filter">Filter <span class="count_block">(2)</span></div>
-                        <button class="reset_btn icon_clear" aria-label="reset fiilter" disabled>Reset filter</button>
-                        <button class="close_btn icon_close" aria-label="filter close" onclick="hideFilter()"></button>
-                    </div>
-                    <span class="filter_shadow top_shadow"></span>
-                    <div class="filter_content">
-                        <div class="filter_fields">
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="win">Win#</label>
-                                    <div class="field_hints">
-                                        Format WIN's
-                                        <br/>10001123
-                                        <br/>12344343
-                                        <br/>34353534
-                                        <br/>34535535
-                                    </div>
-                                </div>
-                                <div class="field_block">
-                                    <textarea id="win" name="win" placeholder="Format WiN's" maxlength="500"></textarea>
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="contractor_id">Contractor ID</label>
-                                </div>
-                                <div class="field_block">
-                                    <input id="contractor_id" type="text" name="contractor_id" maxlength="50" placeholder="Type her..." />
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="start_date">Start Date</label>
-                                </div>
-                                <div class="field_block">
-                                    <input id="start_date" type="date" name="start_date_from" maxlength="10" placeholder="From" />
-                                </div>
-                                <div class="field_block">
-                                    <input type="date" name="start_date_to" maxlength="10" placeholder="To" />
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="end_date">End Date</label>
-                                </div>
-                                <div class="field_block">
-                                    <input id="end_date" type="date" name="end_date_from" maxlength="10" placeholder="From" />
-                                </div>
-                                <div class="field_block">
-                                    <input type="date" name="end_date_to" maxlength="10" placeholder="To" />
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="created_by">Created by</label>
-                                </div>
-                                <div class="field_block">
-                                    <select id="created_by" name="created_by">
-                                        <option>Select</option>
-                                        <option value="1">Value 1</option>
-                                        <option value="2">Value 2</option>
-                                        <option value="3">Value 3</option>
-                                        <option value="4">Value 4</option>
-                                        <option value="5">Value 5</option>
-                                        <option value="6">Value 6</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="company">Company</label>
-                                </div>
-                                <div class="field_block">
-                                    <select id="company" name="company">
-                                        <option>Select</option>
-                                        <option value="1">Value 1</option>
-                                        <option value="2">Value 2</option>
-                                        <option value="3">Value 3</option>
-                                        <option value="4">Value 4</option>
-                                        <option value="5">Value 5</option>
-                                        <option value="6">Value 6</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="project">Project</label>
-                                </div>
-                                <div class="field_block">
-                                    <select id="project" name="project">
-                                        <option>Select</option>
-                                        <option value="1">Value 1</option>
-                                        <option value="2">Value 2</option>
-                                        <option value="3">Value 3</option>
-                                        <option value="4">Value 4</option>
-                                        <option value="5">Value 5</option>
-                                        <option value="6">Value 6</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="company_wo_id">Company WO ID</label>
-                                </div>
-                                <div class="field_block">
-                                    <input id="company_wo_id" type="text" name="company_wo_id" maxlength="50" placeholder="Type her..." />
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="wo_title">WO Title</label>
-                                </div>
-                                <div class="field_block">
-                                    <input id="wo_title" type="text" name="wo_title" maxlength="50" placeholder="Type her..." />
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="wo_status">WO Status</label>
-                                </div>
-                                <div class="field_block">
-                                    <select id="wo_status" name="wo_status">
-                                        <option>Select</option>
-                                        <option value="1">Value 1</option>
-                                        <option value="2">Value 2</option>
-                                        <option value="3">Value 3</option>
-                                        <option value="4">Value 4</option>
-                                        <option value="5">Value 5</option>
-                                        <option value="6">Value 6</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="city">City</label>
-                                </div>
-                                <div class="field_block">
-                                    <input id="city" type="text" name="city" maxlength="50" placeholder="Type her..." />
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="state">State</label>
-                                </div>
-                                <div class="field_block">
-                                    <input id="state" type="text" name="state" maxlength="50" placeholder="Type her..." />
-                                </div>
-                            </div>
-                            <div class="field_row">
-                                <div class="field_name">
-                                    <label for="zip">Zip</label>
-                                </div>
-                                <div class="field_block">
-                                    <input id="zip" type="text" name="zip" maxlength="8" placeholder="Type her..." />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions_block">
-                        <button class="standard_btn dark_btn" aria-label="cancel">Cancel</button>
-                        <button class="standard_btn light_btn" aria-label="accept">Accept</button>
-                    </div>
-                    <span class="filter_shadow bottom_shadow"></span>
+        <ul class="check_list">
+            <li class="active">
+               <div class="check_block">
+                   <label class="check_btn">
+                       <input type="checkbox" name="pay_outside_of_app"/>
+                       Passed Gold Background Test
+                   </label>
+               </div>
+           </li>
+            <li class="active">
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
                 </div>
-            </div>
-
-            <div class="paging">
-                <ul>
-                    <li><a href="" class="prev_page icon_prev inactive">Prev</a></li>
-                    <li><a href="" class="current_page">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><span>...</span></li>
-                    <li><a href="">24</a></li>
-                    <li><a href="" class="next_page icon_next">Next</a></li>
-                </ul>
-            </div>
-        </div>
+            </li>
+            <li class="active">
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li  class="active">
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="check_block">
+                    <label class="check_btn">
+                        <input type="checkbox" name="pay_outside_of_app"/>
+                        Passed Gold Background Test
+                    </label>
+                </div>
+            </li>
+        </ul>
         <div class="cards_list">
             <span class="shadow_block top_shadow"></span>
             <div class="card_item">
                 <div class="card_body">
+                    <div class="img_card">
+                        <img src="images/avatar.jpg" title="" alt="" width="78" height="78" />
+                        <div class="small_img">
+                            <img src="images/p1.png" title="" alt="" width="20" height="20" />
+                            Preferred groups
+                        </div>
+                    </div>
                     <div class="card_main">
-                        <div class="card_title">copy 1 - Service Call - POS Service Call</div>
+                        <div class="card_title">Contractor Test</div>
                         <ul class="card_details">
                             <li>
-                                <span class="detail_label">Created By:</span>
-                                Stephanie Bledsoe100%
+                                <span class="detail_label">130710</span>
                             </li>
                             <li>
-                                <span class="detail_label">WIN:</span>
-                                11044997
+                                650 S R L Thornton Fwy Dallas, Texas, 75203
                             </li>
                             <li>
-                                <span class="detail_label">Company WO ID:</span>
-                                00169494
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="start_end">
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Start:</span>
-                                11/6/202002:00PM
-                            </li>
-                            <li>
-                                <span class="detail_label">End:</span>
-                                11/30/202005:00PM
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="assign_info">
-                        <div class="card_title">Assigned to :</div>
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Might Deployment</span>
-                            </li>
-                            <li>
-                                <span class="detail_label">Phone:</span>
-                                +(402) 202-2996
+                                <span class="detail_label">Phone::</span>
+                                (531) 151-5151
                             </li>
                             <li>
                                 <span class="detail_label">Email:</span>
-                                mightdeployment@gmail.com
+                                yenokyanharutyun4@gmail.com
                             </li>
                         </ul>
                     </div>
-                    <div class="price_info">
-                        <div class="price_size">
-                            <span>$50.000</span>
-                            min
-                        </div>
-                        <div class="calc_info">Base: 50/flat for 2 hr(s) = 50
-                            <br/>Total est value = $50.00</div>
+                    <div class="check_info">
+                        <ul class="card_details">
+                            <li>
+                                <span class="detail_label icon_checkbox">Project Management Certified</span>
+                                5/13/2023
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Cabling Certified</span>
+                                10/12/2020
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Passed Gold Drug Test</span>
+                                10/12/2020
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Project Administrator Certified</span>
+                                5/12/2023
+                            </li>
+                        </ul>
                     </div>
                     <div class="card_statuses">
-                        <span class="status_block uncomfirmed">UNCONFIRMED</span>
-                        <span class="status_block on_hold">ON HOLD</span>
+                        <span class="status_block icon_hammer">100%</span>
+                        <span class="status_block icon_briefcase">100%</span>
+                        <span class="status_block icon_file">98%</span>
+                        <span class="status_block">99%</span>
                     </div>
-                    <div class="check_block">
-                        <label class="check_btn">
-                            <input type="checkbox" name="card[0]"/>
-                        </label>
-                    </div>
+                    <button class="standard_btn dark_btn" aria-label="Invite" onclick="showPopup()">Invite</button>
                 </div>
-                <div class="card_footer">
-                    <div class="messages_location">
-                        <a href="" class="message_count">0 messages</a>
-                        <div class="location_info">Stillwater, Minnesota 55082</div>
-                    </div>
-                    <div class="card_actions">
-                        <button class="primary_btn icon_copy" aria-label="Duplicate">Duplicate</button>
-                        <button class="primary_btn icon_dots" aria-label="Details">Details</button>
-                        <button class="primary_btn icon_assept" aria-label="Contractors Near-by">Contractors Near-by</button>
-                        <button class="primary_btn icon_eye" aria-label="View Applicants">View Applicants</button>
-                        <button class="primary_btn icon_plus" aria-label="Create template">Create template</button>
-                    </div>
-                </div>
-
             </div>
-
             <div class="card_item">
                 <div class="card_body">
+                    <div class="img_card">
+                        <img src="images/avatar.jpg" title="" alt="" width="78" height="78" />
+                    </div>
                     <div class="card_main">
-                        <div class="card_title">copy 1 - Service Call - POS Service Call</div>
+                        <div class="card_title">Contractor Test</div>
                         <ul class="card_details">
                             <li>
-                                <span class="detail_label">Created By:</span>
-                                Stephanie Bledsoe100%
+                                <span class="detail_label">130710</span>
                             </li>
                             <li>
-                                <span class="detail_label">WIN:</span>
-                                11044997
+                                650 S R L Thornton Fwy Dallas, Texas, 75203
                             </li>
                             <li>
-                                <span class="detail_label">Company WO ID:</span>
-                                00169494
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="start_end">
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Start:</span>
-                                11/6/202002:00PM
-                            </li>
-                            <li>
-                                <span class="detail_label">End:</span>
-                                11/30/202005:00PM
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="assign_info">
-                        <div class="card_title">Assigned to :</div>
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Might Deployment</span>
-                            </li>
-                            <li>
-                                <span class="detail_label">Phone:</span>
-                                +(402) 202-2996
+                                <span class="detail_label">Phone::</span>
+                                (531) 151-5151
                             </li>
                             <li>
                                 <span class="detail_label">Email:</span>
-                                mightdeployment@gmail.com
+                                yenokyanharutyun4@gmail.com
                             </li>
                         </ul>
                     </div>
-                    <div class="price_info">
-                        <div class="price_size">
-                            <span>$50.000</span>
-                            min
-                        </div>
-                        <div class="calc_info">Base: 50/flat for 2 hr(s) = 50
-                            <br/>Total est value = $50.00</div>
+                    <div class="check_info">
+                        <ul class="card_details">
+                            <li>
+                                <span class="detail_label icon_checkbox">Project Management Certified</span>
+                                5/13/2023
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Cabling Certified</span>
+                                10/12/2020
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Passed Gold Drug Test</span>
+                                10/12/2020
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Project Administrator Certified</span>
+                                5/12/2023
+                            </li>
+                        </ul>
                     </div>
                     <div class="card_statuses">
-                        <span class="status_block uncomfirmed">UNCONFIRMED</span>
-                        <span class="status_block on_hold">ON HOLD</span>
+                        <span class="status_block icon_hammer">100%</span>
+                        <span class="status_block icon_briefcase">100%</span>
+                        <span class="status_block icon_file">98%</span>
+                        <span class="status_block">99%</span>
                     </div>
-                    <div class="check_block">
-                        <label class="check_btn">
-                            <input type="checkbox" name="card[0]"/>
-                        </label>
-                    </div>
+                    <button class="standard_btn dark_btn block_user" onclick="showPopup()" aria-label="Blocked">Blocked</button>
                 </div>
-                <div class="card_footer">
-                    <div class="messages_location">
-                        <a href="" class="message_count">0 messages</a>
-                        <div class="location_info">Stillwater, Minnesota 55082</div>
-                    </div>
-                    <div class="card_actions">
-                        <button class="primary_btn icon_copy" aria-label="Duplicate">Duplicate</button>
-                        <button class="primary_btn icon_dots" aria-label="Details">Details</button>
-                        <button class="primary_btn icon_assept" aria-label="Contractors Near-by">Contractors Near-by</button>
-                        <button class="primary_btn icon_eye" aria-label="View Applicants">View Applicants</button>
-                        <button class="primary_btn icon_plus" aria-label="Create template">Create template</button>
-                    </div>
-                </div>
-
             </div>
-
             <div class="card_item">
                 <div class="card_body">
+                    <div class="img_card">
+                        <img src="images/avatar.jpg" title="" alt="" width="78" height="78" />
+                        <div class="small_img">
+                            <img src="images/p1.png" title="" alt="" width="20" height="20" />
+                            Preferred groups
+                        </div>
+                    </div>
                     <div class="card_main">
-                        <div class="card_title">copy 1 - Service Call - POS Service Call</div>
+                        <div class="card_title">Contractor Test</div>
                         <ul class="card_details">
                             <li>
-                                <span class="detail_label">Created By:</span>
-                                Stephanie Bledsoe100%
+                                <span class="detail_label">130710</span>
                             </li>
                             <li>
-                                <span class="detail_label">WIN:</span>
-                                11044997
+                                650 S R L Thornton Fwy Dallas, Texas, 75203
                             </li>
                             <li>
-                                <span class="detail_label">Company WO ID:</span>
-                                00169494
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="start_end">
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Start:</span>
-                                11/6/202002:00PM
-                            </li>
-                            <li>
-                                <span class="detail_label">End:</span>
-                                11/30/202005:00PM
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="assign_info">
-                        <div class="card_title">Assigned to :</div>
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Might Deployment</span>
-                            </li>
-                            <li>
-                                <span class="detail_label">Phone:</span>
-                                +(402) 202-2996
+                                <span class="detail_label">Phone::</span>
+                                (531) 151-5151
                             </li>
                             <li>
                                 <span class="detail_label">Email:</span>
-                                mightdeployment@gmail.com
+                                yenokyanharutyun4@gmail.com
                             </li>
                         </ul>
                     </div>
-                    <div class="price_info">
-                        <div class="price_size">
-                            <span>$50.000</span>
-                            min
-                        </div>
-                        <div class="calc_info">Base: 50/flat for 2 hr(s) = 50
-                            <br/>Total est value = $50.00</div>
+                    <div class="check_info">
+                        <ul class="card_details">
+                            <li>
+                                <span class="detail_label icon_checkbox">Project Management Certified</span>
+                                5/13/2023
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Cabling Certified</span>
+                                10/12/2020
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Passed Gold Drug Test</span>
+                                10/12/2020
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Project Administrator Certified</span>
+                                5/12/2023
+                            </li>
+                        </ul>
                     </div>
                     <div class="card_statuses">
-                        <span class="status_block uncomfirmed">UNCONFIRMED</span>
-                        <span class="status_block on_hold">ON HOLD</span>
+                        <span class="status_block icon_hammer">100%</span>
+                        <span class="status_block icon_briefcase">100%</span>
+                        <span class="status_block icon_file">98%</span>
+                        <span class="status_block">99%</span>
                     </div>
-                    <div class="check_block">
-                        <label class="check_btn">
-                            <input type="checkbox" name="card[0]"/>
-                        </label>
-                    </div>
+                    <button class="standard_btn dark_btn" aria-label="Invite" onclick="showPopup()">Invite</button>
                 </div>
-                <div class="card_footer">
-                    <div class="messages_location">
-                        <a href="" class="message_count">0 messages</a>
-                        <div class="location_info">Stillwater, Minnesota 55082</div>
-                    </div>
-                    <div class="card_actions">
-                        <button class="primary_btn icon_copy" aria-label="Duplicate">Duplicate</button>
-                        <button class="primary_btn icon_dots" aria-label="Details">Details</button>
-                        <button class="primary_btn icon_assept" aria-label="Contractors Near-by">Contractors Near-by</button>
-                        <button class="primary_btn icon_eye" aria-label="View Applicants">View Applicants</button>
-                        <button class="primary_btn icon_plus" aria-label="Create template">Create template</button>
-                    </div>
-                </div>
-
             </div>
-
             <div class="card_item">
                 <div class="card_body">
+                    <div class="img_card">
+                        <img src="images/avatar.jpg" title="" alt="" width="78" height="78" />
+                        <div class="small_img">
+                            <img src="images/p1.png" title="" alt="" width="20" height="20" />
+                            Preferred groups
+                        </div>
+                    </div>
                     <div class="card_main">
-                        <div class="card_title">copy 1 - Service Call - POS Service Call</div>
+                        <div class="card_title">Contractor Test</div>
                         <ul class="card_details">
                             <li>
-                                <span class="detail_label">Created By:</span>
-                                Stephanie Bledsoe100%
+                                <span class="detail_label">130710</span>
                             </li>
                             <li>
-                                <span class="detail_label">WIN:</span>
-                                11044997
+                                650 S R L Thornton Fwy Dallas, Texas, 75203
                             </li>
                             <li>
-                                <span class="detail_label">Company WO ID:</span>
-                                00169494
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="start_end">
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Start:</span>
-                                11/6/202002:00PM
-                            </li>
-                            <li>
-                                <span class="detail_label">End:</span>
-                                11/30/202005:00PM
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="assign_info">
-                        <div class="card_title">Assigned to :</div>
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Might Deployment</span>
-                            </li>
-                            <li>
-                                <span class="detail_label">Phone:</span>
-                                +(402) 202-2996
+                                <span class="detail_label">Phone::</span>
+                                (531) 151-5151
                             </li>
                             <li>
                                 <span class="detail_label">Email:</span>
-                                mightdeployment@gmail.com
+                                yenokyanharutyun4@gmail.com
                             </li>
                         </ul>
                     </div>
-                    <div class="price_info">
-                        <div class="price_size">
-                            <span>$50.000</span>
-                            min
-                        </div>
-                        <div class="calc_info">Base: 50/flat for 2 hr(s) = 50
-                            <br/>Total est value = $50.00</div>
+                    <div class="check_info">
+                        <ul class="card_details">
+                            <li>
+                                <span class="detail_label icon_checkbox">Project Management Certified</span>
+                                5/13/2023
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Cabling Certified</span>
+                                10/12/2020
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Passed Gold Drug Test</span>
+                                10/12/2020
+                            </li>
+                            <li>
+                                <span class="detail_label icon_checkbox">Project Administrator Certified</span>
+                                5/12/2023
+                            </li>
+                        </ul>
                     </div>
                     <div class="card_statuses">
-                        <span class="status_block uncomfirmed">UNCONFIRMED</span>
-                        <span class="status_block on_hold">ON HOLD</span>
+                        <span class="status_block icon_hammer">100%</span>
+                        <span class="status_block icon_briefcase">100%</span>
+                        <span class="status_block icon_file">98%</span>
+                        <span class="status_block">99%</span>
                     </div>
-                    <div class="check_block">
-                        <label class="check_btn">
-                            <input type="checkbox" name="card[0]"/>
-                        </label>
-                    </div>
+                    <button class="standard_btn dark_btn" aria-label="Invite" onclick="showPopup()">Invite</button>
                 </div>
-                <div class="card_footer">
-                    <div class="messages_location">
-                        <a href="" class="message_count">0 messages</a>
-                        <div class="location_info">Stillwater, Minnesota 55082</div>
-                    </div>
-                    <div class="card_actions">
-                        <button class="primary_btn icon_copy" aria-label="Duplicate">Duplicate</button>
-                        <button class="primary_btn icon_dots" aria-label="Details">Details</button>
-                        <button class="primary_btn icon_assept" aria-label="Contractors Near-by">Contractors Near-by</button>
-                        <button class="primary_btn icon_eye" aria-label="View Applicants">View Applicants</button>
-                        <button class="primary_btn icon_plus" aria-label="Create template">Create template</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="card_item">
-                <div class="card_body">
-                    <div class="card_main">
-                        <div class="card_title">copy 1 - Service Call - POS Service Call</div>
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Created By:</span>
-                                Stephanie Bledsoe100%
-                            </li>
-                            <li>
-                                <span class="detail_label">WIN:</span>
-                                11044997
-                            </li>
-                            <li>
-                                <span class="detail_label">Company WO ID:</span>
-                                00169494
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="start_end">
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Start:</span>
-                                11/6/202002:00PM
-                            </li>
-                            <li>
-                                <span class="detail_label">End:</span>
-                                11/30/202005:00PM
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="assign_info">
-                        <div class="card_title">Assigned to :</div>
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Might Deployment</span>
-                            </li>
-                            <li>
-                                <span class="detail_label">Phone:</span>
-                                +(402) 202-2996
-                            </li>
-                            <li>
-                                <span class="detail_label">Email:</span>
-                                mightdeployment@gmail.com
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="price_info">
-                        <div class="price_size">
-                            <span>$50.000</span>
-                            min
-                        </div>
-                        <div class="calc_info">Base: 50/flat for 2 hr(s) = 50
-                            <br/>Total est value = $50.00</div>
-                    </div>
-                    <div class="card_statuses">
-                        <span class="status_block uncomfirmed">UNCONFIRMED</span>
-                        <span class="status_block on_hold">ON HOLD</span>
-                    </div>
-                    <div class="check_block">
-                        <label class="check_btn">
-                            <input type="checkbox" name="card[0]"/>
-                        </label>
-                    </div>
-                </div>
-                <div class="card_footer">
-                    <div class="messages_location">
-                        <a href="" class="message_count">0 messages</a>
-                        <div class="location_info">Stillwater, Minnesota 55082</div>
-                    </div>
-                    <div class="card_actions">
-                        <button class="primary_btn icon_copy" aria-label="Duplicate">Duplicate</button>
-                        <button class="primary_btn icon_dots" aria-label="Details">Details</button>
-                        <button class="primary_btn icon_assept" aria-label="Contractors Near-by">Contractors Near-by</button>
-                        <button class="primary_btn icon_eye" aria-label="View Applicants">View Applicants</button>
-                        <button class="primary_btn icon_plus" aria-label="Create template">Create template</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="card_item">
-                <div class="card_body">
-                    <div class="card_main">
-                        <div class="card_title">copy 1 - Service Call - POS Service Call</div>
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Created By:</span>
-                                Stephanie Bledsoe100%
-                            </li>
-                            <li>
-                                <span class="detail_label">WIN:</span>
-                                11044997
-                            </li>
-                            <li>
-                                <span class="detail_label">Company WO ID:</span>
-                                00169494
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="start_end">
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Start:</span>
-                                11/6/202002:00PM
-                            </li>
-                            <li>
-                                <span class="detail_label">End:</span>
-                                11/30/202005:00PM
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="assign_info">
-                        <div class="card_title">Assigned to :</div>
-                        <ul class="card_details">
-                            <li>
-                                <span class="detail_label">Might Deployment</span>
-                            </li>
-                            <li>
-                                <span class="detail_label">Phone:</span>
-                                +(402) 202-2996
-                            </li>
-                            <li>
-                                <span class="detail_label">Email:</span>
-                                mightdeployment@gmail.com
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="price_info">
-                        <div class="price_size">
-                            <span>$50.000</span>
-                            min
-                        </div>
-                        <div class="calc_info">Base: 50/flat for 2 hr(s) = 50
-                            <br/>Total est value = $50.00</div>
-                    </div>
-                    <div class="card_statuses">
-                        <span class="status_block uncomfirmed">UNCONFIRMED</span>
-                        <span class="status_block on_hold">ON HOLD</span>
-                    </div>
-                    <div class="check_block">
-                        <label class="check_btn">
-                            <input type="checkbox" name="card[0]"/>
-                        </label>
-                    </div>
-                </div>
-                <div class="card_footer">
-                    <div class="messages_location">
-                        <a href="" class="message_count">0 messages</a>
-                        <div class="location_info">Stillwater, Minnesota 55082</div>
-                    </div>
-                    <div class="card_actions">
-                        <button class="primary_btn icon_copy" aria-label="Duplicate">Duplicate</button>
-                        <button class="primary_btn icon_dots" aria-label="Details">Details</button>
-                        <button class="primary_btn icon_assept" aria-label="Contractors Near-by">Contractors Near-by</button>
-                        <button class="primary_btn icon_eye" aria-label="View Applicants">View Applicants</button>
-                        <button class="primary_btn icon_plus" aria-label="Create template">Create template</button>
-                    </div>
-                </div>
-
             </div>
             <span class="shadow_block bottom_shadow"></span>
         </div>
     </div>
 </div>
-<div class="modal_block">
-    <div class="modal_container">
-        <div class="modal_head">
-            <div class="modal_title">Send Message To</div>
-            <div class="modal_subtitle">Assigned Contractor's</div>
-            <button class="close_btn icon_close" aria-label="close" onclick="hideModal()"></button>
+
+<div class="popup_block">
+    <div class="popup_container">
+        <div class="popup_head">
+            <div class="popup_title">Contractor Profile</div>
+            <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>
         </div>
-        <div class="modal_body">
-            <div class="field_row">
-                <div class="field_name">
-                    <label for="company_users">Company User(s)</label>
-                </div>
-                <div class="field_block">
-                    <select id="company_users" name="company_users">
-                        <option>Select</option>
-                        <option value="1">Value 1</option>
-                        <option value="2">Value 2</option>
-                        <option value="3">Value 3</option>
-                        <option value="4">Value 4</option>
-                        <option value="5">Value 5</option>
-                        <option value="6">Value 6</option>
-                    </select>
+        <div class="popup_body">
+            <div class="contractor_main">
+                <ul class="contractor_head">
+                    <li class="user_name">
+                        <span>ID</span>
+                        <span>130710</span>
+                    </li>
+                    <li class="user_name">
+                        <span>Name</span>
+                        <span>Contractor Test</span>
+                    </li>
+                </ul>
+                <div class="image_block">
+                    <img src="images/avatar.jpg" alt="" title="" width="84" height="84"/>
                 </div>
             </div>
-            <div class="field_row">
-                <div class="field_name">
-                    <label for="message">Message</label>
-                </div>
-                <div class="field_block">
-                    <textarea id="message" name="message" placeholder="Type here" maxlength="500"></textarea>
+            <ul class="contractor_contacts">
+                <li>
+                    <div class="block_label">Date Registered</div>
+                    <div class="contractor_info">10/7/2020</div>
+                </li>
+                <li>
+                    <div class="block_label">Last Login</div>
+                    <div class="contractor_info">
+                        10/22/2024, 2:21:09 AM
+                    </div>
+                </li>
+                <li>
+                    <div class="block_label">Last WO completed date</div>
+                    <div class="contractor_info">
+                        5/16/2024, 11:18:22 PM
+                    </div>
+                </li>
+                <li>
+                    <div class="block_label">Work Performed</div>
+                    <div class="contractor_info">
+                        650 S R L Thornton Fwy
+                        test.d
+                        Dallas, Texas, 75203
+                        United States
+                    </div>
+                </li>
+                <li>
+                    <div class="block_label">Phone</div>
+                    <div class="contractor_info">
+                        <a href="tel:4022022996">(402) 202-2996</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="block_label">Email</div>
+                    <div class="contractor_info">
+                        <a href="mailto:stephanieb@mightdeployment.com">stephanieb@mightdeployment.com</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="block_label">Website</div>
+                    <div class="contractor_info">
+                        <a href="www.sourcew9.com" target="_blank">www.sourcew9.com</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="about_user">
+                <div class="block_label">Bio / About</div>
+                <div class="contractor_info">
+                    test5
                 </div>
             </div>
-        </div>
-        <div class="modal_footer">
-            <button class="standard_btn light_btn" aria-label="send">Send</button>
+            <div class="about_user">
+                <div class="block_label">Certificates</div>
+                <div class="contractor_info">
+                    <ul class="card_details">
+                        <li>
+                            <span class="detail_label icon_checkbox">Project Management Certified</span>
+                        </li>
+                        <li>
+                            <span class="detail_label icon_checkbox">Cabling Certified</span>
+                        </li>
+                        <li>
+                            <span class="detail_label icon_checkbox">Passed Gold Drug Test</span>
+                        </li>
+                        <li>
+                            <span class="detail_label icon_checkbox">Project Administrator Certified</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="standard_btn dark_btn">Invite</div>
+            <div class="line_blocks">
+                <div class="block_label">Work Type</div>
+                <ul class="type_list">
+                    <li>
+                        <div class="block_type">Minimum Toolbox</div>
+                    </li>
+                    <li>
+                        <div class="block_type">Minimum Toolbox</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="line_blocks">
+                <div class="block_label">Previously Worked Projects</div>
+                <ul class="projects_list">
+                    <li>
+                        blah
+                    </li>
+                </ul>
+            </div>
+            <div class="block_note">
+                <div class="field_col">
+                    <label class="field_name" for="total_required">Add new note</label>
+                    <div class="note_inner">
+                        <div class="block_label">07/12/2025</div>
+                        <div class="contractor_info">
+                            <span>Stephanie Bledsoe</span>  <span>undefined</span>
+                        </div>
+                    </div>
+                    <div class="field_block">
+                        <textarea name="total_required" id="total_required" maxlength="500" placeholder="Type here"></textarea>
+                    </div>
+                </div>
+                <div class="profile_actions">
+                    <button class="standard_btn dark_btn" aria-label="cancel" onclick="NewNoteHidden()">Cancel</button>
+                    <button class="standard_btn primary_btn" aria-label="add">Add</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="modal_block modal_import">
-    <div class="modal_container">
-        <div class="modal_head">
-            <div class="modal_title">Import Work Order(s)</div>
-            <button class="close_btn icon_close" aria-label="close" onclick="importHidden()"></button>
-        </div>
-        <div class="modal_body">
-            <div class="info_block">
-                <div class="block_sub">Select your CSV file to import</div>
-                <a href="" class="import_link">(Please refer to this sample file to create your csv file to import.)</a>
-            </div>
-            <div class="add_btns">
-                <label class="standard_btn icon_upload">
-                    <input type="file" name="file_attach"/>
-                    Choose fail
-                </label>
-            </div>
-            <div class="field_row">
-                <div class="field_name">
-                    <label for="company_users">Use Template</label>
-                </div>
-                <div class="field_block">
-                    <select id="company_users" name="company_users">
-                        <option>Select</option>
-                        <option value="1">Value 1</option>
-                        <option value="2">Value 2</option>
-                        <option value="3">Value 3</option>
-                        <option value="4">Value 4</option>
-                        <option value="5">Value 5</option>
-                        <option value="6">Value 6</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="modal_footer">
-            <button class="standard_btn dark_btn" aria-label="send">Add</button>
-        </div>
-    </div>
-</div>
+
 <script src="js/main.js"></script>
 </body>
 </html>

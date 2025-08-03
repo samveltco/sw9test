@@ -1,20 +1,11 @@
 @media screen and (min-width: 1025px) and (max-width: 1280px) {
-  .card_item .card_main {
-    flex: 0 0 32.5%;
-    max-width: 32.5%;
-  }
-  .card_item .start_end {
-    flex: 0 0 17.5%;
-    max-width: 17.5%;
-  }
-  .card_item .price_info {
-    flex: 0 0 17.5%;
-    max-width: 17.5%;
-    margin-right: 0;
-  }
-  .card_item .assign_info {
-    flex: 0 0 27.5%;
-    max-width: 27.5%;
+  .check_list {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: 23px;
+    -moz-column-gap: 23px;
+    column-gap: 23px;
   }
 }
 

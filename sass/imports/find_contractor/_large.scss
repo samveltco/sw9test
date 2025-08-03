@@ -1,21 +1,6 @@
 @include mediaRange($size960, $size1280) {
-    .card_item {
-        .card_main {
-            flex: 0 0 32.5%;
-            max-width: 32.5%;
-        }
-        .start_end {
-            flex: 0 0 17.5%;
-            max-width: 17.5%;
-        }
-        .price_info {
-            flex: 0 0 17.5%;
-            max-width: 17.5%;
-            margin-right: 0;
-        }
-        .assign_info {
-            flex: 0 0 27.5%;
-            max-width: 27.5%;
-        }
+    .check_list {
+        @include colCount(3);
+        @include colGap(23px);
     }
 }

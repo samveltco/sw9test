@@ -117,6 +117,7 @@
 @include mediaRange($size576, $size960) {
     .card_item {
         .card_main,
+        .check_info,
         .assign_info {
             flex: 0 0 50%;
             max-width: 50%;
@@ -196,6 +197,7 @@
         .card_main,
         .assign_info,
         .start_end,
+        .check_info,
         .price_info {
             flex: 0 0 100%;
             max-width: 100%;

@@ -248,6 +248,10 @@
   content: "\e91d";
 }
 
+.icon_checkbox:before {
+  content: "\e91e";
+}
+
 .card_item .card_details, .header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;
