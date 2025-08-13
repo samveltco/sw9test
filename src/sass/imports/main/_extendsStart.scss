@@ -1,0 +1,174 @@
+%standardList {
+	@include standardList;
+}
+
+%standardRowList {
+	@include standardRowList;
+}
+
+%coverLayer {
+	@include coverLayer;
+}
+
+%fixedCover {
+	@include fixCoverLayer;
+}
+
+%verticalRotate {
+	@include transStyle(scaleX(-1));
+}
+
+%horizontalRotate {
+	@include transStyle(scaleY(-1));
+}
+
+%coverImage {
+	picture > img,
+	> img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+%coverAbsImage {
+	picture > img,
+	> img {
+		@extend %coverLayer;
+		display: block;
+		object-fit: cover;
+	}
+}
+
+%coverVideo {
+	iframe {
+		width: 100% !important;
+		height: 100% !important;
+		object-fit: cover;
+	}
+}
+
+%coverAbsVideo {
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100% !important;
+		height: 100% !important;
+		object-fit: cover;
+	}
+}
+
+%square {
+	aspect-ratio: 1 / 1;
+}
+
+%almostSquare {
+	aspect-ratio: 4 / 3;
+}
+
+%lessWide {
+	aspect-ratio: 16 / 10;
+}
+
+%standardWide {
+	aspect-ratio: 16 / 9;
+}
+
+%halfWide {
+	aspect-ratio: 2 / 1;
+}
+
+%superWide {
+	aspect-ratio: 4 / 1;
+}
+
+%standardNarrow {
+	aspect-ratio: 9 / 16
+}
+
+%lessNarrow {
+	aspect-ratio: 3 / 4;
+}
+
+%iconElement {
+	&:before,
+	&:after {
+		font-family: 'icon' !important;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+%noBlink {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+%centerBlock {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+%centerInlineBlock {
+	display: inline-flex;
+	vertical-align: top;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+%linkTypeBtn {
+	border: none;
+	padding: 0;
+	background: transparent;
+}
+
+%middleText {
+	font-size: 160%;
+	line-height: 19px;
+}
+
+%standardText {
+	font-size: 140%;
+	line-height: 20px;
+}
+
+%smallText {
+	font-size: 120%;
+	line-height: 15px;
+}
+
+%standardBtn {
+	border: none;
+	height: 40px;
+	@extend %standardText;
+	@extend %centerInlineBlock;
+	@include gridPadding;
+}
+
+%primaryBtn {
+	@extend %standardBtn;
+	background: $siteColor;
+	color: $textColor;
+	@include loading;
+}
+
+%secondaryBtn {
+	@extend %standardBtn;
+	outline: 1px solid $siteColor !important;
+	color: $siteColor;
+	background: transparent;
+	@include loading;
+}
+

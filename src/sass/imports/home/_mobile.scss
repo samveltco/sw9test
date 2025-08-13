@@ -1,0 +1,231 @@
+@include mediaTo($size960) {
+   .search_btn {
+        height: 36px;
+        min-width: 36px;
+   }
+
+    .switch_actions {
+        flex-wrap: wrap;
+        padding: 0;
+        border-radius: 0;
+        margin-top: 12px;
+        .actions_list {
+            border: none;
+            padding: 10px 0 10px 16px;
+            gap: 6px;
+        }
+        .check_block {
+            margin-left: auto;
+            padding: 22px 24px;
+            background: linear-gradient(270deg, #273142 0%, rgba(39, 49, 66, 0) 100%);
+
+        }
+    }
+    .switch_btns {
+        @include colSize(12);
+        justify-content: space-between;
+        padding: 19px 16px;
+        border-bottom: 2px solid $blue2;
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    .filter_paging {
+        margin-top: 8px;
+        gap: 20px;
+        padding: 0;
+    }
+    .sorting_block {
+        gap: 16px;
+    }
+    .sort_select,
+    .sort_type,
+    .filter_btn,
+    .reset_btn {
+        height: 36px;
+    }
+
+    .sort_label {
+        white-space: nowrap;
+    }
+
+    .filter_btn {
+        padding-left: 0;
+    }
+    .reset_btn {
+        @include fontSize(10);
+        &:before {
+            font-size: 0.8rem;
+        }
+    }
+    .filter_btn {
+        &:before {
+            font-size: 1rem;
+        }
+    }
+
+    .filter_inner {
+        padding: 20px 0;
+        max-width: 100vw;
+        &.opened {
+            width: 480px;
+        }
+        .filter_shadow {
+            right: 20px;
+        }
+        .actions_block {
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 480px;
+            max-width: 100vw;
+        }
+    }
+    .filter_head {
+        width: 480px;
+        padding: 0 20px 20px;
+        max-width: 100vw;
+    }
+
+    .filter_content {
+        width: 480px;
+        padding-left: 20px;
+        margin-right: 0;
+        max-width: 100vw;
+    }
+
+    .card_item {
+        .card_body {
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+    }
+}
+
+@include mediaRange($size768, $size960) {
+    .search_form {
+        flex: 1;
+        .field_block {
+            flex: 1;
+            max-width: 180px;
+        }
+    }
+    
+}
+
+@include mediaRange($size576, $size960) {
+    .card_item {
+        .card_main,
+        .check_info,
+        .assign_info {
+            flex: 0 0 50%;
+            max-width: 50%;
+            min-width: 300px;
+        }
+        .start_end,
+        .price_info {
+            flex: 0 0 40%;
+            max-width: 40%;
+            margin-right: 0;
+        }
+    }
+}
+
+@include mediaTo($size768) {
+    .search_actions {
+        flex-wrap: wrap;
+        .btns_block {
+            gap: 24px;
+            .standard_btn {
+                max-width: none;
+            }
+        }
+    }
+    .search_form {
+        @include colSize(12);
+        .field_block {
+            flex: 1;
+            max-width: none;
+        }
+    }
+
+    .switch_actions {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    .filter_paging {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 4px
+    }
+
+    .card_item {
+        margin-left: -20px;
+        margin-right: -20px;
+        border-radius: 0;
+    }
+    .cards_list .shadow_block {
+        left: 0;
+    }
+}
+
+@include mediaTo($size576) {
+    .filter_paging {
+        align-items: flex-start;
+    }
+    .sorting_block {
+        flex-direction: column;
+        gap: 0;
+        align-items: flex-start;
+    }
+    .card_item {
+        .card_body {
+            padding-top: 0;
+        }
+        .card_statuses {
+            position: relative;
+            flex: 1;
+            top: auto;
+            right: auto;
+        }
+        .check_block {
+            position: relative;
+            top: auto;
+            right: auto;
+        }
+        .card_main,
+        .assign_info,
+        .start_end,
+        .check_info,
+        .price_info {
+            flex: 0 0 100%;
+            max-width: 100%;
+            order: 2;
+        }
+        .card_details:first-child {
+            padding-top: 0;
+        }
+        .price_info {
+            text-align: right;
+        }
+        .card_actions {
+            gap: 6px;
+            @include colSize(12);
+            .primary_btn {
+                max-width: none;
+            }
+        }
+        .messages_location {
+            @include colSize(12);
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+            font-weight: 275;
+        }
+    }
+
+    .cards_list .shadow_block.top_shadow {
+        top: 64px;
+    }
+}

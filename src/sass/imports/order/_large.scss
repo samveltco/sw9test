@@ -1,0 +1,83 @@
+@include mediaRange($size1280, $size1440) {
+    .create_fields {
+        .combo_field {
+            gap: 24px;
+        }
+        .group_col {
+            padding: 20px;
+            &:first-child {
+                padding-left: 0;
+                flex: 0 0 46%;
+                max-width: 46%;
+            }
+            &:not(:first-child) {
+                max-width: 27%;
+                flex: 0 0 27%;
+            }
+            &.has_bg {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+        }
+        .fields_group:has(.field_col) {
+            margin-left: -20px;
+            margin-right: -20px;
+            .group_subtitle {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+        .fields_group:has(.field_col ~ .add_btns) .add_btns,
+        .field_col {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .add_btns {
+            gap: 32px;
+        }
+    }
+}
+
+@include mediaRange($size960, $size1280) {
+    .create_fields {
+        .combo_field {
+            display: block;
+            .check_btn {
+                margin-top: 10px;
+            }
+        }
+        .group_col {
+            padding: 20px;
+            &:first-child {
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+            }
+            &:not(:first-child) {
+                max-width: 33.33%;
+                flex: 0 0 33.33%;
+            }
+            &.has_bg {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+        .fields_group:has(.field_col) {
+            margin-left: -16px;
+            margin-right: -16px;
+            .group_subtitle {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+        .fields_group:has(.field_col ~ .add_btns) .add_btns,
+        .field_col {
+            padding-left: 16px;
+            padding-right: 16px;
+            @include colSize(4);
+        }
+        
+        .add_btns {
+            gap: 24px;
+        }
+    }
+}

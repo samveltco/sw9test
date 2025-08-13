@@ -1,0 +1,6 @@
+@include mediaRange($size960, $size1280) {
+    .check_list {
+        @include colCount(3);
+        @include colGap(23px);
+    }
+}

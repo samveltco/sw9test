@@ -1,0 +1,38 @@
+@media screen and (min-width: 1281px) {
+  .payment_section .payment_list {
+    margin: 40px -50px 0;
+  }
+  .payment_section .payment_list li {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 50px;
+  }
+  .tools_section .tools_list {
+    margin: 40px -50px 0;
+  }
+  .tools_section .tools_list li {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 50px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .payment_section .payment_list {
+    margin: 40px -20px 0;
+  }
+  .payment_section .payment_list li {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 20px;
+  }
+  .tools_section .tools_list {
+    margin: 40px -20px 0;
+  }
+  .tools_section .tools_list li {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 20px;
+  }
+}
+
+/*# sourceMappingURL=smallpages-l.css.map */

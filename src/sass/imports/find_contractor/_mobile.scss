@@ -1,0 +1,187 @@
+@include mediaTo($size960) {
+    body:has(.contractor_main) {
+        .popup_body{
+            .about_user,
+            .contractor_contacts li {
+                gap: 8px;
+            }
+        }
+    }
+    .search_btn {
+        height: 36px;
+        min-width: 36px;
+    }
+    .check_list {
+        @include colCount(2);
+        @include colGap(23px);
+    }
+
+    .card_item {
+        .card_body {
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-top: 50px;
+        }
+    }
+}
+
+@include mediaRange($size768, $size960) {
+    .search_form {
+        flex: 1;
+
+        .field_block {
+            flex: 1;
+            max-width: 220px;
+        }
+    }
+
+}
+
+@include mediaRange($size576, $size960) {
+    .card_item {
+        .card_main,
+        .check_info,
+        .assign_info {
+            flex: 0 0 50%;
+            max-width: 50%;
+            min-width: 300px;
+        }
+
+        .start_end,
+        .price_info {
+            flex: 0 0 40%;
+            max-width: 40%;
+            margin-right: 0;
+        }
+    }
+}
+
+@include mediaTo($size768) {
+    .search_actions {
+        flex-wrap: wrap;
+
+        .btns_block {
+            gap: 24px;
+
+            .standard_btn {
+                max-width: none;
+            }
+        }
+    }
+    .search_form {
+        @include colSize(12);
+        flex-wrap: wrap;
+        position: relative;
+
+        .search_btn {
+            position: absolute;
+            right: 0;
+            bottom: -7px;
+        }
+
+        .field_block {
+            flex: 1;
+            max-width: none;
+
+            &.range_block {
+                width: 100%;
+                flex: 100%;
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .card_item {
+        margin-left: -20px;
+        margin-right: -20px;
+        border-radius: 0;
+    }
+    .cards_list .shadow_block {
+        left: 0;
+    }
+}
+
+@include mediaTo($size576) {
+    .check_list {
+        @include colCount(1);
+        @include colGap(23px);
+    }
+    .card_details:first-child {
+        padding-top: 0;
+    }
+    .card_item {
+        .card_body {
+            padding-top: 0;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            text-align: center;
+            padding-bottom: 55px;
+        }
+
+        .card_statuses {
+            gap: 10px;
+            width: 100%;
+            justify-content: space-between;
+            left: 0;
+            right: 0;
+        }
+
+        .status_block {
+            padding: 10px 5px;
+        }
+
+        .img_card {
+            margin-top: 60px;
+            margin-right: 0;
+            margin-bottom: 10px;
+            width: unset;
+        }
+
+        .check_block {
+            position: relative;
+            top: auto;
+            right: auto;
+        }
+
+        .card_main,
+        .assign_info,
+        .check_info,
+        .start_end,
+        .price_info {
+            flex: 0 0 100%;
+            max-width: 100%;
+            order: 2;
+            border-bottom: 1px solid rgba($grayCf, 12%);
+            padding-bottom: 20px;
+            padding-right: 0;
+            text-align: left;
+        }
+
+
+        .price_info {
+            text-align: right;
+        }
+
+        .card_actions {
+            gap: 6px;
+            @include colSize(12);
+
+            .primary_btn {
+                max-width: none;
+            }
+        }
+
+        .messages_location {
+            @include colSize(12);
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+            font-weight: 275;
+        }
+    }
+
+    .cards_list .shadow_block.top_shadow {
+        top: 64px;
+    }
+}

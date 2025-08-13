@@ -1,0 +1,86 @@
+@include mediaTo($size960) {
+    .header {
+        .profile_btn {
+            gap: 20px;
+        }
+
+        .profile_inner {
+            padding: 20px 0;
+            max-width: 100vw;
+            &.opened {
+                width: 480px;
+                
+            }
+        }
+        .profile_head {
+            width: 480px;
+            padding: 0 20px 20px;
+            max-width: 100vw;
+        }
+
+        .profile_content {
+            width: 480px;
+            padding-left: 20px;
+            margin-right: 0;
+            max-width: 100vw;
+        }
+        .about_user,
+        .profile_contacts li {
+            gap: 8px;
+        }
+    }
+}
+
+@include mediaTo($size768) {
+    .header {
+        padding-left: 64px;
+    }
+    .sidebar {
+        width: 0;
+        &_inner,
+        &:before {
+            width: 0;
+        }
+        &_menu a,
+        &_menu button,
+        .logout_btn {
+            span {
+                opacity: 1;
+            }
+        }
+    }
+    .menu_btn {
+        &_block {
+            width: 64px;
+        }
+    }
+}
+
+@include mediaTo($size576) {
+    .sidebar {
+        &:before {
+            display: none;
+        }
+        &_inner {
+            background: $mainBg;
+        }
+        &.opened .sidebar_inner {
+            width: 100vw;
+        }
+    }
+    body:has(.sidebar.opened){
+        overflow: hidden;
+        background: $mainBg;
+    }
+
+    .header {
+        justify-content: space-between;
+        .welcome_block {
+            display: none;
+        }
+        &:before {
+            display: block;
+            content: "";
+        }
+    }
+}

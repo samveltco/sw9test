@@ -1,0 +1,464 @@
+.header {
+    z-index: 100;
+    position: sticky;
+    top: 0;
+    padding: 10px 20px;
+    background: $coverBg;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    .welcome_block {
+        flex: 1;
+        color: $white;
+
+        .user_name {
+            font-weight: 900;
+        }
+    }
+
+    .welcome_info {
+        @include fontSize(10);
+    }
+
+    .available_funds {
+        color: $secondColor;
+        @include fontSize(10);
+    }
+
+    .notif_btn {
+        padding: 5px 5px 0 0;
+        margin: 0;
+        text-align: left;
+        border: none;
+        background: transparent;
+        color: $green;
+        position: relative;
+        min-width: 29px;
+
+        &:before {
+            display: block;
+            font-size: 1.8rem;
+        }
+
+        &:after {
+            display: block;
+            content: "";
+            margin-top: 2px;
+            margin-left: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 2px;
+            background: $error;
+            opacity: 0.3;
+        }
+
+        .count_block {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: $white;
+            text-align: center;
+            background: $error;
+            font-weight: 700;
+            @include fontSize(12);
+            line-height: 16px;
+            min-width: 16px;
+            border-radius: 50%;
+            padding: 0 2px;
+        }
+    }
+
+    .profile_block {
+        &:before {
+            position: fixed;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            background: rgba($mainBg, 0.8);
+            @include animStyles(height 0s 0.5s, opacity 0.5s);
+            z-index: 99;
+        }
+
+        &:has(.profile_inner.opened) {
+            &:before {
+                height: 100%;
+                opacity: 1;
+                @include animStyles(height 0s 0s, opacity 0.5s);
+            }
+        }
+    }
+
+    .profile_btn {
+        @extend %linkTypeBtn;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        color: $lightTitle;
+        @extend %standardHover;
+        gap: 16px;
+        @include fontSize(12);
+
+        img {
+            flex: 0 0 44px;
+            max-width: 44px;
+            aspect-ratio: 1;
+            height: auto;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .user_name,
+        .user_type {
+            display: block;
+            max-width: 120px;
+            @include overHidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .profile_inner {
+        background: $coverBg;
+        border-radius: 20px 0 0 20px;
+        width: 0;
+        @include overHidden;
+        z-index: 100;
+        padding: 40px 0;
+        right: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        @include animStyle(width 0.5s);
+
+        &.opened {
+            width: 514px;
+        }
+    }
+
+    .profile_head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        width: 514px;
+        padding: 0 40px 24px;
+    }
+
+    .profile_title {
+        color: $light;
+        @include fontSize(20);
+        font-weight: 700;
+    }
+
+    .close_btn {
+        margin-top: 3px;
+    }
+
+    .profile_content {
+        flex: 1;
+        width: 494px;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-left: 40px;
+        padding-right: 20px;
+        margin-right: 20px;
+        @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
+
+        &:has(.new_note.showed) {
+            .standard_btn.light_btn.icon_plus {
+                pointer-events: none;
+                opacity: 12%;
+            }
+        }
+    }
+
+    .profile_main {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        padding-bottom: 20px;
+
+        .user_position {
+            color: $white;
+        }
+
+        .user_name {
+            color: $white;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .sign_info {
+            font-weight: 275;
+            @include fontSize(12);
+            margin-top: 2px;
+            opacity: 0.5;
+        }
+
+        .image_block {
+            flex: 0 0 84px;
+            max-width: 84px;
+            aspect-ratio: 1;
+            @extend %coverImage;
+
+            img {
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .profile_contacts {
+        @extend %standardList;
+        padding-bottom: 20px;
+
+        li {
+            display: flex;
+            gap: 16px;
+
+            &:not(:first-child) {
+                padding-top: 4px;
+            }
+        }
+    }
+
+    .profile_label {
+        flex: 0 0 100px;
+        max-width: 100px;
+        color: $white;
+        font-weight: 700;
+    }
+
+    .profile_info {
+        flex: 1;
+
+        a {
+            display: inline-block;
+            vertical-align: top;
+            color: $light;
+            text-decoration: underline;
+            max-width: 100%;
+            word-break: break-word;
+            @extend %lightHover;
+        }
+    }
+
+    .about_user {
+        display: flex;
+        gap: 16px;
+        padding-bottom: 20px;
+    }
+
+    .profile_actions {
+        padding-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+    }
+
+    .welcome_block {
+        flex: 1;
+    }
+}
+
+.welcome_block {
+    color: $white;
+
+    .user_name {
+        font-weight: 900;
+    }
+
+    .welcome_info {
+        @include fontSize(10);
+    }
+
+    .available_funds {
+        color: $secondColor;
+        @include fontSize(10);
+    }
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 85px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 98;
+
+    &_inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 10px;
+        z-index: 2;
+        width: 85px;
+        @include overHidden;
+        @include animStyle(all 0.5s);
+    }
+
+    &:before {
+        @include psevdoAbs;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        width: 85px;
+        background: $coverBg;
+        @include animStyle(all 0.5s);
+    }
+
+    &.opened {
+        .sidebar_inner {
+            width: 340px;
+            padding-right: 20px;
+        }
+
+        &:before {
+            width: 340px;
+            box-shadow: 4px 0px 8px rgba($black, 0.23);
+        }
+
+        .sidebar_menu a,
+        .sidebar_menu button,
+        .logout_btn {
+            span {
+                opacity: 1;
+                @include animDelay(0.2s);
+            }
+        }
+
+        .sidebar_menu {
+            overflow-y: auto;
+            @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
+        }
+    }
+
+    &_menu {
+        flex: 1;
+        padding: 4px 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+
+        a, button {
+            margin: 6px 0;
+        }
+    }
+
+    .logout_btn {
+        background: transparent;
+        border: none;
+    }
+
+    &_menu a,
+    &_button a,
+    .logout_btn {
+        color: inherit;
+        @extend %lightHover;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        max-height: 52px;
+        padding: 5px 20px;
+        width: 320px;
+        border: none;
+        background: transparent;
+        @include fontSize(20);
+
+        &:before {
+            display: block;
+            font-size: 2.4rem;
+            padding: 0 10px;
+        }
+
+        span {
+            display: block;
+            flex: 1;
+            font-weight: 700;
+            text-align: left;
+            opacity: 0;
+            @include animStyle(opacity 0.2s);
+        }
+
+        &.current {
+            color: $secondColor;
+            position: relative;
+            pointer-events: none;
+
+            &:after {
+                @include psevdoAbs;
+                left: 0;
+                top: 0;
+                border-left: 4px solid;
+                height: 100%;
+                border-radius: 1px;
+            }
+        }
+    }
+}
+
+.menu_btn {
+    @include zIndex(5);
+
+    &_block {
+        @extend %centerBlock;
+        min-height: 70px;
+    }
+
+    @extend %linkTypeBtn;
+    @extend %centerBlock;
+    color: inherit;
+    width: 48px;
+    height: 48px;
+    @extend %lightHover;
+
+    &:before {
+        display: block;
+        font-size: 2.4rem;
+    }
+}
+
+.form_account {
+    .profile_main {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .add_btns {
+        margin: 16px auto 0;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .type_block {
+        width: 100%;
+        text-align: center;
+        color: rgba($textColor, 50%);
+        font-size: 1.2rem;
+        font-weight: 275;
+        line-height: 15px;
+    }
+
+    .fields_group {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

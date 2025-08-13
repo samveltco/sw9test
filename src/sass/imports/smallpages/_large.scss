@@ -1,0 +1,43 @@
+@include mediaFrom($size1280) {
+    .payment_section .payment_list{
+        margin: 40px -50px 0;
+
+        li {
+            @include colSize(4);
+            padding: 0 50px;
+        }
+    }
+    .tools_section {
+        .tools_list {
+            margin: 40px -50px 0;
+
+            li {
+                @include colSize(4);
+                padding: 0 50px;
+            }
+        }
+    }
+}
+
+@include mediaRange($size960, $size1280) {
+
+    .payment_section .payment_list{
+        margin: 40px -20px 0;
+
+        li {
+            @include colSize(4);
+            padding: 0 20px;
+        }
+    }
+
+    .tools_section {
+        .tools_list {
+            margin: 40px -20px 0;
+
+            li {
+                @include colSize(4);
+                padding: 0 20px;
+            }
+        }
+    }
+}
