@@ -108,8 +108,8 @@
 								<div class="profile_info">We are a service project management company that handles networking, POS, and cabling work.</div>
 							</div>
 							<div class="profile_actions">
-								<button class="standard_btn light_btn icon_plus" aria-label="add new role" onclick="NewNoteShow()">Add new note</button>
-								<button class="standard_btn dark_btn icon_pencil" aria-label="edit" onclick="EditNoteShow()">Edit</button>
+								<button class="standard_btn light_btn" aria-label="add new role">Add new note</button>
+								<button class="standard_btn dark_btn" aria-label="edit" onclick="EditNoteShow()">Edit</button>
 							</div>
 							<div class="new_note">
 								<div class="field_col">
@@ -251,6 +251,15 @@
 							</div>
 							<div class="field_row">
 								<div class="field_name">
+									<label class="field_name" for="CurrentPassword">Current Password</label>
+								</div>
+								<div class="field_block">
+									<input type="text" name="CurrentPassword" id="CurrentPassword" maxlength="50" placeholder="Current Password"/>
+									<button aria-label="Show password" class="icon_show"></button>
+								</div>
+							</div>
+							<div class="field_row">
+								<div class="field_name">
 									<label class="field_name" for="NewPassword">New Password</label>
 								</div>
 								<div class="field_block">
@@ -342,9 +351,9 @@
 						<button class="search_btn icon_search" aria-label="search"></button>
 					</form>
 					<div class="btns_block">
-						<button class="standard_btn icon_plus curry_btn" aria-label="Create work order">Create work order</button>
+						<a href="create_work_order.html" class="standard_btn icon_plus curry_btn" aria-label="Create work order">Create work order</a>
 						<button class="standard_btn icon_import orange_btn" aria-label="Import work order(s)" onclick="importShow()">Import work order(s)</button>
-						<button class="standard_btn icon_export green_btn" aria-label="Export EXCEL">Export EXCEL</button>
+						<button class="standard_btn icon_export green_btn" aria-label="Export EXCEL" onclick="showPopup()">Export EXCEL</button>
 					</div>
 				</div>
 				<div class="switch_actions">
@@ -1135,6 +1144,366 @@
 				</div>
 			</div>
 		</div>
+		<div class="popup_block order_details">
+			<div class="popup_container">
+				<div class="popup_head">
+					<div class="popup_title icon_share">Work Order Details</div>
+					<button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>
+				</div>
+				<div class="popup_body">
+					<div class="line_blocks">
+						<div class="order_title">copy 1 - Service Call - POS Service Call <span class="order_status">Assigned</span></div>
+						<div class="order_state"><a href="">0 messages</a> Stillwater, Minnesota 55082</div>
+						<div class="by_order">Created By <span>Stephanie Bledsoe100%</span></div>
+						<ul class="order_list">
+							<li>
+								<span>WIN</span>
+								<span>1104497</span>
+							</li>
+							<li>
+								<span>Company WO ID</span>
+								<span>00169494</span>
+							</li>
+							<li>
+								<span>Created Date</span>
+								<span>4/29/2025</span>
+							</li>
+							<li>
+								<span>Start Date</span>
+								<span>11/6/2020</span>
+								<span>End Date</span>
+								<span>11/30/2020</span>
+							</li>
+							<li>
+								<span>Start Time</span>
+								<span>02:00PM</span>
+								<span>End Time</span>
+								<span>05:00PM</span>
+							</li>
+
+						</ul>
+						<ul class="type_list">
+							<li>
+								<a href="" class="block_type">Applicants</a>
+							</li>
+							<li>
+								<div class="block_type">Edit</div>
+							</li>
+							<li>
+								<button aria-label="Cancel" class="block_type">Cancel</button>
+							</li>
+							<li>
+								<div class="block_type">Copy</div>
+							</li>
+							<li>
+								<a href="" class="block_type">Create Template</a>
+							</li>
+							<li>
+								<button aria-label="Remove On Hold" class="block_type">Remove On Hold</button>
+							</li>
+						</ul>
+					</div>
+					<div class="detail_label">Offer Details</div>
+					<div class="line_blocks">
+						<div class="block_label">Base Pay</div>
+						<ul class="info_list">
+							<li>
+								<span>Amount</span>
+								<span>$50.00</span>
+								<span>Per</span>
+								<span>Site</span>
+							</li>
+							<li>
+								<span>Qty</span>
+								<span>2</span>
+							</li>
+							<li>
+								<span>Est. Pay</span>
+								<span>$50.00</span>
+								<span class="special">MIN</span>
+							</li>
+						</ul>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">How Pay is Divided</div>
+						<ul class="info_list">
+							<li>
+								<span>Soft Skills</span>
+								<span>30%</span>
+							</li>
+							<li>
+								<span>Work</span>
+								<span>35%</span>
+							</li>
+							<li>
+								<span>Deliverables</span>
+								<span>34%</span>
+							</li>
+						</ul>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Variable Pay (optional)</div>
+						<ul class="info_list">
+							<li>
+								<span>Amount</span>
+								<span>$0.00</span>
+							</li>
+							<li>
+								<span>After</span>
+								<span>2</span>
+							</li>
+							<li>
+								<span>Max Qty</span>
+								<span>0</span>
+							</li>
+						</ul>
+					</div>
+					<div class="detail_label">Location</div>
+					<div class="line_blocks">
+						<ul class="info_list">
+							<li>
+								<span>Site ID</span>
+								<span>262</span>
+							</li>
+							<li>
+								<span>Project</span>
+								<span>Service Calls</span>
+							</li>
+							<li>
+								<span>Site Name</span>
+								<span>Lux Beauty supply</span>
+							</li>
+							<li>
+								<span>Company</span>
+								<span>NSC</span>
+							</li>
+							<li>
+								<span>15207 63rd St NStillwater Minnesota 55082</span>
+							</li>
+						</ul>
+						<a href="" class="to_map">Google map</a>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Work Description</div>
+						<ul class="info_list">
+							<li><span>blah</span></li>
+						</ul>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Work Type</div>
+						<ul class="info_list">
+							<li><span>POS / Desktop / Laptop Toolbox</span></li>
+						</ul>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Tools Required</div>
+						<ul class="info_list">
+							<li><span>blah</span></li>
+						</ul>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Confidential</div>
+						<ul class="info_list">
+							<li><span>blah</span></li>
+						</ul>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Documents</div>
+						<div class="fields_group">
+							<div class="add_btns">
+								<label class="standard_btn icon_upload">
+									<input type="file" name="file_attach"/>
+									Drag and drop your fail here or click here to add file
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Check-in / Check-out Details</div>
+						<div class="time_block">
+							<ul class="info_list">
+								<li><span>Work order is On Hold</span></li>
+							</ul>
+							<div class="time_inner">
+								<a href="" class="block_type">Check In</a>
+								<div class="total_block">Total Hours <span>0.00</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Expenses</div>
+						<a href="" class="report_btn">Report An Issue</a>
+
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Upload Deliverables</div>
+						<div class="fields_group">
+							<div class="add_btns">
+								<label class="standard_btn icon_upload">
+									<input type="file" name="file_attach"/>
+									Download all documents
+								</label>
+							</div>
+							<div class="add_btns">
+								<label class="standard_btn icon_upload">
+									<input type="file" name="file_attach"/>
+									Upload file
+								</label>
+							</div>
+
+						</div>
+					</div>
+					<div class="line_blocks">
+						<div class="new_note">
+							<div class="field_col">
+								<label class="field_name" for="total_required">Add new note</label>
+								<div class="field_block">
+									<textarea name="total_required" id="total_required" maxlength="500" placeholder="Type here"></textarea>
+								</div>
+							</div>
+							<div class="profile_actions">
+								<button class="standard_btn dark_btn" aria-label="cancel" onclick="NewNoteHidden()">Cancel</button>
+								<button class="standard_btn primary_btn" aria-label="save and publish">Save &#38; Report An Issue</button>
+							</div>
+						</div>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Expenses</div>
+						<ul class="info_list">
+							<li>
+								<span>Issue Reported</span>
+								<span>asasas</span>
+							</li>
+						</ul>
+						<ul class="type_list">
+							<li>
+								<a href="" class="block_type">Mark issue as resolved</a>
+							</li>
+							<li>
+								<div class="block_type">Update description</div>
+							</li>
+							<li>
+								<button aria-label="Cancel" class="block_type">Report another issue</button>
+							</li>
+
+						</ul>
+
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Contact</div>
+						<div class="table_wrapper ">
+							<table class="custom_table">
+								<thead>
+								<tr>
+									<th class="Name">Name</th>
+									<th class="Role">Role</th>
+									<th class="Phone">Office Phone</th>
+									<th class="Mobile">Mobile</th>
+									<th class="Email">Email</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td data-th="Name" >Kelly Follis</td>
+									<td data-th="Role" >asdas</td>
+									<td data-th="Office Phone"><a href="tel:(651) 260-0938">(651) 260-0938</a></td>
+									<td data-th="Mobile"><a href="tel:(651) 260-0938">(651) 260-0938</a></td>
+									<td data-th="Email"><a href="mailto:silvergel@yahoo.com">silvergel@yahoo.com</a></td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="line_blocks">
+						<div class="deployment_section">
+							<div class="page_row">
+								<div class="right_col">
+									<div class="block_label">Might Deployment - 034330</div>
+									<div class="info_block">
+										3075 6th St SW
+										Loveland, Colorado 80537
+									</div>
+								</div>
+								<div class="left_col">
+									<div class="block_label">
+										Base Pay: $50.00 / Site
+										Variable Pay: $0.00 / Hour
+									</div>
+									<div class="info_block">
+										<span>Start Date <span>11/6/2020</span></span>
+										<span>End Date <span>11/30/2020</span></span>
+									</div>
+								</div>
+							</div>
+							<ul class="info_list">
+								<li>
+									<span>Phone</span>
+									<span>(402) 202-2996</span>
+								</li>
+								<li>
+									<span>Email</span>
+									<span>mightdeployment@gmail.com</span>
+								</li>
+							</ul>
+							<div class="card_statuses">
+								<span class="status_block icon_hammer">100%</span>
+								<span class="status_block icon_briefcase">100%</span>
+								<span class="status_block icon_file">98%</span>
+								<span class="status_block">99%</span>
+							</div>
+							<div class="profile_actions">
+								<button class="standard_btn dark_btn" aria-label="Un-assign" >Un-assign</button>
+								<button class="standard_btn light_btn" aria-label="Assigned">Assigned</button>
+							</div>
+						</div>
+					</div>
+					<div class="line_blocks">
+						<div class="block_label">Work Order History</div>
+						<div class="history_section">
+							<ul class="history_list">
+								<li>
+									<span>Create</span>
+									<span>5/14/2025, 12:34:50 AM <span>Stephanie Bledsoe</span> </span>
+								</li>
+								<li>
+									<span>Operation type</span>
+									<span>Edit</span>
+								</li>
+								<li>
+									<span>Work order status</span>
+									<span>Assigned</span>
+								</li>
+								<li>
+									<span>Description</span>
+									<span>Edit Work Order with status - assigned</span>
+								</li>
+							</ul>
+						</div>
+						<div class="history_section">
+							<ul class="history_list">
+								<li>
+									<span>Create</span>
+									<span>5/14/2025, 12:34:50 AM <span>Stephanie Bledsoe</span> </span>
+								</li>
+								<li>
+									<span>Operation type</span>
+									<span>Edit</span>
+								</li>
+								<li>
+									<span>Work order status</span>
+									<span>Assigned</span>
+								</li>
+								<li>
+									<span>Description</span>
+									<span>Edit Work Order with status - assigned</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<script src="js/main.js"></script>
 	</body>
 </html>

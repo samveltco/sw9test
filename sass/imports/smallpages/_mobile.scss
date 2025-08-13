@@ -33,6 +33,7 @@
 
 @include mediaTo($size768) {
     .management_section,
+    .recruits_section,
     .manage_teams_section,
     .payment_section,
     .manage_section,
@@ -40,6 +41,12 @@
         .head_section {
             flex-direction: column;
             align-items: baseline;
+        }
+
+        &.recruits_section {
+            .standard_btn {
+                margin-top: 0;
+            }
         }
 
         .standard_btn {
@@ -108,7 +115,7 @@
 
 
 @include mediaTo($size576) {
-    body:has(.manage_teams_section) .checkbox_list {
+    body:has(.manage_teams_section, .recruits_section) .checkbox_list {
         margin-top: 10px;
     }
     .popup_block:has(.status_day) .card_date {
@@ -121,6 +128,7 @@
     }
 
 
+    .recruits_section,
     .manage_teams_section,
     .management_section,
     .payment_section,

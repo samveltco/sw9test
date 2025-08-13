@@ -140,7 +140,7 @@
                     <a href="PM_tools.html" class="icon_file">
                         <span>PM Tools</span>
                     </a>
-                    <a href="manage_teams.html" class="icon_contact">
+                    <a href="manage_teams.html" class="icon_contact current">
                         <span>Manage Teams</span>
                     </a>
                     <a href="user_management.html" class="icon_chart">
@@ -152,7 +152,7 @@
                     <a href="payment_methode.html" class="icon_invoice">
                         <span>Payment Methods</span>
                     </a>
-                    <a href="templates.html" class="icon_lists current">
+                    <a href="templates.html" class="icon_lists">
                         <span>Templates</span>
                     </a>
                 </div>
@@ -170,64 +170,78 @@
             <div class="welcome_info">Welcome to The Valyant Group</div>
             <div class="available_funds">Funds Available: $1,268.22</div>
         </div>
-        <div class="manage_section template_table">
+        <div class="recruits_section">
             <div class="head_section">
-                <h1 class="page_title">Templates</h1>
-                <button class="standard_btn icon_plus green_btn" aria-label="Create work order">Add Templates</button>
+                <h1 class="page_title">Recruits</h1>
+                <div class="add_btns">
+                    <label class="standard_btn icon_upload" onclick="showModal()">Upload CSV</label>
+                </div>
             </div>
             <table class="custom_table">
                 <thead>
                 <tr>
-                    <th class="name">Template Name</th>
-                    <th class="type">Action</th>
+                    <th class="name">Name</th>
+                    <th class="Email">Email</th>
+                    <th class="Zip">Zip</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td data-th="Template Name">Gerald</td>
-                    <td data-th="Action">
-                        <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
-                            <a href="" class="icon_copy2">copy</a>
-                        </div>
-                    </td>
+                    <td data-th="Name">Gerald</td>
+                    <td data-th="Email">Referenc #</td>
+                    <td data-th="Zip">1234</td>
                 </tr>
                 <tr>
-                    <td data-th="Template Name">Manager</td>
-                    <td data-th="Action">
-                        <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
-                            <a href="" class="icon_copy2">copy</a>
-
-                        </div>
-                    </td>
+                    <td data-th="Name">Manager</td>
+                    <td data-th="Email">Referenc #</td>
+                    <td data-th="Zip">1234</td>
                 </tr>
                 <tr>
-                    <td data-th="Template Name">Tester2</td>
-                    <td data-th="Action">
-                        <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
-                            <a href="" class="icon_copy2">copy</a>
-
-                        </div>
-                    </td>
+                    <td data-th="Name">Tester2</td>
+                    <td data-th="Email">Referenc #</td>
+                    <td data-th="Zip">1234</td>
                 </tr>
                 <tr>
-                    <td data-th="Template Name">SW9</td>
-                    <td data-th="Action">
-                        <div class="row_block">
-                            <a href="" class="icon_pencil">edit</a>
-                            <a href="" class="icon_delete">close</a>
-                            <a href="" class="icon_copy2">copy</a>
-
-                        </div>
-                    </td>
+                    <td data-th="Name">SW9</td>
+                    <td data-th="Email">Referenc #</td>
+                    <td data-th="Zip">1234</td>
                 </tr>
                 </tbody>
             </table>
+            <div class="paging">
+                <ul>
+                    <li><a href="" class="prev_page icon_prev inactive">Prev</a></li>
+                    <li><a href="" class="current_page">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><span>...</span></li>
+                    <li><a href="">24</a></li>
+                    <li><a href="" class="next_page icon_next">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_block modal_import">
+    <div class="modal_container">
+        <div class="modal_head">
+            <div class="modal_title">Import Work Order(s)</div>
+            <button class="close_btn icon_close" aria-label="close" onclick="importHidden()"></button>
+        </div>
+        <div class="modal_body">
+            <div class="info_block">
+                <div class="block_sub">Select your CSV file to import</div>
+                <a href="" class="import_link">(Please refer to this sample file to create your csv file to import.)</a>
+            </div>
+            <div class="add_btns">
+                <label class="standard_btn icon_upload">
+                    <input type="file" name="file_attach"/>
+                    Choose fail
+                </label>
+            </div>
+        </div>
+        <div class="modal_footer">
+            <button class="standard_btn dark_btn" aria-label="send">Add</button>
         </div>
     </div>
 </div>

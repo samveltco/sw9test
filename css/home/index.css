@@ -252,7 +252,23 @@
   content: "\e91e";
 }
 
-.card_item .card_details, .header .profile_contacts, .paging ul {
+.icon_share:before {
+  content: "\e91f";
+}
+
+.icon_show:before {
+  content: "\e93a";
+}
+
+.icon_hide:before {
+  content: "\e93b";
+}
+
+.icon_overview:before {
+  content: "\e92a";
+}
+
+.order_details .previous_list, .order_details .history_section .history_list, .order_details .info_list, .order_details .order_list, .order_details .card_details, .order_details .contractor_head, .order_details .type_list, .order_details .popup_body .contractor_contacts, .card_item .card_details, .header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -420,7 +436,7 @@ body {
     padding-left: 85px;
   }
 }
-body:has(.profile_inner.opened), body:has(.filter_inner.opened), body:has(.modal_block.showed) {
+body:has(.popup_block.showed), body:has(.profile_inner.opened), body:has(.filter_inner.opened), body:has(.modal_block.showed) {
   overflow: hidden;
 }
 
@@ -724,6 +740,23 @@ button {
 .field_row .field_block textarea {
   height: 113px;
 }
+.field_row .field_block:has(.icon_hide, .icon_show) input {
+  padding-right: 40px;
+}
+.field_row .field_block .icon_hide,
+.field_row .field_block .icon_show {
+  background: none;
+  border: none;
+}
+.field_row .field_block .icon_hide:before,
+.field_row .field_block .icon_show:before {
+  position: absolute;
+  color: #B4D4DD;
+  right: 15px;
+  top: 13px;
+  font-size: 20px;
+  line-height: 15px;
+}
 .field_row:has(textarea) {
   align-items: flex-start;
 }
@@ -914,13 +947,18 @@ button {
 
 .lightest_btn,
 .curry_btn,
-.orange_btn,
-.green_btn {
+.orange_btn {
   color: rgba(25, 37, 47, 0.8);
 }
 .lightest_btn:before,
 .curry_btn:before,
-.orange_btn:before,
+.orange_btn:before {
+  color: #19252F;
+}
+
+.green_btn {
+  color: rgba(25, 37, 47, 0.8);
+}
 .green_btn:before {
   color: #19252F;
 }
@@ -1119,6 +1157,7 @@ button {
   font-size: 0;
   line-height: 0;
   padding: 0 10px;
+  display: inline-block;
 }
 .custom_table a:before,
 .custom_table .icon_delete:before,
@@ -1197,6 +1236,34 @@ button {
 .popup_block.showed {
   width: 514px;
 }
+.popup_block.showed:after {
+  height: 100%;
+  opacity: 1;
+  -o-transition: height 0s 0s, opacity 0.5s;
+  -ms-transition: height 0s 0s, opacity 0.5s;
+  -moz-transition: height 0s 0s, opacity 0.5s;
+  -webkit-transition: height 0s 0s, opacity 0.5s;
+  transition: height 0s 0s, opacity 0.5s;
+}
+.popup_block.showed .popup_container {
+  z-index: 1000;
+}
+.popup_block:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  background: rgba(25, 37, 47, 0.8);
+  -o-transition: height 0s 0.5s, opacity 0.5s;
+  -ms-transition: height 0s 0.5s, opacity 0.5s;
+  -moz-transition: height 0s 0.5s, opacity 0.5s;
+  -webkit-transition: height 0s 0.5s, opacity 0.5s;
+  transition: height 0s 0.5s, opacity 0.5s;
+  z-index: 101;
+}
 .popup_block .popup_head {
   display: flex;
   align-items: flex-start;
@@ -1214,7 +1281,7 @@ button {
 }
 .popup_block .popup_container {
   flex: 1;
-  width: 494px;
+  width: 500px;
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
@@ -2313,17 +2380,610 @@ button {
     font-size: 1.6rem;
   }
 }
+body:has(.card_option) .order_details .order_list ~ .green_btn,
+body:has(.card_option) .order_details .order_list ~ .dark_btn,
+body:has(.card_option) .order_details .order_list ~ .block_user {
+  margin-top: 25px;
+}
+
+.order_details .popup_title {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+.order_details .popup_title:before {
+  padding-left: 20px;
+}
+.order_details .popup_body .standard_btn, .order_details .popup_body .primary_btn {
+  width: max-content;
+  margin-left: auto;
+}
+.order_details .popup_body .standard_btn.block_user, .order_details .popup_body .block_user.primary_btn {
+  background: #800000;
+  color: #ffffff;
+}
+.order_details .popup_body .block_note {
+  margin-top: 24px;
+}
+.order_details .popup_body .block_note textarea {
+  height: 113px;
+}
+.order_details .popup_body .block_note .field_col {
+  color: #ffffff;
+  font-weight: 700;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.order_details .popup_body .block_label {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.order_details .popup_body .contractor_info {
+  flex: 1;
+}
+.order_details .popup_body .contractor_info a {
+  display: inline-block;
+  vertical-align: top;
+  color: #B4D4DD;
+  text-decoration: underline;
+  max-width: 100%;
+  word-break: break-word;
+}
+.order_details .popup_body .about_user {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+.order_details .popup_body .about_user .detail_label {
+  display: flex;
+  color: #B79A08;
+}
+.order_details .popup_body .about_user .detail_label:before {
+  margin-right: 5px;
+  margin-top: 2px;
+  font-size: 1.7rem;
+  line-height: 16px;
+}
+.order_details .popup_body .profile_actions {
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+.order_details .popup_body .profile_actions .standard_btn, .order_details .popup_body .profile_actions .primary_btn {
+  margin-left: 0;
+}
+.order_details .popup_body .card_details {
+  font-size: 100%;
+  line-height: 1.42em;
+  padding-top: 0;
+}
+.order_details .popup_body .contractor_contacts {
+  padding-bottom: 20px;
+}
+.order_details .popup_body .contractor_contacts li {
+  display: flex;
+  gap: 16px;
+}
+.order_details .popup_body .contractor_contacts li:not(:first-child) {
+  padding-top: 4px;
+}
+.order_details .note_inner {
+  display: flex;
+}
+.order_details .note_inner .contractor_info {
+  color: #CFCFCF;
+}
+.order_details .note_inner .contractor_info span {
+  margin-left: 15px;
+}
+.order_details .line_blocks {
+  border-bottom: 1px solid rgba(207, 207, 207, 0.12);
+  padding-bottom: 20px;
+  margin: 20px 0;
+}
+.order_details .line_blocks:first-child .type_list {
+  justify-content: unset;
+}
+.order_details .line_blocks .to_map {
+  background: #19252F;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: rgba(4, 132, 187, 0.8);
+  font-size: 100%;
+  line-height: 1.42em;
+  border: 1px solid rgba(207, 207, 207, 0.12);
+  width: 100%;
+  max-width: max-content;
+  display: flex;
+}
+.order_details .line_blocks:has(.report_btn) .block_label {
+  padding-right: 140px;
+}
+.order_details .line_blocks:has(.to_map) {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.order_details .line_blocks:has(table) {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.order_details .line_blocks:has(table)::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.order_details .line_blocks:has(table)::-webkit-scrollbar-track {
+  background: #19252F;
+  border-radius: 2px;
+}
+.order_details .line_blocks:has(table)::-webkit-scrollbar-thumb {
+  background: #23425A;
+  border-radius: 2px;
+}
+.order_details .line_blocks:has(table) table {
+  margin-bottom: 0;
+}
+.order_details .line_blocks:has(table) table td {
+  white-space: nowrap;
+}
+.order_details .line_blocks:has(table) a {
+  color: #CFCFCF;
+  font-size: 85.71%;
+  line-height: 1.66em;
+}
+.order_details .line_blocks:has(.time_block) .info_list span:first-child {
+  min-width: unset;
+  max-width: unset;
+}
+.order_details .line_blocks:has(.time_block) .block_label {
+  padding-right: 140px;
+}
+.order_details .line_blocks:has(.time_block) .time_inner {
+  margin-top: -30px;
+}
+.order_details .line_blocks:has(.add_btns:nth-of-type(2)) .fields_group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 30px;
+}
+.order_details .new_note {
+  opacity: 1;
+  overflow: unset;
+}
+.order_details .new_note .dark_btn {
+  color: rgba(207, 207, 207, 0.8);
+}
+.order_details .time_block {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.order_details .time_block .block_type {
+  background: #19252F;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: rgba(4, 132, 187, 0.8);
+  font-size: 100%;
+  line-height: 1.42em;
+  border: 1px solid rgba(207, 207, 207, 0.12);
+  width: 100%;
+  max-width: max-content;
+  display: flex;
+  margin-bottom: 5px;
+  background: transparent;
+}
+.order_details .time_block .total_block {
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  font-weight: 275;
+  display: flex;
+  justify-content: space-between;
+}
+.order_details .time_block .total_block span {
+  margin-left: 5px;
+}
+.order_details .projects_list {
+  padding: 0 0 0 30px;
+  margin: 20px 0;
+}
+.order_details .projects_list li {
+  margin-bottom: 15px;
+}
+.order_details .type_list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px -10px 0;
+  justify-content: flex-end;
+}
+.order_details .type_list li {
+  padding: 0 10px;
+  margin-bottom: 8px;
+}
+.order_details .type_list .block_type {
+  background: #19252F;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: rgba(4, 132, 187, 0.8);
+  font-size: 100%;
+  line-height: 1.42em;
+  border: 1px solid rgba(207, 207, 207, 0.12);
+  width: 100%;
+  max-width: max-content;
+  display: flex;
+  background: transparent;
+}
+.order_details .contractor_head li {
+  margin-bottom: 4px;
+  display: flex;
+}
+.order_details .contractor_head li span:first-child {
+  flex: 0 0 100px;
+  max-width: 100px;
+}
+.order_details .contractor_head li span:last-child {
+  font-weight: 400;
+  color: #0484BB;
+}
+.order_details .card_details {
+  font-size: 85.71%;
+}
+.order_details .card_details li {
+  padding-top: 4px;
+  word-break: break-word;
+}
+.order_details .card_details:first-child {
+  padding-top: 21px;
+}
+.order_details .order_title {
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.order_details .order_status {
+  color: #06BA98;
+  padding-left: 10px;
+  font-weight: 700;
+}
+.order_details .order_state {
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  font-weight: 275;
+  margin-bottom: 8px;
+}
+.order_details .order_state a,
+.order_details .order_state button {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.order_details .order_state a,
+.order_details .order_state > div,
+.order_details .order_state span {
+  margin-right: 8px;
+  color: #0484BB;
+  text-decoration: underline;
+}
+.order_details .by_order {
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  font-weight: 275;
+  margin-bottom: 24px;
+}
+.order_details .by_order > div,
+.order_details .by_order span {
+  margin-left: 16px;
+}
+.order_details .order_list {
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  font-weight: 275;
+}
+.order_details .order_list .special {
+  font-weight: 700;
+  color: #800000;
+}
+.order_details .order_list li {
+  display: flex;
+  margin: 0 -10px 8px;
+}
+.order_details .order_list li:first-child {
+  font-size: 100%;
+  line-height: 1.64em;
+  color: #ffffff;
+  font-weight: 700;
+}
+.order_details .order_list li:first-child span:last-child {
+  color: #CFCFCF;
+}
+.order_details .order_list li span,
+.order_details .order_list li div,
+.order_details .order_list li a,
+.order_details .order_list li button,
+.order_details .order_list li > div {
+  min-width: 100px;
+  padding: 0 10px;
+}
+.order_details .detail_label {
+  color: #B4D4DD;
+  font-weight: 700;
+}
+.order_details .info_list {
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  font-weight: 275;
+}
+.order_details .info_list .special {
+  font-weight: 700;
+  color: #800000;
+}
+.order_details .info_list li {
+  margin: 0 -10px 8px;
+  display: flex;
+}
+.order_details .info_list span,
+.order_details .info_list div,
+.order_details .info_list a,
+.order_details .info_list button,
+.order_details .info_list > div {
+  min-width: 80px;
+  padding: 0 10px;
+  line-break: anywhere;
+}
+.order_details .info_list span:first-child,
+.order_details .info_list div:first-child,
+.order_details .info_list a:first-child,
+.order_details .info_list button:first-child,
+.order_details .info_list > div:first-child {
+  max-width: 110px;
+  min-width: 100px;
+  line-break: anywhere;
+}
+.order_details .deployment_section {
+  background: #23425A;
+  padding: 16px;
+}
+.order_details .deployment_section .page_row {
+  margin-bottom: 16px;
+}
+.order_details .deployment_section .left_col,
+.order_details .deployment_section .right_col {
+  padding: 0 12px;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.order_details .deployment_section .info_block {
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  font-weight: 275;
+  line-break: anywhere;
+}
+.order_details .deployment_section .info_block > span {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 7px;
+}
+.order_details .deployment_section .info_block > span span {
+  padding-left: 10px;
+}
+.order_details .deployment_section .left_col .block_label {
+  color: #0484BB;
+  text-align: end;
+}
+.order_details .history_section {
+  background: rgba(35, 66, 90, 0.3);
+  padding: 8px 16px;
+  margin-bottom: 8px;
+}
+.order_details .history_section .history_list {
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  font-weight: 400;
+}
+.order_details .history_section .history_list .special {
+  font-weight: 700;
+  color: #800000;
+}
+.order_details .history_section .history_list li {
+  margin: 0 0 8px;
+  display: flex;
+}
+.order_details .history_section .history_list span,
+.order_details .history_section .history_list div,
+.order_details .history_section .history_list a,
+.order_details .history_section .history_list button,
+.order_details .history_section .history_list > div {
+  min-width: 80px;
+  line-break: anywhere;
+  display: flex;
+  flex-direction: column;
+}
+.order_details .history_section .history_list span:first-child,
+.order_details .history_section .history_list div:first-child,
+.order_details .history_section .history_list a:first-child,
+.order_details .history_section .history_list button:first-child,
+.order_details .history_section .history_list > div:first-child {
+  max-width: 150px;
+  width: 100%;
+  padding-right: 10px;
+  min-width: 110px;
+  font-weight: 700;
+  line-break: anywhere;
+}
+.order_details .card_statuses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 15px;
+  margin-right: 0;
+}
+.order_details .status_block {
+  font-size: 85.71%;
+  line-height: 1.25em;
+  font-weight: 275;
+  color: #CFCFCF;
+  border-radius: 12px;
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.order_details .status_block:last-child {
+  color: #B4D4DD;
+}
+.order_details .status_block:last-child:after {
+  content: "|";
+  position: absolute;
+  left: -10px;
+  color: #B4D4DD;
+}
+.order_details .status_block:before {
+  font-size: 2.4rem;
+  margin-right: 8px;
+  color: #B4D4DD;
+}
+.order_details .client_title {
+  color: #0484BB;
+}
+.order_details .report_btn {
+  background: #19252F;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: rgba(4, 132, 187, 0.8);
+  font-size: 100%;
+  line-height: 1.42em;
+  border: 1px solid rgba(207, 207, 207, 0.12);
+  width: 100%;
+  max-width: max-content;
+  display: flex;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-top: -35px;
+}
+.order_details .previous_list li {
+  border-top: 1px solid rgba(207, 207, 207, 0.12);
+  padding: 8px 0;
+}
+.order_details .previous_list li:last-child {
+  border-bottom: 0;
+}
+.order_details .previous_list li.cancel_block .phone_block,
+.order_details .previous_list li.cancel_block .total_block,
+.order_details .previous_list li.cancel_block .user_block {
+  color: #800000;
+}
+.order_details .previous_list .standard_btn, .order_details .previous_list .primary_btn {
+  background: #06BA98;
+}
+.order_details .previous_list .standard_btn.block_user, .order_details .previous_list .block_user.primary_btn {
+  background: #800000;
+  color: #ffffff;
+}
+.order_details .top_block {
+  display: flex;
+  justify-content: space-between;
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  gap: 15px;
+}
+.order_details .top_block .user_block {
+  display: flex;
+  flex-direction: column;
+}
+.order_details .top_block .email_block {
+  color: #B4D4DD;
+  display: initial;
+  width: 100%;
+  max-width: max-content;
+}
+.order_details .top_block .phone_block {
+  color: #ffffff;
+  display: initial;
+  width: 100%;
+  max-width: max-content;
+}
+.order_details .bottom_block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 85.71%;
+  line-height: 1.66em;
+  color: #CFCFCF;
+  gap: 15px;
+}
+.order_details .validation_btn {
+  background: #19252F;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: rgba(4, 132, 187, 0.8);
+  font-size: 100%;
+  line-height: 1.42em;
+  border: 1px solid rgba(207, 207, 207, 0.12);
+  width: 100%;
+  max-width: max-content;
+  display: flex;
+  background: transparent;
+  margin-left: auto;
+  margin-top: 20px;
+}
+.order_details .line_blocks:has(.filter_fields, .validation_btn) .block_label {
+  margin-bottom: 20px;
+}
+.order_details .line_blocks:has(.filter_fields, .validation_btn) .standard_btn.light_btn, .order_details .line_blocks:has(.filter_fields, .validation_btn) .light_btn.primary_btn {
+  margin-top: 20px;
+}
+.order_details .line_blocks:has(.filter_fields, .validation_btn) .info_list {
+  margin-bottom: 25px;
+}
+
+.card_option {
+  border: 1px solid #ffffff;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  display: flex;
+  width: 100%;
+  max-width: max-content;
+}
+
+.green_btn.icon_checkbox:before {
+  font-size: 1.7rem;
+}
+
+.green_btn, .order_details .order_state a,
+.order_details .order_state button, .order_details .previous_list .standard_btn.block_user, .order_details .previous_list .block_user.primary_btn {
+  -o-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
 .paging a.prev_page, .paging a.next_page, .paging button.prev_page, .paging button.next_page, .header .profile_btn, .field_block .step_btns span, .close_btn, .light_btn,
 .dark_btn, .paging a, .paging button, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
 .sidebar .logout_btn, .menu_btn, .search_btn, .switch_actions .actions_list button, .switch_btns button, .sort_type, .filter_btn,
 .reset_btn, .card_item a.message_count,
-.card_item button.message_count, .lightest_btn,
+.card_item button.message_count, .order_details .popup_body .contractor_info a, .lightest_btn,
 .curry_btn,
-.orange_btn,
-.green_btn, .check_btn, .modal_import .import_link, .custom_table a:before,
+.orange_btn, .check_btn, .modal_import .import_link, .custom_table a:before,
 .custom_table .icon_delete:before,
 .custom_table .icon_pencil:before,
-.custom_table .icon_close:before {
+.custom_table .icon_close:before, .order_details .line_blocks a,
+.order_details .line_blocks button, .order_details .line_blocks:has(table) a, .order_details .type_list a,
+.order_details .type_list button {
   -o-transition: color 0.3s;
   -ms-transition: color 0.3s;
   -moz-transition: color 0.3s;
@@ -2331,7 +2991,7 @@ button {
   transition: color 0.3s;
 }
 
-.primary_btn, .error_hint, .add_btns .standard_btn, .add_btns .primary_btn {
+.error_hint, .primary_btn, .add_btns .standard_btn, .add_btns .primary_btn {
   -o-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -2360,14 +3020,20 @@ button {
 .check_btn:active, .modal_import .import_link:active, .custom_table a:active:before,
 .custom_table .icon_delete:active:before,
 .custom_table .icon_pencil:active:before,
-.custom_table .icon_close:active:before {
+.custom_table .icon_close:active:before, .order_details .line_blocks a:active,
+.order_details .line_blocks button:active, .order_details .type_list a:active,
+.order_details .type_list button:active {
   color: #085C7D;
+}
+
+.green_btn:active, .order_details .order_state a:active,
+.order_details .order_state button:active, .order_details .previous_list .standard_btn.block_user:active, .order_details .previous_list .block_user.primary_btn:active {
+  opacity: 0.7;
 }
 
 .lightest_btn:active,
 .curry_btn:active,
-.orange_btn:active,
-.green_btn:active {
+.orange_btn:active {
   color: #000000;
 }
 
@@ -2375,7 +3041,7 @@ button {
 .dark_btn:active, .paging a:active, .paging button:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
 .sidebar .logout_btn:active, .menu_btn:active, .search_btn:active, .switch_actions .actions_list button:active, .switch_btns button:active, .sort_type:active, .filter_btn:active,
 .reset_btn:active, .card_item a.message_count:active,
-.card_item button.message_count:active {
+.card_item button.message_count:active, .order_details .popup_body .contractor_info a:active {
   color: #ffffff;
 }
 
@@ -2392,28 +3058,33 @@ button {
   .check_btn:hover, .modal_import .import_link:hover, .custom_table a:hover:before,
   .custom_table .icon_delete:hover:before,
   .custom_table .icon_pencil:hover:before,
-  .custom_table .icon_close:hover:before {
+  .custom_table .icon_close:hover:before, .order_details .line_blocks a:hover,
+  .order_details .line_blocks button:hover, .order_details .type_list a:hover,
+  .order_details .type_list button:hover {
     color: #085C7D;
+  }
+  .green_btn:hover, .order_details .order_state a:hover,
+  .order_details .order_state button:hover, .order_details .previous_list .standard_btn.block_user:hover, .order_details .previous_list .block_user.primary_btn:hover {
+    opacity: 0.7;
   }
   .lightest_btn:hover,
   .curry_btn:hover,
-  .orange_btn:hover,
-  .green_btn:hover {
+  .orange_btn:hover {
     color: #000000;
   }
   .field_block .step_btns span:hover, .close_btn:hover, .light_btn:hover,
   .dark_btn:hover, .paging a:hover, .paging button:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
   .sidebar .logout_btn:hover, .menu_btn:hover, .search_btn:hover, .switch_actions .actions_list button:hover, .switch_btns button:hover, .sort_type:hover, .filter_btn:hover,
   .reset_btn:hover, .card_item a.message_count:hover,
-  .card_item button.message_count:hover {
-    color: #ffffff;
+  .card_item button.message_count:hover, .order_details .popup_body .contractor_info a:hover {
+    color: #ffffff !important;
   }
   .paging a.prev_page:hover, .paging a.next_page:hover, .paging button.prev_page:hover, .paging button.next_page:hover, .header .profile_btn:hover {
     color: #0484BB;
   }
   .primary_btn:hover {
     background: #0484BB;
-    color: #ffffff;
+    color: #ffffff !important;
   }
 }
 

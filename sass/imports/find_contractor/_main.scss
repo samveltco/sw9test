@@ -500,7 +500,10 @@ body:has(.popup_block  .contractor_main) {
                 display: flex;
 
                 &:before {
-                    margin-right: 8px;
+                    margin-right: 5px;
+                    margin-top: 2px;
+                    font-size: 1.7rem;
+                    line-height: 16px;
                 }
 
                 color: $B2;
@@ -581,13 +584,17 @@ body:has(.popup_block  .contractor_main) {
 
         li {
             padding: 0 15px;
-            margin-bottom: 15px;
+            margin-bottom: 13px;
         }
 
         .block_type {
             background: $mainBg;
             border-radius: 20px;
             padding: 10px 20px;
+            border: none;
+            width: 100%;
+            max-width: max-content;
+            display: flex;
             color: rgba($blue04, 80%);
             @include fontSizeHeight(14, 20);
 

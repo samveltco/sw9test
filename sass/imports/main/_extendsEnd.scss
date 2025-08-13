@@ -302,7 +302,7 @@
 
     %lightHover {
         &:hover {
-            color: $white;
+            color: $white !important;
         }
     }
 
@@ -315,7 +315,7 @@
     %standardBgHover {
         &:hover {
             background: $secondColor;
-            color: $white;
+            color: $white  !important;
         }
     }
 

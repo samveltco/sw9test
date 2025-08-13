@@ -7,6 +7,7 @@
 .management_section,
 .payment_section,
 .manage_teams_section,
+.recruits_section,
 .manage_section,
 .preferred_section {
     max-width: 882px;
@@ -171,6 +172,16 @@
         }
     }
 
+    &.recruits_section{
+        .standard_btn{
+            cursor: pointer;
+        }
+        .paging{
+            padding-top: 30px;
+        }
+    }
+
+
 
     .all_price {
         font-weight: 700;
@@ -312,7 +323,7 @@
     }
 }
 
-body:has(.manage_teams_section) {
+body:has(.manage_teams_section .recruits_section) {
     .popup_block .field_row:has(.checkbox_list) {
         flex-direction: column;
 

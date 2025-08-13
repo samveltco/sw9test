@@ -275,8 +275,32 @@
     gap: 12px;
     font-weight: 275;
   }
+  .order_details .line_blocks:has(.to_map) {
+    flex-direction: column;
+  }
+  .order_details .line_blocks .to_map {
+    margin-top: 10px;
+  }
   .cards_list .shadow_block.top_shadow {
     top: 64px;
+  }
+  .order_details .deployment_section .left_col, .order_details .deployment_section .right_col {
+    padding: 0 5px;
+  }
+  .order_details .order_list li span, .order_details .order_list li div, .order_details .order_list li a, .order_details .order_list li button, .order_details .order_list li > div {
+    min-width: 50px;
+  }
+  .order_details .top_block {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 400px) {
+  .order_details .popup_body .profile_actions {
+    flex-direction: column;
+  }
+  .order_details .popup_body .profile_actions .standard_btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 

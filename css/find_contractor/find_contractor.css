@@ -252,6 +252,22 @@
   content: "\e91e";
 }
 
+.icon_share:before {
+  content: "\e91f";
+}
+
+.icon_show:before {
+  content: "\e93a";
+}
+
+.icon_hide:before {
+  content: "\e93b";
+}
+
+.icon_overview:before {
+  content: "\e92a";
+}
+
 body:has(.popup_block .contractor_main) .contractor_head, body:has(.popup_block .contractor_main) .type_list, body:has(.popup_block .contractor_main) .popup_body .contractor_contacts, .card_details, .check_list, .header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;
@@ -414,7 +430,7 @@ body {
     padding-left: 85px;
   }
 }
-body:has(.profile_inner.opened), body:has(.filter_inner.opened), body:has(.modal_block.showed) {
+body:has(.popup_block.showed), body:has(.profile_inner.opened), body:has(.filter_inner.opened), body:has(.modal_block.showed) {
   overflow: hidden;
 }
 
@@ -718,6 +734,23 @@ button {
 .field_row .field_block textarea {
   height: 113px;
 }
+.field_row .field_block:has(.icon_hide, .icon_show) input {
+  padding-right: 40px;
+}
+.field_row .field_block .icon_hide,
+.field_row .field_block .icon_show {
+  background: none;
+  border: none;
+}
+.field_row .field_block .icon_hide:before,
+.field_row .field_block .icon_show:before {
+  position: absolute;
+  color: #B4D4DD;
+  right: 15px;
+  top: 13px;
+  font-size: 20px;
+  line-height: 15px;
+}
 .field_row:has(textarea) {
   align-items: flex-start;
 }
@@ -908,13 +941,18 @@ button {
 
 .lightest_btn,
 .curry_btn,
-.orange_btn,
-.green_btn {
+.orange_btn {
   color: rgba(25, 37, 47, 0.8);
 }
 .lightest_btn:before,
 .curry_btn:before,
-.orange_btn:before,
+.orange_btn:before {
+  color: #19252F;
+}
+
+.green_btn {
+  color: rgba(25, 37, 47, 0.8);
+}
 .green_btn:before {
   color: #19252F;
 }
@@ -1113,6 +1151,7 @@ button {
   font-size: 0;
   line-height: 0;
   padding: 0 10px;
+  display: inline-block;
 }
 .custom_table a:before,
 .custom_table .icon_delete:before,
@@ -1191,6 +1230,34 @@ button {
 .popup_block.showed {
   width: 514px;
 }
+.popup_block.showed:after {
+  height: 100%;
+  opacity: 1;
+  -o-transition: height 0s 0s, opacity 0.5s;
+  -ms-transition: height 0s 0s, opacity 0.5s;
+  -moz-transition: height 0s 0s, opacity 0.5s;
+  -webkit-transition: height 0s 0s, opacity 0.5s;
+  transition: height 0s 0s, opacity 0.5s;
+}
+.popup_block.showed .popup_container {
+  z-index: 1000;
+}
+.popup_block:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  background: rgba(25, 37, 47, 0.8);
+  -o-transition: height 0s 0.5s, opacity 0.5s;
+  -ms-transition: height 0s 0.5s, opacity 0.5s;
+  -moz-transition: height 0s 0.5s, opacity 0.5s;
+  -webkit-transition: height 0s 0.5s, opacity 0.5s;
+  transition: height 0s 0.5s, opacity 0.5s;
+  z-index: 101;
+}
 .popup_block .popup_head {
   display: flex;
   align-items: flex-start;
@@ -1208,7 +1275,7 @@ button {
 }
 .popup_block .popup_container {
   flex: 1;
-  width: 494px;
+  width: 500px;
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
@@ -2197,7 +2264,10 @@ body:has(.popup_block .contractor_main) .popup_body .about_user .detail_label {
   color: #B79A08;
 }
 body:has(.popup_block .contractor_main) .popup_body .about_user .detail_label:before {
-  margin-right: 8px;
+  margin-right: 5px;
+  margin-top: 2px;
+  font-size: 1.7rem;
+  line-height: 16px;
 }
 body:has(.popup_block .contractor_main) .popup_body .profile_actions {
   padding-top: 20px;
@@ -2255,12 +2325,16 @@ body:has(.popup_block .contractor_main) .type_list {
 }
 body:has(.popup_block .contractor_main) .type_list li {
   padding: 0 15px;
-  margin-bottom: 15px;
+  margin-bottom: 13px;
 }
 body:has(.popup_block .contractor_main) .type_list .block_type {
   background: #19252F;
   border-radius: 20px;
   padding: 10px 20px;
+  border: none;
+  width: 100%;
+  max-width: max-content;
+  display: flex;
   color: rgba(4, 132, 187, 0.8);
   font-size: 100%;
   line-height: 1.42em;
@@ -2322,7 +2396,7 @@ body:has(.popup_block .contractor_main) .contractor_head li span:last-child {
     font-size: 1.6rem;
   }
 }
-.card_item .card_body .dark_btn {
+.green_btn, .card_item .card_body .dark_btn {
   -o-transition: opacity 0.3s;
   -ms-transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
@@ -2335,8 +2409,7 @@ body:has(.popup_block .contractor_main) .contractor_head li span:last-child {
 .sidebar .logout_btn, .menu_btn, .search_btn, .card_item a.message_count,
 .card_item button.message_count, body:has(.popup_block .contractor_main) .popup_body .contractor_info a, .lightest_btn,
 .curry_btn,
-.orange_btn,
-.green_btn, .check_btn, .modal_import .import_link, .custom_table a:before,
+.orange_btn, .check_btn, .modal_import .import_link, .custom_table a:before,
 .custom_table .icon_delete:before,
 .custom_table .icon_pencil:before,
 .custom_table .icon_close:before {
@@ -2347,7 +2420,7 @@ body:has(.popup_block .contractor_main) .contractor_head li span:last-child {
   transition: color 0.3s;
 }
 
-.primary_btn, .error_hint, .add_btns .standard_btn, .add_btns .primary_btn {
+.error_hint, .primary_btn, .add_btns .standard_btn, .add_btns .primary_btn {
   -o-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -2380,14 +2453,13 @@ body:has(.popup_block .contractor_main) .contractor_head li span:last-child {
   color: #085C7D;
 }
 
-.card_item .card_body .dark_btn:active {
+.green_btn:active, .card_item .card_body .dark_btn:active {
   opacity: 0.7;
 }
 
 .lightest_btn:active,
 .curry_btn:active,
-.orange_btn:active,
-.green_btn:active {
+.orange_btn:active {
   color: #000000;
 }
 
@@ -2414,27 +2486,26 @@ body:has(.popup_block .contractor_main) .contractor_head li span:last-child {
   .custom_table .icon_close:hover:before {
     color: #085C7D;
   }
-  .card_item .card_body .dark_btn:hover {
+  .green_btn:hover, .card_item .card_body .dark_btn:hover {
     opacity: 0.7;
   }
   .lightest_btn:hover,
   .curry_btn:hover,
-  .orange_btn:hover,
-  .green_btn:hover {
+  .orange_btn:hover {
     color: #000000;
   }
   .field_block .step_btns span:hover, .close_btn:hover, .light_btn:hover,
   .dark_btn:hover, .paging a:hover, .paging button:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
   .sidebar .logout_btn:hover, .menu_btn:hover, .search_btn:hover, .card_item a.message_count:hover,
   .card_item button.message_count:hover, body:has(.popup_block .contractor_main) .popup_body .contractor_info a:hover {
-    color: #ffffff;
+    color: #ffffff !important;
   }
   .paging a.prev_page:hover, .paging a.next_page:hover, .paging button.prev_page:hover, .paging button.next_page:hover, .header .profile_btn:hover {
     color: #0484BB;
   }
   .primary_btn:hover {
     background: #0484BB;
-    color: #ffffff;
+    color: #ffffff !important;
   }
 }
 

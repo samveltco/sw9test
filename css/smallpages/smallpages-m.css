@@ -94,6 +94,7 @@
 }
 @media screen and (max-width: 768px) {
   .management_section .head_section,
+  .recruits_section .head_section,
   .manage_teams_section .head_section,
   .payment_section .head_section,
   .manage_section .head_section,
@@ -101,7 +102,16 @@
     flex-direction: column;
     align-items: baseline;
   }
+  .management_section.recruits_section .standard_btn,
+  .recruits_section.recruits_section .standard_btn,
+  .manage_teams_section.recruits_section .standard_btn,
+  .payment_section.recruits_section .standard_btn,
+  .manage_section.recruits_section .standard_btn,
+  .preferred_section.recruits_section .standard_btn {
+    margin-top: 0;
+  }
   .management_section .standard_btn,
+  .recruits_section .standard_btn,
   .manage_teams_section .standard_btn,
   .payment_section .standard_btn,
   .manage_section .standard_btn,
@@ -109,6 +119,7 @@
     margin-top: 20px;
   }
   .management_section .paging,
+  .recruits_section .paging,
   .manage_teams_section .paging,
   .payment_section .paging,
   .manage_section .paging,
@@ -159,7 +170,7 @@
   }
 }
 @media screen and (max-width: 575px) {
-  body:has(.manage_teams_section) .checkbox_list {
+  body:has(.manage_teams_section, .recruits_section) .checkbox_list {
     margin-top: 10px;
   }
   .popup_block:has(.status_day) .card_date {
@@ -168,6 +179,8 @@
   .manage_section.manage_section.template_table .custom_table .row_block {
     margin: 0;
   }
+  .recruits_section .custom_table thead th:last-child,
+  .recruits_section .custom_table tbody td:last-child,
   .manage_teams_section .custom_table thead th:last-child,
   .manage_teams_section .custom_table tbody td:last-child,
   .management_section .custom_table thead th:last-child,
@@ -180,6 +193,7 @@
   .preferred_section .custom_table tbody td:last-child {
     width: unset;
   }
+  .recruits_section .custom_table tbody td,
   .manage_teams_section .custom_table tbody td,
   .management_section .custom_table tbody td,
   .payment_section .custom_table tbody td,
@@ -187,6 +201,11 @@
   .preferred_section .custom_table tbody td {
     border-top: 0;
   }
+  .recruits_section .custom_table .icon_delete,
+  .recruits_section .custom_table .icon_stars,
+  .recruits_section .custom_table .icon_pencil,
+  .recruits_section .custom_table button,
+  .recruits_section .custom_table a,
   .manage_teams_section .custom_table .icon_delete,
   .manage_teams_section .custom_table .icon_stars,
   .manage_teams_section .custom_table .icon_pencil,
@@ -214,6 +233,7 @@
   .preferred_section .custom_table a {
     padding: 0 0 0 15px;
   }
+  .recruits_section.payment_section .payment_list,
   .manage_teams_section.payment_section .payment_list,
   .management_section.payment_section .payment_list,
   .payment_section.payment_section .payment_list,
@@ -221,6 +241,7 @@
   .preferred_section.payment_section .payment_list {
     margin-bottom: 20px;
   }
+  .recruits_section.manage_section .custom_table tbody td:first-child,
   .manage_teams_section.manage_section .custom_table tbody td:first-child,
   .management_section.manage_section .custom_table tbody td:first-child,
   .payment_section.manage_section .custom_table tbody td:first-child,
