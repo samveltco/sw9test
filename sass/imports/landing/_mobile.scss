@@ -1,0 +1,258 @@
+@include mediaTo($size960) {
+    .header .main_menu a {
+        padding: 4px 12px;
+    }
+
+    .main_section {
+        .main_title {
+            @include fontSizeHeight(50, 75);
+            font-weight: 700;
+        }
+
+        .main_description {
+            @include fontSizeHeight(18, 26);
+        }
+
+        .main_btn {
+            margin-top: 40px;
+            gap: 25px;
+        }
+    }
+
+
+    .contractor_section,
+    .app_section {
+        margin-top: 120px;
+    }
+
+
+    .work_section {
+        margin-top: 120px;
+
+        .work_list {
+            gap: 10px;
+        }
+    }
+
+
+    .contact_section {
+        margin-top: 120px;
+
+        .section_title {
+            @include fontSizeHeight(24, 30);
+        }
+
+
+        .section_description {
+            @include fontSizeHeight(18, 25);
+        }
+
+        .contact_row {
+            margin: 0 -15px;
+        }
+
+        .left_col {
+            padding: 0 15px;
+        }
+
+        .right_col {
+            flex: 0 0 420px;
+            max-width: 420px;
+            padding: 0 15px;
+        }
+
+        .social_list {
+            padding-top: 20px;
+        }
+
+        .title_contact {
+            @include fontSizeHeight(22, 25);
+            margin: 0 auto 12px;
+            font-weight: 700;
+        }
+
+        .download_btn {
+            padding: 13px 24px;
+            font-weight: 700;
+
+        }
+
+        .email_block,
+        .phone_block {
+            @include fontSizeHeight(18, 21);
+            color: $black;
+        }
+    }
+
+}
+
+@include mediaTo($size768) {
+    .header {
+        .menu_block {
+            margin-top: 8px;
+        }
+
+        .main_menu {
+            a {
+                padding: 4px 12px;
+                @include fontSizeHeight(12, 20);
+            }
+        }
+    }
+
+    .contractor_section {
+        .inner_title {
+            @include fontSizeHeight(24, 30);
+        }
+
+        .inner_description {
+            @include fontSizeHeight(18, 25);
+        }
+    }
+
+    .app_section {
+        .section_title {
+            @include fontSizeHeight(24, 30);
+        }
+
+        .section_description {
+            @include fontSizeHeight(18, 25);
+        }
+    }
+
+    .work_section {
+        .work_list {
+            flex-wrap: wrap;
+
+            li {
+                @include colSize(12);
+                margin-bottom: 20px;
+            }
+        }
+
+        .section_title {
+            @include fontSizeHeight(24, 30);
+        }
+
+
+        .section_description {
+            @include fontSizeHeight(18, 25);
+        }
+    }
+
+    .contact_section {
+        margin-top: 120px;
+
+        .contact_row {
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .right_col {
+            padding: 0;
+            margin-top: 20px;
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .left_col {
+            padding: 0;
+        }
+    }
+
+}
+
+@include mediaTo($size576) {
+    .content {
+        padding: 0;
+    }
+    .work_section {
+        .work_description {
+            @include fontSizeHeight(12, 18);
+        }
+    }
+    .work_section,
+    .app_section,
+    .contact_section {
+        .section_title {
+            @include fontSizeHeight(20, 26);
+            margin-bottom: 20px;
+        }
+
+        .section_description {
+            @include fontSizeHeight(12, 18);
+
+        }
+    }
+
+    .contact_section {
+        .email_block,
+        .phone_block {
+            @include fontSizeHeight(14, 21);
+            margin-bottom: 12px;
+            color: $black;
+        }
+    }
+
+    .app_section {
+        .app_version {
+            gap: 36px;
+        }
+
+        .phone_img {
+            margin-top: 20px;
+
+            img {
+                aspect-ratio: auto 506 / 240;
+            }
+        }
+    }
+
+
+    .main_section {
+        .main_title {
+            @include fontSizeHeight(20, 26);
+        }
+
+        .main_description {
+            @include fontSizeHeight(12, 18);
+        }
+
+        .btn_signUp,
+        .btn_signIn {
+            @include fontSizeHeight(12, 18);
+
+        }
+    }
+
+    .contractor_section {
+        @include overHidden;
+
+        .contractor_info {
+            @include fontSizeHeight(10, 18);
+            text-align: center;
+
+            img {
+                margin-left: -130px;
+            }
+        }
+
+        .inner_title {
+            @include fontSizeHeight(20, 26);
+        }
+
+        .inner_description {
+            @include fontSizeHeight(14, 20);
+        }
+    }
+
+    .footer {
+        .copyrights{
+            @include fontSizeHeight(12, 18);
+        }
+
+        .footer_logo img{
+            height: 142px;
+        }
+    }
+}

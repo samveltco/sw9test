@@ -1,0 +1,445 @@
+.header,
+.footer,
+body {
+    background: $black17;
+}
+
+.header {
+    padding: 16px 0;
+
+    .header_inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main_logo {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 99;
+
+        img {
+            display: block;
+            width: 129px;
+            height: 44px;
+            object-fit: contain;
+        }
+    }
+
+    .menu_block {
+        box-shadow: 0 1px 1.1px 0 #FFFFFF1A inset;
+        backdrop-filter: blur(8px);
+        background: rgba($blue51, 25%);
+        padding: 8px;
+        border-radius: 50px;
+        margin-top: 16px;
+    }
+
+    .main_menu {
+        @include fontSizeHeight(14, 24);
+        color: $white;
+
+        li {
+
+            &.active {
+                a {
+                    background: $blue04;
+                    color: $black;
+                }
+            }
+        }
+
+        a {
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 24px;
+            border-radius: 50px;
+            @extend %siteColorHover;
+        }
+    }
+
+    .main_menu {
+        @extend %standardList;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+.main_section {
+    margin-top: 100px;
+
+    .main_title {
+        @include fontSizeHeight(84, 104);
+        font-weight: 400;
+        text-align: center;
+        color: $white;
+        margin: 0 auto;
+
+        span {
+            font-weight: 700;
+            color: $blue04;
+        }
+
+        b {
+            font-weight: 700;
+        }
+    }
+
+    .main_description {
+        @include fontSizeHeight(24, 40);
+        font-weight: 400;
+        color: $white;
+        text-align: center;
+        max-width: 700px;
+        margin: 20px auto 0;
+    }
+
+    .main_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 60px auto 0;
+        max-width: 500px;
+        gap: 32px;
+    }
+
+    .btn_signUp {
+        @include fontSizeHeight(16, 25);
+        font-weight: 400;
+        background: transparent;
+        border-radius: 50px;
+        padding: 12px 46px;
+        border: 1px solid $blue04;
+        color: $blue04;
+    }
+
+    .btn_signIn {
+        @include fontSizeHeight(16, 25);
+        font-weight: 400;
+        background: $blue04;
+        border-radius: 50px;
+        padding: 12px 46px;
+        border: 1px solid transparent;
+        color: $black;
+    }
+}
+
+.app_section {
+    margin-top: 220px;
+
+    .app_version {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 60px;
+
+        img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: 40px;
+            object-fit: contain;
+        }
+    }
+
+    .section_title {
+        @include fontSizeHeight(40, 55);
+        font-weight: 700;
+        text-align: center;
+        color: $white;
+        margin: 0 auto 20px;
+        text-transform: uppercase;
+    }
+
+
+    .section_description {
+        @include fontSizeHeight(24, 32);
+        text-align: center;
+        color: $white;
+        margin: 0 auto 20px;
+    }
+
+    .phone_img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        img {
+            display: block;
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            aspect-ratio: auto 506 / 260;
+
+        }
+    }
+}
+
+.contractor_section {
+    margin-top: 220px;
+
+    .contractor_list {
+        @extend %standardList;
+
+        li {
+            margin-bottom: 16px;
+        }
+    }
+
+    .contractor_info {
+        display: flex;
+        align-items: flex-start;
+        font-weight: 700;
+        @include fontSizeHeight(14, 24);
+        color: $white;
+        margin-bottom: 10px;
+
+        img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: 59px;
+            object-fit: contain;
+            margin-right: 20px;
+            margin-top: -7px;
+        }
+    }
+
+    .inner_title {
+        @include fontSizeHeight(40, 55);
+        color: $white;
+        margin-bottom: 16px;
+        font-weight: 700;
+    }
+
+    .inner_description {
+        @include fontSizeHeight(24, 40);
+        color: $white;
+    }
+}
+
+.work_section {
+    margin-top: 220px;
+
+    .section_title {
+        @include fontSizeHeight(40, 55);
+        font-weight: 700;
+        text-align: center;
+        color: $white;
+        margin: 0 auto 20px;
+        text-transform: uppercase;
+    }
+
+
+    .section_description {
+        @include fontSizeHeight(24, 32);
+        text-align: center;
+        color: $white;
+        margin: 0 auto 20px;
+    }
+
+    .work_list {
+        @extend %standardList;
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        max-width: 715px;
+        margin: 60px auto 0;
+
+        li {
+            @include colSize(4);
+        }
+    }
+
+    .top_block {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .number_block {
+        @include fontSizeHeight(24, 40);
+        color: $black;
+        padding: 24px 0;
+    }
+
+    .img_block {
+        padding: 10px 0 0;
+
+        img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: 116px;
+            object-fit: contain;
+        }
+    }
+
+    .work_title {
+        @include fontSizeHeight(14, 20);
+        color: $black;
+        font-weight: 700;
+        text-align: center;
+        padding: 5px 0 0;
+        margin-top: auto;
+    }
+
+    .work_description {
+        @include fontSizeHeight(14, 21);
+        color: $black;
+        margin-bottom: 4px;
+        text-align: center;
+
+    }
+
+    .work_block {
+        box-shadow: 0 1px 1.1px 0 #FFFFFF1A inset;
+        background: $textColorA4;
+        border-radius: 25px;
+        padding: 0 16px 24px;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+
+        &.special {
+            background: $lightTitle;
+        }
+    }
+}
+
+.contact_section {
+    margin-top: 220px;
+
+    .section_title {
+        @include fontSizeHeight(40, 55);
+        font-weight: 700;
+        color: $white;
+        margin: 0 auto 20px;
+    }
+
+
+    .section_description {
+        @include fontSizeHeight(24, 32);
+        color: $white;
+        margin: 0 auto 20px;
+    }
+
+    .contact_row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -30px;
+    }
+
+    .left_col {
+        flex: 1;
+        padding: 0 30px;
+    }
+
+    .right_col {
+        flex: 0 0 500px;
+        max-width: 500px;
+        padding: 0 30px;
+    }
+
+    .block_contact {
+        background: $siteColor;
+        border-radius: 25px;
+        padding: 24px 24px 32px;
+        margin-bottom: 24px;
+    }
+
+    .title_contact {
+        @include fontSizeHeight(36, 32);
+        color: $black;
+        margin: 0 auto 20px;
+    }
+
+    .email_block,
+    .phone_block {
+        @include fontSizeHeight(24, 32);
+        color: $black;
+    }
+
+    .social_list {
+        padding-top: 60px;
+    }
+
+    .social_title {
+        @include fontSizeHeight(14, 24);
+        color: $black;
+        margin: 0 0 8px;
+    }
+
+    .social_link {
+        @extend %standardList;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        li {
+            a {
+                @include fontSizeHeight(14, 24);
+                background: $blue04;
+                padding: 3px 16px;
+                border-radius: 25px;
+                color: $white;
+            }
+        }
+    }
+
+    .download_btn {
+        background: $siteColor;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        padding: 22px 26px;
+        @include fontSizeHeight(14, 24);
+        color: $black;
+        @extend %opacityHover;
+    }
+
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding-bottom: 40px;
+
+    .footer_logo {
+        padding: 240px 0 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: 189px;
+            object-fit: contain;
+            object-position: left top;
+            margin-bottom: 30px;
+        }
+    }
+
+    .copyrights {
+        @include fontSizeHeight(16, 25);
+        font-weight: 400;
+        color: $white;
+    }
+
+}

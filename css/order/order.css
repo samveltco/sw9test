@@ -1,46 +1,4 @@
 @font-face {
-  font-family: "notosans";
-  font-display: swap;
-  src: url("../../fonts/NotoSansRegular/NotoSans-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/NotoSansRegular/NotoSans-Regular.woff") format("woff"), url("../../fonts/NotoSansRegular/NotoSans-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "notosansarm";
-  font-display: swap;
-  src: url("../../fonts/NotoSansArmenian-Regular/NotoSansArmenian-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/NotoSansArmenian-Regular/NotoSansArmenian-Regular.woff") format("woff"), url("../../fonts/NotoSansArmenian-Regular/NotoSansArmenian-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "notosans-bold";
-  font-display: swap;
-  src: url("../../fonts/NotoSansBold/NotoSans-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/NotoSansBold/NotoSans-Bold.woff") format("woff"), url("../../fonts/NotoSansBold/NotoSans-Bold.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "notosansarm-bold";
-  font-display: swap;
-  src: url("../../fonts/NotoSansArmenian-Bold/NotoSansArmenian-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/NotoSansArmenian-Bold/NotoSansArmenian-Bold.woff") format("woff"), url("../../fonts/NotoSansArmenian-Bold/NotoSansArmenian-Bold.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "notosans-medium";
-  font-display: swap;
-  src: url("../../fonts/NotoSans-Medium/NotoSans-Medium.eot?#iefix") format("embedded-opentype"), url("../../fonts/NotoSans-Medium/NotoSans-Medium.woff") format("woff"), url("../../fonts/NotoSans-Medium/NotoSans-Medium.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "notosansarm-medium";
-  font-display: swap;
-  src: url("../../fonts/NotoSansArmenian-Medium/NotoSansArmenian-Medium.eot?#iefix") format("embedded-opentype"), url("../../fonts/NotoSansArmenian-Medium/NotoSansArmenian-Medium.woff") format("woff"), url("../../fonts/NotoSansArmenian-Medium/NotoSansArmenian-Medium.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
   font-family: "icon";
   font-display: "auto";
   src: url("../../fonts/icons/icomoon.eot?wxcq87");
@@ -266,6 +224,10 @@
 
 .icon_overview:before {
   content: "\e92a";
+}
+
+.icon_arrow2:before {
+  content: "\e92b";
 }
 
 .header .profile_contacts, .paging ul {
