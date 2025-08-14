@@ -229,8 +229,9 @@
         @include overHidden;
 
         .contractor_info {
-            @include fontSizeHeight(10, 18);
+            @include fontSizeHeight(10, 17);
             text-align: center;
+            font-weight: 400;
 
             img {
                 margin-left: -130px;
@@ -247,12 +248,43 @@
     }
 
     .footer {
-        .copyrights{
+        .copyrights {
             @include fontSizeHeight(12, 18);
         }
 
-        .footer_logo img{
+        .footer_logo img {
             height: 142px;
         }
+    }
+
+    .landing_modals {
+        padding: 0;
+        border-radius: 0;
+
+        &:after,
+        &:before {
+            display: none;
+        }
+
+        .modal_container {
+            border-radius: 0;
+            padding: 15px;
+            min-height: unset;
+        }
+         .fields_group{
+             max-height: unset;
+             padding: 0;
+         }
+        .modal_body{
+            padding-top: 40px;
+        }
+        .close_btn {
+            top: 33px;
+            right: 16px;
+        }
+
+        .fields_group:has(.inner_title ) .radio_block .radio_btn{
+             justify-content: center;
+         }
     }
 }

@@ -118,6 +118,7 @@ body {
         padding: 12px 46px;
         border: 1px solid $blue04;
         color: $blue04;
+        @extend %opacityHover;
     }
 
     .btn_signIn {
@@ -128,6 +129,7 @@ body {
         padding: 12px 46px;
         border: 1px solid transparent;
         color: $black;
+        @extend %opacityHover;
     }
 }
 
@@ -140,6 +142,12 @@ body {
         justify-content: center;
         gap: 10px;
         margin-bottom: 60px;
+
+        a {
+            font-size: 0;
+            line-height: 0;
+            @extend %opacityHover;
+        }
 
         img {
             display: block;
@@ -172,6 +180,7 @@ body {
         align-items: center;
         justify-content: center;
         margin: 0 auto;
+
         img {
             display: block;
             max-width: 100%;
@@ -392,6 +401,8 @@ body {
                 padding: 3px 16px;
                 border-radius: 25px;
                 color: $white;
+                @extend %opacityHover;
+
             }
         }
     }
@@ -442,4 +453,317 @@ body {
         color: $white;
     }
 
+}
+
+.landing_modals {
+    background: rgba($gray36, 80%);
+
+    .close_btn {
+        margin-left: auto;
+        color: $light;
+        position: absolute;
+        top: 24px;
+        right: 24px;
+    }
+
+    .modal_container {
+        background: $black17;
+        padding: 24px;
+        max-width: 604px;
+        justify-content: center;
+        min-height: 720px;
+        position: relative;
+        width: 100%;
+        flex: 1;
+
+        &:has(.check_block) {
+            min-height: auto;
+
+            .check_block {
+                margin-top: 60px;
+            }
+
+            .field_col:last-child {
+                margin-bottom: 0;
+            }
+
+            .valid_btn {
+                margin-top: 50px;
+            }
+        }
+
+        &:has(.radio_block) {
+            .valid_btn {
+                margin-top: 40px
+            }
+        }
+
+    }
+
+    .modal_body {
+        padding: 0;
+        max-width: 364px;
+        width: 100%;
+        margin: 0 auto;
+        //flex: 1;
+        //max-height: 300px;
+    }
+
+    .modal_title {
+        color: $light;
+        @include fontSizeHeight(20, 25);
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .modal_description {
+        color: $light;
+        @include fontSizeHeight(14, 18);
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .fields_group {
+        margin: 70px 0 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 288px;
+        padding-left: 20px;
+        padding-right: 20px;
+        @include customScroll(4px, 2px, 2px, rgb($grayCf, 12%), rgb($blue51, 25%));
+    }
+
+    .field_col {
+        margin-bottom: 40px;
+    }
+
+    .field_block {
+        @include placeholder {
+            color: rgba($white, 50%);
+            @include fontSizeHeight(12, 18);
+            font-weight: 700;
+        }
+
+        &:has(.icon_hide, .icon_show) {
+            input {
+                padding-right: 40px;
+            }
+        }
+
+        .icon_hide,
+        .icon_show {
+            background: none;
+            border: none;
+
+            &:before {
+                position: absolute;
+                color: $light;
+                right: 15px;
+                top: 13px;
+                font-size: 20px;
+                line-height: 15px;
+            }
+        }
+
+        select,
+        input {
+            border: 1px solid rgba($grayCf, 12%);
+            background: rgba($blue51, 25%);
+            color: $white;
+
+            &:focus {
+                border: 1px solid rgba($textColor, 0.12);
+                background: $blue2;
+            }
+        }
+    }
+
+    .valid_btn {
+        @include fontSizeHeight(16, 25);
+        font-weight: 400;
+        background: $blue04;
+        border-radius: 50px;
+        padding: 12px 46px;
+        border: 1px solid transparent;
+        color: $black;
+        margin: 20px auto 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: max-content;
+        @extend %opacityHover;
+    }
+
+    .modal_footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0;
+        max-width: 364px;
+        width: 100%;
+        margin: 0 auto;
+        gap: 13px;
+        text-align: center;
+
+        &:has(>.btn_modal:only-child) {
+            justify-content: center;
+        }
+
+        a,
+        .btn_modal,
+        button {
+            background: none;
+            color: $light;
+            @include fontSizeHeight(14, 18);
+            @extend %siteColorHover;
+
+        }
+    }
+
+    .fields_group:has(.inner_title ) {
+        .field_col {
+            text-align: center;
+            color: $light;
+            @include fontSizeHeight(14, 18);
+        }
+
+        .radio_btn {
+            min-width: 180px;
+        }
+    }
+
+    .field_col:has(.radio_block) {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .radio_block {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+
+            &:checked + .radio_btn {
+                color: $light;
+                pointer-events: none;
+            }
+
+            &:focus-visible + .radio_btn::before {
+                outline: 2px solid rgba($light, .35);
+                outline-offset: 3px;
+            }
+        }
+
+        .radio_btn {
+            @extend %textUnSelect;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: $light;
+            min-width: 263px;
+            @include fontSizeHeight(14, 18);
+
+            &::before {
+                content: "";
+                display: block;
+                min-width: 16px;
+                width: 16px;
+                height: 16px;
+                margin-right: 8px;
+                border-radius: 50%;
+                box-sizing: border-box;
+                border: 1px solid $light;
+                background: radial-gradient($light 0px, transparent 0px);
+            }
+        }
+
+        input:checked + .radio_btn::before {
+            background: radial-gradient($light 4px, transparent calc(#{4px} + 1px));
+        }
+    }
+
+    .field_col:has(.check_block) {
+        max-width: 364px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .check_block {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        color: $light;
+        @include fontSizeHeight(14, 20);
+        max-width: 323px;
+        width: 100%;
+
+        ~ .error_hint {
+            text-align: left;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        input {
+            @extend %maskedInput;
+
+            &:checked ~ span:before {
+                background: transparent;
+                color: $light;
+                font-size: 1.3rem;
+            }
+        }
+
+        > span {
+            color: $light;
+            cursor: pointer;
+            @extend %textUnSelect;
+            gap: unset;
+
+            &:before {
+                @extend %iconElement;
+                display: flex;
+                align-items: center;
+                align-self: flex-start;
+                justify-content: center;
+                min-width: 16px;
+                height: 16px;
+                border: 1px solid $light;
+                border-radius: 4px;
+                content: "\e91e";
+                font-size: 0;
+                font-weight: 700;
+                margin-right: 6px;
+                @include animStyle(border-color 0.3s);
+            }
+        }
+
+        &[hidden] {
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        a {
+            color: $light;
+            text-decoration: underline;
+        }
+
+        &.has-error span:before {
+            border-color: $error;
+        }
+    }
 }

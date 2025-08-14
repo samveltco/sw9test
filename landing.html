@@ -52,7 +52,7 @@
                     <ul class="main_menu">
                         <li class="active"><a href="">Home</a></li>
                         <li><a href="">Contact us</a></li>
-                        <li><a href="">Sign in</a></li>
+                        <li><a href="" onclick="event.preventDefault(); showModal()">Sign in</a></li>
                         <li><a href="">Sign up</a></li>
                     </ul>
                 </div>
@@ -66,10 +66,10 @@
                     Looking for contract <span>work? </span> Looking for <b>contractors?</b>
                 </div>
                 <div class="main_description">
-                    209G is the next generation FMS platform for connecting contractors and clients.
+                    Vaylant G is the next generation FMS platform for connecting contractors and clients.
                 </div>
                 <div class="main_btn">
-                    <a href="" class="btn_signIn">Sign in</a>
+                    <a href="" class="btn_signIn" onclick="event.preventDefault(); showModal()">Sign in</a>
                     <a href="" class="btn_signUp">Sign up</a>
                 </div>
             </div>
@@ -77,8 +77,8 @@
                 <div class="section_title">download our app</div>
                 <div class="section_description">download so we can be closer</div>
                 <div class="app_version">
-                    <a href=""><img src="css/images/android.png" title="" alt="" width="146" height="40"/></a>
-                    <a href=""><img src="css/images/ios.png" title="" alt="" width="146" height="40"/></a>
+                    <a href=""><img src="css/images/android.png" title="" alt="" width="146" height="40"/>image name</a>
+                    <a href=""><img src="css/images/ios.png" title="" alt="" width="146" height="40"/>image name</a>
                 </div>
                 <div class="phone_img">
                     <picture>
@@ -93,22 +93,22 @@
                 </div>
                 <ul class="contractor_list">
                     <li>
-                        <div class="inner_title">The 209 Group Contractor:</div>
+                        <div class="inner_title">The Vaylant  Group Contractor:</div>
                         <div class="inner_description">Man do I love your platform! Been beating on it now going into my
                             4th month and just could not be happier!
                         </div>
                     </li>
                     <li>
-                        <div class="inner_title">The 209 Group Contractor:</div>
-                        <div class="inner_description">The The 209 Group system was fast and effective and we received
+                        <div class="inner_title">The Vaylant  Group Contractor:</div>
+                        <div class="inner_description">The The Vaylant  Group system was fast and effective and we received
                             our payments in a timely manner.
                         </div>
                     </li>
                 </ul>
             </div>
             <div class="work_section">
-                <div class="section_title">How The 209 Group Works</div>
-                <div class="section_description">209G has a transparent fee structure for clients needing 209G work
+                <div class="section_title">How The Vaylant  Group Works</div>
+                <div class="section_description">Vaylant G has a transparent fee structure for clients needing Vaylant G work
                     order and pay processing, 1099 administration, contractor vetting and onboarding, or full project
                     deployment management support.
                 </div>
@@ -158,7 +158,7 @@
                 <div class="contact_row">
                     <div class="left_col">
                         <div class="section_title">Contact Us</div>
-                        <div class="section_description"><b>Hi there,</b> and Welcome to The 209 Group!Whether you`re a contractor
+                        <div class="section_description"><b>Hi there,</b> and Welcome to The Vaylant  Group!Whether you`re a contractor
                             looking for work, or a company looking to hire contractors, we`re here to help!Simply use the online
                             chat bubble in the lower left of your screen to let us know how we can assist you.
                         </div>
@@ -188,11 +188,219 @@
             <div class="footer_logo">
                 <img src="css/images/footer_logo.svg" title="" alt="" width="295" height="189"/>
             </div>
-            <div class="copyrights">Copyright © 2025 The 209 Group. All Rights Reserved.</div>
+            <div class="copyrights">Copyright © 2025 The Vaylant  Group. All Rights Reserved.</div>
+        </div>
+    </div>
+    <div class="modal_block landing_modals">
+        <div class="modal_container">
+            <div class="modal_head">
+                <button class="close_btn icon_close" aria-label="close" onclick="event.preventDefault(); hideModal()"></button>
+            </div>
+            <div class="modal_body">
+                <div class="modal_title">Sign in</div>
+                <div class="modal_description">Welcome Back!</div>
+                <div class="fields_group">
+                    <div class="field_col">
+                        <label class="hidden_label" for="Email">Email</label>
+                        <div class="field_block">
+                            <input type="text" name="company_wo_id" id="Email" maxlength="50" placeholder="Email"/>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="hidden_label" for="Password">Password</label>
+                        <div class="field_block">
+                            <input type="password" name="Password" id="Password" maxlength="50" placeholder="Password"/>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="valid_btn">Sign in</a>
+            </div>
+            <div class="modal_footer">
+                <a href="" class="btn_modal">Forgot password ?</a>
+                <a href="" class="btn_modal">Resend link for verify?</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal_block landing_modals">
+        <div class="modal_container">
+            <div class="modal_head">
+                <button class="close_btn icon_close" aria-label="close" onclick="event.preventDefault(); hideModal()"></button>
+            </div>
+            <div class="modal_body">
+                <div class="modal_title">Forgot Password?</div>
+                <div class="modal_description">Welcome Back!</div>
+                <div class="fields_group">
+                    <div class="field_col">
+                        <label class="hidden_label" for="Email">Email</label>
+                        <div class="field_block">
+                            <input type="text" name="company_wo_id" id="Email" maxlength="50" placeholder="Email"/>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="radio_block">
+                            <input type="radio" name="radio" />
+                            <span class="radio_btn">Use phone number for verification</span>
+                        </label>
+                    </div>
+                    <div class="field_col">
+                        <label class="radio_block">
+                            <input type="radio" name="radio" />
+                            <span class="radio_btn">Use email address for verification</span>
+                        </label>
+                    </div>
+                </div>
+                <a href="" class="valid_btn">Submit</a>
+            </div>
+            <div class="modal_footer">
+                <a href="" class="btn_modal">Sign in</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal_block landing_modals">
+        <div class="modal_container">
+            <div class="modal_head">
+                <button class="close_btn icon_close" aria-label="close" onclick="event.preventDefault(); hideModal()"></button>
+            </div>
+            <div class="modal_body">
+                <div class="modal_title">Create Your Free Account</div>
+                <div class="modal_description">Welcome!</div>
+                <div class="fields_group">
+                    <div class="field_col"><span class="inner_title"> I want to</span></div>
+                    <div class="field_col">
+                        <label class="radio_block">
+                            <input type="radio" name="radio" />
+                            <span class="radio_btn">Find Work</span>
+                        </label>
+                    </div>
+                    <div class="field_col">
+                        <label class="radio_block">
+                            <input type="radio" name="radio" />
+                            <span class="radio_btn">Hire a Contractor</span>
+                        </label>
+                    </div>
+                </div>
+                <a href="" class="valid_btn">Continue</a>
+            </div>
+            <div class="modal_footer">
+                <a href="" class="btn_modal">Sign in</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal_block landing_modals">
+        <div class="modal_container">
+            <div class="modal_head">
+                <button class="close_btn icon_close" aria-label="close" onclick="event.preventDefault(); hideModal()"></button>
+            </div>
+            <div class="modal_body">
+                <div class="modal_title">Create Your Free Account</div>
+                <div class="modal_description">Welcome!</div>
+                <div class="fields_group">
+                    <div class="field_col">
+                        <label class="hidden_label" for="FirstName">First Name</label>
+                        <div class="field_block">
+                            <input type="text" name="FirstName" id="FirstName" maxlength="50" placeholder="First Name"/>
+                        </div>
+                    </div>
+
+
+                    <div class="field_col">
+                        <label class="hidden_label" for="LastName">Last Name</label>
+                        <div class="field_block">
+                            <input type="text" name="LastName" id="LastName" maxlength="50" placeholder="Last Name"/>
+                        </div>
+                    </div>
+
+                    <div class="field_col">
+                        <label class="hidden_label" for="Email">Email</label>
+                        <div class="field_block">
+                            <input type="text" name="Email" id="Email" maxlength="50" placeholder="Email"/>
+                        </div>
+                    </div>
+
+
+                    <div class="field_col">
+                        <label class="hidden_label" for="MobilePhone">Mobile Phone</label>
+                        <div class="field_block">
+                            <input type="text" name="MobilePhone" id="MobilePhone" maxlength="20" placeholder="Mobile Phone"/>
+                        </div>
+                    </div>
+
+                    <div class="field_col">
+                        <label class="hidden_label" for="StreetAddress">Street Address</label>
+                        <div class="field_block">
+                            <input type="text" name="StreetAddress" id="StreetAddress" maxlength="150" placeholder="Street Address"/>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="hidden_label" for="Suite">Suite, Apt, Etc.</label>
+                        <div class="field_block">
+                            <input type="text" name="Suite" id="Suite" maxlength="150" placeholder="Suite, Apt, Etc."/>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="hidden_label" for="City">City</label>
+                        <div class="field_block">
+                            <input type="text" name="City" id="City" maxlength="50" placeholder="City"/>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="hidden_label" for="country">State</label>
+                        <div class="field_block">
+                            <select name="country" id="State">
+                                <option>Country</option>
+                                <option value="1">Value 1</option>
+                                <option value="2">Value 2</option>
+                                <option value="3">Value 3</option>
+                                <option value="4">Value 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="hidden_label" for="country">Country</label>
+                        <div class="field_block">
+                            <select name="country" id="country">
+                                <option>Country</option>
+                                <option value="1">Value 1</option>
+                                <option value="2">Value 2</option>
+                                <option value="3">Value 3</option>
+                                <option value="4">Value 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="hidden_label" for="Zip">Zip</label>
+                        <div class="field_block">
+                            <input type="text" name="City" id="Zip" maxlength="50" placeholder="Zip"/>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="hidden_label" for="Password">Password</label>
+                        <div class="field_block">
+                            <input type="password" name="Password" id="Password" maxlength="50" placeholder="Password"/>
+                            <button aria-label="Show password" class="icon_show"></button>
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="hidden_label" for="Confirm Password">Confirm Password</label>
+                        <div class="field_block">
+                            <input type="password" name="Confirm Password" id="Confirm Password" maxlength="50" placeholder="Confirm Password"/>
+                            <button aria-label="Show password" class="icon_show"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="field_col">
+                    <label class="check_block">
+                        <input type="checkbox" name="checkbox[]" />
+                        <span class="check_btn">I have read and agreed to the </span>
+                        <a href="#" target="_blank">Term of Service, Customer Privacy Policy</a>
+                    </label>
+                </div>
+                <a href="" class="valid_btn">Agree & Sign up</a>
+            </div>
+
         </div>
     </div>
 </div>
-
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -181,8 +181,9 @@
   }
   .contractor_section .contractor_info {
     font-size: 71.42%;
-    line-height: 1.8em;
+    line-height: 1.7em;
     text-align: center;
+    font-weight: 400;
   }
   .contractor_section .contractor_info img {
     margin-left: -130px;
@@ -201,6 +202,32 @@
   }
   .footer .footer_logo img {
     height: 142px;
+  }
+  .landing_modals {
+    padding: 0;
+    border-radius: 0;
+  }
+  .landing_modals:after, .landing_modals:before {
+    display: none;
+  }
+  .landing_modals .modal_container {
+    border-radius: 0;
+    padding: 15px;
+    min-height: unset;
+  }
+  .landing_modals .fields_group {
+    max-height: unset;
+    padding: 0;
+  }
+  .landing_modals .modal_body {
+    padding-top: 40px;
+  }
+  .landing_modals .close_btn {
+    top: 33px;
+    right: 16px;
+  }
+  .landing_modals .fields_group:has(.inner_title) .radio_block .radio_btn {
+    justify-content: center;
   }
 }
 

@@ -244,7 +244,7 @@
   left: 0;
 }
 
-.standard_btn:before, .primary_btn:before, .check_btn:before, [class*=icon_]:before, .standard_btn:after, .primary_btn:after, .check_btn:after, [class*=icon_]:after {
+.landing_modals .check_block > span:before, .standard_btn:before, .primary_btn:before, .check_btn:before, [class*=icon_]:before, .standard_btn:after, .primary_btn:after, .check_btn:after, [class*=icon_]:after {
   font-family: "icon" !important;
   font-style: normal;
   font-weight: normal;
@@ -1464,6 +1464,10 @@ body {
   gap: 10px;
   margin-bottom: 60px;
 }
+.app_section .app_version a {
+  font-size: 0;
+  line-height: 0;
+}
 .app_section .app_version img {
   display: block;
   width: auto;
@@ -1732,7 +1736,300 @@ body {
   color: #ffffff;
 }
 
-.green_btn, .contact_section .download_btn {
+.landing_modals {
+  background: rgba(54, 54, 54, 0.8);
+}
+.landing_modals .close_btn {
+  margin-left: auto;
+  color: #B4D4DD;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+.landing_modals .modal_container {
+  background: #171414;
+  padding: 24px;
+  max-width: 604px;
+  justify-content: center;
+  min-height: 720px;
+  position: relative;
+  width: 100%;
+  flex: 1;
+}
+.landing_modals .modal_container:has(.check_block) {
+  min-height: auto;
+}
+.landing_modals .modal_container:has(.check_block) .check_block {
+  margin-top: 60px;
+}
+.landing_modals .modal_container:has(.check_block) .field_col:last-child {
+  margin-bottom: 0;
+}
+.landing_modals .modal_container:has(.check_block) .valid_btn {
+  margin-top: 50px;
+}
+.landing_modals .modal_container:has(.radio_block) .valid_btn {
+  margin-top: 40px;
+}
+.landing_modals .modal_body {
+  padding: 0;
+  max-width: 364px;
+  width: 100%;
+  margin: 0 auto;
+}
+.landing_modals .modal_title {
+  color: #B4D4DD;
+  font-size: 142.85%;
+  line-height: 1.25em;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.landing_modals .modal_description {
+  color: #B4D4DD;
+  font-size: 100%;
+  line-height: 1.28em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.landing_modals .fields_group {
+  margin: 70px 0 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 288px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.landing_modals .fields_group::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.landing_modals .fields_group::-webkit-scrollbar-track {
+  background: rgba(207, 207, 207, 0.12);
+  border-radius: 2px;
+}
+.landing_modals .fields_group::-webkit-scrollbar-thumb {
+  background: rgba(81, 195, 235, 0.25);
+  border-radius: 2px;
+}
+.landing_modals .field_col {
+  margin-bottom: 40px;
+}
+.landing_modals .field_block ::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 85.71%;
+  line-height: 1.5em;
+  font-weight: 700;
+}
+.landing_modals .field_block :-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 85.71%;
+  line-height: 1.5em;
+  font-weight: 700;
+}
+.landing_modals .field_block ::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 85.71%;
+  line-height: 1.5em;
+  font-weight: 700;
+}
+.landing_modals .field_block :-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 85.71%;
+  line-height: 1.5em;
+  font-weight: 700;
+}
+.landing_modals .field_block:has(.icon_hide, .icon_show) input {
+  padding-right: 40px;
+}
+.landing_modals .field_block .icon_hide,
+.landing_modals .field_block .icon_show {
+  background: none;
+  border: none;
+}
+.landing_modals .field_block .icon_hide:before,
+.landing_modals .field_block .icon_show:before {
+  position: absolute;
+  color: #B4D4DD;
+  right: 15px;
+  top: 13px;
+  font-size: 20px;
+  line-height: 15px;
+}
+.landing_modals .field_block select,
+.landing_modals .field_block input {
+  border: 1px solid rgba(207, 207, 207, 0.12);
+  background: rgba(81, 195, 235, 0.25);
+  color: #ffffff;
+}
+.landing_modals .field_block select:focus,
+.landing_modals .field_block input:focus {
+  border: 1px solid rgba(207, 207, 207, 0.12);
+  background: #23425A;
+}
+.landing_modals .valid_btn {
+  font-size: 114.28%;
+  line-height: 1.56em;
+  font-weight: 400;
+  background: #0484BB;
+  border-radius: 50px;
+  padding: 12px 46px;
+  border: 1px solid transparent;
+  color: #000000;
+  margin: 20px auto 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: max-content;
+}
+.landing_modals .modal_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0;
+  max-width: 364px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 13px;
+  text-align: center;
+}
+.landing_modals .modal_footer:has(> .btn_modal:only-child) {
+  justify-content: center;
+}
+.landing_modals .modal_footer a,
+.landing_modals .modal_footer .btn_modal,
+.landing_modals .modal_footer button {
+  background: none;
+  color: #B4D4DD;
+  font-size: 100%;
+  line-height: 1.28em;
+}
+.landing_modals .fields_group:has(.inner_title) .field_col {
+  text-align: center;
+  color: #B4D4DD;
+  font-size: 100%;
+  line-height: 1.28em;
+}
+.landing_modals .fields_group:has(.inner_title) .radio_btn {
+  min-width: 180px;
+}
+.landing_modals .field_col:has(.radio_block) {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.landing_modals .radio_block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.landing_modals .radio_block input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.landing_modals .radio_block input:checked + .radio_btn {
+  color: #B4D4DD;
+  pointer-events: none;
+}
+.landing_modals .radio_block input:focus-visible + .radio_btn::before {
+  outline: 2px solid rgba(180, 212, 221, 0.35);
+  outline-offset: 3px;
+}
+.landing_modals .radio_block .radio_btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #B4D4DD;
+  min-width: 263px;
+  font-size: 100%;
+  line-height: 1.28em;
+}
+.landing_modals .radio_block .radio_btn::before {
+  content: "";
+  display: block;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #B4D4DD;
+  background: radial-gradient(#B4D4DD 0px, transparent 0px);
+}
+.landing_modals .radio_block input:checked + .radio_btn::before {
+  background: radial-gradient(#B4D4DD 4px, transparent calc(4px + 1px));
+}
+.landing_modals .field_col:has(.check_block) {
+  max-width: 364px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.landing_modals .check_block {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  color: #B4D4DD;
+  font-size: 100%;
+  line-height: 1.42em;
+  max-width: 323px;
+  width: 100%;
+}
+.landing_modals .check_block ~ .error_hint {
+  text-align: left;
+}
+.landing_modals .check_block ~ .error_hint:before {
+  display: none;
+}
+.landing_modals .check_block input:checked ~ span:before {
+  background: transparent;
+  color: #B4D4DD;
+  font-size: 1.3rem;
+}
+.landing_modals .check_block > span {
+  color: #B4D4DD;
+  cursor: pointer;
+  gap: unset;
+}
+.landing_modals .check_block > span:before {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  border: 1px solid #B4D4DD;
+  border-radius: 4px;
+  content: "\e91e";
+  font-size: 0;
+  font-weight: 700;
+  margin-right: 6px;
+  -o-transition: border-color 0.3s;
+  -ms-transition: border-color 0.3s;
+  -moz-transition: border-color 0.3s;
+  -webkit-transition: border-color 0.3s;
+  transition: border-color 0.3s;
+}
+.landing_modals .check_block[hidden] {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.landing_modals .check_block a {
+  color: #B4D4DD;
+  text-decoration: underline;
+}
+.landing_modals .check_block.has-error span:before {
+  border-color: #800000;
+}
+
+.green_btn, .main_section .btn_signUp, .main_section .btn_signIn, .app_section .app_version a, .contact_section .social_link li a, .contact_section .download_btn, .landing_modals .valid_btn {
   -o-transition: opacity 0.3s;
   -ms-transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
@@ -1746,7 +2043,9 @@ body {
 .orange_btn, .check_btn, .modal_import .import_link, .custom_table a:before,
 .custom_table .icon_delete:before,
 .custom_table .icon_pencil:before,
-.custom_table .icon_close:before, .header .main_menu a {
+.custom_table .icon_close:before, .header .main_menu a, .landing_modals .modal_footer a,
+.landing_modals .modal_footer .btn_modal,
+.landing_modals .modal_footer button {
   -o-transition: color 0.3s;
   -ms-transition: color 0.3s;
   -moz-transition: color 0.3s;
@@ -1762,7 +2061,7 @@ body {
   transition: all 0.3s;
 }
 
-.field_block .step_btns span, .check_btn {
+.field_block .step_btns span, .check_btn, .landing_modals .radio_block .radio_btn, .landing_modals .check_block > span {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -1771,7 +2070,7 @@ body {
   user-select: none;
 }
 
-.check_btn input {
+.check_btn input, .landing_modals .check_block input {
   position: absolute;
   width: 0;
   height: 0;
@@ -1783,11 +2082,13 @@ body {
 .check_btn:active, .modal_import .import_link:active, .custom_table a:active:before,
 .custom_table .icon_delete:active:before,
 .custom_table .icon_pencil:active:before,
-.custom_table .icon_close:active:before, .header .main_menu a:active {
+.custom_table .icon_close:active:before, .header .main_menu a:active, .landing_modals .modal_footer a:active,
+.landing_modals .modal_footer .btn_modal:active,
+.landing_modals .modal_footer button:active {
   color: #085C7D;
 }
 
-.green_btn:active, .contact_section .download_btn:active {
+.green_btn:active, .main_section .btn_signUp:active, .main_section .btn_signIn:active, .app_section .app_version a:active, .contact_section .social_link li a:active, .contact_section .download_btn:active, .landing_modals .valid_btn:active {
   opacity: 0.7;
 }
 
@@ -1815,10 +2116,12 @@ body {
   .check_btn:hover, .modal_import .import_link:hover, .custom_table a:hover:before,
   .custom_table .icon_delete:hover:before,
   .custom_table .icon_pencil:hover:before,
-  .custom_table .icon_close:hover:before, .header .main_menu a:hover {
+  .custom_table .icon_close:hover:before, .header .main_menu a:hover, .landing_modals .modal_footer a:hover,
+  .landing_modals .modal_footer .btn_modal:hover,
+  .landing_modals .modal_footer button:hover {
     color: #085C7D;
   }
-  .green_btn:hover, .contact_section .download_btn:hover {
+  .green_btn:hover, .main_section .btn_signUp:hover, .main_section .btn_signIn:hover, .app_section .app_version a:hover, .contact_section .social_link li a:hover, .contact_section .download_btn:hover, .landing_modals .valid_btn:hover {
     opacity: 0.7;
   }
   .lightest_btn:hover,
