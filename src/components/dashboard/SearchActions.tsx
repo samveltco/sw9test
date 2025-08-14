@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../forms/Button';
 
 interface SearchActionsProps {
   onImportClick: () => void;
@@ -37,30 +36,30 @@ const SearchActions: React.FC<SearchActionsProps> = ({
       </form>
       
       <div className="btns_block">
-        <Button 
-          variant="curry" 
-          icon="icon_plus" 
+        <button 
+          className="standard_btn icon_plus curry_btn"
           onClick={onCreateWorkOrder}
           aria-label="Create work order"
+          type="button"
         >
           Create work order
-        </Button>
-        <Button 
-          variant="orange" 
-          icon="icon_import" 
+        </button>
+        <button 
+          className="standard_btn icon_import orange_btn"
           onClick={onImportClick}
           aria-label="Import work order(s)"
+          type="button"
         >
           Import work order(s)
-        </Button>
-        <Button 
-          variant="green" 
-          icon="icon_export" 
+        </button>
+        <button 
+          className="standard_btn icon_export green_btn"
           onClick={onExport}
           aria-label="Export EXCEL"
+          type="button"
         >
           Export EXCEL
-        </Button>
+        </button>
       </div>
     </div>
   );

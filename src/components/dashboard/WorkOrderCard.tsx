@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../forms/Button';
 
 export interface WorkOrder {
   id: string;
@@ -14,7 +13,7 @@ export interface WorkOrder {
   email: string;
   price: string;
   calcInfo: string;
-  status: string[];
+  status: string[]; // e.g., ['UNCONFIRMED', 'ON HOLD']
   messages: number;
   location: string;
 }
@@ -37,16 +36,12 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
   onCreateTemplate
 }) => {
   const formatCalcInfo = (info: string) => {
-    return info.split('\n').map((line, index) => (
+    return info.split('\n').map((line, index, arr) => (
       <span key={index}>
         {line}
-        {index < info.split('\n').length - 1 && <br />}
+        {index < arr.length - 1 && <br />}
       </span>
     ));
-  };
-
-  const getStatusClassName = (status: string) => {
-    return status.toLowerCase().replace(' ', '_');
   };
 
   return (
@@ -69,7 +64,7 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
             </li>
           </ul>
         </div>
-        
+
         <div className="start_end">
           <ul className="card_details">
             <li>
@@ -82,7 +77,7 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
             </li>
           </ul>
         </div>
-        
+
         <div className="assign_info">
           <div className="card_title">Assigned to :</div>
           <ul className="card_details">
@@ -99,7 +94,7 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
             </li>
           </ul>
         </div>
-        
+
         <div className="price_info">
           <div className="price_size">
             <span>{workOrder.price}</span>
@@ -107,71 +102,37 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
           </div>
           <div className="calc_info">{formatCalcInfo(workOrder.calcInfo)}</div>
         </div>
-        
+
         <div className="card_statuses">
-          {workOrder.status.map((status, index) => (
-            <span key={index} className={`status_block ${getStatusClassName(status)}`}>
+          {workOrder.status.map((status, i) => (
+            <span
+              key={i}
+              className={`status_block ${status === 'UNCONFIRMED' ? 'uncomfirmed' : status === 'ON HOLD' ? 'on_hold' : status.toLowerCase().replace(/\s+/g, '_')}`}
+            >
               {status}
             </span>
           ))}
         </div>
-        
+
         <div className="check_block">
           <label className="check_btn">
-            <input type="checkbox" name={`card[${workOrder.id}]`}/>
+            <input type="checkbox" name={`card[${workOrder.id}]`} />
           </label>
         </div>
       </div>
-      
+
       <div className="card_footer">
         <div className="messages_location">
-          <button className="message_count" onClick={() => onViewDetails(workOrder.id)}>
-            {workOrder.messages} messages
-          </button>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a href="#" className="message_count">{workOrder.messages} messages</a>
           <div className="location_info">{workOrder.location}</div>
         </div>
-        
         <div className="card_actions">
-          <Button 
-            variant="primary" 
-            icon="icon_copy" 
-            onClick={() => onDuplicate(workOrder.id)}
-            aria-label="Duplicate"
-          >
-            Duplicate
-          </Button>
-          <Button 
-            variant="primary" 
-            icon="icon_dots" 
-            onClick={() => onViewDetails(workOrder.id)}
-            aria-label="Details"
-          >
-            Details
-          </Button>
-          <Button 
-            variant="primary" 
-            icon="icon_assept" 
-            onClick={() => onFindContractors(workOrder.id)}
-            aria-label="Contractors Near-by"
-          >
-            Contractors Near-by
-          </Button>
-          <Button 
-            variant="primary" 
-            icon="icon_eye" 
-            onClick={() => onViewApplicants(workOrder.id)}
-            aria-label="View Applicants"
-          >
-            View Applicants
-          </Button>
-          <Button 
-            variant="primary" 
-            icon="icon_plus" 
-            onClick={() => onCreateTemplate(workOrder.id)}
-            aria-label="Create template"
-          >
-            Create template
-          </Button>
+          <button className="primary_btn icon_copy" aria-label="Duplicate" onClick={() => onDuplicate(workOrder.id)}>Duplicate</button>
+          <button className="primary_btn icon_dots" aria-label="Details" onClick={() => onViewDetails(workOrder.id)}>Details</button>
+          <button className="primary_btn icon_assept" aria-label="Contractors Near-by" onClick={() => onFindContractors(workOrder.id)}>Contractors Near-by</button>
+          <button className="primary_btn icon_eye" aria-label="View Applicants" onClick={() => onViewApplicants(workOrder.id)}>View Applicants</button>
+          <button className="primary_btn icon_plus" aria-label="Create template" onClick={() => onCreateTemplate(workOrder.id)}>Create template</button>
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import Select from '../forms/Select';
 import Textarea from '../forms/Textarea';
-import Button from '../forms/Button';
 
 interface FilterPanelProps {
   isVisible: boolean;
@@ -30,27 +29,37 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
     { value: '5', label: 'Paid' },
   ];
 
+  const panelRef = React.useRef<HTMLDivElement | null>(null);
+  React.useEffect(() => {
+    if (isVisible && panelRef.current) {
+      requestAnimationFrame(() => {
+        panelRef.current && panelRef.current.classList.add('opened');
+      });
+    }
+  }, [isVisible]);
+
   if (!isVisible) return null;
 
   return (
-    <div className="filter_inner">
+    <div className="filter_inner" ref={panelRef}>
       <div className="filter_head">
         <div className="filter_name icon_filter">
           Filter <span className="count_block">(2)</span>
         </div>
-        <Button 
-          variant="standard"
-          icon="icon_clear"
+        <button 
+          className="reset_btn icon_clear"
           disabled
           onClick={onReset}
           aria-label="reset filter"
+          type="button"
         >
           Reset filter
-        </Button>
+        </button>
         <button 
           className="close_btn icon_close" 
           aria-label="filter close" 
           onClick={onClose}
+          type="button"
         ></button>
       </div>
       
@@ -84,7 +93,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                 type="text" 
                 name="contractor_id" 
                 maxLength={50} 
-                placeholder="Type here..." 
+                placeholder="Type her..." 
               />
             </div>
           </div>
@@ -148,7 +157,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                 type="text" 
                 name="wo_title" 
                 maxLength={50} 
-                placeholder="Type here..." 
+                placeholder="Type her..." 
               />
             </div>
           </div>
@@ -170,7 +179,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                 type="text" 
                 name="city" 
                 maxLength={50} 
-                placeholder="Type here..." 
+                placeholder="Type her..." 
               />
             </div>
           </div>
@@ -185,7 +194,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                 type="text" 
                 name="state" 
                 maxLength={50} 
-                placeholder="Type here..." 
+                placeholder="Type her..." 
               />
             </div>
           </div>
@@ -200,7 +209,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                 type="text" 
                 name="zip" 
                 maxLength={8} 
-                placeholder="Type here..." 
+                placeholder="Type her..." 
               />
             </div>
           </div>
@@ -208,20 +217,22 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
       </div>
       
       <div className="actions_block">
-        <Button 
-          variant="dark" 
+        <button 
+          className="standard_btn dark_btn"
           onClick={onClose}
           aria-label="cancel"
+          type="button"
         >
           Cancel
-        </Button>
-        <Button 
-          variant="light" 
+        </button>
+        <button 
+          className="standard_btn light_btn"
           onClick={onApply}
           aria-label="accept"
+          type="button"
         >
           Accept
-        </Button>
+        </button>
       </div>
       
       <span className="filter_shadow bottom_shadow"></span>

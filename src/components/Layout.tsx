@@ -24,14 +24,12 @@ const mockUser = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="root">
-      <div className="header_sidebar">
-        <Header 
-          user={mockUser}
-          availableFunds="$1,268.22"
-          notificationCount={6}
-        />
-        <Navigation />
-      </div>
+      <Header 
+        user={mockUser}
+        availableFunds="$1,268.22"
+        notificationCount={6}
+      />
+      <Navigation />
       <div className="content">
         {children}
       </div>

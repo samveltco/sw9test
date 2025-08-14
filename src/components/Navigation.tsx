@@ -12,6 +12,8 @@ const Navigation: React.FC<NavigationProps> = ({ isCollapsed = false, onToggle }
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
+    const el = document.querySelector('.sidebar');
+    if (el) el.classList.toggle('opened');
     if (onToggle) onToggle();
   };
 

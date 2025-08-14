@@ -1,6 +1,4 @@
 import React from 'react';
-import Select from '../forms/Select';
-import Button from '../forms/Button';
 import FilterPanel from './FilterPanel';
 import Pagination from '../common/Pagination';
 
@@ -68,22 +66,22 @@ const SortingControls: React.FC<SortingControlsProps> = ({
       </div>
 
       <div className="filter_block">
-        <Button
-          variant="standard"
-          icon="icon_filter"
+        <button
+          className="filter_btn icon_filter"
           onClick={onToggleFilter}
           aria-label="filter"
+          type="button"
         >
-          Filter <span className="count_block">(2)</span>
-        </Button>
-        <Button
-          variant="standard"
-          icon="icon_clear"
+          FIlter <span className="count_block">(2)</span>
+        </button>
+        <button
+          className="reset_btn icon_clear"
           disabled
           aria-label="reset"
+          type="button"
         >
           Reset filter
-        </Button>
+        </button>
         
         <FilterPanel
           isVisible={showFilter}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'standard' | 'light' | 'dark' | 'lightest' | 'curry' | 'orange' | 'green';
+  variant?: 'primary' | 'secondary' | 'standard' | 'light' | 'dark' | 'lightest' | 'curry' | 'orange' | 'green' | 'filter_btn';
   icon?: string;
   loading?: boolean;
   children: React.ReactNode;
@@ -38,6 +38,9 @@ const Button: React.FC<ButtonProps> = ({
         break;
       case 'green':
         variantClass = 'green_btn';
+        break;
+      case 'filter_btn':
+        variantClass = 'filter_btn';
         break;
       default:
         variantClass = '';
