@@ -13,6 +13,7 @@ import PreferredContractors from './pages/PreferredContractors';
 import PMTools from './pages/PMTools';
 import ManageTeams from './pages/ManageTeams';
 import ManageCustom from './pages/ManageCustom';
+import Landing from "./pages/Landing";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/pm-tools" element={<PMTools />} />
           <Route path="/manage-teams" element={<ManageTeams />} />
           <Route path="/manage-custom" element={<ManageCustom />} />
+          <Route path="/landing" element={<Landing/>} />
         </Routes>
       </div>
     </Router>
