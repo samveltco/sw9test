@@ -1,4 +1,5 @@
-@include mediaTo($size960) {
+
+@media screen and (max-width: 1024px) {
   .header .main_menu a {
     padding: 4px 12px;
   }
@@ -67,7 +68,7 @@
     color: #000000;
   }
 }
-@include mediaTo($size768) {
+@media screen and (max-width: 768px) {
   .header .menu_block {
     margin-top: 8px;
   }
@@ -125,7 +126,7 @@
     padding: 0;
   }
 }
-@include mediaTo($size576) {
+@media screen and (max-width: 575px) {
   .content {
     padding: 0;
   }

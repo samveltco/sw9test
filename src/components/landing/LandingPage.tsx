@@ -3,6 +3,9 @@ import SignInModal from "./SignInModal";
 import ForgotPasswordModal from "./ForgotPasswordModal";
 import SignUpStep1Modal from "./SignUpStep1Modal";
 import SignUpStep2Modal from "./SignUpStep2Modal";
+import '../../sass/imports/landing/_main.scss'
+import '../../sass/imports/landing/_large.scss'
+import '../../sass/imports/landing/_mobile.scss'
 
 const LandingPage: React.FC = () => {
     const [currentModal, setCurrentModal] = useState<string | null>(null);

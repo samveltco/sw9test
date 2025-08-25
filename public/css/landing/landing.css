@@ -1340,9 +1340,9 @@ button {
 
 .header,
 .footer,
-/*body {*/
-/*    background: #171414;*/
-/*}*/
+body {
+    background: #171414;
+}
 
 .header {
     padding: 16px 0;
