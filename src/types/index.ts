@@ -1,19 +1,7 @@
-// User related types
-export interface User {
-  name: string;
-  type: string;
-  avatar: string;
-  company: string;
-  registrationDate: string;
-  lastLogin: string;
-  address: string;
-  website: string;
-  phone: string;
-  email: string;
-  bio: string;
-}
+import { User as AuthUser } from '../services/authService';
 
-// Work Order related types
+export type User = AuthUser;
+
 export interface WorkOrder {
   id: string;
   title: string;
@@ -32,20 +20,17 @@ export interface WorkOrder {
   location: string;
 }
 
-// Tab related types
 export interface Tab {
   key: string;
   label: string;
   count: number;
 }
 
-// Form option types
 export interface FormOption {
   value: string;
   label: string;
 }
 
-// Filter types
 export interface FilterState {
   win?: string;
   contractorId?: string;
@@ -61,7 +46,6 @@ export interface FilterState {
   zip?: string;
 }
 
-// Sorting types
 export interface SortState {
   sortBy: string;
   ascending: boolean;

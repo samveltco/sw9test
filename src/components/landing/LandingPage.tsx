@@ -1,14 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SignInModal from "./SignInModal";
 import ForgotPasswordModal from "./ForgotPasswordModal";
 import SignUpStep1Modal from "./SignUpStep1Modal";
 import SignUpStep2Modal from "./SignUpStep2Modal";
+import { useAuth } from "../../hooks/useAuth";
+import { User } from "../../types";
 import '../../sass/imports/landing/_main.scss'
 import '../../sass/imports/landing/_large.scss'
 import '../../sass/imports/landing/_mobile.scss'
 
 const LandingPage: React.FC = () => {
     const [currentModal, setCurrentModal] = useState<string | null>(null);
+    const [selectedUserType, setSelectedUserType] = useState<'contractor' | 'client' | null>(null);
+    
+    const { user: currentUser, isAuthenticated, login, register, logout } = useAuth();
+    const navigate = useNavigate();
 
     const showModal = (modalType: string) => {
         setCurrentModal(modalType);
@@ -16,13 +23,15 @@ const LandingPage: React.FC = () => {
 
     const hideModal = () => {
         setCurrentModal(null);
+        setSelectedUserType(null);
     };
 
     const showSignUpStep1 = () => {
         setCurrentModal('signUpStep1');
     };
 
-    const showSignUpStep2 = () => {
+    const showSignUpStep2 = (userType: 'contractor' | 'client') => {
+        setSelectedUserType(userType);
         setCurrentModal('signUpStep2');
     };
 
@@ -38,6 +47,24 @@ const LandingPage: React.FC = () => {
         setCurrentModal('signIn');
     };
 
+    const handleLoginSuccess = () => {
+        navigate('/dashboard');
+    };
+
+    const handleRegistrationSuccess = (user: User) => {
+        navigate('/dashboard');
+    };
+
+    const handleLogout = () => {
+        logout();
+        setCurrentModal(null);
+        setSelectedUserType(null);
+    };
+
+    const goToDashboard = () => {
+        navigate('/dashboard');
+    };
+
     return (
         <div className="root">
             <div className="header">
@@ -50,8 +77,17 @@ const LandingPage: React.FC = () => {
                             <ul className="main_menu">
                                 <li className="active"><a href="#">Home</a></li>
                                 <li><a href="#">Contact us</a></li>
-                                <li><a href="#" onClick={(e) => { e.preventDefault(); showModal('signIn'); }}>Sign in</a></li>
-                                <li><a href="#" onClick={(e) => { e.preventDefault(); handleSignUpClick(); }}>Sign up</a></li>
+                                {currentUser ? (
+                                    <>
+                                        <li><a href="#" onClick={(e) => { e.preventDefault(); goToDashboard(); }}>Dashboard</a></li>
+                                        <li><a href="#" onClick={(e) => { e.preventDefault(); handleLogout(); }}>Sign out</a></li>
+                                    </>
+                                ) : (
+                                    <>
+                                        <li><a href="#" onClick={(e) => { e.preventDefault(); showModal('signIn'); }}>Sign in</a></li>
+                                        <li><a href="#" onClick={(e) => { e.preventDefault(); handleSignUpClick(); }}>Sign up</a></li>
+                                    </>
+                                )}
                             </ul>
                         </div>
                     </div>
@@ -67,10 +103,17 @@ const LandingPage: React.FC = () => {
                         <div className="main_description">
                             Vaylant G is the next generation FMS platform for connecting contractors and clients.
                         </div>
-                        <div className="main_btn">
-                            <a href="#" className="btn_signIn" onClick={(e) => { e.preventDefault(); showModal('signIn'); }}>Sign in</a>
-                            <a href="#" className="btn_signUp" onClick={(e) => { e.preventDefault(); handleSignUpClick(); }}>Sign up</a>
-                        </div>
+                        {currentUser ? (
+                            <div className="main_btn">
+                                <a href="#" className="btn_signIn" onClick={(e) => { e.preventDefault(); goToDashboard(); }}>Go to Dashboard</a>
+                                <a href="#" className="btn_signUp" onClick={(e) => { e.preventDefault(); handleLogout(); }}>Sign out</a>
+                            </div>
+                        ) : (
+                            <div className="main_btn">
+                                <a href="#" className="btn_signIn" onClick={(e) => { e.preventDefault(); showModal('signIn'); }}>Sign in</a>
+                                <a href="#" className="btn_signUp" onClick={(e) => { e.preventDefault(); handleSignUpClick(); }}>Sign up</a>
+                            </div>
+                        )}
                     </div>
 
                     <div className="app_section">
@@ -192,11 +235,11 @@ const LandingPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* Модальные окна */}
             <SignInModal 
                 isOpen={currentModal === 'signIn'} 
                 onClose={hideModal}
                 onShowForgotPassword={showForgotPassword}
+                onLoginSuccess={handleLoginSuccess}
             />
             
             <ForgotPasswordModal 
@@ -216,6 +259,8 @@ const LandingPage: React.FC = () => {
                 isOpen={currentModal === 'signUpStep2'} 
                 onClose={hideModal}
                 onShowSignIn={showSignIn}
+                userType={selectedUserType!}
+                onRegistrationSuccess={handleRegistrationSuccess}
             />
         </div>
     );

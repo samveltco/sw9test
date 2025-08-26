@@ -1,8 +1,8 @@
 @font-face {
     font-family: "icon";
     font-display: auto;
-    src: url("/public/fonts/icons/icomoon.eot?wxcq87");
-    src: url("/public/fonts/icons/icomoon.eot?wxcq87#iefix") format("embedded-opentype"), url("/public/fonts/icons/icomoon.ttf?wxcq87") format("truetype"), url("/public/fonts/icons/icomoon.woff?wxcq87") format("woff");
+    src: url("../../../public/fonts/icons/icomoon.eot?wxcq87");
+    src: url("../../../public/fonts/icons/icomoon.eot?wxcq87#iefix") format("embedded-opentype"), url("../../../public/fonts/icons/icomoon.ttf?wxcq87") format("truetype"), url("../../../public/fonts/icons/icomoon.woff?wxcq87") format("woff");
     font-weight: normal;
     font-style: normal;
 }

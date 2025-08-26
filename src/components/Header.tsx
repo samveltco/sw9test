@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ user, availableFunds, notificationCount
     <div className="header">
       <div className="welcome_block">
         <div className="welcome_words">
-          Hey <span className="user_name">{user.name.split(' ')[0]},</span> welcome back!
+          Hey <span className="user_name">{user.firstName},</span> welcome back!
         </div>
         <div className="welcome_info">Welcome to The Valyant Group</div>
         <div className="available_funds">Funds Available: {availableFunds}</div>
@@ -37,46 +37,40 @@ const Header: React.FC<HeaderProps> = ({ user, availableFunds, notificationCount
       
       <div className="profile_block">
         <button className="profile_btn" aria-label="profile" onClick={showProfileModal}>
-          <img src={user.avatar} alt="" title="" width="44" height="44"/>
+          <img src="/images/avatar.jpg" alt="" title="" width="44" height="44"/>
           <span className="user_info">
-            <span className="user_name">{user.name}</span>
-            <span className="user_type">{user.type}</span>
+            <span className="user_name">{user.firstName} {user.lastName}</span>
+            <span className="user_type">{user.userType}</span>
           </span>
         </button>
         
         {showProfile && (
           <div className="profile_inner">
             <div className="profile_head">
-              <div className="profile_title">{user.company}</div>
+              <div className="profile_title">{user.userType}</div>
               <button className="close_btn icon_close" aria-label="close" onClick={hideProfileModal}></button>
             </div>
             <div className="profile_content">
               <div className="profile_main">
                 <div className="info_block">
-                  <div className="user_position">{user.company}</div>
-                  <div className="user_name">{user.name}</div>
-                  <div className="sign_info">Date Registered: {user.registrationDate}</div>
-                  <div className="sign_info">Last Login: {user.lastLogin}</div>
+                  <div className="user_position">{user.userType}</div>
+                  <div className="user_name">{user.firstName} {user.lastName}</div>
+                  <div className="sign_info">Date Registered: {user.createdAt}</div>
+                  <div className="sign_info">Last Login: {new Date().toLocaleString()}</div>
                 </div>
                 <div className="image_block">
-                  <img src={user.avatar} alt="" title="" width="84" height="84"/>
+                  <img src="/images/avatar.jpg" alt="" title="" width="84" height="84"/>
                 </div>
               </div>
               <ul className="profile_contacts">
                 <li>
                   <div className="profile_label">Address</div>
-                  <div className="profile_info">{user.address}</div>
-                </li>
-                <li>
-                  <div className="profile_label">Website</div>
-                  <div className="profile_info">
-                    <a href={user.website} target="_blank" rel="noopener noreferrer">{user.website}</a>
-                  </div>
+                  <div className="profile_info">{user.streetAddress}, {user.city}, {user.state} {user.zip}</div>
                 </li>
                 <li>
                   <div className="profile_label">Phone</div>
                   <div className="profile_info">
-                    <a href={`tel:${user.phone.replace(/[^0-9]/g, '')}`}>{user.phone}</a>
+                    <a href={`tel:${user.mobilePhone.replace(/[^0-9]/g, '')}`}>{user.mobilePhone}</a>
                   </div>
                 </li>
                 <li>
@@ -87,8 +81,8 @@ const Header: React.FC<HeaderProps> = ({ user, availableFunds, notificationCount
                 </li>
               </ul>
               <div className="about_user">
-                <div className="profile_label">Bio / About:</div>
-                <div className="profile_info">{user.bio}</div>
+                <div className="profile_label">User Type:</div>
+                <div className="profile_info">{user.userType}</div>
               </div>
               <div className="profile_actions">
                 <button className="standard_btn light_btn icon_plus" aria-label="add new role" onClick={newNoteShow}>Add new note</button>
@@ -99,41 +93,74 @@ const Header: React.FC<HeaderProps> = ({ user, availableFunds, notificationCount
                   <div className="field_col">
                     <label className="field_name" htmlFor="total_required">Add new note</label>
                     <div className="field_block">
-                      <textarea name="total_required" id="total_required" maxLength={500} placeholder="Type here"></textarea>
+                      <textarea 
+                        id="total_required" 
+                        name="total_required" 
+                        placeholder="Enter your note here..."
+                        rows={4}
+                      />
                     </div>
                   </div>
-                  <div className="profile_actions">
-                    <button className="standard_btn dark_btn" aria-label="cancel" onClick={newNoteHidden}>Cancel</button>
-                    <button className="standard_btn lightest_btn" aria-label="save and publish">Save & Publish</button>
+                  <div className="field_actions">
+                    <button className="standard_btn light_btn" onClick={newNoteHidden}>Cancel</button>
+                    <button className="standard_btn dark_btn">Save Note</button>
                   </div>
                 </div>
               )}
-            </div>
-          </div>
-        )}
-        
-        {showEditForm && (
-          <div className="profile_inner form_account">
-            <div className="profile_head">
-              <div className="profile_title">Edit account</div>
-              <button className="close_btn icon_close" aria-label="close" onClick={hideForm}></button>
-            </div>
-            <div className="profile_content">
-              <div className="profile_main">
-                <div className="fields_group">
-                  <div className="image_block">
-                    <img src={user.avatar} alt="" title="" width="84" height="84"/>
+              {showEditForm && (
+                <div className="edit_form">
+                  <div className="fields_group">
+                    <div className="field_col">
+                      <label className="field_name" htmlFor="edit_firstName">First Name</label>
+                      <div className="field_block">
+                        <input 
+                          type="text" 
+                          id="edit_firstName" 
+                          name="firstName" 
+                          defaultValue={user.firstName}
+                        />
+                      </div>
+                    </div>
+                    <div className="field_col">
+                      <label className="field_name" htmlFor="edit_lastName">Last Name</label>
+                      <div className="field_block">
+                        <input 
+                          type="text" 
+                          id="edit_lastName" 
+                          name="lastName" 
+                          defaultValue={user.lastName}
+                        />
+                      </div>
+                    </div>
+                    <div className="field_col">
+                      <label className="field_name" htmlFor="edit_email">Email</label>
+                      <div className="field_block">
+                        <input 
+                          type="email" 
+                          id="edit_email" 
+                          name="email" 
+                          defaultValue={user.email}
+                        />
+                      </div>
+                    </div>
+                    <div className="field_col">
+                      <label className="field_name" htmlFor="edit_phone">Phone</label>
+                      <div className="field_block">
+                        <input 
+                          type="tel" 
+                          id="edit_phone" 
+                          name="mobilePhone" 
+                          defaultValue={user.mobilePhone}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="add_btns">
-                    <label className="standard_btn icon_upload">
-                      <input type="file" name="file_attach"/>
-                      Upload image
-                    </label>
-                    <div className="type_block">jpg or png</div>
+                  <div className="field_actions">
+                    <button className="standard_btn light_btn" onClick={hideForm}>Cancel</button>
+                    <button className="standard_btn dark_btn">Save Changes</button>
                   </div>
                 </div>
-              </div>
-              {/* Add more form fields as needed */}
+              )}
             </div>
           </div>
         )}
