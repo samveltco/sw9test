@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export interface User {
     id: string;
     firstName: string;
@@ -52,29 +54,50 @@ class AuthService {
         }
     }
 
+    // async login(email: string, password: string): Promise<{ success: boolean; message: string; user?: User }> {
+    //     try {
+    //         const users = this.getUsers();
+    //         const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+    //
+    //         if (!user) {
+    //             return { success: false, message: 'User not found' };
+    //         }
+    //
+    //         if (user.password !== password) {
+    //             return { success: false, message: 'Invalid password' };
+    //         }
+    //
+    //         const token = this.generateToken();
+    //         const authData: AuthData = { user, token };
+    //         this.saveAuthData(authData);
+    //
+    //         return { success: true, message: 'Login successful', user };
+    //     } catch (error) {
+    //         return { success: false, message: 'Login failed' };
+    //     }
+    // }
     async login(email: string, password: string): Promise<{ success: boolean; message: string; user?: User }> {
         try {
-            const users = this.getUsers();
-            const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
-            
-            if (!user) {
-                return { success: false, message: 'User not found' };
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/auth/login`, { email, password });
+            const data = response.data;
+
+            if (!data.success || !data.token || !data.message) {
+                return { success: false, message: 'Invalid server response' };
             }
 
-            if (user.password !== password) {
-                return { success: false, message: 'Invalid password' };
-            }
+            const authData: AuthData = {
+                user: data.message,
+                token: data.token
+            };
 
-            const token = this.generateToken();
-            const authData: AuthData = { user, token };
-            this.saveAuthData(authData);
+            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(authData));
 
-            return { success: true, message: 'Login successful', user };
-        } catch (error) {
-            return { success: false, message: 'Login failed' };
+            return { success: true, message: 'Login successful', user: authData.user };
+        } catch (error: any) {
+            const message = error.response?.data?.message || 'Login failed';
+            return { success: false, message };
         }
     }
-
     logout(): void {
         localStorage.removeItem(this.STORAGE_KEY);
     }
