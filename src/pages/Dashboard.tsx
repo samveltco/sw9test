@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import SearchActions from '../components/dashboard/SearchActions';
 import TabsFilter from '../components/dashboard/TabsFilter';
 import SortingControls from '../components/dashboard/SortingControls';
 import WorkOrderCard, { WorkOrder } from '../components/dashboard/WorkOrderCard';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { getWorkOrders } from '../utils/api/get/getWorkOrders';
 
 const Dashboard: React.FC = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -11,28 +14,44 @@ const Dashboard: React.FC = () => {
   const [sortBy, setSortBy] = useState('start_date');
   const [ascending, setAscending] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const params = { "status": "assigned", "search": "", "search_zip": "", "range": 60, "currentPage": 1, "perPage": 10, "filters": {}, "sortBy": { "startDate": 1 } }
+  const navigate = useNavigate();
+  const [workOrders, setWorkOrders] = useState([]);
   // Mock data for work orders
-  const workOrders: WorkOrder[] = [
-    {
-      id: '1',
-      title: 'copy 1 - Service Call - POS Service Call',
-      createdBy: 'Stephanie Bledsoe100%',
-      win: '11044997',
-      companyWOID: '00169494',
-      startDate: '11/6/202002:00PM',
-      endDate: '11/30/202005:00PM',
-      assignedTo: 'Might Deployment',
-      phone: '+(402) 202-2996',
-      email: 'mightdeployment@gmail.com',
-      price: '$50.000',
-      calcInfo: 'Base: 50/flat for 2 hr(s) = 50\nTotal est value = $50.00',
-      status: ['UNCONFIRMED', 'ON HOLD'],
-      messages: 0,
-      location: 'Stillwater, Minnesota 55082'
-    },
-    // Add more mock work orders as needed
-  ];
+  
+  // const workOrders: WorkOrder[] = [
+  //   {
+  //     id: '1',
+  //     title: 'copy 1 - Service Call - POS Service Call',
+  //     createdBy: 'Stephanie Bledsoe100%',
+  //     win: '11044997',
+  //     companyWOID: '00169494',
+  //     startDate: '11/6/202002:00PM',
+  //     endDate: '11/30/202005:00PM',
+  //     assignedTo: 'Might Deployment',
+  //     phone: '+(402) 202-2996',
+  //     email: 'mightdeployment@gmail.com',
+  //     price: '$50.000',
+  //     calcInfo: 'Base: 50/flat for 2 hr(s) = 50\nTotal est value = $50.00',
+  //     status: ['UNCONFIRMED', 'ON HOLD'],
+  //     messages: 0,
+  //     location: 'Stillwater, Minnesota 55082'
+  //   },
+  //   // Add more mock work orders as needed
+  // ];
+  useEffect(() => {
+    getWorkOrders(1, 10, 'assigned', {}, {}, { startDate: 1 }, 'orders').then(result => {
+      const tmpWorkOrders = result.map((order: any) => {
+        if (order?.clientInfo?.ratings) {
+          const { total, count } = order.clientInfo.ratings;
+          // eslint-disable-next-line no-param-reassign
+          order.clientInfo.ratings = ((total / (count * 3)) * 100).toFixed(2).replace(/\.?0+$/, '');
+        }
+        return order;
+      });
+      setWorkOrders(tmpWorkOrders);
+    });
+  }, []);
 
   const tabs = [
     { key: 'all', label: 'All', count: 84 },
@@ -51,6 +70,7 @@ const Dashboard: React.FC = () => {
 
   const handleCreateWorkOrder = () => {
     console.log('Create work order');
+    navigate('/create-work-order');
     // TODO: Navigate to create work order page
   };
 
@@ -140,10 +160,11 @@ const Dashboard: React.FC = () => {
 
       <div className="cards_list">
         <span className="shadow_block top_shadow"></span>
-        {workOrders.map((order) => (
+        {workOrders.map((order, index) => (
           <WorkOrderCard
-            key={order.id}
+            key={index}
             workOrder={order}
+            messagesCount={{unReadMessages: {}}}
             onDuplicate={handleDuplicate}
             onViewDetails={handleViewDetails}
             onFindContractors={handleFindContractors}
