@@ -5,14 +5,75 @@ import ForgotPasswordModal from "./ForgotPasswordModal";
 import SignUpStep1Modal from "./SignUpStep1Modal";
 import SignUpStep2Modal from "./SignUpStep2Modal";
 import { useAuth } from "../../hooks/useAuth";
-import '../../sass/landing/landing.scss'
-import '../../sass/landing/landing-l.scss'
-import '../../sass/landing/landing-m.scss'
+
 
 const LandingPage: React.FC = () => {
   const [currentModal, setCurrentModal] = useState<string | null>(null);
   const [selectedUserType, setSelectedUserType] = useState<'contractor' | 'client' | null>(null);
 
+
+  useEffect(() => {
+    const markNode = (el: Element) => {
+      (el as HTMLElement).setAttribute('data-landing-style', '1');
+    };
+    const enableNode = (el: Element) => {
+      if (el.tagName === 'LINK') {
+        (el as HTMLLinkElement).media = 'all';
+      } else if (el.tagName === 'STYLE') {
+        (el as HTMLStyleElement).media = '';
+      }
+    };
+    const disableNode = (el: Element) => {
+      if (el.tagName === 'LINK') {
+        (el as HTMLLinkElement).media = 'not all';
+      } else if (el.tagName === 'STYLE') {
+        (el as HTMLStyleElement).media = 'not all';
+      }
+    };
+
+    let nodes = Array.from(document.head.querySelectorAll('[data-landing-style="1"]')) as Element[];
+    if (nodes.length) {
+      nodes.forEach(el => {
+        enableNode(el);
+        document.head.appendChild(el);
+      });
+      return () => nodes.forEach(disableNode);
+    }
+
+    const collected = new Set<Element>();
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach(m => {
+        m.addedNodes.forEach(node => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const el = node as Element;
+            if (
+              el.tagName === 'STYLE' ||
+              (el.tagName === 'LINK' && (el as HTMLLinkElement).rel === 'stylesheet')
+            ) {
+              markNode(el);
+              collected.add(el);
+            }
+          }
+        });
+      });
+    });
+    observer.observe(document.head, { childList: true });
+
+    Promise.all([
+      import('../../sass/landing/landing.scss'),
+      import('../../sass/landing/landing-l.scss'),
+      import('../../sass/landing/landing-m.scss'),
+    ]).finally(() => {
+      observer.disconnect();
+      nodes = Array.from(collected);
+    });
+
+    return () => {
+      observer.disconnect();
+      Array.from(collected).forEach(disableNode);
+    };
+  }, []);
+  
   const { login, logout } = useAuth();
   const navigate = useNavigate();
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 interface NavigationProps {
   isCollapsed?: boolean;
@@ -9,12 +9,17 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ isCollapsed = false, onToggle }) => {
   const location = useLocation();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(isCollapsed);
-
+  const navigate = useNavigate();
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
     const el = document.querySelector('.sidebar');
     if (el) el.classList.toggle('opened');
     if (onToggle) onToggle();
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
+    navigate('/home');
   };
 
   const menuItems = [
@@ -55,7 +60,7 @@ const Navigation: React.FC<NavigationProps> = ({ isCollapsed = false, onToggle }
             </Link>
           ))}
         </div>
-        <button className="logout_btn icon_logout" aria-label="logout">
+        <button className="logout_btn icon_logout" onClick={handleLogout} aria-label="logout">
           <span>Log out</span>
         </button>
       </div>
