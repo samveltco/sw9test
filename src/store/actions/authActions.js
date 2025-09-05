@@ -251,6 +251,7 @@ const initApiVersion = () => {
     });
   });
 };
+
 const confirm = async (dispatch, message) => {
   return new Promise((resolve) => dispatch(toggleModal(true, 'confirmModal', true, {
     onAccept: () => resolve(true),

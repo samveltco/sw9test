@@ -7,6 +7,10 @@ import WorkOrderCard, { WorkOrder } from '../components/dashboard/WorkOrderCard'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getWorkOrders } from '../utils/api/get/getWorkOrders';
+import '../sass/home/index.scss';
+import '../sass/home/index-l.scss';
+import '../sass/home/index-m.scss';
+
 
 const Dashboard: React.FC = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -62,10 +66,8 @@ const Dashboard: React.FC = () => {
     { key: 'paid', label: 'Paid', count: 7 }
   ];
 
-  // Event handlers
   const handleImportClick = () => {
     console.log('Import work orders');
-    // TODO: Implement import functionality
   };
 
   const handleCreateWorkOrder = () => {
@@ -76,56 +78,46 @@ const Dashboard: React.FC = () => {
 
   const handleExport = () => {
     console.log('Export to Excel');
-    // TODO: Implement export functionality
   };
 
   const handleShowModal = () => {
     console.log('Show modal');
-    // TODO: Implement modal functionality
   };
 
   const handleApplyFilter = () => {
     console.log('Apply filter');
     setShowFilter(false);
-    // TODO: Implement filter logic
   };
 
   const handleResetFilter = () => {
     console.log('Reset filter');
-    // TODO: Implement filter reset logic
   };
 
-  // Work order actions
   const handleDuplicate = (id: string) => {
     console.log('Duplicate work order:', id);
-    // TODO: Implement duplicate functionality
   };
 
   const handleViewDetails = (id: string) => {
     console.log('View details for work order:', id);
-    // TODO: Navigate to work order details
   };
 
   const handleFindContractors = (id: string) => {
     console.log('Find contractors for work order:', id);
-    // TODO: Navigate to find contractors with filters
   };
 
   const handleViewApplicants = (id: string) => {
     console.log('View applicants for work order:', id);
-    // TODO: Navigate to applicants view
   };
 
   const handleCreateTemplate = (id: string) => {
     console.log('Create template from work order:', id);
-    // TODO: Navigate to template creation
   };
 
   return (
     <Layout>
       <div className="welcome_block">
         <div className="welcome_words">
-          Hey <span className="user_name">Mani,</span> welcome back!
+          Hey <span className="user_name">{'User'},</span> welcome back! 
         </div>
         <div className="welcome_info">Welcome to The Valyant Group</div>
         <div className="available_funds">Funds Available: $1,268.22</div>

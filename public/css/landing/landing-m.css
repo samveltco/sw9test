@@ -1,0 +1,235 @@
+
+@media screen and (max-width: 1024px) {
+    .header .main_menu a {
+        padding: 4px 12px;
+    }
+    .main_section .main_title {
+        font-size: 357.14%;
+        line-height: 1.5em;
+        font-weight: 700;
+    }
+    .main_section .main_description {
+        font-size: 128.57%;
+        line-height: 1.44em;
+    }
+    .main_section .main_btn {
+        margin-top: 40px;
+        gap: 25px;
+    }
+    .contractor_section,
+    .app_section {
+        margin-top: 120px;
+    }
+    .work_section {
+        margin-top: 120px;
+    }
+    .work_section .work_list {
+        gap: 10px;
+    }
+    .contact_section {
+        margin-top: 120px;
+    }
+    .contact_section .section_title {
+        font-size: 171.42%;
+        line-height: 1.25em;
+    }
+    .contact_section .section_description {
+        font-size: 128.57%;
+        line-height: 1.38em;
+    }
+    .contact_section .contact_row {
+        margin: 0 -15px;
+    }
+    .contact_section .left_col {
+        padding: 0 15px;
+    }
+    .contact_section .right_col {
+        flex: 0 0 420px;
+        max-width: 420px;
+        padding: 0 15px;
+    }
+    .contact_section .social_list {
+        padding-top: 20px;
+    }
+    .contact_section .title_contact {
+        font-size: 157.14%;
+        line-height: 1.13em;
+        margin: 0 auto 12px;
+        font-weight: 700;
+    }
+    .contact_section .download_btn {
+        padding: 13px 24px;
+        font-weight: 700;
+    }
+    .contact_section .email_block,
+    .contact_section .phone_block {
+        font-size: 128.57%;
+        line-height: 1.16em;
+        color: #000000;
+    }
+}
+@media screen and (max-width: 768px) {
+    .header .menu_block {
+        margin-top: 8px;
+    }
+    .header .main_menu a {
+        padding: 4px 12px;
+        font-size: 85.71%;
+        line-height: 1.66em;
+    }
+    .contractor_section .inner_title {
+        font-size: 171.42%;
+        line-height: 1.25em;
+    }
+    .contractor_section .inner_description {
+        font-size: 128.57%;
+        line-height: 1.38em;
+    }
+    .app_section .section_title {
+        font-size: 171.42%;
+        line-height: 1.25em;
+    }
+    .app_section .section_description {
+        font-size: 128.57%;
+        line-height: 1.38em;
+    }
+    .work_section .work_list {
+        flex-wrap: wrap;
+    }
+    .work_section .work_list li {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .work_section .section_title {
+        font-size: 171.42%;
+        line-height: 1.25em;
+    }
+    .work_section .section_description {
+        font-size: 128.57%;
+        line-height: 1.38em;
+    }
+    .contact_section {
+        margin-top: 120px;
+    }
+    .contact_section .contact_row {
+        margin: 0;
+        flex-direction: column;
+    }
+    .contact_section .right_col {
+        padding: 0;
+        margin-top: 20px;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .contact_section .left_col {
+        padding: 0;
+    }
+}
+@media screen and (max-width: 575px) {
+    .content {
+        padding: 0;
+    }
+    .work_section .work_description {
+        font-size: 85.71%;
+        line-height: 1.5em;
+    }
+    .work_section .section_title,
+    .app_section .section_title,
+    .contact_section .section_title {
+        font-size: 142.85%;
+        line-height: 1.3em;
+        margin-bottom: 20px;
+    }
+    .work_section .section_description,
+    .app_section .section_description,
+    .contact_section .section_description {
+        font-size: 85.71%;
+        line-height: 1.5em;
+    }
+    .contact_section .email_block,
+    .contact_section .phone_block {
+        font-size: 100%;
+        line-height: 1.5em;
+        margin-bottom: 12px;
+        color: #000000;
+    }
+    .app_section .app_version {
+        gap: 36px;
+    }
+    .app_section .phone_img {
+        margin-top: 20px;
+    }
+    .app_section .phone_img img {
+        aspect-ratio: auto 506/240;
+    }
+    .main_section .main_title {
+        font-size: 142.85%;
+        line-height: 1.3em;
+    }
+    .main_section .main_description {
+        font-size: 85.71%;
+        line-height: 1.5em;
+    }
+    .main_section .btn_signUp,
+    .main_section .btn_signIn {
+        font-size: 85.71%;
+        line-height: 1.5em;
+    }
+    .contractor_section {
+        position: relative;
+        overflow: hidden;
+    }
+    .contractor_section .contractor_info {
+        font-size: 71.42%;
+        line-height: 1.7em;
+        text-align: center;
+        font-weight: 400;
+    }
+    .contractor_section .contractor_info img {
+        margin-left: -130px;
+    }
+    .contractor_section .inner_title {
+        font-size: 142.85%;
+        line-height: 1.3em;
+    }
+    .contractor_section .inner_description {
+        font-size: 100%;
+        line-height: 1.42em;
+    }
+    .footer .copyrights {
+        font-size: 85.71%;
+        line-height: 1.5em;
+    }
+    .footer .footer_logo img {
+        height: 142px;
+    }
+    .landing_modals {
+        padding: 0;
+        border-radius: 0;
+    }
+    .landing_modals:after, .landing_modals:before {
+        display: none;
+    }
+    .landing_modals .modal_container {
+        border-radius: 0;
+        padding: 15px;
+        min-height: unset;
+    }
+    .landing_modals .fields_group {
+        max-height: unset;
+        padding: 0;
+    }
+    .landing_modals .modal_body {
+        padding-top: 40px;
+    }
+    .landing_modals .close_btn {
+        top: 33px;
+        right: 16px;
+    }
+    .landing_modals .fields_group:has(.inner_title) .radio_block .radio_btn {
+        justify-content: center;
+    }
+}
+
+/*# sourceMappingURL=landing-m.css.map */

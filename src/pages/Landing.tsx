@@ -1,15 +1,23 @@
-import React from 'react';
-import Layout from '../components/Layout';
+import React, { useEffect } from 'react';
+import LandingPage from "../components/landing/LandingPage";
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Landing: React.FC = () => {
-  return (
-    <Layout>
-      <div className="page-content">
-        <h1>Landing</h1>
-        <p>This page corresponds to landing.html.</p>
-      </div>
-    </Layout>
-  );
+  const { isAuthenticated, isLoading } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, navigate]);
+ 
+    return (
+        <div>
+          <LandingPage/>
+        </div>
+    );
 };
 
-export default Landing; 
+export default Landing;
