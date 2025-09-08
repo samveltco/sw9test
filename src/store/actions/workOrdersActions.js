@@ -1149,22 +1149,32 @@ export const fetchCountries = () => async dispatch => {
 };
 
 export const fetchStatesOfCountry = (countryId) => async dispatch => {
-  try {
-    dispatch(toggleModal(true, 'loader', true));
-    const response = await axios.get('/api/address/getStatesOfCountry', {
-      params: { countryId: countryId || '' },
-    });
-    dispatch(toggleSecondModalClose('loader', true));
-    return response.data?.payload?.states;
-  } catch (error) {
-    dispatch(toggleSecondModalClose('loader', true));
-    console.error('error: ', error);
-    Notification('error', {
-      message: error.response?.data?.message || error.message,
-    });
-    return [];
-  }
+    try {
+        dispatch(toggleModal(true, 'loader', true));
+
+        const response = await axios.get('/api/address/getStatesOfCountry');
+        const countries = response.data?.payload?.states || [];
+
+        const country = countries.find(c => c.label === countryId || c.label.toUpperCase() === countryId.toUpperCase());
+
+        const states = country?.options || [];
+
+        console.log(states);
+        dispatch(toggleSecondModalClose('loader', true));
+
+        return states;
+
+    } catch (error) {
+        dispatch(toggleSecondModalClose('loader', true));
+        console.error('error: ', error);
+        Notification('error', {
+            message: error.response?.data?.message || error.message,
+        });
+        return [];
+    }
 };
+
+
 
 export const createWorkOrder = (data, history, pathname) => async dispatch => {
   const payload = JSON.parse(data.get('values'))

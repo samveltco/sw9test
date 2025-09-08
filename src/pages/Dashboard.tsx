@@ -10,6 +10,8 @@ import { getWorkOrders } from '../utils/api/get/getWorkOrders';
 import '../sass/home/index.scss';
 import '../sass/home/index-l.scss';
 import '../sass/home/index-m.scss';
+// import {useSelector} from "react-redux";
+// import {RootState} from "../store";
 
 
 const Dashboard: React.FC = () => {
@@ -21,7 +23,9 @@ const Dashboard: React.FC = () => {
   const params = { "status": "assigned", "search": "", "search_zip": "", "range": 60, "currentPage": 1, "perPage": 10, "filters": {}, "sortBy": { "startDate": 1 } }
   const navigate = useNavigate();
   const [workOrders, setWorkOrders] = useState([]);
-  // Mock data for work orders
+    // const user = useSelector((state: RootState) => state.auth.user);
+
+    // Mock data for work orders
   
   // const workOrders: WorkOrder[] = [
   //   {
@@ -115,13 +119,13 @@ const Dashboard: React.FC = () => {
 
   return (
     <Layout>
-      <div className="welcome_block">
-        <div className="welcome_words">
-          Hey <span className="user_name">{'User'},</span> welcome back! 
-        </div>
-        <div className="welcome_info">Welcome to The Valyant Group</div>
-        <div className="available_funds">Funds Available: $1,268.22</div>
-      </div>
+      {/*<div className="welcome_block">*/}
+      {/*  <div className="welcome_words">*/}
+      {/*    Hey <span className="user_name">{'User'},</span> welcome back!*/}
+      {/*  </div>*/}
+      {/*  <div className="welcome_info">Welcome to The Valyant Group</div>*/}
+      {/*  <div className="available_funds">Funds Available: $1,268.22</div>*/}
+      {/*</div>*/}
 
       <SearchActions
         onImportClick={handleImportClick}

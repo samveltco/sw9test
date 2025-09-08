@@ -18,12 +18,12 @@ const SignUpStep1Modal: React.FC<SignUpStep1ModalProps> = ({ isOpen, onClose, on
 
     const handleContinue = (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (!userType) {
             setErrorMessage('Please select your user type');
             return;
         }
-        
+
         onNext(userType);
     };
 
@@ -33,22 +33,22 @@ const SignUpStep1Modal: React.FC<SignUpStep1ModalProps> = ({ isOpen, onClose, on
         <div className="modal_block landing_modals showed">
             <div className="modal_container">
                 <div className="modal_head">
-                    <button 
-                        className="close_btn icon_close" 
-                        aria-label="close" 
+                    <button
+                        className="close_btn icon_close"
+                        aria-label="close"
                         onClick={onClose}
                     ></button>
                 </div>
                 <div className="modal_body">
                     <div className="modal_title">Create Your Free Account</div>
                     <div className="modal_description">Welcome!</div>
-                    
+
                     {errorMessage && (
                         <div className="error_hint" style={{ maxHeight: '60px', marginBottom: '20px' }}>
                             {errorMessage}
                         </div>
                     )}
-                    
+
                     <form onSubmit={handleContinue}>
                         <div className="fields_group">
                             <div className="field_col">
@@ -56,24 +56,24 @@ const SignUpStep1Modal: React.FC<SignUpStep1ModalProps> = ({ isOpen, onClose, on
                             </div>
                             <div className="field_col">
                                 <label className="radio_block">
-                                    <input 
-                                        type="radio" 
-                                        name="userType" 
-                                        value="client"
-                                        checked={userType === 'client'}
-                                        onChange={() => handleUserTypeChange('client')}
+                                    <input
+                                        type="radio"
+                                        name="userType"
+                                        value="contractor"
+                                        checked={userType === 'contractor'}
+                                        onChange={() => handleUserTypeChange('contractor')}
                                     />
                                     <span className="radio_btn">Find Work</span>
                                 </label>
                             </div>
                             <div className="field_col">
                                 <label className="radio_block">
-                                    <input 
-                                        type="radio" 
-                                        name="userType" 
-                                        value="contractor"
-                                        checked={userType === 'contractor'}
-                                        onChange={() => handleUserTypeChange('contractor')}
+                                    <input
+                                        type="radio"
+                                        name="userType"
+                                        value="client"
+                                        checked={userType === 'client'}
+                                        onChange={() => handleUserTypeChange('client')}
                                     />
                                     <span className="radio_btn">Hire a Contractor</span>
                                 </label>
@@ -90,4 +90,4 @@ const SignUpStep1Modal: React.FC<SignUpStep1ModalProps> = ({ isOpen, onClose, on
     );
 };
 
-export default SignUpStep1Modal; 
+export default SignUpStep1Modal;

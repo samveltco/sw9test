@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 
@@ -18,11 +18,18 @@ import AdminRecruits from './pages/AdminRecruits';
 import ContractorMain from './pages/ContractorMain';
 import AdminMain from './pages/AdminMain';
 import './utils/api';
+import {useDispatch} from "react-redux";
+import {init} from "./store/actions/authActions";
 // import './sass/imports/main';
 
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch<any>(init());
+    }, [dispatch]);
   
   if (isLoading) {
     return <div>Loading...</div>;

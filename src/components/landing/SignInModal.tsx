@@ -22,7 +22,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose, onShowForgot
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
-        setErrorMessage(''); // Очищаем ошибку при вводе
+        setErrorMessage('');
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -31,18 +31,13 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose, onShowForgot
         setErrorMessage('');
 
         try {
-            const result = await login(formData.email, formData.password);
-            
-            if (result.success) {
-                onLoginSuccess?.();
+            const success = await login(formData.email, formData.password);
+            if (success) {
+                if (onLoginSuccess) onLoginSuccess();
                 onClose();
-                // Очищаем форму
-                setFormData({ email: '', password: '' });
-            } else {
-                setErrorMessage(result.message || 'Login failed');
             }
-        } catch (error) {
-            setErrorMessage('An error occurred during login');
+        } catch (err: any) {
+            setErrorMessage(err.message || "Login failed");
         } finally {
             setIsLoading(false);
         }

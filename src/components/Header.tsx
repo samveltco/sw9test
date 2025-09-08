@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
+import {RootState} from "../store";
+import {useSelector} from "react-redux";
 
 interface HeaderProps {
   availableFunds: string;
   notificationCount: number;
 }
 
+
 const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) => {
   //TODO get user data from store
-  const [showProfile, setShowProfile] = useState(false);
+    const user = useSelector((state: RootState) => state.auth.user);
+    console.log("user from store:", user);
+
+
+
+    const [showProfile, setShowProfile] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
   const [showNewNote, setShowNewNote] = useState(false);
 
@@ -18,11 +26,12 @@ const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) =>
   const newNoteShow = () => setShowNewNote(true);
   const newNoteHidden = () => setShowNewNote(false);
 
-  return (
+
+    return (
     <div className="header">
       <div className="welcome_block">
         <div className="welcome_words">
-          Hey <span className="user_name">{'user.firstName'},</span> welcome back!
+          Hey <span className="user_name">{user?.firstName},</span> welcome back!
         </div>
         <div className="welcome_info">Welcome to The Valyant Group</div>
         <div className="available_funds">Funds Available: {availableFunds}</div>
@@ -38,23 +47,23 @@ const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) =>
         <button className="profile_btn" aria-label="profile" onClick={showProfileModal}>
           <img src="/images/avatar.jpg" alt="" title="" width="44" height="44"/>
           <span className="user_info">
-            <span className="user_name">{'user.firstName'} {'user.lastName'}</span>
-            <span className="user_type">{'user.userType'}</span>
+            <span className="user_name">{user?.firstName} {user?.lastName}</span>
+            <span className="user_type">{user?.userType}</span>
           </span>
         </button>
         
         {showProfile && (
           <div className="profile_inner">
             <div className="profile_head">
-              <div className="profile_title">{'user.userType'}</div>
+              <div className="profile_title">{user?.userType}</div>
               <button className="close_btn icon_close" aria-label="close" onClick={hideProfileModal}></button>
             </div>
             <div className="profile_content">
               <div className="profile_main">
                 <div className="info_block">
-                  <div className="user_position">{'user.userType'}</div>
-                  <div className="user_name">{'user.firstName'} {'user.lastName'}</div>
-                  <div className="sign_info">Date Registered: {'user.createdAt'}</div>
+                  <div className="user_position">{user?.userType}</div>
+                  <div className="user_name">{'user?.firstName'} {user?.lastName}</div>
+                  <div className="sign_info">Date Registered: {user?.createdAt}</div>
                   <div className="sign_info">Last Login: {new Date().toLocaleString()}</div>
                 </div>
                 <div className="image_block">
@@ -64,24 +73,24 @@ const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) =>
               <ul className="profile_contacts">
                 <li>
                   <div className="profile_label">Address</div>
-                  <div className="profile_info">{'user.streetAddress'}, {'user.city'}, {'user.state'} {'user.zip'}</div>
+                  <div className="profile_info">{user?.streetAddress}, {user?.city}, {user?.state} {user?.zip}</div>
                 </li>
                 <li>
                   <div className="profile_label">Phone</div>
                   <div className="profile_info">
-                    <a href={`tel:${'user.mobilePhone'}`}>{'user.mobilePhone'}</a>
+                    <a href={`tel:${user?.phone}`}>{user?.phone}</a>
                   </div>
                 </li>
                 <li>
                   <div className="profile_label">Email</div>
                   <div className="profile_info">
-                    <a href={`mailto:${'user.email'}`}>{'user.email'}</a>
+                    <a href={`mailto:${user?.email}`}>{user?.email}</a>
                   </div>
                 </li>
               </ul>
               <div className="about_user">
                 <div className="profile_label">User Type:</div>
-                <div className="profile_info">{'user.userType'}</div>
+                <div className="profile_info">{user?.userType}</div>
               </div>
               <div className="profile_actions">
                 <button className="standard_btn light_btn icon_plus" aria-label="add new role" onClick={newNoteShow}>Add new note</button>
@@ -116,7 +125,7 @@ const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) =>
                           type="text" 
                           id="edit_firstName" 
                           name="firstName" 
-                          defaultValue={'user.firstName'}
+                          defaultValue={user?.firstName}
                         />
                       </div>
                     </div>
@@ -127,7 +136,7 @@ const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) =>
                           type="text" 
                           id="edit_lastName" 
                           name="lastName" 
-                          defaultValue={'user.lastName'}
+                          defaultValue={user?.lastName}
                         />
                       </div>
                     </div>
@@ -138,7 +147,7 @@ const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) =>
                           type="email" 
                           id="edit_email" 
                           name="email" 
-                          defaultValue={'user.email'}
+                          defaultValue={user?.email}
                         />
                       </div>
                     </div>
@@ -148,8 +157,8 @@ const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) =>
                         <input 
                           type="tel" 
                           id="edit_phone" 
-                          name="mobilePhone" 
-                          defaultValue={'user.mobilePhone'}
+                          name="phone"
+                          defaultValue={user?.phone}
                         />
                       </div>
                     </div>

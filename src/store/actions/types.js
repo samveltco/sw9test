@@ -1,5 +1,6 @@
 // ©2024 Austin App House. All rights reserved.
 export const GET_ERRORS = 'GET_ERRORS';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const SET_IS_DOWNLOAD_DOCUMENTS = 'SET_IS_DOWNLOAD_DOCUMENTS';
 export const USER_LOADING = 'USER_LOADING';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
