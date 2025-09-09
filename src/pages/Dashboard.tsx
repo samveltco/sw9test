@@ -10,11 +10,12 @@ import { getWorkOrders } from '../utils/api/get/getWorkOrders';
 import '../sass/home/index.scss';
 import '../sass/home/index-l.scss';
 import '../sass/home/index-m.scss';
+import Modal from '../components/models';
 // import {useSelector} from "react-redux";
 // import {RootState} from "../store";
 
 
-const Dashboard: React.FC = () => {
+const Dashboard: React.FC<{ mainContainer: any }> = ({  mainContainer }) => {
   const [showFilter, setShowFilter] = useState(false);
   const [selectedTab, setSelectedTab] = useState('all');
   const [sortBy, setSortBy] = useState('start_date');
@@ -170,6 +171,7 @@ const Dashboard: React.FC = () => {
         ))}
         <span className="shadow_block bottom_shadow"></span>
       </div>
+      <Modal mainContainer={mainContainer.current} />
     </Layout>
   );
 };

@@ -17,6 +17,11 @@ import '../sass/order/order-m.scss'
 import '../sass/order/order.scss'
 import InputField from '../components/layout/reduxForm/customFields/InputField';
 import MarksSection from '../components/createWorkOrder/MarksSection';
+import CreateOrAddCustomFieldToWorkOrder from '../components/models/CreateOrAddCustomFieldToWorkOrder';
+import DateSection from '../components/createWorkOrder/DateSection';
+import AddressSection from '../components/createWorkOrder/AddressSection';
+import RemoteWFHSection from '../components/createWorkOrder/RemoteWFHSection';
+import WorkTypeSection from '../components/createWorkOrder/WorkTypeSection';
 
 
 let CreateWorkOrderReduxForm: any = ({
@@ -24,6 +29,7 @@ let CreateWorkOrderReduxForm: any = ({
   currentWorkOrder,
   fetchWorkOrderById,
   getAccountBalanceByClient,
+  modalState,
   setCurrentWorkOrder,
   match,
   setCurrentTemplate,
@@ -38,11 +44,14 @@ let CreateWorkOrderReduxForm: any = ({
 
   const showModal = (e: any) => {
     e.preventDefault();
-    setModalIsOpen(true);
+    toggleModal(true, 'createOrAddCustomFieldToWorkOrder');
+    console.log('modalState', modalState);
+    setIsCustomFieldsModalOpen(true);
   };
   const hideModal = (e: any) => {
     e.preventDefault();
-    setModalIsOpen(false);
+    toggleModal(false, 'createOrAddCustomFieldToWorkOrder');
+    setIsCustomFieldsModalOpen(false);
   };
 
   const [isLoading, setIsLoading] = useState(true);
@@ -177,141 +186,16 @@ let CreateWorkOrderReduxForm: any = ({
           </table>
         </div>
 
-        <div className="fields_group">
-          <div className="field_col">
-            <label className="field_name" htmlFor="date_start">Date*</label>
-            <div className="field_block">
-              <input type="date" name="date_start" id="date_start" maxLength={50} placeholder="Title" />
-            </div>
-            <div className="field_block">
-              <input type="date" name="date_end" id="date_end" maxLength={50} placeholder="Title" />
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="time">Time*</label>
-            <div className="field_block">
-              <select name="time_start" id="time_start">
-                <option>00:00</option>
-                <option value="1">01:00</option>
-                <option value="2">02:00</option>
-                <option value="3">03:00</option>
-                <option value="4">04:00</option>
-              </select>
-            </div>
-            <div className="field_block">
-              <select name="time_end" id="time_end">
-                <option>00:00</option>
-                <option value="1">01:00</option>
-                <option value="2">02:00</option>
-                <option value="3">03:00</option>
-                <option value="4">04:00</option>
-              </select>
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="site_id">Site ID*</label>
-            <div className="field_block">
-              <input type="text" name="site_id" id="site_id" maxLength={50} placeholder="Site ID" />
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="site_name">Site Name*</label>
-            <div className="field_block">
-              <input type="text" name="site_name" id="site_name" maxLength={50} placeholder="Site Name" />
-            </div>
-          </div>
-        </div>
+      <DateSection />
+        
+      <AddressSection />
 
-        <div className="fields_group">
-          <div className="group_subtitle">Site Address</div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="street_address">Street Address*</label>
-            <div className="field_block">
-              <input type="text" name="street_address" id="street_address" maxLength={50} placeholder="Street Address" />
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="bidg_suite">Bldg, Suite, Etc.</label>
-            <div className="field_block">
-              <input type="text" name="bidg_suite" id="bidg_suite" maxLength={50} placeholder="Bldg, Suite, Etc." />
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="city">City</label>
-            <div className="field_block">
-              <input type="text" name="city" id="city" maxLength={50} placeholder="City" />
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="state">State</label>
-            <div className="field_block">
-              <select name="state" id="state">
-                <option>State</option>
-                <option value="1">Value 1</option>
-                <option value="2">Value 2</option>
-                <option value="3">Value 3</option>
-                <option value="4">Value 4</option>
-              </select>
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="zip">Zip</label>
-            <div className="field_block">
-              <input type="text" name="zip" id="zip" maxLength={50} placeholder="Zip" />
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="country">Country</label>
-            <div className="field_block">
-              <select name="country" id="country">
-                <option>Country</option>
-                <option value="1">Value 1</option>
-                <option value="2">Value 2</option>
-                <option value="3">Value 3</option>
-                <option value="4">Value 4</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <div className="separate">OR</div>
 
-        <div className="separate">OR</div>
-        <div className="checkbox_list">
-          <label className="check_btn">
-            <input type="checkbox" name="remote_wfh" />
-            Remote/WFH
-          </label>
-          <label className="check_btn">
-            <input type="checkbox" name="project_manager" />
-            Project Manager
-          </label>
-          <label className="check_btn">
-            <input type="checkbox" name="project_coordinator" />
-            Project Coordinator
-          </label>
-          <label className="check_btn">
-            <input type="checkbox" name="project_administrator" />
-            Project Administrator
-          </label>
-          <label className="check_btn">
-            <input type="checkbox" name="other_misc" />
-            Other/Misc.
-          </label>
-        </div>
+      <RemoteWFHSection />
 
-        <div className="fields_group">
-          <div className="field_col">
-            <label className="field_name" htmlFor="work_type">Work Type*</label>
-            <div className="field_block">
-              <select name="work_type" id="work_type">
-                <option>Work Type</option>
-                <option value="1">Value 1</option>
-                <option value="2">Value 2</option>
-                <option value="3">Value 3</option>
-                <option value="4">Value 4</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <WorkTypeSection onChange={() => {}} />
+       
 
         <div className="fields_group">
           <div className="field_col">
@@ -422,58 +306,7 @@ let CreateWorkOrderReduxForm: any = ({
         <button className="standard_btn lightest_btn" aria-label="save and publish">Save &amp; Publish</button>
       </div>
 
-      <div className={`modal_block custom_fields ${modalIsOpen ? 'showed' : ''}`} >
-        <div className="modal_container">
-          <div className="modal_head">
-            <div className="modal_title">Custom Field</div>
-            <button className="close_btn icon_close" aria-label="close" onClick={hideModal}></button>
-          </div>
-          <div className="modal_body">
-            <div className="field_col">
-              <label className="field_name" htmlFor="project1">Select Custom Field</label>
-              <div className="field_block">
-                <select name="project" id="project1">
-                  <option>Select</option>
-                  <option value="1">Value 1</option>
-                  <option value="2">Value 2</option>
-                  <option value="3">Value 3</option>
-                  <option value="4">Value 4</option>
-                </select>
-              </div>
-            </div>
-            <div className="separate">OR</div>
-            <div className="field_col">
-              <label className="field_name" htmlFor="name1">Name*</label>
-              <div className="field_block">
-                <input type="text" name="company_wo_id" id="name1" maxLength={50} placeholder="Field name" />
-              </div>
-            </div>
-            <br />
-            <br />
-            <div className="field_col">
-              <label className="field_name" htmlFor="Value">Value</label>
-              <div className="field_block">
-                <input type="text" name="company_wo_id" id="Value" maxLength={50} placeholder="Field name" />
-              </div>
-            </div>
-            <div className="field_col">
-              <label className="field_name" htmlFor="type">Type*</label>
-              <div className="field_block">
-                <select name="project" id="type">
-                  <option>Select</option>
-                  <option value="1">Value 1</option>
-                  <option value="2">Value 2</option>
-                  <option value="3">Value 3</option>
-                  <option value="4">Value 4</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div className="modal_footer">
-            <button className="standard_btn dark_btn" aria-label="add">Add</button>
-          </div>
-        </div>
-      </div>
+
       </Form>
     </Layout>
   );
@@ -495,6 +328,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state: any) => ({
   currentWorkOrder: state.workOrder.currentWorkOrder,
+  modalState: state.modalState,
   initialValues: state.workOrder.currentWorkOrder?._id
     ? state.workOrder.currentWorkOrder
     : state.workOrder.currentTemplate?.templateId

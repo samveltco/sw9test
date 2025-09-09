@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 
@@ -22,33 +22,39 @@ import {useDispatch} from "react-redux";
 import {init} from "./store/actions/authActions";
 // import './sass/imports/main';
 import './sass/custom_styles/custom_styles.scss';
+import "react-datepicker/dist/react-datepicker.css";
+import Modal from './components/models';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
-        dispatch<any>(init());
+      dispatch<any>(init());
     }, [dispatch]);
   
-  if (isLoading) {
-    return <div>Loading...</div>;
+    if (isLoading) {
+      return <div>Loading...</div>;
   }
   
   return isAuthenticated ? <>{children}</> : <Navigate to="/home" replace />;
 };
 
 function App() {
+  const mainContainer = useRef(null);
+
   return (
     <Router>
-      <div className="App">
+      <div className="App" ref={mainContainer}>
+        
+        {mainContainer.current && <Modal mainContainer={mainContainer.current} />}
         <Routes>
           <Route path="/home" element={<Landing />} />
-          <Route path="*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="*" element={<ProtectedRoute><Dashboard mainContainer={mainContainer} /></ProtectedRoute>} />
           <Route path="/admin-recruits" element={<ProtectedRoute><AdminRecruits /></ProtectedRoute>} />
           <Route path="/contractor-main" element={<ProtectedRoute><ContractorMain /></ProtectedRoute>} />
           <Route path="/admin-main" element={<ProtectedRoute><AdminMain /></ProtectedRoute>} />
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard mainContainer={mainContainer} /></ProtectedRoute>} />
           <Route path="/find-contractor" element={<ProtectedRoute><FindContractor /></ProtectedRoute>} />
           <Route path="/create-work-order" element={<ProtectedRoute><CreateWorkOrder /></ProtectedRoute>} />
           <Route path="/user-management" element={<ProtectedRoute><UserManagement /></ProtectedRoute>} />

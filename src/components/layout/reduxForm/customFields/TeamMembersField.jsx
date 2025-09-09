@@ -1,6 +1,5 @@
 // ©2024 Austin App House. All rights reserved.
 import React from 'react';
-import { MDBInput } from 'mdbreact';
 import FieldLabel from '../../FieldLabel';
 
 const TeamMembersField = field => {
@@ -18,7 +17,7 @@ const TeamMembersField = field => {
     <div>
       <FieldLabel label={field.label} required={field.required} />
       {field.users.map(client => (
-        <MDBInput
+        <input
           key={client.userId}
           id={client.name}
           label={client.name}

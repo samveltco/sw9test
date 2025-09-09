@@ -1159,7 +1159,7 @@ export const fetchStatesOfCountry = (countryId) => async dispatch => {
 
         const states = country?.options || [];
 
-        console.log(states);
+        console.log({states})
         dispatch(toggleSecondModalClose('loader', true));
 
         return states;

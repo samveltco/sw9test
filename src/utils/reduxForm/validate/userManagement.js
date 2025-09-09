@@ -1,6 +1,6 @@
 // ©2024 Austin App House. All rights reserved.
 import Notification from '../../../components/notification';
-import { emailValidationRegExp } from '../../constans';
+import { emailValidationRegExp } from '../../constans_old';
 
 const validateUserManagement = values => {
   const result = {};
