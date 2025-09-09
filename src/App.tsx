@@ -19,7 +19,7 @@ import ContractorMain from './pages/ContractorMain';
 import AdminMain from './pages/AdminMain';
 import './utils/api';
 // import './sass/imports/main';
-
+import './sass/custom_styles/custom_styles.scss';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();

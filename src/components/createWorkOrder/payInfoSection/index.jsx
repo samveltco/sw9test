@@ -1,5 +1,9 @@
 // ©2024 Austin App House. All rights reserved.
 import React from 'react';
+import InputField from '../../layout/reduxForm/customFields/InputField';
+import { Field } from 'redux-form';
+import CheckboxField from '../../layout/reduxForm/customFields/CheckboxField';
+import SelectField from '../../layout/reduxForm/customFields/SelectField';
 // import BasePaySection from './BasePaySection';
 // import DividedPaySection from './DividedPaySection';
 // import VariablePaySection from './VariablePaySection';
@@ -29,12 +33,23 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
               <label htmlFor="amount">Amount*</label>
             </div>
             <div className="field_block">
-              <input id="amount" name="amount" type="text" maxLength={10} placeholder="$0.00" />
+              <Field 
+                component={InputField}
+                id="amount"
+                name="amount"
+                type="text"
+                maxLength={10}
+                placeholder="$0.00"
+              />
             </div>
           </div>
           <div className="check_block">
             <label className="check_btn">
-              <input type="checkbox" name="pay_base_rate_as_minimum" />
+              <Field 
+                component={CheckboxField}
+                type="checkbox"
+                name="payBaseRateAsMinimum"
+              />
               Pay Base Rate As Minimum
             </label>
           </div>
@@ -45,12 +60,23 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
               <label htmlFor="qty">Qty*</label>
             </div>
             <div className="field_block">
-              <input id="qty" name="qty" type="text" maxLength={10} placeholder="$0.00" />
+              <Field 
+                component={InputField}
+                id="qty"
+                name="quantity"
+                type="text"
+                maxLength={10}
+                placeholder="$0.00"
+              />
             </div>
           </div>
           <div className="check_block">
             <label className="check_btn">
-              <input type="checkbox" name="pay_outside_of_app" />
+              <Field 
+                component={CheckboxField}
+                type="checkbox"
+                name="payOutsideOfApp"
+              />
               Pay Outside Of App
             </label>
           </div>
@@ -60,7 +86,16 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="estpay">Est.Pay</label>
           </div>
           <div className="field_block">
-            <input id="estpay" name="estpay" type="text" maxLength={10} placeholder="$0.00" disabled />
+            <Field 
+              component={InputField}
+              id="estpay"
+              name="estpay"
+              type="text"
+              maxLength={10}
+              placeholder="$0.00"
+              disabled
+            />
+            
           </div>
         </div>
         <div className="small_row">
@@ -68,11 +103,26 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="per">Per*</label>
           </div>
           <div className="field_block">
-            <input id="per" name="per" type="text" maxLength={10} placeholder="$0.00" />
-            <span className="step_btns">
-              <span className="icon_stepup"></span>
-              <span className="icon_stepdown"></span>
-            </span>
+            <Field 
+              component={SelectField}
+              id="per"
+              name="basicType"
+              options={[
+                {
+                  value: 'Hour',
+                  label: 'Hour',
+                },
+                {
+                  value: 'Device',
+                  label: 'Device',
+                },
+                {
+                  value: 'Site',
+                  label: 'Site / Flat',
+                },
+              ]}
+            />
+           
           </div>
         </div>
       </div>
@@ -83,7 +133,14 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="soft_skills">Soft Skills*</label>
           </div>
           <div className="field_block">
-            <input id="soft_skills" name="soft_skills" type="text" maxLength={10} placeholder="$0.00" />
+            <Field 
+              component={InputField}
+              id="soft_skills"
+              name="percentCommunication"
+              type="text"
+              maxLength={10}
+              placeholder="$0.00"
+            />
           </div>
         </div>
         <div className="small_row">
@@ -91,7 +148,14 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="work">Work*</label>
           </div>
           <div className="field_block">
-            <input id="work" name="work" type="text" maxLength={10} placeholder="00" />
+            <Field 
+              component={InputField}
+              id="work"
+              name="percentWork"
+              type="text"
+              maxLength={10}
+              placeholder="00"
+            />
           </div>
         </div>
         <div className="small_row">
@@ -99,7 +163,14 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="deliverables">Deliverables*</label>
           </div>
           <div className="field_block">
-            <input id="deliverables" name="deliverables" type="text" maxLength={10} placeholder="00" />
+            <Field 
+              component={InputField}
+              id="deliverables"
+              name="percentDeliverables"
+              type="text"
+              maxLength={10}
+              placeholder="00"
+            />
           </div>
         </div>
       </div>
@@ -110,7 +181,14 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="amount2">Amount*</label>
           </div>
           <div className="field_block">
-            <input id="amount2" name="amount2" type="text" maxLength={10} placeholder="$0.00" />
+            <Field 
+              component={InputField}
+              id="amount2"
+              name="variableAmount"
+              type="text"
+              maxLength={10}
+              placeholder="$0.00"
+            />
           </div>
         </div>
         <div className="small_row">
@@ -118,11 +196,25 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="per2">Per*</label>
           </div>
           <div className="field_block">
-            <input id="per2" name="per2" type="text" maxLength={10} placeholder="$0.00" />
-            <span className="step_btns">
+            <Field 
+              component={SelectField}
+              id="per2"
+              options={[
+                {
+                  value: 'Hour',
+                  label: 'Hour',
+                },
+                {
+                  value: 'Device',
+                  label: 'Device',
+                },
+              ]}
+              name="variableType"
+            />
+            {/* <span className="step_btns">
               <span className="icon_stepup"></span>
               <span className="icon_stepdown"></span>
-            </span>
+            </span> */}
           </div>
         </div>
         <div className="small_row">
@@ -130,7 +222,14 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="after">After</label>
           </div>
           <div className="field_block">
-            <input id="after" name="after" type="text" maxLength={10} placeholder="00" />
+            <Field 
+              component={InputField}
+              id="after"
+              name="variablePayAfter"
+              type="text"
+              maxLength={10}
+              placeholder="00"
+            />
           </div>
         </div>
         <div className="small_row">
@@ -138,7 +237,14 @@ const PayInfoSection = ({ isWorkOrderAssigned }) => (
             <label htmlFor="max_qty">Max Qty*</label>
           </div>
           <div className="field_block">
-            <input id="max_qty" name="max_qty" type="text" maxLength={10} placeholder="00" />
+            <Field 
+              component={InputField}
+              id="max_qty"
+              name="maxQuantity"
+              type="text"
+              maxLength={10}
+              placeholder="00"
+            />
           </div>
         </div>
       </div>
