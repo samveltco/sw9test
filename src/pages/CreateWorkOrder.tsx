@@ -8,8 +8,18 @@ import { getAccountBalanceByClient } from '../store/actions/profile';
 import { fetchWorkOrderById, fetchWorkOrderTemplateById, setCurrentTemplate, setCurrentWorkOrder } from '../store/actions/workOrdersActions';
 import { toggleModal } from '../store/actions/modalsActions';
 import PayInfoSection from '../components/createWorkOrder/payInfoSection';
+import CustomSelect from '../components/Select';
+import { Form, reduxForm } from 'redux-form';
+import defaultInitialValues from '../utils/reduxForm/InitialValues/createWorkOrderReduxForm';
 
-const CreateWorkOrder: React.FC = ({
+import '../sass/order/order-l.scss'
+import '../sass/order/order-m.scss'
+import '../sass/order/order.scss'
+import InputField from '../components/layout/reduxForm/customFields/InputField';
+import MarksSection from '../components/createWorkOrder/MarksSection';
+
+
+let CreateWorkOrderReduxForm: any = ({
   mainContainer,
   currentWorkOrder,
   fetchWorkOrderById,
@@ -23,16 +33,16 @@ const CreateWorkOrder: React.FC = ({
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [templates, setTemplates] = useState([]);
   const params = useParams();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isCustomFieldsModalOpen, setIsCustomFieldsModalOpen] = useState(false);
 
-  const showModal = () => {
-    if (modalRef.current) {
-      modalRef.current.classList.add('showed');
-    }
+  const showModal = (e: any) => {
+    e.preventDefault();
+    setModalIsOpen(true);
   };
-  const hideModal = () => {
-    if (modalRef.current) {
-      modalRef.current.classList.remove('showed');
-    }
+  const hideModal = (e: any) => {
+    e.preventDefault();
+    setModalIsOpen(false);
   };
 
   const [isLoading, setIsLoading] = useState(true);
@@ -71,8 +81,13 @@ const CreateWorkOrder: React.FC = ({
     setIsLoading(false);
   };
 
+  const handleSubmit = (values: any) => {
+    console.log(values);
+  };
+
   return (
     <Layout>
+      <Form onSubmit={handleSubmit}>
       <h1 className="page_title icon_plus">Create work order</h1>
 
       <div className="create_fields">
@@ -82,8 +97,8 @@ const CreateWorkOrder: React.FC = ({
               <label htmlFor="use_template">Use Template</label>
             </div>
             <div className="field_block">
-            <Select
-              id='use_template'
+              <CustomSelect
+                id='use_template'
                 isClearable
                 // styles={customSelectStyle}
                 options={templates}
@@ -96,46 +111,8 @@ const CreateWorkOrder: React.FC = ({
         </div>
 
         <PayInfoSection isWorkOrderAssigned={currentWorkOrder?.status === 'assigned'} />
-
-
-        <div className="fields_group">
-          <div className="field_col">
-            <label className="field_name" htmlFor="company_wo_id">Company WO ID*</label>
-            <div className="field_block">
-              <input type="text" name="company_wo_id" id="company_wo_id" maxLength={50} placeholder="Company WO ID" />
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="title">Title</label>
-            <div className="field_block">
-              <input type="text" name="title" id="title" maxLength={50} placeholder="Title" />
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="project">Select Project <button aria-label="Create Project">Create Project</button></label>
-            <div className="field_block">
-              <select name="project" id="project">
-                <option>Select</option>
-                <option value="1">Value 1</option>
-                <option value="2">Value 2</option>
-                <option value="3">Value 3</option>
-                <option value="4">Value 4</option>
-              </select>
-            </div>
-          </div>
-          <div className="field_col">
-            <label className="field_name" htmlFor="company">Select Company <button aria-label="Create Company">Create Company</button></label>
-            <div className="field_block">
-              <select name="company" id="company">
-                <option>Select</option>
-                <option value="1">Value 1</option>
-                <option value="2">Value 2</option>
-                <option value="3">Value 3</option>
-                <option value="4">Value 4</option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <MarksSection />
+        
 
         <div className="add_btns">
           <button className="standard_btn icon_plus" aria-label="add custom field" onClick={showModal}>Add custom field</button>
@@ -445,7 +422,7 @@ const CreateWorkOrder: React.FC = ({
         <button className="standard_btn lightest_btn" aria-label="save and publish">Save &amp; Publish</button>
       </div>
 
-      <div className="modal_block custom_fields" ref={modalRef}>
+      <div className={`modal_block custom_fields ${modalIsOpen ? 'showed' : ''}`} >
         <div className="modal_container">
           <div className="modal_head">
             <div className="modal_title">Custom Field</div>
@@ -497,9 +474,14 @@ const CreateWorkOrder: React.FC = ({
           </div>
         </div>
       </div>
+      </Form>
     </Layout>
   );
 };
+
+CreateWorkOrderReduxForm = reduxForm({
+  form: 'createWorkOrderReduxForm',
+})(CreateWorkOrderReduxForm);
 
 
 const mapDispatchToProps = {
@@ -513,10 +495,18 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state: any) => ({
   currentWorkOrder: state.workOrder.currentWorkOrder,
+  initialValues: state.workOrder.currentWorkOrder?._id
+    ? state.workOrder.currentWorkOrder
+    : state.workOrder.currentTemplate?.templateId
+      ? ({
+        ...defaultInitialValues,
+        ...state.workOrder.currentTemplate,
+      })
+      : defaultInitialValues,
 });
 
 // export default CreateWorkOrder;
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CreateWorkOrder);
+)(CreateWorkOrderReduxForm);

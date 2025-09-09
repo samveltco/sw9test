@@ -1,0 +1,39 @@
+@import '../imports/main/variables';
+
+.select_control {
+  background-color: $blue2 !important;
+  border: 1px solid rgba($textColor, 0.12) !important;
+  border-radius: 20px !important;
+  padding: 0px 16px !important;
+  color: $white !important;
+  &:focus {
+    background: $mainBg !important;
+    color: rgba($white, 0.5) !important;
+  }
+}
+.select_menu {
+  background-color: $blue2 !important;
+  border: 1px solid rgba($textColor, 0.12) !important;
+  border-radius: 20px !important;
+  padding: 8px 10px !important;
+  color: $white !important;
+  &:focus {
+    background: $mainBg !important;
+    color: rgba($white, 0.5) !important;
+  }
+}
+
+.select_option {
+  background-color: $blue2 !important;
+  color: $white !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  &:hover {
+    background-color: $mainBg !important;
+    color: $white !important;
+  }
+}
+.select_input, .select_single_value {
+  color: $white !important;
+}
+

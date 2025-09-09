@@ -21,7 +21,7 @@ import './utils/api';
 import {useDispatch} from "react-redux";
 import {init} from "./store/actions/authActions";
 // import './sass/imports/main';
-
+import './sass/custom_styles/custom_styles.scss';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
