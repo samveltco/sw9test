@@ -32,9 +32,6 @@
 }
 
 @include mediaTo($size768) {
-    .header {
-        padding-left: 64px;
-    }
     .sidebar {
         width: 0;
         &_inner,
@@ -77,10 +74,6 @@
         justify-content: space-between;
         .welcome_block {
             display: none;
-        }
-        &:before {
-            display: block;
-            content: "";
         }
     }
 }
