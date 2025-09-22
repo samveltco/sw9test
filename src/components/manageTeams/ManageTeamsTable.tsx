@@ -3,7 +3,8 @@ import React from 'react';
 export interface TeamRow {
   id: string;
   name: string;
-  members: number | string;
+  members: number;
+  membersIds?: string[];
 }
 
 interface ManageTeamsTableProps {

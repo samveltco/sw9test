@@ -4,17 +4,17 @@ import SearchActions from '../components/dashboard/SearchActions';
 import TabsFilter from '../components/dashboard/TabsFilter';
 import SortingControls from '../components/dashboard/SortingControls';
 import WorkOrderCard, { WorkOrder } from '../components/dashboard/WorkOrderCard';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import '../sass/home/index.scss';
 import '../sass/home/index-l.scss';
 import '../sass/home/index-m.scss';
 import Modal from '../components/modals';
 import getWorkOrders from "../utils/api/get/getWorkOrders";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { exportWorkOrders } from "../store/actions/workOrdersActions";
 
-
-
-const Dashboard =({ mainContainer }) => {
+const Dashboard = ({ mainContainer }) => {
     const [showFilter, setShowFilter] = useState(false);
     const [selectedTab, setSelectedTab] = useState('all');
     const [sortBy, setSortBy] = useState('start_date');
@@ -22,6 +22,7 @@ const Dashboard =({ mainContainer }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [workOrders, setWorkOrders] = useState([]);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const token = localStorage.getItem('jwtToken');
     let userType = null;
@@ -69,7 +70,7 @@ const Dashboard =({ mainContainer }) => {
             return allTabs.filter(tab =>
                 ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
             );
-        }else if (userType === 'superAdmin') {
+        } else if (userType === 'superAdmin') {
             return allTabs.filter(tab =>
                 ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
             );
@@ -82,7 +83,16 @@ const Dashboard =({ mainContainer }) => {
         console.log('Create work order');
         navigate('/create-work-order');
     };
-    const handleExport = () => console.log('Export to Excel');
+
+    const handleExport = () => {
+        const data = {
+            workOrdersId: workOrders.map(order => order._id),
+            filters: { tab: selectedTab },
+        };
+
+        dispatch(exportWorkOrders(data, userType));
+    };
+
     const handleShowModal = () => console.log('Show modal');
     const handleApplyFilter = () => { console.log('Apply filter'); setShowFilter(false); };
     const handleResetFilter = () => console.log('Reset filter');
@@ -127,7 +137,7 @@ const Dashboard =({ mainContainer }) => {
                     <WorkOrderCard
                         key={index}
                         workOrder={order}
-                        messagesCount={{unReadMessages: {}}}
+                        messagesCount={{ unReadMessages: {} }}
                         onDuplicate={handleDuplicate}
                         onViewDetails={handleViewDetails}
                         onFindContractors={handleFindContractors}
@@ -137,8 +147,7 @@ const Dashboard =({ mainContainer }) => {
                 ))}
                 <span className="shadow_block bottom_shadow"></span>
             </div>
-          <Modal mainContainer={mainContainer.current} />
-
+            <Modal mainContainer={mainContainer.current} />
         </Layout>
     );
 };
