@@ -22,11 +22,11 @@ const TimePickedField = field => {
 
   return (
     <>
-      <FieldLabel
+      {/* <FieldLabel
         label={field.label}
         className={field.labelClassName}
         required={field.required}
-      />
+      /> */}
       <CustomTimePicker
         getValue={field.input.onChange}
         dayTime={dayTime}

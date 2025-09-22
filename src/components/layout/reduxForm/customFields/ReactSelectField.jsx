@@ -1,8 +1,6 @@
 // ©2024 Austin App House. All rights reserved.
 import React, { useEffect } from 'react';
-import Select from 'react-select';
-import customSelectStyle from '../../../../utils/customSelectStyle';
-import FieldLabel from '../../FieldLabel';
+import CustomSelect from '../../../Select';
 
 const ReactSelectField = field => {
   useEffect(() => {
@@ -20,36 +18,20 @@ const ReactSelectField = field => {
   }, []);
 
   return (
-    <div className={field.paddingBottomClassName || 'padding-bottom-10'}>
-      <div className={`flex-box justify-content-between ${field.className || ''}`}>
-        <FieldLabel
-          label={field.label}
-          className={field.labelClassName}
-          required={field.required}
-        />
-        <div className={field.inputClassName}>
-          <Select
-            name={field.input.name}
-            value={field.input.value}
-            hideSelectedOptions={false}
-            options={field.options}
-            styles={customSelectStyle[field.customSelectStyleType || 'dark']}
-            placeholder={field.placeholder}
-            required={field.required}
-            isLoading={field.isLoading}
-            onChange={field.input.onChange}
-            isDisabled={field.disabled}
-            isClearable={field.isClearable}
-            isSearchable={field.isSearchable}
-            isMulti={field.isMulti}
-          />
-        </div>
-      </div>
-      {
-        field.meta.touched && field.meta.error
-        && <span className="span-error">{field.meta.error}</span>
-      }
-    </div>
+    <CustomSelect
+      name={field.input.name}
+      value={field.input.value}
+      hideSelectedOptions={false}
+      options={field.options}
+      placeholder={field.placeholder}
+      required={field.required}
+      isLoading={field.isLoading}
+      onChange={field.input.onChange}
+      isDisabled={field.disabled}
+      isClearable={field.isClearable}
+      isSearchable={field.isSearchable}
+      isMulti={field.isMulti}
+    />
   );
 };
 

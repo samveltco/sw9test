@@ -10,3 +10,9 @@ export const variableTypeShorts = {
   Device:'dev',
   Site:  'flat'
 }
+
+export const workOrderCustomFieldTypes = {
+  PUBLIC: 'Show custom field in Published Status',
+  RESTRICTED: 'Show to contractor upon assignment',
+  HIDDEN: 'Hide custom field from Contractors',
+};

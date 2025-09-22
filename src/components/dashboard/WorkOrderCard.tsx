@@ -43,7 +43,6 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
 }) => {
   const workOrderControlByStatus = workOrderStatusControl(workOrder.status);
 
-  console.log({ workOrder })
   // const formatCalcInfo = (info: string) => {
   //   return info.split('\n').map((line, index, arr) => (
   //     <span key={index}>

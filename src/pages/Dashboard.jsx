@@ -10,12 +10,11 @@ import {jwtDecode} from 'jwt-decode';
 import '../sass/home/index.scss';
 import '../sass/home/index-l.scss';
 import '../sass/home/index-m.scss';
+import Modal from '../components/modals';
 
-interface TokenPayload {
-    userType: string;
-}
 
-const Dashboard: React.FC = () => {
+
+const Dashboard =({ mainContainer }) => {
     const [showFilter, setShowFilter] = useState(false);
     const [selectedTab, setSelectedTab] = useState('all');
     const [sortBy, setSortBy] = useState('start_date');
@@ -25,10 +24,10 @@ const Dashboard: React.FC = () => {
     const navigate = useNavigate();
 
     const token = localStorage.getItem('jwtToken');
-    let userType: string | null = null;
+    let userType = null;
     if (token) {
         try {
-            const decoded = jwtDecode<TokenPayload>(token);
+            const decoded = jwtDecode(token);
             userType = decoded.userType;
         } catch (error) {
             console.error('Invalid token:', error);
@@ -37,7 +36,7 @@ const Dashboard: React.FC = () => {
 
     useEffect(() => {
         getWorkOrders(1, 10, 'assigned', {}, {}, { startDate: 1 }, 'orders').then(result => {
-            const tmpWorkOrders = result.map((order: any) => {
+            const tmpWorkOrders = result.map((order) => {
                 if (order?.clientInfo?.ratings) {
                     const { total, count } = order.clientInfo.ratings;
                     order.clientInfo.ratings = ((total / (count * 3)) * 100).toFixed(2).replace(/\.?0+$/, '');
@@ -88,11 +87,11 @@ const Dashboard: React.FC = () => {
     const handleShowModal = () => console.log('Show modal');
     const handleApplyFilter = () => { console.log('Apply filter'); setShowFilter(false); };
     const handleResetFilter = () => console.log('Reset filter');
-    const handleDuplicate = (id: string) => console.log('Duplicate work order:', id);
-    const handleViewDetails = (id: string) => console.log('View details for work order:', id);
-    const handleFindContractors = (id: string) => console.log('Find contractors for work order:', id);
-    const handleViewApplicants = (id: string) => console.log('View applicants for work order:', id);
-    const handleCreateTemplate = (id: string) => console.log('Create template from work order:', id);
+    const handleDuplicate = (id) => console.log('Duplicate work order:', id);
+    const handleViewDetails = (id) => console.log('View details for work order:', id);
+    const handleFindContractors = (id) => console.log('Find contractors for work order:', id);
+    const handleViewApplicants = (id) => console.log('View applicants for work order:', id);
+    const handleCreateTemplate = (id) => console.log('Create template from work order:', id);
 
     return (
         <Layout>
@@ -139,6 +138,8 @@ const Dashboard: React.FC = () => {
                 ))}
                 <span className="shadow_block bottom_shadow"></span>
             </div>
+          <Modal mainContainer={mainContainer.current} />
+
         </Layout>
     );
 };

@@ -109,18 +109,8 @@ button {
     }
 }
 
-.select_control {
-    background-color: $blue2;
-    border: 1px solid rgba($textColor, 0.12);
-    border-radius: 20px;
-    padding: 8px 16px;
-    color: $white;
-    &:focus {
-        background: $mainBg;
-        color: rgba($white, 0.5);
-    }
-  }
-  
+
+
 .page_row {
     display: flex;
     flex-wrap: wrap;
@@ -703,7 +693,7 @@ button {
     }
 
 
-    a,
+    a, button
     .icon_delete,
     .icon_pencil,
     .icon_close {
