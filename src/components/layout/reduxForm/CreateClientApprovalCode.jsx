@@ -24,12 +24,10 @@ let CreateClientApprovalCodeReduxForm = ({
   change,
 }) => {
 
-  console.log({initialValues})
   useEffect(() => {
     if (
       initialValues.hasOwnProperty('isRequired')
     ) {
-      console.log(options.find(o => o.value === initialValues.isRequired))
       change('isRequired', options.find(o => o.value === initialValues.isRequired));
     }
     

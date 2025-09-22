@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Form, reduxForm } from 'redux-form';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'withroute';
 import { MDBContainer } from 'mdbreact';
 import { toggleModal } from '../../../storage/actions/modalsActions';
 import Notification from '../../notification';

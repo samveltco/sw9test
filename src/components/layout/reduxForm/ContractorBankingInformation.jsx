@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from 'redux-form';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'withroute';
 import { toggleModal } from '../../../storage/actions/modalsActions';
 import Notification from '../../notification';
 import defaultInitialValues from '../../../utils/reduxForm/InitialValues/contractorBankingInformation';

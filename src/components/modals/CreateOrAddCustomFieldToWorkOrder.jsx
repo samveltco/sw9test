@@ -1,7 +1,7 @@
 // ©2024 Austin App House. All rights reserved.
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { SubmissionError, submit } from 'redux-form';
+import { connect, useDispatch } from 'react-redux';
+import { SubmissionError, submit, change as changeFieldValue } from 'redux-form';
 
 import { toggleModal } from '../../store/actions/modalsActions';
 import Notification from '../notification';
@@ -15,9 +15,11 @@ const CreateOrAddCustomFieldToWorkOrder = ({
   modalState,
   toggleModal,
   submit,
+  // dispatch,
 }) => {
+  const dispatch = useDispatch();
   const [customFields, setCustomFields] = useState([]);
-  const [selectedCustomField, setSelectedCustomField] = useState();
+  const [selectedCustomField, setSelectedCustomField] = useState({});
 
   const createCustomFieldsOptionsForSelect = list => (
     list.map(customField => ({
@@ -29,12 +31,13 @@ const CreateOrAddCustomFieldToWorkOrder = ({
   // eslint-disable-next-line consistent-return
   const fetchCustomFields = async () => {
     const newCustomFields = await getCustomFieldsList();
-    if (!(modalState.type?.input.value?.length > 0)) {
+    const selected = Array.isArray(modalState.type?.value) ? modalState.type.value : [];
+    if (!(selected.length > 0)) {
       return setCustomFields(
         createCustomFieldsOptionsForSelect(newCustomFields),
       );
     }
-    const selectedCustomFieldsIds = modalState.type?.input.value.map(item => (
+    const selectedCustomFieldsIds = selected.map(item => (
       item._id || item.value
     ));
     setCustomFields(
@@ -95,15 +98,15 @@ const CreateOrAddCustomFieldToWorkOrder = ({
   };
 
   const addCustomFieldToWorkOrder = customFiled => {
-    if (!(modalState.type?.input.value?.length > 0)) {
-      modalState.type.input.onChange([customFiled]);
-    } else {
-      modalState.type.input.onChange([...modalState.type?.input.value, customFiled]);
-    }
+    const formName = modalState.type?.form;
+    const fieldName = modalState.type?.field;
+    const currentValue = modalState.type?.value || [];
+    const nextValue = currentValue.length > 0 ? [...currentValue, customFiled] : [customFiled];
+    // Dispatch a redux-form change to avoid storing functions in Redux
+    dispatch(changeFieldValue(formName || 'createWorkOrderReduxForm', fieldName || 'customFields', nextValue));
     closeModal();
   };
 
-  console.log('asddsa', modalState);
   return (
     <div className="modal_block custom_fields showed" >
       <div className="modal_container">
@@ -132,7 +135,7 @@ const CreateOrAddCustomFieldToWorkOrder = ({
           />
         </div>
         <div className="modal_footer">
-          <button className="standard_btn dark_btn" aria-label="add">Add</button>
+          <button className="standard_btn dark_btn" aria-label="add" onClick={handlerSubmit}>Add</button>
         </div>
       </div>
     </div>

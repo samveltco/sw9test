@@ -3,64 +3,79 @@ import Layout from '../components/Layout';
 import SearchActions from '../components/dashboard/SearchActions';
 import TabsFilter from '../components/dashboard/TabsFilter';
 import SortingControls from '../components/dashboard/SortingControls';
-import WorkOrderCard, { WorkOrder } from '../components/dashboard/WorkOrderCard';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import WorkOrderCard from '../components/dashboard/WorkOrderCard';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getWorkOrders } from '../utils/api/get/getWorkOrders';
 import '../sass/home/index.scss';
 import '../sass/home/index-l.scss';
 import '../sass/home/index-m.scss';
-import Modal from '../components/models';
-// import {useSelector} from "react-redux";
-// import {RootState} from "../store";
+import Modal from '../components/modals';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSortType, sendContractorRate } from '../store/actions/workOrdersActions';
+import { toggleModal } from '../store/actions/modalsActions';
 
-
-const Dashboard: React.FC<{ mainContainer: any }> = ({  mainContainer }) => {
+const Dashboard = ({ mainContainer }) => {
+  const dispatch = useDispatch();
+  const filters = useSelector(state => state.workOrder.filters);
+  const search = useSelector(state => state.workOrder.searchData);
+  const sortBy = useSelector(state => state.workOrder.sortBy);
   const [showFilter, setShowFilter] = useState(false);
   const [selectedTab, setSelectedTab] = useState('all');
-  const [sortBy, setSortBy] = useState('start_date');
-  const [ascending, setAscending] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const params = { "status": "assigned", "search": "", "search_zip": "", "range": 60, "currentPage": 1, "perPage": 10, "filters": {}, "sortBy": { "startDate": 1 } }
   const navigate = useNavigate();
+  const location = useLocation();
+  const paramsRoute = useParams();
   const [workOrders, setWorkOrders] = useState([]);
-    // const user = useSelector((state: RootState) => state.auth.user);
 
-    // Mock data for work orders
-  
-  // const workOrders: WorkOrder[] = [
-  //   {
-  //     id: '1',
-  //     title: 'copy 1 - Service Call - POS Service Call',
-  //     createdBy: 'Stephanie Bledsoe100%',
-  //     win: '11044997',
-  //     companyWOID: '00169494',
-  //     startDate: '11/6/202002:00PM',
-  //     endDate: '11/30/202005:00PM',
-  //     assignedTo: 'Might Deployment',
-  //     phone: '+(402) 202-2996',
-  //     email: 'mightdeployment@gmail.com',
-  //     price: '$50.000',
-  //     calcInfo: 'Base: 50/flat for 2 hr(s) = 50\nTotal est value = $50.00',
-  //     status: ['UNCONFIRMED', 'ON HOLD'],
-  //     messages: 0,
-  //     location: 'Stillwater, Minnesota 55082'
-  //   },
-  //   // Add more mock work orders as needed
-  // ];
   useEffect(() => {
-    getWorkOrders(1, 10, 'assigned', {}, {}, { startDate: 1 }, 'orders').then(result => {
-      const tmpWorkOrders = result.map((order: any) => {
+    if (location.search) {
+      const params = new URLSearchParams(location.search);
+      const typeParameter = params.get('type');
+      switch (typeParameter) {
+        case 'work-order': {
+          dispatch(toggleModal(true, 'viewDetailsWorkOrderModal', false, { id: params.get('id'), win: params.get('win') }));
+          const { tab } = paramsRoute;
+          const pathname = tab ? `/dashboard/${tab}` : '/dashboard';
+          navigate({ pathname, search: location.search }, { replace: true });
+          break;
+        }
+        case 'contractor': {
+          dispatch(toggleModal(true, 'contractorDetailsModal', false, { contractorId: params.get('id') }));
+          break;
+        }
+        case 'thank_you_for_rate': {
+          dispatch(sendContractorRate({ id: params.get('id'), rate: params.get('rate') }));
+          break;
+        }
+        default: break;
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const tabToStatus = {
+      available: 'published',
+      assigned: 'assigned',
+      completed: 'completed',
+      approved: 'approved',
+      paid: 'paid',
+      draft: 'draft',
+      routed: 'routed',
+      all: '',
+    };
+    const status = tabToStatus[selectedTab] || '';
+    getWorkOrders(currentPage, 10, status, search, filters, sortBy, 'orders').then(result => {
+      const tmpWorkOrders = result.map(order => {
         if (order?.clientInfo?.ratings) {
           const { total, count } = order.clientInfo.ratings;
-          // eslint-disable-next-line no-param-reassign
           order.clientInfo.ratings = ((total / (count * 3)) * 100).toFixed(2).replace(/\.?0+$/, '');
         }
         return order;
       });
       setWorkOrders(tmpWorkOrders);
     });
-  }, []);
+  }, [currentPage, selectedTab, search, filters, sortBy]);
 
   const tabs = [
     { key: 'all', label: 'All', count: 84 },
@@ -76,9 +91,7 @@ const Dashboard: React.FC<{ mainContainer: any }> = ({  mainContainer }) => {
   };
 
   const handleCreateWorkOrder = () => {
-    console.log('Create work order');
     navigate('/create-work-order');
-    // TODO: Navigate to create work order page
   };
 
   const handleExport = () => {
@@ -90,7 +103,6 @@ const Dashboard: React.FC<{ mainContainer: any }> = ({  mainContainer }) => {
   };
 
   const handleApplyFilter = () => {
-    console.log('Apply filter');
     setShowFilter(false);
   };
 
@@ -98,36 +110,28 @@ const Dashboard: React.FC<{ mainContainer: any }> = ({  mainContainer }) => {
     console.log('Reset filter');
   };
 
-  const handleDuplicate = (id: string) => {
+  const handleDuplicate = (id) => {
     console.log('Duplicate work order:', id);
   };
 
-  const handleViewDetails = (id: string) => {
+  const handleViewDetails = (id) => {
     console.log('View details for work order:', id);
   };
 
-  const handleFindContractors = (id: string) => {
+  const handleFindContractors = (id) => {
     console.log('Find contractors for work order:', id);
   };
 
-  const handleViewApplicants = (id: string) => {
+  const handleViewApplicants = (id) => {
     console.log('View applicants for work order:', id);
   };
 
-  const handleCreateTemplate = (id: string) => {
+  const handleCreateTemplate = (id) => {
     console.log('Create template from work order:', id);
   };
 
   return (
     <Layout>
-      {/*<div className="welcome_block">*/}
-      {/*  <div className="welcome_words">*/}
-      {/*    Hey <span className="user_name">{'User'},</span> welcome back!*/}
-      {/*  </div>*/}
-      {/*  <div className="welcome_info">Welcome to The Valyant Group</div>*/}
-      {/*  <div className="available_funds">Funds Available: $1,268.22</div>*/}
-      {/*</div>*/}
-
       <SearchActions
         onImportClick={handleImportClick}
         onCreateWorkOrder={handleCreateWorkOrder}
@@ -142,10 +146,10 @@ const Dashboard: React.FC<{ mainContainer: any }> = ({  mainContainer }) => {
       />
 
       <SortingControls
-        sortBy={sortBy}
-        onSortChange={setSortBy}
-        ascending={ascending}
-        onAscendingChange={setAscending}
+        sortBy={sortBy?.sortType || 'startDate'}
+        onSortChange={(value) => dispatch(setSortType('sortType', value))}
+        ascending={(sortBy?.order || 1) === 1}
+        onAscendingChange={(val) => dispatch(setSortType('order', val ? 1 : -1))}
         showFilter={showFilter}
         onToggleFilter={() => setShowFilter(!showFilter)}
         onApplyFilter={handleApplyFilter}

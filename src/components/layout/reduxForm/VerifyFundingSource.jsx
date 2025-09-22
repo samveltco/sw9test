@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MDBCol, MDBRow } from 'mdbreact';
 import { Field, Form, reduxForm } from 'redux-form';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'withroute';
 import { toggleModal } from '../../../storage/actions/modalsActions';
 import InputField from './customFields/InputField';
 import VerificationFundingSourceProcessErrorSection from './section/verifyFundingSource/verificationFundingSourceProcessErrorSection';

@@ -18,7 +18,6 @@ let CreateCustomFieldReduxForm = ({
 }) => {
   const [customFieldTypeOptions, setCustomFieldTypeOptions] = useState([]);
 
-  console.log('asdasd')
   useEffect(() => {
     const newCustomFieldTypeOptions = Object.entries(workOrderCustomFieldTypes).map(type => ({
       value: type[0],
@@ -62,6 +61,7 @@ let CreateCustomFieldReduxForm = ({
             type="text"
             name="name"
             id="name1"
+            disabled={disabled}
             maxLength={50}
             placeholder="Field name"
           />
@@ -70,7 +70,7 @@ let CreateCustomFieldReduxForm = ({
       <br />
       <br />
       <div className="field_col">
-        <label className="field_name" htmlFor="Value">Value</label>
+        <label className="field_name" htmlFor="Value">Value*</label>
         <div className="field_block">
           <Field
             component={InputField}
@@ -78,7 +78,7 @@ let CreateCustomFieldReduxForm = ({
             name="value"
             id="Value"
             maxLength={50}
-            placeholder="Field name"
+            placeholder="Field value"
           />
         </div>
       </div>
@@ -100,6 +100,7 @@ let CreateCustomFieldReduxForm = ({
 
 CreateCustomFieldReduxForm = reduxForm({
   form: 'createCustomFieldReduxForm',
+  enableReinitialize: true,
 })(CreateCustomFieldReduxForm);
 
 export default CreateCustomFieldReduxForm;

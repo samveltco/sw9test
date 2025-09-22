@@ -49,7 +49,6 @@ const AddressSection = ({
       change('createWorkOrderReduxForm', 'country', newCountry);
     }
   };
-  console.log({isRemote})
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {

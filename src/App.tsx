@@ -2,9 +2,9 @@ import React, {useEffect, useRef} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard.jsx';
 import FindContractor from './pages/FindContractor';
-import CreateWorkOrder from './pages/CreateWorkOrder';
+import CreateWorkOrder from './pages/CreateWorkOrder.jsx';
 import UserManagement from './pages/UserManagement';
 import PaymentMethods from './pages/PaymentMethods';
 import TransactionHistory from './pages/TransactionHistory';
@@ -23,7 +23,7 @@ import {init} from "./store/actions/authActions";
 // import './sass/imports/main';
 import './sass/custom_styles/custom_styles.scss';
 import "react-datepicker/dist/react-datepicker.css";
-import Modal from './components/models';
+import Modal from './components/modals';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -42,15 +42,14 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 function App() {
   const mainContainer = useRef(null);
-
   return (
     <Router>
       <div className="App" ref={mainContainer}>
         
-        {mainContainer.current && <Modal mainContainer={mainContainer.current} />}
+        <Modal mainContainer={(mainContainer.current as unknown as HTMLElement) || document.body} />
         <Routes>
           <Route path="/home" element={<Landing />} />
-          <Route path="*" element={<ProtectedRoute><Dashboard mainContainer={mainContainer} /></ProtectedRoute>} />
+          <Route path="*"  element={<ProtectedRoute><Dashboard mainContainer={mainContainer} /></ProtectedRoute>} />
           <Route path="/admin-recruits" element={<ProtectedRoute><AdminRecruits /></ProtectedRoute>} />
           <Route path="/contractor-main" element={<ProtectedRoute><ContractorMain /></ProtectedRoute>} />
           <Route path="/admin-main" element={<ProtectedRoute><AdminMain /></ProtectedRoute>} />

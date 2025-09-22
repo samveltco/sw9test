@@ -10,7 +10,6 @@ import {
 import ClientApprovalRow from './ClientApprovalRow';
 
 const ClientApprovalField = field => {
-  console.log({field})
   const editField = (clientApprovalCode, index) => {
     field.toggleModal(
       true,
@@ -47,7 +46,6 @@ const ClientApprovalField = field => {
               <th>Required Y/N</th>
             </tr>
           </MDBTableHead>
-          {console.log(field.input.value, 'asdfgh')}
           <MDBTableBody className="font12">
             {
               field?.input?.value?.length
