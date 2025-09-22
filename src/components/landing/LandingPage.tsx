@@ -188,7 +188,13 @@ const LandingPage: React.FC = () => {
                         <div className="menu_block">
                             <ul className="main_menu">
                                 <li className="active"><a href="#">Home</a></li>
-                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#contact_section" onClick={(e) => { 
+                                    e.preventDefault(); 
+                                    const el = document.getElementById('contact_section');
+                                    if (!el) return;
+                                    const y = el.getBoundingClientRect().top + window.pageYOffset - 200;
+                                    window.scrollTo({ top: y, behavior: 'smooth' });
+                                    }}>Contact us</a></li>
                                 <li><a href="#" onClick={(e) => { e.preventDefault(); showModal('signIn'); }}>Sign in</a></li>
                                 <li><a href="#" onClick={(e) => { e.preventDefault(); handleSignUpClick(); }}>Sign up</a></li>
                             </ul>
@@ -293,12 +299,12 @@ const LandingPage: React.FC = () => {
                         </ul>
                     </div>
 
-                    <div className="contact_section">
+                    <div className="contact_section" id="contact_section">
                         <div className="contact_row">
                             <div className="left_col">
                                 <div className="section_title">Contact Us</div>
                                 <div className="section_description">
-                                    <b>Hi there,</b> and Welcome to The Vaylant Group! Whether you`re a contractor looking for work, or a company looking to hire contractors, we`re here to help!
+                                    <b>Hi there,</b> and Welcome to The Vaylant Group! Whether you're a contractor looking for work, or a company looking to hire contractors, we're here to help!
                                 </div>
                             </div>
                             <div className="right_col">

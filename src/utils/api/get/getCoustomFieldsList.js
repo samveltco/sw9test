@@ -2,7 +2,7 @@
 import axios from 'axios';
 import Notification from '../../../components/notification';
 
-const getCustomFieldsList = async (name: string) => {
+const getCustomFieldsList = async (name) => {
   try {
     const response = await axios.get('/api/orders/custom-fields', {
       params: {
@@ -10,7 +10,7 @@ const getCustomFieldsList = async (name: string) => {
       },
     });
     return response.data?.payload?.customFields || [];
-  } catch (error: any) {
+  } catch (error) {
     Notification('error', {
       message: error.response?.data?.message || error.message,
     });
