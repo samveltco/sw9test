@@ -1,5 +1,5 @@
 import React from 'react';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 interface Tab {
     key: string;
@@ -19,11 +19,11 @@ interface TokenPayload {
 }
 
 const TabsFilter: React.FC<TabsFilterProps> = ({
-                                                   tabs,
-                                                   selectedTab,
-                                                   onTabChange,
-                                                   onShowModal
-                                               }) => {
+    tabs,
+    selectedTab,
+    onTabChange,
+    onShowModal
+}) => {
     const token = localStorage.getItem('jwtToken');
     let userType: string | null = null;
 
@@ -51,7 +51,7 @@ const TabsFilter: React.FC<TabsFilterProps> = ({
                 ))}
             </div>
 
-            {userType !== 'contractor'&& userType !== 'superAdmin' && (
+            {userType !== 'contractor' && userType !== 'superAdmin' && (
                 <div className="actions_list">
                     <button aria-label="action1" className="icon_fist"></button>
                     <button aria-label="action2" className="icon_palm"></button>
@@ -68,7 +68,7 @@ const TabsFilter: React.FC<TabsFilterProps> = ({
 
             <div className="check_block">
                 <label className="check_btn">
-                    <input type="checkbox" name="select_all"/>
+                    <input type="checkbox" name="select_all" />
                 </label>
             </div>
         </div>

@@ -25,12 +25,12 @@ import './sass/custom_styles/custom_styles.scss';
 import "react-datepicker/dist/react-datepicker.css";
 import Modal from './components/modals';
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
     const dispatch = useDispatch();
     
     useEffect(() => {
-      dispatch<any>(init());
+      dispatch(init());
     }, [dispatch]);
   
     if (isLoading) {
@@ -46,7 +46,7 @@ function App() {
     <Router>
       <div className="App" ref={mainContainer}>
         
-        <Modal mainContainer={(mainContainer.current as unknown as HTMLElement) || document.body} />
+        <Modal mainContainer={(mainContainer.current) || document.body} />
         <Routes>
           <Route path="/home" element={<Landing />} />
           <Route path="*"  element={<ProtectedRoute><Dashboard mainContainer={mainContainer} /></ProtectedRoute>} />

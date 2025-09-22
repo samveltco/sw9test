@@ -8,7 +8,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  activeTab: '',
+  activeTab: 'all',
   isReload: false,
   perPage: 10,
   currentPage: 1,
