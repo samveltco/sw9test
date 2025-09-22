@@ -1,6 +1,5 @@
 // ©2024 Austin App House. All rights reserved.
 import React from 'react';
-import { MDBInput } from 'mdbreact';
 import FieldLabel from '../../FieldLabel';
 
 const RadioGroupField = field => (
@@ -14,7 +13,7 @@ const RadioGroupField = field => (
       <div className={field.inputClassName}>
         {
           field.options.map(answer => (
-            <MDBInput
+            <input
               key={answer.value}
               gap
               onClick={() => field.input.onChange(answer.value)}

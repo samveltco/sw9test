@@ -11,7 +11,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ availableFunds, notificationCount }) => {
   //TODO get user data from store
     const user = useSelector((state: RootState) => state.auth.user);
-    console.log("user from store:", user);
 
 
 
