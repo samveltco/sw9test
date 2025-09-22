@@ -17,6 +17,7 @@
     "axios": "^1.11.0",
     "is-empty": "^1.2.0",
     "jwt-decode": "^4.0.0",
+    "mdbreact": "^5.2.0",
     "react": "^19.1.1",
     "react-datepicker": "^8.7.0",
     "react-dom": "^19.1.1",
@@ -35,7 +36,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://172.26.64.1:5000/",
+  "proxy": "http://localhost:5000/",
   "eslintConfig": {
     "extends": [
       "react-app",

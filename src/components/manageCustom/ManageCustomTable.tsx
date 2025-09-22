@@ -1,42 +1,40 @@
 import React from 'react';
 
-export interface CustomFieldGroup {
-  id: string;
-  name: string;
+interface ManageCustomTableProps {
+    groups: CustomFieldGroup[];
+    onEdit: (id: string) => void;
+    onDelete: (id: string) => void;
 }
 
-interface ManageCustomTableProps {
-  groups: CustomFieldGroup[];
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
+export interface CustomFieldGroup {
+    id: string;
+    name: string;
 }
 
 const ManageCustomTable: React.FC<ManageCustomTableProps> = ({ groups, onEdit, onDelete }) => {
-  return (
-    <table className="custom_table">
-      <thead>
-        <tr>
-          <th className="name">Group name</th>
-          <th className="type">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {groups.map((g) => (
-          <tr key={g.id}>
-            <td data-th="Group name">{g.name}</td>
-            <td data-th="Action">
-              <div className="row_block">
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#" className="icon_pencil" onClick={(e) => { e.preventDefault(); onEdit(g.id); }}>edit</a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#" className="icon_delete" onClick={(e) => { e.preventDefault(); onDelete(g.id); }}>close</a>
-              </div>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+    return (
+        <table className="custom_table">
+            <thead>
+            <tr>
+                <th className="name">Group name</th>
+                <th className="type">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {groups.map((g) => (
+                <tr key={g.id}>
+                    <td data-th="Group name">{g.name}</td>
+                    <td data-th="Action">
+                        <div className="row_block">
+                            <a href="#" className="icon_pencil" onClick={(e) => { e.preventDefault(); onEdit(g.id); }}>edit</a>
+                            <a href="#" className="icon_delete" onClick={(e) => { e.preventDefault(); onDelete(g.id); }}>delete</a>
+                        </div>
+                    </td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
+    );
 };
 
-export default ManageCustomTable; 
+export default ManageCustomTable;

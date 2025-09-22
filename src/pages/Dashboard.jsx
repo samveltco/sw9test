@@ -4,13 +4,13 @@ import SearchActions from '../components/dashboard/SearchActions';
 import TabsFilter from '../components/dashboard/TabsFilter';
 import SortingControls from '../components/dashboard/SortingControls';
 import WorkOrderCard, { WorkOrder } from '../components/dashboard/WorkOrderCard';
-import { useNavigate } from 'react-router-dom';
-import { getWorkOrders } from '../utils/api/get/getWorkOrders';
 import {jwtDecode} from 'jwt-decode';
 import '../sass/home/index.scss';
 import '../sass/home/index-l.scss';
 import '../sass/home/index-m.scss';
 import Modal from '../components/modals';
+import getWorkOrders from "../utils/api/get/getWorkOrders";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -47,7 +47,6 @@ const Dashboard =({ mainContainer }) => {
         });
     }, []);
 
-    // Все вкладки
     const allTabs = [
         { key: 'upcoming-work', label: 'Upcoming Work', count: 4 },
         { key: 'draft', label: 'Draft', count: 20 },
