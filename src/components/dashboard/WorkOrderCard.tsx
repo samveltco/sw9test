@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { calculateFundsRequiredSum } from '../../utils/calculateFundsRequiredSum';
 import { localCurrencySettings, variableTypeShorts } from '../../utils/constants';
 import { workOrderStatusControl } from '../../utils/workOrderStatusControl';
+import { useNavigate } from 'react-router-dom';
 
 export interface WorkOrder {
   id: string;
@@ -29,12 +30,14 @@ interface WorkOrderCardProps {
   onFindContractors: (id: string) => void;
   onViewApplicants: (id: string) => void;
   onCreateTemplate: (id: string) => void;
+  userType: string;
   messagesCount: any;
 }
 
 const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
   workOrder,
   messagesCount,
+  userType,
   onDuplicate,
   onViewDetails,
   onFindContractors,
@@ -42,7 +45,7 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
   onCreateTemplate
 }) => {
   const workOrderControlByStatus = workOrderStatusControl(workOrder.status);
-
+  const navigate = useNavigate();
   // const formatCalcInfo = (info: string) => {
   //   return info.split('\n').map((line, index, arr) => (
   //     <span key={index}>
@@ -51,6 +54,11 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
   //     </span>
   //   ));
   // };
+
+  const onEdit = () => {
+    console.log(workOrder);
+    navigate(`/create-work-order/${workOrder._id}`);
+  }
 
   const totalEstPaySum = useMemo(() => {
     const sum = calculateFundsRequiredSum({
@@ -287,6 +295,11 @@ const WorkOrderCard: React.FC<WorkOrderCardProps> = ({
         </div>
         <div className="card_actions">
           <button className="primary_btn icon_copy" aria-label="Duplicate" onClick={() => onDuplicate(workOrder.id)}>Duplicate</button>
+
+          {userType === 'client' && workOrderControlByStatus.workUncompleted && !workOrderControlByStatus.canceled && (
+            <button className="primary_btn icon_copy" aria-label="Edit" onClick={() => onEdit()}>Edit</button>
+          )}
+
           <button className="primary_btn icon_dots" aria-label="Details" onClick={() => onViewDetails(workOrder.id)}>Details</button>
           <button className="primary_btn icon_assept" aria-label="Contractors Near-by" onClick={() => onFindContractors(workOrder.id)}>Contractors Near-by</button>
           <button className="primary_btn icon_eye" aria-label="View Applicants" onClick={() => onViewApplicants(workOrder.id)}>View Applicants</button>

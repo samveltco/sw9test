@@ -56,6 +56,7 @@ function App() {
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard mainContainer={mainContainer} /></ProtectedRoute>} />
           <Route path="/find-contractor" element={<ProtectedRoute><FindContractor /></ProtectedRoute>} />
           <Route path="/create-work-order" element={<ProtectedRoute><CreateWorkOrder /></ProtectedRoute>} />
+          <Route path="/create-work-order/:id" element={<ProtectedRoute><CreateWorkOrder /></ProtectedRoute>} />
           <Route path="/user-management" element={<ProtectedRoute><UserManagement /></ProtectedRoute>} />
           <Route path="/payment-methods" element={<ProtectedRoute><PaymentMethods /></ProtectedRoute>} />
           <Route path="/transaction-history" element={<ProtectedRoute><TransactionHistory /></ProtectedRoute>} />

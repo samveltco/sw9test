@@ -54,6 +54,7 @@ let CreateWorkOrderReduxForm = ({
   const [companies, setCompanies] = useState([]);
   const [teams, setTeams] = useState([]);
 
+  console.log({params})
   const getSingleWorkOrder = async (id) => {
     if (!id) {
       await setCurrentWorkOrder({});
@@ -63,6 +64,7 @@ let CreateWorkOrderReduxForm = ({
     setIsLoading(false);
   };
 
+  console.log(currentWorkOrder);
   const fetchTemplatesList = async () => {
     const newTemplatesList = await getTemplatesList();
     setTemplates(newTemplatesList);
@@ -216,10 +218,7 @@ let CreateWorkOrderReduxForm = ({
           <br />
 
 
-
-
-
-          {/* <Field
+          <Field
             name="contactInfo"
             component={ContactInfoField}
             label="Contact Info"
@@ -227,7 +226,7 @@ let CreateWorkOrderReduxForm = ({
             required
             className="flex-column font-size-08"
             inputClassName="form-control"
-          /> */}
+          />
 
 
           <div className="fields_group">

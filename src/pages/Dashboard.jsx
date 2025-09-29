@@ -256,6 +256,7 @@ const Dashboard = ({
                     <WorkOrderCard
                         key={index}
                         workOrder={order}
+                        userType={auth.user.userType}
                         messagesCount={{ unReadMessages: {} }}
                         onDuplicate={handleDuplicate}
                         onViewDetails={handleViewDetails}
