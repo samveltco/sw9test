@@ -3,6 +3,7 @@ import CreateOrAddCustomFieldToWorkOrder from './CreateOrAddCustomFieldToWorkOrd
 import PortalContainer from './Portal';
 import EditCustomFieldModal from './EditCustomFieldModal';
 import GenericModal from './GenericModal';
+import CreateOrAddClientApprovalCodeToWorkOrder from './CreateOrAddClientApprovalCodeToWorkOrder';
 
 const Modal = ({ mainContainer }) => (
   mainContainer
@@ -14,9 +15,9 @@ const Modal = ({ mainContainer }) => (
         <PortalContainer parentContainer={mainContainer} modalName="editCustomFieldModal">
           <EditCustomFieldModal mainContainer={mainContainer} />
         </PortalContainer>
-        <PortalContainer parentContainer={mainContainer} modalName="loader">
+        {/* <PortalContainer parentContainer={mainContainer} modalName="loader">
           <GenericModal modalName="loader" />
-        </PortalContainer>
+        </PortalContainer> */}
         <PortalContainer parentContainer={mainContainer} modalName="confirmModal">
           <GenericModal modalName="confirmModal" />
         </PortalContainer>
@@ -25,6 +26,9 @@ const Modal = ({ mainContainer }) => (
         </PortalContainer>
         <PortalContainer parentContainer={mainContainer} modalName="contractorDetailsModal">
           <GenericModal modalName="contractorDetailsModal" />
+        </PortalContainer>
+        <PortalContainer parentContainer={mainContainer} modalName="createOrAddClientApprovalCodeToWorkOrder">
+          <CreateOrAddClientApprovalCodeToWorkOrder mainContainer={mainContainer} />
         </PortalContainer>
         <PortalContainer parentContainer={mainContainer} modalName="messageRateModal">
           <GenericModal modalName="messageRateModal" />

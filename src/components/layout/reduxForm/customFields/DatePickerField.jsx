@@ -10,8 +10,8 @@ const DatePickedField = field => (
         className={field.inputClassName || ''}
         dateFormat={field.dateFormat}
         /* eslint-disable-next-line camelcase */
-        selected={field.input.value}
-        onChange={field.input.onChange}
+        selected={field.input.value ? new Date(field.input.value) : null}
+        onChange={(date) => field.input.onChange(date ? date.toISOString() : null)}
         placeholder={field.label}
         style={{ marginRight: '10px' }}
         minDate={field.minDate}

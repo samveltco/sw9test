@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CustomSelect from '../Select';
+import CustomSelect from '../layout/reduxForm/customFields/ReactSelectField';
 import { Field } from 'redux-form';
 import axios from 'axios';
 

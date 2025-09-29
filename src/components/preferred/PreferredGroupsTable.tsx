@@ -1,9 +1,9 @@
 import React from 'react';
 
 export interface PreferredGroup {
-  id: string;
+  _id: string;
   name: string;
-  members: number | string;
+  groupUsersCount: number | string;
 }
 
 interface PreferredGroupsTableProps {
@@ -13,6 +13,7 @@ interface PreferredGroupsTableProps {
 }
 
 const PreferredGroupsTable: React.FC<PreferredGroupsTableProps> = ({ groups, onEdit, onDelete }) => {
+  
   return (
     <table className="custom_table">
       <thead>
@@ -24,15 +25,15 @@ const PreferredGroupsTable: React.FC<PreferredGroupsTableProps> = ({ groups, onE
       </thead>
       <tbody>
         {groups.map((g) => (
-          <tr key={g.id}>
+          <tr key={g._id}>
             <td data-th="Group name">{g.name}</td>
-            <td data-th="Members">{g.members}</td>
+            <td data-th="Members">{g.groupUsersCount}</td>
             <td data-th="Action">
               <div className="row_block">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#" className="icon_pencil" onClick={(e) => { e.preventDefault(); onEdit(g.id); }}>edit</a>
+                <a href="#" className="icon_pencil" onClick={(e) => { e.preventDefault(); onEdit(g._id); }}>edit</a>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#" className="icon_delete" onClick={(e) => { e.preventDefault(); onDelete(g.id); }}>close</a>
+                <a href="#" className="icon_delete" onClick={(e) => { e.preventDefault(); onDelete(g._id); }}>close</a>
               </div>
             </td>
           </tr>

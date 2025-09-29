@@ -4,6 +4,7 @@ interface AddCustomFieldModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSave: (payload: { name: string }) => void;
+    initialName: string
 }
 
 const AddCustomFieldModal: React.FC<AddCustomFieldModalProps> = ({ isOpen, onClose, onSave }) => {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Form, reduxForm } from 'redux-form';
 import { withRouter } from 'withroute';
-import SectionContainerOneCol from '../SectionContainerOneCol';
+import SectionContainerOneCol from '../../SectionContainerOneCol';
 import QuestionSection from './section/tests/QuestionSection';
 import ControlButtonsSection from './section/tests/ControlButtonsSection';
 

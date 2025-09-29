@@ -162,7 +162,6 @@ const Dashboard = ({
         }
     };
 
-    // Все вкладки
     const allTabs = [
         { key: 'upcoming-work', label: 'Upcoming Work', count: 4 },
         { key: 'draft', label: 'Draft', count: 20 },

@@ -8,6 +8,7 @@ const values = {
   documentVisibility: {},
   removePreviousDocuments: true,
   status: 'draft',
+  contactInfo: [],
 };
 
 export default values;

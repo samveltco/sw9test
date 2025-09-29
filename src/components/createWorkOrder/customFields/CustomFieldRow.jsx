@@ -11,8 +11,8 @@ const CustomFieldRow = ({
     <td data-th="Type">{workOrderCustomFieldTypes[customField.type]}</td>
     <td data-th="Action">
       <div className="row_block">
-        <button type="button" className="icon_pencil" onClick={editField}>edit</button>
-        <button type="button" className="icon_delete" onClick={removeField}>close</button>
+        <a href="#" className="icon_pencil" onClick={editField}>edit</a>
+        <a href="#" className="icon_delete" onClick={removeField}>close</a>
       </div>
     </td>
   </tr>

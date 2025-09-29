@@ -7,9 +7,7 @@ import Notification from '../../notification';
 import InputField from './customFields/InputField';
 import ReactSelectField from './customFields/ReactSelectField';
 import SectionContainerOneCol from '../SectionContainerOneCol';
-import { workOrderCustomFieldTypes } from '../../../utils/constans_old';
-import { white as customSelectStyle } from '../../../utils/customSelectStyle';
-import Select from 'react-select';
+import { workOrderCustomFieldTypes } from '../../../utils/constants';
 
 const options = [
   { label: 'Required', value: true },
@@ -49,22 +47,30 @@ let CreateClientApprovalCodeReduxForm = ({
       onKeyPress={preventSubmitOnEnter}
     >
       <SectionContainerOneCol>
+      <div className="field_block">
+      <label className="field_name" htmlFor="approvalCodeName">Name</label>
+
         <Field
           name="name"
           component={InputField}
           type="text"
           placeholder="Approval Code Name"
           label="Name"
+          id="approvalCodeName"
           required
-          className="flex-column"
-          inputClassName="width-100-percent input-field"
+          className="form_control"
+          inputClassName="form_control"
           paddingBottomClassName="no-paddings"
           disabled={disabled}
         />
+        </div>
+        <br />
+        <div className="field_block">
+        <label className="field_name" htmlFor="approvalCodeIsRequired">Is Required</label>
         <Field
           name="isRequired"
           component={ReactSelectField}
-          className="flex-column"
+          className="form_control"
           label="Is Required"
           // disabled={disabled}
           value={initialValues.isRequired}
@@ -72,10 +78,11 @@ let CreateClientApprovalCodeReduxForm = ({
           options={options}
           required
           paddingBottomClassName="no-paddings"
-          inputClassName="width-inherit input-field no-paddings"
+          inputClassName="form_control"
           customSelectStyleType="white"
           isSearchable={false}
         />
+        </div>
       </SectionContainerOneCol>
     </Form>
   );

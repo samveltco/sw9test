@@ -8,7 +8,7 @@ import Notification from '../../notification';
 import defaultInitialValues from '../../../utils/reduxForm/InitialValues/addFundingSourceToDwollaBySuperAdmin';
 import InputField from './customFields/InputField';
 import ReactSelectField from './customFields/ReactSelectField';
-import SectionContainerOneCol from '../SectionContainerOneCol';
+import SectionContainerOneCol from '../../SectionContainerOneCol';
 import { accountStatusOptions } from '../../../utils/constans_old';
 
 let AddFundingSourceToDwollaBySuperAdminReduxForm = ({

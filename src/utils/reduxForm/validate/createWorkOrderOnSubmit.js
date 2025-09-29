@@ -4,6 +4,7 @@ import { getTimeIn24Format } from '../../getTimeIn24Format';
 
 const createWorkOrderReduxFormOnSubmit = (values) => {
   const result = {};
+  console.log({values})
   if (
     (
       parseFloat(values.percentCommunication)
@@ -64,6 +65,7 @@ const createWorkOrderReduxFormOnSubmit = (values) => {
       message: 'please enter certification type',
     });
   }
+  console.log({values})
   if ((!values.address1 || !values.state?.label || !values.city) && !values.isRemote) {
     result.address1 = 'Please enter correct address';
     result.state = 'Please enter correct address';

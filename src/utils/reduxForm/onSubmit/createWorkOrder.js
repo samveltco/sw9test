@@ -4,13 +4,14 @@ import {
   editWorkOrderDetails,
   createWorkOrder,
   createWorkOrderTemplate,
-} from '../../../storage/actions/workOrdersActions';
+} from '../../../store/actions/workOrdersActions';
 import validate from '../validate/createWorkOrderOnSubmit';
-import combineDateAndTime from '../../addTimeToDatefromAM_PMFormatString';
 import { getLocalISODate } from '../../getDateWithOffset';
 
 const createWorkOrderReduxForm = async (values, dispatch, props) => {
+  console.log(values)
   const validationErrors = validate(values);
+  console.log(validationErrors)
   if (Object.keys(validationErrors).length) throw new SubmissionError(validationErrors);
 
   const pathname = `/dashboard/${props.activeTab}`;

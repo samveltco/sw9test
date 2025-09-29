@@ -1,10 +1,10 @@
 // ©2024 Austin App House. All rights reserved.
 import React, { useEffect, useState } from 'react';
-import { MDBCol } from 'mdbreact';
+// import { MDBCol } from 'mdbreact';
 import axios from 'axios';
 import { Field } from 'redux-form';
 import Notification from '../../../../../notification';
-import Loader from '../../../../../dashboard/common/Loader';
+// import Loader from '../../../../../dashboard/common/Loader';
 import ReactSelectField from '../../../customFields/ReactSelectField';
 
 const ProjectAndCompanyField = ({
@@ -54,7 +54,7 @@ const ProjectAndCompanyField = ({
   };
 
   return (
-    <MDBCol className={className}>
+    <div className={className}>
       <div>
         <label className="no-margins">
           {`Select ${label} - `}
@@ -75,19 +75,19 @@ const ProjectAndCompanyField = ({
           }
         </label>
       </div>
-      {
+      <Field
+        name={name}
+        component={ReactSelectField}
+        className="flex-column"
+        options={options}
+      />
+      {/* {
         isLoading
           ? <Loader />
           : (
-            <Field
-              name={name}
-              component={ReactSelectField}
-              className="flex-column"
-              options={options}
-            />
           )
-      }
-    </MDBCol>
+      } */}
+    </div>
   );
 };
 

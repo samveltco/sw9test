@@ -6,6 +6,7 @@ import findOption from '../../utils/addressSection/findOption';
 import InputField from '../layout/reduxForm/customFields/InputField';
 import CustomSelect from '../Select';
 import handlerValidateZipCode from '../../utils/addressSection/handlerValidateZipCode';
+import ReactSelectField from '../layout/reduxForm/customFields/ReactSelectField';
 
 const createWorkOrderReduxFormSelector = formValueSelector('createWorkOrderReduxForm');
 
@@ -108,7 +109,7 @@ const AddressSection = ({
           id="state"
           maxLength={50}
           placeholder="State"
-          component={CustomSelect}
+          component={ReactSelectField}
           options={states}
         />
       </div>
@@ -134,7 +135,7 @@ const AddressSection = ({
           id="country"
           maxLength={50}
           placeholder="Country"
-          component={CustomSelect}
+          component={ReactSelectField}
           options={countries}
           defaultValue={countries[1]}
           required={!isRemote}

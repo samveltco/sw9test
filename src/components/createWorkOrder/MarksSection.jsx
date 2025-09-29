@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import InputField from '../layout/reduxForm/customFields/InputField';
-import SelectField from '../layout/reduxForm/customFields/SelectField';
+import SelectField from '../layout/reduxForm/customFields/ReactSelectField';
 
-const MarksSection = () => (
+const MarksSection = ({ projects, companies }) => (
   <div className="fields_group">
     <div className="field_col">
       <label className="field_name" htmlFor="company_wo_id">Company WO ID*</label>
@@ -33,35 +33,21 @@ const MarksSection = () => (
     </div>
     <div className="field_col">
       <label className="field_name" htmlFor="project">Select Project <button aria-label="Create Project">Create Project</button></label>
-      <div className="field_block">
         <Field
           component={SelectField}
-          name="project"
+          name="projectInfo"
           id="project"
-          options={[
-            { value: '1', label: 'Value 1' },
-            { value: '2', label: 'Value 2' },
-            { value: '3', label: 'Value 3' },
-            { value: '4', label: 'Value 4' },
-          ]}
+          options={projects}
         />
-      </div>
     </div>
     <div className="field_col">
       <label className="field_name" htmlFor="company">Select Company <button aria-label="Create Company">Create Company</button></label>
-      <div className="field_block">
         <Field
           component={SelectField}
-          name="company"
-          id="company"
-          options={[
-            { value: '1', label: 'Value 1' },
-            { value: '2', label: 'Value 2' },
-            { value: '3', label: 'Value 3' },
-            { value: '4', label: 'Value 4' },
-          ]}
+          name="woCompanyInfo"
+          id="woCompanyInfo"
+          options={companies}
         />
-      </div>
     </div>
   </div>
 );

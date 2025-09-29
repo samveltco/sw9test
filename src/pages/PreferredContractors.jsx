@@ -1,29 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import { PreferredGroupsTable, PreferredGroup, AddGroupModal } from '../components/preferred';
+import getContractorGroups from '../utils/api/get/getContractorGroups';
+import deleteGroup from '../utils/api/delete/deleteGroup';
 
-const PreferredContractors: React.FC = () => {
-  const [groups, setGroups] = useState<PreferredGroup[]>([
-    { id: 'g1', name: 'Reference #', members: 'asdas' },
-    { id: 'g2', name: 'Reference #', members: 'asdas' },
-    { id: 'g3', name: 'Reference #', members: 'asdas' },
-    { id: 'g4', name: 'Reference #', members: 'asdas' }
-  ]);
+const PreferredContractors = () => {
+  const [groups, setGroups] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [selectedGroup, setSelectedGroup] = useState(null);
   const handleAdd = () => setIsModalOpen(true);
-  const handleClose = () => setIsModalOpen(false);
-  const handleSave = ({ name }: { name: string; type: string }) => {
-    setGroups((prev) => [{ id: `g${prev.length + 1}`, name, members: 0 }, ...prev]);
-    setIsModalOpen(false);
+  const handleClose = () => {
+    setIsModalOpen(false)
+    setSelectedGroup(null);
+    const data = getContractorGroups().then(res => setGroups(res));
   };
 
-  const handleEdit = (id: string) => {
-    console.log('edit', id);
+  useEffect(() => {
+    const fetchGroups = async () => {
+      const data = await getContractorGroups();
+      setGroups(data);
+    };
+    fetchGroups();
+  }, []);
+
+
+  const handleEdit = (id) => {
+    setSelectedGroup(id);
+    console.log(id)
+    setIsModalOpen(true);
   };
 
-  const handleDelete = (id: string) => {
-    setGroups((prev) => prev.filter((g) => g.id !== id));
+  const handleDelete = (id) => {
+    // setGroups((prev) => prev.filter((g) => g.id !== id));
+    setGroups((prev) => prev.filter((g) => g._id !== id))
+    deleteGroup(id);
   };
 
   return (
@@ -45,7 +55,7 @@ const PreferredContractors: React.FC = () => {
         <PreferredGroupsTable groups={groups} onEdit={handleEdit} onDelete={handleDelete} />
       </div>
 
-      <AddGroupModal isOpen={isModalOpen} onClose={handleClose} onSave={handleSave} />
+      <AddGroupModal selectedGroup={selectedGroup} isOpen={isModalOpen} onClose={handleClose} />
     </Layout>
   );
 };

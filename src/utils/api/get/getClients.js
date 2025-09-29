@@ -5,6 +5,7 @@ import Notification from '../../../components/notification';
 const getClients = async () => {
   try {
     const response = await axios.get('/api/users/get-clients');
+      console.log(response)
     return response.data?.clients || [];
   } catch (error) {
     Notification('error', {

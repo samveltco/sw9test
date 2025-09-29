@@ -1,10 +1,10 @@
 // ©2024 Austin App House. All rights reserved.
 import React from 'react';
-import { MDBCol } from 'mdbreact';
+// import { MDBCol } from 'mdbreact';
 import { Field } from 'redux-form';
 import InputField from '../../customFields/InputField';
 import ProjectAndCompanyField from './projectAndCompanyField';
-import ControlElement from '../../../ControlElement';
+// import ControlElement from '../../../ControlElement';
 
 const MarksSection = ({
   toggleModal,
@@ -12,8 +12,8 @@ const MarksSection = ({
   requirements,
 }) => (
   <>
-    <ControlElement hide={hideElements?.customTagId}>
-      <MDBCol>
+    {/* <ControlElement hide={hideElements?.customTagId}>
+      <div>
         <Field
           name="customTagId"
           component={InputField}
@@ -24,9 +24,9 @@ const MarksSection = ({
           className="flex-column font-size-08"
           inputClassName="form-control custom-input-style"
         />
-      </MDBCol>
-    </ControlElement>
-    <MDBCol>
+      </div>
+    </ControlElement> */}
+    <div>
       <Field
         name="title"
         component={InputField}
@@ -37,7 +37,7 @@ const MarksSection = ({
         className="flex-column font-size-08"
         inputClassName="form-control custom-input-style"
       />
-    </MDBCol>
+    </div>
     <ProjectAndCompanyField
       name="projectInfo"
       label="Project"
