@@ -11,6 +11,7 @@ import '../sass/home/index-m.scss';
 import Modal from '../components/modals';
 import getWorkOrderCountByTabs from '../utils/api/get/getWorkOrderCountByTabs';
 import Tabs from '../components/dashboard/Tabs';
+import {tabs} from '../utils/constants'
 import { connect } from 'react-redux';
 import prepareFilters from '../utils/prepareFilters';
 
@@ -173,22 +174,22 @@ const Dashboard = ({
         { key: 'all', label: 'All', count: 84 }
     ];
 
-    const tabs = (() => {
-        if (userType === 'contractor') {
-            return allTabs.filter(tab =>
-                ['upcoming-work', 'available', 'routed', 'applied', 'completed', 'approved', 'paid'].includes(tab.key)
-            );
-        } else if (userType === 'client') {
-            return allTabs.filter(tab =>
-                ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
-            );
-        } else if (userType === 'superAdmin') {
-            return allTabs.filter(tab =>
-                ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
-            );
-        }
-        return allTabs;
-    })();
+    // const tabs = (() => {
+    //     if (userType === 'contractor') {
+    //         return allTabs.filter(tab =>
+    //             ['upcoming-work', 'available', 'routed', 'applied', 'completed', 'approved', 'paid'].includes(tab.key)
+    //         );
+    //     } else if (userType === 'client') {
+    //         return allTabs.filter(tab =>
+    //             ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
+    //         );
+    //     } else if (userType === 'superAdmin') {
+    //         return allTabs.filter(tab =>
+    //             ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
+    //         );
+    //     }
+    //     return allTabs;
+    // })();
 
     const handleImportClick = () => console.log('Import work orders');
     const handleCreateWorkOrder = () => {
@@ -202,7 +203,7 @@ const Dashboard = ({
             filters: { tab: selectedTab },
         };
 
-        dispatch(exportWorkOrders(data, userType));
+        exportWorkOrders(data, userType);
     };
 
     const handleShowModal = () => console.log('Show modal');
