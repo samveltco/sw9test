@@ -24,6 +24,11 @@ import {init} from "./store/actions/authActions";
 import './sass/custom_styles/custom_styles.scss';
 import "react-datepicker/dist/react-datepicker.css";
 import Modal from './components/modals';
+import About from "./pages/About";
+import LocateTechs from "./pages/LocateTechs";
+import LocateWorks from "./pages/LocateWorks";
+import Solution from "./pages/Solution";
+import FAQ from "./pages/FAQ";
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -49,6 +54,11 @@ function App() {
         <Modal mainContainer={(mainContainer.current) || document.body} />
         <Routes>
           <Route path="/home" element={<Landing />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/locate_techs" element={<LocateTechs />} />
+          <Route path="/locate_works" element={<LocateWorks />} />
+          <Route path="/solution" element={<Solution />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="*"  element={<ProtectedRoute><Dashboard mainContainer={mainContainer} /></ProtectedRoute>} />
           <Route path="/admin-recruits" element={<ProtectedRoute><AdminRecruits /></ProtectedRoute>} />
           <Route path="/contractor-main" element={<ProtectedRoute><ContractorMain /></ProtectedRoute>} />

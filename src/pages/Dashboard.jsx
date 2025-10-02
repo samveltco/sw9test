@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import SearchActions from '../components/dashboard/SearchActions';
-import TabsFilter from '../components/dashboard/TabsFilter';
 import SortingControls from '../components/dashboard/SortingControls';
-import WorkOrderCard, { WorkOrder } from '../components/dashboard/WorkOrderCard';
-import { useNavigate } from 'react-router-dom';
+import WorkOrderCard from '../components/dashboard/WorkOrderCard';
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from "react-router-dom";
 import '../sass/home/index.scss';
 import '../sass/home/index-l.scss';
 import '../sass/home/index-m.scss';
@@ -13,7 +12,6 @@ import Modal from '../components/modals';
 import getWorkOrderCountByTabs from '../utils/api/get/getWorkOrderCountByTabs';
 import Tabs from '../components/dashboard/Tabs';
 import { connect } from 'react-redux';
-import { tabs } from '../utils/constants';
 import prepareFilters from '../utils/prepareFilters';
 
 import {
@@ -141,9 +139,9 @@ const Dashboard = ({
             setWorkOrders(tmpWorkOrders);
             toggleSecondModalClose('loader', true);
         })
-        // const result = await 
+        // const result = await
     };
-    
+
     useEffect(() => {
         // const { tab } = match.params;
         fetchData();
@@ -175,29 +173,38 @@ const Dashboard = ({
         { key: 'all', label: 'All', count: 84 }
     ];
 
-    // const tabs = (() => {
-    //     if (userType === 'contractor') {
-    //         return allTabs.filter(tab =>
-    //             ['upcoming-work', 'available', 'routed', 'applied', 'completed', 'approved', 'paid'].includes(tab.key)
-    //         );
-    //     } else if (userType === 'client') {
-    //         return allTabs.filter(tab =>
-    //             ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
-    //         );
-    //     } else if (userType === 'superAdmin') {
-    //         return allTabs.filter(tab =>
-    //             ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
-    //         );
-    //     }
-    //     return allTabs;
-    // })();
+    const tabs = (() => {
+        if (userType === 'contractor') {
+            return allTabs.filter(tab =>
+                ['upcoming-work', 'available', 'routed', 'applied', 'completed', 'approved', 'paid'].includes(tab.key)
+            );
+        } else if (userType === 'client') {
+            return allTabs.filter(tab =>
+                ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
+            );
+        } else if (userType === 'superAdmin') {
+            return allTabs.filter(tab =>
+                ['draft', 'available', 'routed', 'assigned', 'completed', 'approved', 'paid', 'all'].includes(tab.key)
+            );
+        }
+        return allTabs;
+    })();
 
     const handleImportClick = () => console.log('Import work orders');
     const handleCreateWorkOrder = () => {
         console.log('Create work order');
         navigate('/create-work-order');
     };
-    const handleExport = () => console.log('Export to Excel');
+
+    const handleExport = () => {
+        const data = {
+            workOrdersId: workOrders.map(order => order._id),
+            filters: { tab: selectedTab },
+        };
+
+        dispatch(exportWorkOrders(data, userType));
+    };
+
     const handleShowModal = () => console.log('Show modal');
     const handleApplyFilter = () => { console.log('Apply filter'); setShowFilter(false); };
     const handleResetFilter = () => console.log('Reset filter');

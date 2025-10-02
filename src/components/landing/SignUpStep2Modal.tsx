@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 import {useDispatch} from "react-redux";
 import {registerUser} from "../../store/actions/authActions";
-import Select from "react-select";
+import axios from 'axios';
+import Notification from "../../components/notification";
+import CustomSelect from "../Select";
 
 interface SignUpStep2ModalProps {
     isOpen: boolean,
@@ -15,6 +17,26 @@ interface SignUpStep2ModalProps {
     isLoadingStates: boolean,
     selectedCountry?: string | null
 }
+
+const normalizePhoneInput = (value: string, previousValue: string = ''): string => {
+    if (!value) return value;
+
+    const currentValue = value.replace(/[^\d]/g, '');
+    const cvLength = currentValue.length;
+
+    if (!previousValue || value.length > previousValue.length) {
+        if (cvLength < 4) return currentValue;
+        if (cvLength < 7) return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`;
+        return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3, 6)}-${currentValue.slice(6, 10)}`;
+    }
+
+    return value;
+};
+
+const validateEmail = (email: string): boolean => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+};
 
 const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                                                isOpen,
@@ -50,12 +72,165 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [agreedToTerms, setAgreedToTerms] = useState(false);
+    const [isInvite, setIsInvite] = useState(false);
+    const [companyId, setCompanyId] = useState<string | null>(null);
+    const [companyName, setCompanyName] = useState('');
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+    const [emailError, setEmailError] = useState('');
 
     const dispatch = useDispatch();
 
+    const fieldContainerRefs = useRef<{[key: string]: HTMLDivElement | null}>({});
+    const modalBodyRef = useRef<HTMLDivElement>(null);
+
+    const scrollToField = useCallback((fieldName: string) => {
+        setTimeout(() => {
+            const element = fieldContainerRefs.current[fieldName];
+            if (element && modalBodyRef.current) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'nearest'
+                });
+            }
+        }, 50);
+    }, []);
+
+    const setFieldContainerRef = useCallback((name: string) => (el: HTMLDivElement | null) => {
+        if (el) {
+            fieldContainerRefs.current[name] = el;
+        }
+    }, []);
+
+    const handleFieldClick = useCallback((fieldName: string, nextField?: string) => {
+        return () => {
+            scrollToField(fieldName);
+        };
+    }, [scrollToField]);
+
+    useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search);
+        const inviteId = queryParams.get('SID');
+        const randId = queryParams.get('id');
+
+        if (inviteId && randId) {
+            setIsInvite(true);
+            axios
+                .post('/api/auth/fetch_invited_client_users', {
+                    rand_id: randId,
+                })
+                .then((res) => {
+                    const fetchInvite = res.data.ClientUsers;
+                    setFormData(prev => ({
+                        ...prev,
+                        firstName: fetchInvite.firstname || '',
+                        lastName: fetchInvite.lastname || '',
+                        email: fetchInvite.email || '',
+                        phone: fetchInvite.phone || '',
+                    }));
+                    setCompanyName(fetchInvite.company?.name || '');
+                    setCompanyId(fetchInvite.companyId || null);
+                })
+                .catch((error) => {
+                    console.error('error: ', error);
+                    Notification('error', {
+                        message: error.response?.data?.message || error.message,
+                    });
+                });
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!formData.country && countries.length > 0) {
+            const firstCountry = countries[0];
+            setFormData(prev => ({
+                ...prev,
+                country: firstCountry,
+                state: null,
+            }));
+
+            if (firstCountry?.value) {
+                onCountryChange(firstCountry.value);
+            }
+        }
+    }, [countries, onCountryChange]);
+
+    const validateField = useCallback((name: string, value: any): string => {
+        switch (name) {
+            case 'firstName':
+            case 'lastName':
+                if (!value.trim()) return 'This field is required';
+                if (value.length < 2) return 'Must be at least 2 characters';
+                return '';
+
+            case 'email':
+                if (!value.trim()) return 'Email is required';
+                if (!validateEmail(value)) return 'Please enter a valid email address';
+                return '';
+
+            case 'phone':
+                if (!value.trim()) return 'Phone number is required';
+                if (value.replace(/\D/g, '').length < 10) return 'Please enter a valid phone number';
+                return '';
+
+            case 'password':
+                if (!value) return 'Password is required';
+                if (value.length < 6) return 'Password must be at least 6 characters';
+                return '';
+
+            case 'confirmPassword':
+                if (!value) return 'Please confirm your password';
+                if (value !== formData.password) return 'Passwords do not match';
+                return '';
+
+            case 'address':
+                if (userType === 'contractor' && !value.trim()) return 'Address is required for contractors';
+                return '';
+
+            case 'city':
+                if (userType === 'contractor' && !value?.value) return 'City is required for contractors';
+                return '';
+
+            case 'state':
+                if (userType === 'contractor' && !value?.value) return 'State is required for contractors';
+                return '';
+
+            case 'zipcode':
+                if (userType === 'contractor' && !value.trim()) return 'ZIP code is required';
+                return '';
+
+            default:
+                return '';
+        }
+    }, [formData.password, userType]);
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
-        setFormData(prev => ({...prev, [name]: value}));
+
+        setFieldErrors(prev => ({...prev, [name]: ''}));
+        if (name === 'email') {
+            setEmailError('');
+        }
+
+        if (name === 'phone') {
+            const normalizedPhone = normalizePhoneInput(value, formData.phone);
+            setFormData(prev => ({...prev, [name]: normalizedPhone}));
+        } else {
+            setFormData(prev => ({...prev, [name]: value}));
+        }
+
+        setErrorMessage('');
+    };
+
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {value} = e.target;
+        setFormData(prev => ({...prev, email: value}));
+
+        if (value && !validateEmail(value)) {
+            setEmailError('Please enter a valid email address');
+        } else {
+            setEmailError('');
+        }
         setErrorMessage('');
     };
 
@@ -67,23 +242,40 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
         }));
 
         if (selected?.value) {
-            onCountryChange(selected?.value);
+            onCountryChange(selected.value);
         }
     };
 
-    useEffect(() => {
-        if (!formData.country && countries.length > 0) {
-            const firstCountry = countries[1];
-            setFormData(prev => ({
-                ...prev,
-                country: firstCountry,
-                state: null,
-            }));
+    const validateForm = (): boolean => {
+        const errors: Record<string, string> = {};
 
-
-            onCountryChange(firstCountry.value);
+        const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'password', 'confirmPassword'];
+        if (userType === 'contractor' && !isInvite) {
+            requiredFields.push('address', 'city', 'state', 'zipcode');
         }
-    }, [countries]);
+
+        requiredFields.forEach(field => {
+            const error = validateField(field, formData[field as keyof typeof formData]);
+            if (error) {
+                errors[field] = error;
+            }
+        });
+
+        if (formData.email && !validateEmail(formData.email)) {
+            errors.email = 'Please enter a valid email address';
+        }
+
+        if (formData.password && formData.password.length < 6) {
+            errors.password = 'Password must be at least 6 characters';
+        }
+
+        if (formData.password !== formData.confirmPassword) {
+            errors.confirmPassword = 'Passwords do not match';
+        }
+
+        setFieldErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -96,49 +288,80 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
             return;
         }
 
-        if (formData.password !== formData.confirmPassword) {
-            setErrorMessage('Passwords do not match');
+        if (!validateForm()) {
             setIsLoading(false);
-            return;
-        }
 
-        if (formData.password.length < 6) {
-            setErrorMessage('Password must be at least 6 characters long');
-            setIsLoading(false);
+            const firstErrorField = Object.keys(fieldErrors)[0];
+            if (firstErrorField) {
+                scrollToField(firstErrorField);
+            }
             return;
         }
 
         try {
-            const userData = {
-                userType,
-                firstName: formData.firstName || '',
-                lastName: formData.lastName || '',
-                email: formData.email || '',
-                phone: formData.phone || '',
-                address: formData.address || '',
-                address2: formData.address2 || '',
-                company: formData.company || '',
-                city: formData.city || null,
-                state: formData.state || null,
-                country: formData.country || null,
-                zipcode: formData.zipcode || '',
-                password: formData.password || '',
-                confirmPassword: formData.confirmPassword || '',
-                website: formData.website || '',
-                referredPersonName: formData.referredPersonName || '',
+            const queryParams = new URLSearchParams(window.location.search);
+            const randId = queryParams.get('id');
+
+            let userData: any = {
+                userType: isInvite ? 'client' : userType,
+                firstName: formData.firstName.trim(),
+                lastName: formData.lastName.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.replace(/\D/g, ''), // Сохраняем только цифры
+                password: formData.password,
+                confirmPassword: formData.confirmPassword,
             };
+
+            if (isInvite && randId) {
+                userData = {
+                    ...userData,
+                    rand_id: randId,
+                    userType: 'client',
+                    website: '',
+                    companyId: companyId,
+                };
+            } else {
+                userData = {
+                    ...userData,
+                    company: userType === 'client' ? formData.company : undefined,
+                    website: userType === 'client' ? formData.website : undefined,
+                    address: userType === 'contractor' ? formData.address : undefined,
+                    address2: userType === 'contractor' ? formData.address2 : undefined,
+                    country: formData.country,
+                    state: formData.state,
+                    city: formData.city,
+                    zipcode: formData.zipcode,
+                    referredPersonName: formData.referredPersonName || undefined,
+                };
+            }
+
+            if (userType === 'contractor' && !isInvite && !formData.state?.label) {
+                setErrorMessage('State is required for contractors');
+                setIsLoading(false);
+                return;
+            }
 
             const result = await dispatch<any>(registerUser(userData));
 
             if (result.success && result.data) {
                 onClose();
                 onShowSignIn();
+
+                if (result.data.message === 'Registration Success. Please check your email to activate your account.') {
+                    Notification('success', {
+                        message: result.data.message,
+                    });
+                }
             } else {
-                setErrorMessage('Registration failed');
+                setErrorMessage(result.message || 'Registration failed');
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error(error);
-            setErrorMessage('An error occurred during registration');
+            const errorMsg = error.response?.data?.message || 'An error occurred during registration';
+            setErrorMessage(errorMsg);
+            Notification('error', {
+                message: errorMsg,
+            });
         } finally {
             setIsLoading(false);
         }
@@ -149,6 +372,19 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
             setShowPassword(!showPassword);
         } else {
             setShowConfirmPassword(!showConfirmPassword);
+        }
+    };
+
+    const resendLinkForVerify = (email: string) => {
+        if (!email) {
+            Notification('warning', {
+                message: 'Type your email first!',
+            });
+        } else {
+            console.log('Resend verification email to:', email);
+            Notification('info', {
+                message: 'Verification email sent!',
+            });
         }
     };
 
@@ -164,9 +400,13 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                         onClick={onClose}
                     ></button>
                 </div>
-                <div className="modal_body">
-                    <div className="modal_title">Create Your Free Account</div>
-                    <div className="modal_description">Welcome!</div>
+                <div className="modal_body" ref={modalBodyRef}>
+                    <div className="modal_title">
+                        {isInvite ? 'Complete Your Registration' : 'Create Your Free Account'}
+                    </div>
+                    <div className="modal_description">
+                        {isInvite ? `You have been invited by "${companyName}"` : 'Welcome!'}
+                    </div>
 
                     {errorMessage && (
                         <div className="error_hint" style={{maxHeight: '60px', marginBottom: '20px'}}>
@@ -176,7 +416,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
 
                     <form onSubmit={handleSubmit}>
                         <div className="fields_group">
-                            <div className="field_col">
+                            <div className="field_col" ref={setFieldContainerRef('firstName')}>
                                 <label className="hidden_label" htmlFor="FirstName">First Name</label>
                                 <div className="field_block">
                                     <input
@@ -187,12 +427,17 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         placeholder="First Name"
                                         value={formData.firstName}
                                         onChange={handleInputChange}
+                                        onClick={handleFieldClick('firstName')}
+                                        disabled={isInvite}
                                         required
                                     />
                                 </div>
+                                {fieldErrors.firstName && (
+                                    <div className="field_error">{fieldErrors.firstName}</div>
+                                )}
                             </div>
 
-                            <div className="field_col">
+                            <div className="field_col" ref={setFieldContainerRef('lastName')}>
                                 <label className="hidden_label" htmlFor="LastName">Last Name</label>
                                 <div className="field_block">
                                     <input
@@ -203,12 +448,17 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         placeholder="Last Name"
                                         value={formData.lastName}
                                         onChange={handleInputChange}
+                                        onClick={handleFieldClick('lastName')}
+                                        disabled={isInvite}
                                         required
                                     />
                                 </div>
+                                {fieldErrors.lastName && (
+                                    <div className="field_error">{fieldErrors.lastName}</div>
+                                )}
                             </div>
 
-                            <div className="field_col">
+                            <div className="field_col" ref={setFieldContainerRef('email')}>
                                 <label className="hidden_label" htmlFor="Email">Email</label>
                                 <div className="field_block">
                                     <input
@@ -218,204 +468,209 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         maxLength={50}
                                         placeholder="Email"
                                         value={formData.email}
-                                        onChange={handleInputChange}
+                                        onChange={handleEmailChange}
+                                        onClick={handleFieldClick('email')}
+                                        disabled={isInvite}
                                         required
                                     />
                                 </div>
+                                {(fieldErrors.email || emailError) && (
+                                    <div className="field_error">{fieldErrors.email || emailError}</div>
+                                )}
                             </div>
 
-                            <div className="field_col">
+                            <div className="field_col" ref={setFieldContainerRef('phone')}>
                                 {userType === "contractor" ? (
                                     <label className="hidden_label" htmlFor="Phone">Company Phone</label>
                                 ) : (
                                     <label className="hidden_label" htmlFor="Phone">Contact Phone</label>
                                 )}
-
-                                {userType === "contractor" ? (
-                                    <div className="field_block">
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            id="Phone"
-                                            maxLength={20}
-                                            placeholder="Mobile Phone"
-                                            value={formData.phone}
-                                            onChange={handleInputChange}
-                                            required
-                                        />
-                                    </div>
-                                ) : (
-                                    <div className="field_block">
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            id="Phone"
-                                            maxLength={20}
-                                            placeholder="Contact Phone"
-                                            value={formData.phone}
-                                            onChange={handleInputChange}
-                                            required
-                                        />
-                                    </div>
+                                <div className="field_block">
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        id="Phone"
+                                        maxLength={20}
+                                        placeholder={userType === "contractor" ? "Mobile Phone" : "Contact Phone"}
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                        onClick={handleFieldClick('phone')}
+                                        disabled={isInvite}
+                                        required
+                                    />
+                                </div>
+                                {fieldErrors.phone && (
+                                    <div className="field_error">{fieldErrors.phone}</div>
                                 )}
-
                             </div>
 
-                            {userType === 'contractor' && (
-                                <div className="field_col">
-                                    <label className="hidden_label" htmlFor="Address">Street</label>
-                                    <div className="field_block">
-                                        <input
-                                            type="text"
-                                            name="address"
-                                            id="Address"
-                                            maxLength={150}
-                                            placeholder="Street"
-                                            value={formData.address}
-                                            onChange={handleInputChange}
-                                            required={userType === 'contractor'}
-                                        />
+                            {userType === 'contractor' && !isInvite && (
+                                <>
+                                    <div className="field_col" ref={setFieldContainerRef('address')}>
+                                        <label className="hidden_label" htmlFor="Address">Street</label>
+                                        <div className="field_block">
+                                            <input
+                                                type="text"
+                                                name="address"
+                                                id="Address"
+                                                maxLength={150}
+                                                placeholder="Street"
+                                                value={formData.address}
+                                                onChange={handleInputChange}
+                                                onClick={handleFieldClick('address')}
+                                                required
+                                            />
+                                        </div>
+                                        {fieldErrors.address && (
+                                            <div className="field_error">{fieldErrors.address}</div>
+                                        )}
                                     </div>
-                                </div>
+
+                                    <div className="field_col" ref={setFieldContainerRef('address2')}>
+                                        <label className="hidden_label" htmlFor="Address2">Suite, Apt, Etc.</label>
+                                        <div className="field_block">
+                                            <input
+                                                type="text"
+                                                name="address2"
+                                                id="Address2"
+                                                maxLength={150}
+                                                placeholder="Suite, Apt, Etc."
+                                                value={formData.address2}
+                                                onChange={handleInputChange}
+                                                onClick={handleFieldClick('address2')}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="field_col" ref={setFieldContainerRef('city')}>
+                                        <label className="hidden_label" htmlFor="City">City</label>
+                                        <div className="field_block">
+                                            <input
+                                                type="text"
+                                                name="city"
+                                                id="City"
+                                                maxLength={50}
+                                                placeholder="City"
+                                                value={formData.city?.value || ""}
+                                                onChange={(e) =>
+                                                    setFormData(prev => ({
+                                                        ...prev,
+                                                        city: {value: e.target.value, label: e.target.value},
+                                                    }))
+                                                }
+                                                onClick={handleFieldClick('city')}
+                                                required
+                                            />
+                                        </div>
+                                        {fieldErrors.city && (
+                                            <div className="field_error">{fieldErrors.city}</div>
+                                        )}
+                                    </div>
+
+                                    <div className="field_col" ref={setFieldContainerRef('country')}>
+                                        <label className="hidden_label" htmlFor="Country">Country</label>
+                                        <div className="field_block">
+                                            <CustomSelect
+                                                id="Country"
+                                                name="country"
+                                                options={countries}
+                                                value={formData.country}
+                                                onChange={handleCountryChange}
+                                                placeholder={isLoadingCountries ? "Loading countries..." : "Select Country"}
+                                                isClearable
+                                                isDisabled={isLoadingCountries}
+                                                isLoading={isLoadingCountries}
+                                                onMenuOpen={() => scrollToField('country')}
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="field_col" ref={setFieldContainerRef('state')}>
+                                        <label className="hidden_label" htmlFor="State">State</label>
+                                        <div className="field_block">
+                                            <CustomSelect
+                                                id="State"
+                                                name="state"
+                                                options={states}
+                                                value={formData.state}
+                                                onChange={(selected: any) =>
+                                                    setFormData(prev => ({
+                                                        ...prev,
+                                                        state: selected,
+                                                    }))
+                                                }
+                                                placeholder={isLoadingStates ? "Loading states..." : "Select State"}
+                                                isClearable
+                                                isDisabled={isLoadingStates || !formData.country}
+                                                isLoading={isLoadingStates}
+                                                onMenuOpen={() => scrollToField('state')}
+                                                required
+                                            />
+                                        </div>
+                                        {fieldErrors.state && (
+                                            <div className="field_error">{fieldErrors.state}</div>
+                                        )}
+                                    </div>
+
+                                    <div className="field_col" ref={setFieldContainerRef('zipcode')}>
+                                        <label className="hidden_label" htmlFor="ZipCode">Zip</label>
+                                        <div className="field_block">
+                                            <input
+                                                type="text"
+                                                name="zipcode"
+                                                id="ZipCode"
+                                                maxLength={10}
+                                                placeholder="Zip"
+                                                value={formData.zipcode}
+                                                onChange={handleInputChange}
+                                                onClick={handleFieldClick('zipcode')}
+                                                required
+                                            />
+                                        </div>
+                                        {fieldErrors.zipcode && (
+                                            <div className="field_error">{fieldErrors.zipcode}</div>
+                                        )}
+                                    </div>
+                                </>
                             )}
 
-                            {userType === 'contractor' && (
-                                <div className="field_col">
-                                    <label className="hidden_label" htmlFor="Address2">Suite, Apt, Etc.</label>
-                                    <div className="field_block">
-                                        <input
-                                            type="text"
-                                            name="address2"
-                                            id="Address2"
-                                            maxLength={150}
-                                            placeholder="Suite, Apt, Etc."
-                                            value={formData.address2}
-                                            onChange={handleInputChange}
-                                        />
+                            {userType === "client" && !isInvite && (
+                                <>
+                                    <div className="field_col" ref={setFieldContainerRef('company')}>
+                                        <label className="hidden_label" htmlFor="Company">Company</label>
+                                        <div className="field_block">
+                                            <input
+                                                type="text"
+                                                name="company"
+                                                id="Company"
+                                                placeholder="Company"
+                                                value={formData.company}
+                                                onChange={handleInputChange}
+                                                onClick={handleFieldClick('company')}
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                            )}
 
-                            {userType === 'contractor' && (
-                                <div className="field_col">
-                                    <label className="hidden_label" htmlFor="City">City</label>
-                                    <div className="field_block">
-                                        <input
-                                            type="text"
-                                            name="city"
-                                            id="City"
-                                            maxLength={50}
-                                            placeholder="City"
-                                            value={formData.city?.value || ""}
-                                            onChange={(e) =>
-                                                setFormData(prev => ({
-                                                    ...prev,
-                                                    city: {value: e.target.value, label: e.target.value},
-                                                }))
-                                            }
-                                            required={userType === "contractor"}
-                                        />
+                                    <div className="field_col" ref={setFieldContainerRef('website')}>
+                                        <label className="hidden_label" htmlFor="Website">Website</label>
+                                        <div className="field_block">
+                                            <input
+                                                type="text"
+                                                name="website"
+                                                id="Website"
+                                                placeholder="Website"
+                                                value={formData.website}
+                                                onChange={handleInputChange}
+                                                onClick={handleFieldClick('website')}
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                            )}
-
-                            {userType === 'contractor' && (
-                                <div className="field_col">
-                                    <label className="hidden_label" htmlFor="Country">Country</label>
-                                    <div className="field_block">
-                                        <Select
-                                            id="Country"
-                                            name="country"
-                                            options={countries}
-                                            value={formData.country}
-                                            onChange={handleCountryChange}
-                                            placeholder={isLoadingCountries ? "Loading countries..." : "Select Country"}
-                                            isClearable
-                                            isDisabled={isLoadingCountries}
-                                            isLoading={isLoadingCountries}
-                                            required={userType === "contractor"}
-                                        />
-                                    </div>
-                                </div>
-                            )}
-
-                            {userType === 'contractor' && (
-                                <div className="field_col">
-                                    <label className="hidden_label" htmlFor="State">State</label>
-                                    <div className="field_block">
-                                        <Select
-                                            id="State"
-                                            name="state"
-                                            options={states}
-                                            value={formData.state}
-                                            onChange={(selected) =>
-                                                setFormData(prev => ({
-                                                    ...prev,
-                                                    state: selected,
-                                                }))
-                                            }
-                                            placeholder={isLoadingStates ? "Loading states..." : "Select State"}
-                                            isClearable
-                                            isDisabled={isLoadingStates || !formData.country}
-                                            isLoading={isLoadingStates}
-                                            required={userType === "contractor"}
-                                        />
-                                    </div>
-                                </div>
-                            )}
-
-                            {userType === 'contractor' && (
-                                <div className="field_col">
-                                    <label className="hidden_label" htmlFor="ZipCode">Zip</label>
-                                    <div className="field_block">
-                                        <input
-                                            type="text"
-                                            name="zipcode"
-                                            id="ZipCode"
-                                            maxLength={10}
-                                            placeholder="Zip"
-                                            value={formData.zipcode}
-                                            onChange={handleInputChange}
-                                            required
-                                        />
-                                    </div>
-                                </div>
+                                </>
                             )}
 
                             {userType === "client" && (
-                                <div className="field_col">
-                                    <label className="hidden_label" htmlFor="Company">Company</label>
-                                    <div className="field_block">
-                                        <input
-                                            type="text"
-                                            name="company"
-                                            id="Company"
-                                            placeholder="Company"
-                                            value={formData.company}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                </div>
-                            )}
-
-                            {userType === "client" && (
-                                <div className="field_col">
-                                    <label className="hidden_label" htmlFor="Website">Website</label>
-                                    <div className="field_block">
-                                        <input
-                                            type="text"
-                                            name="website"
-                                            id="Website"
-                                            placeholder="Website"
-                                            value={formData.website}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                </div>
-                            )}
-
-                            {userType === "client" && (
-                                <div className="field_col">
+                                <div className="field_col" ref={setFieldContainerRef('referredPersonName')}>
                                     <label className="hidden_label" htmlFor="ReferredPerson">Referred Person</label>
                                     <div className="field_block">
                                         <input
@@ -425,12 +680,13 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                             placeholder="Referred Person"
                                             value={formData.referredPersonName}
                                             onChange={handleInputChange}
+                                            onClick={handleFieldClick('referredPersonName')}
                                         />
                                     </div>
                                 </div>
                             )}
 
-                            <div className="field_col">
+                            <div className="field_col" ref={setFieldContainerRef('password')}>
                                 <label className="hidden_label" htmlFor="Password">Password</label>
                                 <div className="field_block">
                                     <input
@@ -441,6 +697,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         placeholder="Password"
                                         value={formData.password}
                                         onChange={handleInputChange}
+                                        onClick={handleFieldClick('password')}
                                         required
                                     />
                                     <button
@@ -450,9 +707,12 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         onClick={() => togglePasswordVisibility('password')}
                                     ></button>
                                 </div>
+                                {fieldErrors.password && (
+                                    <div className="field_error">{fieldErrors.password}</div>
+                                )}
                             </div>
 
-                            <div className="field_col">
+                            <div className="field_col" ref={setFieldContainerRef('confirmPassword')}>
                                 <label className="hidden_label" htmlFor="ConfirmPassword">Confirm Password</label>
                                 <div className="field_block">
                                     <input
@@ -463,6 +723,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         placeholder="Confirm Password"
                                         value={formData.confirmPassword}
                                         onChange={handleInputChange}
+                                        onClick={handleFieldClick('confirmPassword')}
                                         required
                                     />
                                     <button
@@ -472,10 +733,23 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         onClick={() => togglePasswordVisibility('confirmPassword')}
                                     ></button>
                                 </div>
+                                {fieldErrors.confirmPassword && (
+                                    <div className="field_error">{fieldErrors.confirmPassword}</div>
+                                )}
                             </div>
                         </div>
-
                         <div className="field_col">
+
+                            {Object.keys(fieldErrors).length > 0 && (
+                                <div className="validation_errors_block">
+                                    {Object.values(fieldErrors).map((error, idx) => (
+                                        <div key={idx} className="field_error_global">
+                                            {error}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
                             <label className="check_block">
                                 <input
                                     type="checkbox"
@@ -483,15 +757,46 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                     onChange={(e) => setAgreedToTerms(e.target.checked)}
                                 />
                                 <span className="check_btn">I have read and agreed to the </span>
-                                <a href="#" target="_blank" rel="noopener noreferrer">Term of Service, Customer Privacy
-                                    Policy</a>
+                                <a
+                                    href="https://www.sourcew9.com/209G_Terms_Updated.2025.01.01.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{textDecorationLine: 'underline', color: '#e87b68'}}
+                                >
+                                    Terms of Service
+                                </a>
+                                {', '}
+                                <a
+                                    href="https://www.sourcew9.com/Privacy_Policy.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{textDecorationLine: 'underline', color: '#e87b68'}}
+                                >
+                                    Customer Privacy Policy
+                                </a>
                             </label>
                         </div>
+
+                        {errorMessage === 'Registration Success. Please check your email to activate your account.' && (
+                            <div style={{textAlign: 'center', marginBottom: '15px'}}>
+                                <p
+                                    style={{
+                                        cursor: 'pointer',
+                                        color: 'rgb(38, 52, 113)',
+                                        textDecorationLine: 'underline',
+                                        fontSize: '12px',
+                                    }}
+                                    onClick={() => resendLinkForVerify(formData.email)}
+                                >
+                                    Resend Email
+                                </p>
+                            </div>
+                        )}
 
                         <button
                             type="submit"
                             className={`valid_btn ${isLoading ? 'loading' : ''}`}
-                            disabled={isLoading}
+                            disabled={isLoading || !agreedToTerms}
                         >
                             {isLoading ? 'Creating Account...' : 'Agree & Sign up'}
                         </button>

@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import SignInModal from "./SignInModal";
-import ForgotPasswordModal from "./ForgotPasswordModal";
-import SignUpStep1Modal from "./SignUpStep1Modal";
-import SignUpStep2Modal from "./SignUpStep2Modal";
-import { fetchCountries, fetchStatesOfCountry } from "../../store/actions/workOrdersActions";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import {fetchCountries, fetchStatesOfCountry} from "../store/actions/workOrdersActions";
+import {ForgotPasswordModal, SignInModal, SignUpStep1Modal, SignUpStep2Modal} from "../components/landing";
 
 
-const LandingPage: React.FC = () => {
+const Solution: React.FC = () => {
     const [currentModal, setCurrentModal] = useState<string | null>(null);
     const [selectedUserType, setSelectedUserType] = useState<'contractor' | 'client' | null>(null);
     const [countries, setCountries] = useState<{ value: string; label: string }[]>([]);
@@ -132,9 +130,9 @@ const LandingPage: React.FC = () => {
         observer.observe(document.head, { childList: true });
 
         Promise.all([
-            import('../../sass/landing/landing.scss'),
-            import('../../sass/landing/landing-l.scss'),
-            import('../../sass/landing/landing-m.scss'),
+            import('../sass/landing/landing.scss'),
+            import('../sass/landing/landing-l.scss'),
+            import('../sass/landing/landing-m.scss'),
         ]).finally(() => {
             observer.disconnect();
             nodes = Array.from(collected);
@@ -190,12 +188,11 @@ const LandingPage: React.FC = () => {
                         </div>
                         <div className="menu_block">
                             <ul className="main_menu">
-                                <li className="active"><a href="/home">Home</a></li>
-                                {/*<li><a href="#contact_section" onClick={this.handleContactClick}>Contact</a></li>*/}
+                                <li><a href="/home">Home</a></li>
                                 <li><a href="/about">About Us</a></li>
                                 <li><a href="/locate_techs">Locate Techs</a></li>
                                 <li><a href="/locate_works">Locate Works</a></li>
-                                <li><a href="/solution">Solution</a></li>
+                                <li className="active"><a href="/solution">Solution</a></li>
                                 <li><a href="/faq">FAQ</a></li>
                                 <li><a href="#" onClick={(e) => { e.preventDefault(); showModal('signIn'); }}>Sign in</a></li>
                                 <li><a href="#" onClick={(e) => { e.preventDefault(); handleSignUpClick(); }}>Sign up</a></li>
@@ -209,54 +206,43 @@ const LandingPage: React.FC = () => {
                 <div className="page_container">
                     <div className="main_section">
                         <div className="main_title">
-                            The Field Service <span>Platform</span> That Puts People First
+                            The Vaylant Advantage: Technology Built for Partnership
                         </div>
 
                         <div className="main_description">
-                            Driving quality and efficiency for your business through empowered technicians.
+                            At Vaylant, our technology isn't just a marketplace; it's a comprehensive platform designed to empower people and
+                            optimize operations. We built our solution from the ground up to solve
+                            the most pressing problems in field service, giving you
+                            the tools for superior quality and unprecedented clarity.
                         </div>
 
-                        <div className="main_btn">
-                            <a href="mailto:hello@vaylent.com" className="btn_item">
-                                <img src="/css/images/4.png" alt="logo" />
-                                <div className="btn_text">Get a demo</div>
-                            </a>
-
-                            <div className="btn_item">
-                                <img src="/css/images/5.png" alt="logo" />
-                                <div className="btn_text">For technicians</div>
-                            </div>
-                        </div>
                     </div>
 
                     <div className="main_section">
                         <div className="main_btn2">
                             <div className="text_block">
-                                <h1>The Hidden Costs of Undervalued Talent</h1>
-                                You’re investing in a field service platform—but if it taxes the people
-                                doing the work, the bill shows up elsewhere. Models that take a cut of
-                                technician pay create hidden costs and operational drag that your
-                                customers eventually feel.
+                                <h1>Solutions for Clients: Performance, Predictability, Partnership</h1>
+                                Your business demands efficiency and reliability. Vaylant's platform provides the complete visibility and control you need
+                                to ensure every project is completed on time and to the highest standard.
                                 <ul className="ul_main">
                                     <li>
-                                        <i>Eroded morale & loyalty</i> → Inconsistent quality, spotty coverage,
-                                        slipping standards.
+                                        <i>Proactive & Predictive Capabilities:</i> Stop reacting to problems and start anticipating them. Our platform uses advanced diagnostics
+                                        and intelligent scheduling algorithms to help you identify potential issues before they cause downtime.
+                                            This shifts your business from a reactive repair model to a proactive maintenance strategy, saving you time and money.
                                     </li>
                                     <li>
-                                        <i>Turnover tax</i> → Constant recruiting and retraining, lost context,
-                                        burned management hours.
+                                        <i>Real-Time Visibility:</i> Know what's happening, everywhere, all the time. Our mobile-first platform
+                                        gives you real-time access to job status, technician locations, and comprehensive service histories. This unparalleled transparency
+                                        reduces the need for manual check-ins and allows
+                                        for proactive problem-solving, improving your team's efficiency and your customer's experience.
                                     </li>
                                     <li>
-                                        <i>Race-to-the-bottom pricing</i> → Lower first-time-fix rates, more
-                                        revisits, higher downstream costs.
-                                    </li>
-                                    <li>
-                                        <i>Administrative drag</i> → Volatile scheduling, escalations, and time
-                                        spent managing disengaged crews.
-                                    </li>
-                                    <li>
-                                        <b>Bottom line:</b> Undervaluing talent looks cheap on paper but
-                                        expensive in practice.
+                                        <i>Comprehensive Managed Services:</i> We handle the administrative complexities so you can focus on your core
+                                        business. From automated dispatching to streamlined work order management and simplified
+                                        invoicing, our platform automates critical workflows. This reduces your administrative burden and ensures that
+                                        every detail is captured accurately, from the moment a ticket is
+                                        opened to the second it's closed.
+
                                     </li>
                                 </ul>
                             </div>
@@ -273,106 +259,27 @@ const LandingPage: React.FC = () => {
                                 <img className="block_img" src="/css/images/2.png" alt="icon" />
                             </div>
                             <div className={'text_block'}>
-                                <h1>A Win-Win Model: Superior Service Through Empowered Technicians</h1>
-                                Empower the people who do the work and results follow.
-                                Vaylant’s managed services platform runs on a simple principle:
-                                you pay a clear, cost-effective platform fee—and technicians keep 100% of their earnings.
-                                That alignment delivers measurable gains for your business.
+                                <h1>Solutions for Technicians: Tools for Success</h1>
+                                Your expertise is your business, and Vaylant is your partner. Our technology is designed to make your day easier, your work more efficient, and your earning potential unlimited.
                                 <ul className={'ul_main'}>
-                                    <li><i>Attract the best talent</i>—Our 0% take makes Vaylant a magnet for top-tier, motivated technicians.</li>
-                                    <li><i>Better outcomes</i>—Valued pros are more invested, driving higher first-time-fix rates and fewer revisits.</li>
-                                    <li><i>Transparent, predictable pricing</i>—No hidden charges or maze-like tiers—just straightforward costs you can plan around.</li>
-                                    <li><b>Bottom line:</b> When technicians win, you win—through quality, reliability, and trust.</li>
+                                    <li><i>Intuitive Mobile-First Experience:</i> Your office is in your pocket. Our platform's intuitive mobile UX puts everything you
+                                        need at your fingertips. Access job details, customer histories, and on-site documentation, and even process payments right from your device.
+                                        This eliminates paperwork and lets you focus on the technical work you do best.</li>
+                                    <li><i>Transparent & Simple Workflows:</i> Say goodbye to administrative headaches. Vaylant's platform simplifies every step of the process.
+                                        From accepting a job to submitting your final report, our system is built for clarity and speed. We ensure you have all the
+                                        information you need, so you can deliver excellent service without any friction.</li>
+                                    <li><i>Administrative Freedom:</i> We handle the paperwork; you get the pay. Our platform automatically generates invoices on your behalf
+                                        and ensures transparent, reliable payments so you never have to chase down a check. This administrative relief, combined with our
+                                        no-fee model, means you keep 100% of your earnings with zero hassle.</li>
                                 </ul>
+                                <h1>A Platform Built on a Virtuous Cycle</h1>
+                                The Vaylant platform is the engine that drives our people-first mission. By providing clients with a new level of operational
+                                control and equipping technicians with best-in-class tools, we create a powerful virtuous cycle of excellence.
+                                The result is a more efficient, reliable, and profitable field service ecosystem for everyone involved.
                             </div>
                         </div>
                     </div>
 
-                    <div className="main_section">
-                        <div className="main_btn2">
-                            <div className="text_block">
-                                <h1>
-                                    Beyond a Better Model: The Vaylant Advantage
-                                </h1>
-                                Fairness is the start, not the finish.
-                                Vaylant pairs people-first economics with a platform built for
-                                the realities of retail—delivering operational excellence and peace of mind.
-                                <ul className="ul_main">
-                                    <li><b>Mobile-First UX:</b> An intuitive, modern platform built for a mobile world, empowering technicians with real-time access to information and tools.</li>
-                                    <li><b>Proactive & Predictive:</b> Leverage advanced diagnostics and smart scheduling to prevent problems before they impact your business.</li>
-                                    <li><b>Unwavering Reliability:</b> A trusted partner to ensure your infrastructure runs smoothly.</li>
-                                </ul>
-                            </div>
-
-                            <div className="image_block">
-                                <img className="block_img" src="/css/images/3.png" alt="icon" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="work_section">
-                        <div className="section_title">Testimonials</div>
-                        <div className="section_description">
-                            Text about clients
-                        </div>
-                        <ul className="work_list work_2">
-                            <li>
-                                <div className="image_work">
-                                    <img src="/css/images/6.png" alt="img1" width={330} height={260} />
-                                    <div className={'work2_text'}>
-                                        <h3>VOICES THAT SPEAK SUCCESS</h3>
-                                        <p>Hear directly clients and technicians about the real impact of our platform</p>
-                                    </div>
-                                </div>
-
-                            </li>
-                            <li>
-                                <div className="image_work">
-                                    <img src="/css/images/7.png" alt="img1" width={330} height={260}  />
-                                    <div className={'work2_text'}>
-                                        <h3>DUAL PERSPECTIVES, ONE ADVANTAGE</h3>
-                                        <p>Discover how Vaylant empowers technicians and delights customers alike</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="image_work">
-                                    <img src="/css/images/8.png" alt="img1" width={330} height={260} />
-                                    <div className={'work2_text'}>
-                                        <h3>STORIES OF ALIGNMENT AND EXCELLENCE</h3>
-                                        <p>Testimonials from those who experience fairness, efficiency, and results every day</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="contact_section" id="contact_section">
-                        <div className="contact_row">
-                            <div className="left_col">
-                                <div className="section_title">Contact Us</div>
-                                <div className="section_description">
-                                    <b>Hi there,</b> and Welcome to The Vaylant Group! Whether you're a contractor looking for work, or a company looking to hire contractors, we're here to help!
-                                </div>
-                            </div>
-                            <div className="right_col">
-                                <div className="block_contact">
-                                    <div className="title_contact">Stay in touch</div>
-                                    <div className="phone_block">phone number</div>
-                                    <div className="email_block">email</div>
-                                    <div className="social_list">
-                                        <div className="social_title">Our team </div>
-                                        <ul className="social_link">
-                                            <li><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">@instagram</a></li>
-                                            <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">@linkedin</a></li>
-                                            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">@facebook</a></li>
-                                        </ul>
-                                    </div>
-                                    <a href="https://play.google.com/store/apps/details?id=com.example.your.package" className="download_btn icon_arrow2">Download our app</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -446,7 +353,7 @@ const LandingPage: React.FC = () => {
             />
         </div>
 
-);
+    );
 };
 
-export default LandingPage;
+export default Solution;
