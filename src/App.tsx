@@ -28,6 +28,7 @@ import About from "./pages/About";
 import LocateTechs from "./pages/LocateTechs";
 import LocateWorks from "./pages/LocateWorks";
 import Solution from "./pages/Solution";
+import FAQ from "./pages/FAQ";
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -57,6 +58,7 @@ function App() {
           <Route path="/locate_techs" element={<LocateTechs />} />
           <Route path="/locate_works" element={<LocateWorks />} />
           <Route path="/solution" element={<Solution />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="*"  element={<ProtectedRoute><Dashboard mainContainer={mainContainer} /></ProtectedRoute>} />
           <Route path="/admin-recruits" element={<ProtectedRoute><AdminRecruits /></ProtectedRoute>} />
           <Route path="/contractor-main" element={<ProtectedRoute><ContractorMain /></ProtectedRoute>} />

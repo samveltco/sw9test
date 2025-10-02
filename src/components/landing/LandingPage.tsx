@@ -196,7 +196,7 @@ const LandingPage: React.FC = () => {
                                 <li><a href="/locate_techs">Locate Techs</a></li>
                                 <li><a href="/locate_works">Locate Works</a></li>
                                 <li><a href="/solution">Solution</a></li>
-                                <li><a href="#faq">FAQ</a></li>
+                                <li><a href="/faq">FAQ</a></li>
                                 <li><a href="#" onClick={(e) => { e.preventDefault(); showModal('signIn'); }}>Sign in</a></li>
                                 <li><a href="#" onClick={(e) => { e.preventDefault(); handleSignUpClick(); }}>Sign up</a></li>
                             </ul>

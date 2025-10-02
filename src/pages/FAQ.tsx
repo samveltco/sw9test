@@ -8,7 +8,7 @@ import {fetchCountries, fetchStatesOfCountry} from "../store/actions/workOrdersA
 import {ForgotPasswordModal, SignInModal, SignUpStep1Modal, SignUpStep2Modal} from "../components/landing";
 
 
-const About: React.FC = () => {
+const LandingPage: React.FC = () => {
     const [currentModal, setCurrentModal] = useState<string | null>(null);
     const [selectedUserType, setSelectedUserType] = useState<'contractor' | 'client' | null>(null);
     const [countries, setCountries] = useState<{ value: string; label: string }[]>([]);
@@ -16,6 +16,7 @@ const About: React.FC = () => {
     const [isLoadingCountries, setIsLoadingCountries] = useState(false);
     const [isLoadingStates, setIsLoadingStates] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -189,11 +190,11 @@ const About: React.FC = () => {
                             <ul className="main_menu">
                                 <li><a href="/home">Home</a></li>
                                 {/*<li><a href="#contact_section" onClick={this.handleContactClick}>Contact</a></li>*/}
-                                <li className="active"><a href="/about">About Us</a></li>
+                                <li><a href="/about">About Us</a></li>
                                 <li><a href="/locate_techs">Locate Techs</a></li>
                                 <li><a href="/locate_works">Locate Works</a></li>
                                 <li><a href="/solution">Solution</a></li>
-                                <li><a href="/faq">FAQ</a></li>
+                                <li className="active"><a href="/faq">FAQ</a></li>
                                 <li><a href="#" onClick={(e) => { e.preventDefault(); showModal('signIn'); }}>Sign in</a></li>
                                 <li><a href="#" onClick={(e) => { e.preventDefault(); handleSignUpClick(); }}>Sign up</a></li>
                             </ul>
@@ -204,56 +205,14 @@ const About: React.FC = () => {
 
             <div className="content">
                 <div className="page_container">
-
                     <div className="main_section">
-                        <div className="main_btn2">
-                            <div className="text_block">
-                                <h1>Our Story</h1>
-                                With over 100 years of collective field service experience, Vaylant was built on a simple conviction: when you treat technicians as true partners, clients get measurably better outcomes.
-                                We saw an industry where the professionals who deliver the work were burdened by fee-heavy, transactional models. The consequences were all too familiar: lower morale, higher turnover, and a race to the bottom on price. All of this ultimately erodes quality and reliability for the client. We knew we had to flip that script.
-                                Vaylant was founded to transform field service from a series of transactional gigs into a partnership model that rewards quality, transparency, and shared success.
-                                <h1><strong>A New Model Built on a Simple Belief</strong></h1>
-                                We believe that empowered technicians deliver better results. This core principle underpins our managed services platform and every decision we make.
-                                We're replacing the old way of doing business with a people-first platform that aligns incentives, elevates quality, and brings full transparency to operations. By ensuring technicians keep 100% of what they earn and by equipping them with modern, mobile-first tools, Vaylant creates a virtuous cycle:
-                                <ul className="ul_main">
-                                    <li>
-                                        Stronger talent: Our model attracts the most skilled and motivated technicians in the industry.
-                                    </li>
-                                    <li>
-                                        Higher first-time-fix rates: Technicians who feel valued and are well-equipped are more invested in getting the job done right the first time.
-                                    </li>
-                                    <li>
-                                        Fewer revisits: This efficiency reduces operational headaches and costs for our clients.
-                                    </li>
-                                    <li>
-                                        Happier customers: Predictable, high-quality service leads to greater customer satisfaction and loyalty.
-                                    </li>
-                                </ul>
-                                The result is a platform defined by fairness, predictability, and performance.
-                                <h1><strong>The Vaylant Difference</strong></h1>
-                                We speak plainly about outcomes, back our claims with proof, and keep people—both clients and technicians—at the very center of everything we do.
-                                <ul className="ul_main">
-                                    <li>
-                                        <i>People-First Economics</i>: Technicians keep 100% of their earnings, while clients pay a clear, predictable platform fee.                                    </li>
-                                    <li>
-                                        <i>Operational Clarity</i>: Our platform provides mobile-first workflows, real-time visibility, and straightforward pricing to eliminate guesswork.
-                                    </li>
-                                    <li>
-                                        <i>Measured Outcomes</i>: We deliver on our promise with higher first-time-fix rates, fewer revisits, and predictable performance.
-                                    </li>
-                                </ul>
-                                <h1><strong>We are Vaylant, and we're here to redefine what a field service partnership can be.</strong></h1>
-                            </div>
-
-                            <div className="image_block">
-                                <img className="block_img" src="/css/images/1.png" alt="icon" />
-                            </div>
+                        <div className="main_title">
+                            COMING SOON
                         </div>
                     </div>
-
-
                 </div>
             </div>
+
             <div className="footer">
                 <div className="page_container">
                     <div className="footer_logo">
@@ -327,4 +286,4 @@ const About: React.FC = () => {
     );
 };
 
-export default About;
+export default LandingPage;
