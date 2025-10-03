@@ -191,15 +191,12 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                 return '';
 
             case 'address':
-                if (userType === 'contractor' && !value.trim()) return 'Address is required for contractors';
+                if (userType === 'contractor' && !value.trim()) return 'Address is required';
                 return '';
 
-            case 'state':
-                if (userType === 'contractor' && !value?.value) return 'State is required for contractors';
-                return '';
 
             case 'zipcode':
-                if (userType === 'contractor' && !value.trim()) return 'ZIP code is required';
+                if (userType === 'contractor' && !value.trim()) return 'Required';
                 return '';
 
             default:
@@ -664,9 +661,6 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                                 required
                                             />
                                         </div>
-                                        {fieldErrors.state && (
-                                            <div className="field_error">{fieldErrors.state}</div>
-                                        )}
                                     </div>
 
                                     <div className="field_col" ref={setFieldContainerRef('zipcode')}>
