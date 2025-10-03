@@ -54,6 +54,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
         firstName: '',
         lastName: '',
         email: '',
+        confirmEmail: '',
         phone: '',
         address: '',
         address2: '',
@@ -77,6 +78,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
     const [companyName, setCompanyName] = useState('');
     const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
     const [emailError, setEmailError] = useState('');
+    const [isFormValid, setIsFormValid] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -168,14 +170,19 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                 if (!validateEmail(value)) return 'Please enter a valid email address';
                 return '';
 
+            case 'confirmEmail':
+                if (!value) return 'Please confirm your email';
+                if (name === 'confirmEmail') {
+                    setFieldErrors(prev => ({
+                        ...prev,
+                        confirmEmail: value !== formData.email ? 'Emails do not match' : '',
+                    }));
+                }
+                return '';
+
             case 'phone':
                 if (!value.trim()) return 'Phone number is required';
                 if (value.replace(/\D/g, '').length < 10) return 'Please enter a valid phone number';
-                return '';
-
-            case 'password':
-                if (!value) return 'Password is required';
-                if (value.length < 6) return 'Password must be at least 6 characters';
                 return '';
 
             case 'confirmPassword':
@@ -185,10 +192,6 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
 
             case 'address':
                 if (userType === 'contractor' && !value.trim()) return 'Address is required for contractors';
-                return '';
-
-            case 'city':
-                if (userType === 'contractor' && !value?.value) return 'City is required for contractors';
                 return '';
 
             case 'state':
@@ -203,6 +206,27 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                 return '';
         }
     }, [formData.password, userType]);
+
+    useEffect(() => {
+        const errors: Record<string, string> = {};
+        const requiredFields = ['firstName', 'lastName', 'email', 'confirmEmail', 'phone', 'password', 'confirmPassword'];
+
+        if (userType === 'contractor' && !isInvite) {
+            requiredFields.push('address', 'city', 'state', 'zipcode');
+        }
+
+        requiredFields.forEach(field => {
+            const error = validateField(field, formData[field as keyof typeof formData]);
+            if (error) {
+                errors[field] = error;
+            }
+        });
+
+        setFieldErrors(errors);
+        setIsFormValid(Object.keys(errors).length === 0 && agreedToTerms);
+    }, [formData, agreedToTerms, validateField, userType, isInvite]);
+
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -265,8 +289,13 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
             errors.email = 'Please enter a valid email address';
         }
 
-        if (formData.password && formData.password.length < 6) {
-            errors.password = 'Password must be at least 6 characters';
+        if (formData.confirmEmail && formData.confirmEmail !== formData.email) {
+            errors.confirmEmail = 'Emails do not match';
+        }
+
+
+        if (formData.password && formData.password.length < 12) {
+            errors.password = 'Password must be at least 12+ characters';
         }
 
         if (formData.password !== formData.confirmPassword) {
@@ -307,7 +336,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                 firstName: formData.firstName.trim(),
                 lastName: formData.lastName.trim(),
                 email: formData.email.trim(),
-                phone: formData.phone.replace(/\D/g, ''), // Сохраняем только цифры
+                phone: formData.phone.replace(/\D/g, ''),
                 password: formData.password,
                 confirmPassword: formData.confirmPassword,
             };
@@ -408,12 +437,6 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                         {isInvite ? `You have been invited by "${companyName}"` : 'Welcome!'}
                     </div>
 
-                    {errorMessage && (
-                        <div className="error_hint" style={{maxHeight: '60px', marginBottom: '20px'}}>
-                            {errorMessage}
-                        </div>
-                    )}
-
                     <form onSubmit={handleSubmit}>
                         <div className="fields_group">
                             <div className="field_col" ref={setFieldContainerRef('firstName')}>
@@ -478,6 +501,27 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                     <div className="field_error">{fieldErrors.email || emailError}</div>
                                 )}
                             </div>
+
+                            <div className="field_col" ref={setFieldContainerRef('confirmEmail')}>
+                                <label className="hidden_label" htmlFor="ConfirmEmail">Confirm Email</label>
+                                <div className="field_block">
+                                    <input
+                                        type="email"
+                                        name="confirmEmail"
+                                        id="ConfirmEmail"
+                                        maxLength={50}
+                                        placeholder="Confirm Email"
+                                        value={formData.confirmEmail}
+                                        onChange={handleInputChange}
+                                        onClick={handleFieldClick('confirmEmail')}
+                                        required
+                                    />
+                                </div>
+                                {fieldErrors.confirmEmail && (
+                                    <div className="field_error">{fieldErrors.confirmEmail}</div>
+                                )}
+                            </div>
+
 
                             <div className="field_col" ref={setFieldContainerRef('phone')}>
                                 {userType === "contractor" ? (
@@ -631,6 +675,11 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         {fieldErrors.zipcode && (
                                             <div className="field_error">{fieldErrors.zipcode}</div>
                                         )}
+                                        {errorMessage && (
+                                            <div className="error_hint" style={{maxHeight: '60px', marginBottom: '20px'}}>
+                                                {errorMessage}
+                                            </div>
+                                        )}
                                     </div>
                                 </>
                             )}
@@ -685,7 +734,6 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                     </div>
                                 </div>
                             )}
-
                             <div className="field_col" ref={setFieldContainerRef('password')}>
                                 <label className="hidden_label" htmlFor="Password">Password</label>
                                 <div className="field_block">
@@ -707,6 +755,28 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                         onClick={() => togglePasswordVisibility('password')}
                                     ></button>
                                 </div>
+
+                                {/* Правила пароля прямо под инпутом */}
+                                <div className="password_rules">
+                                    {[
+                                        { char: 'a', desc: 'lower', test: /[a-z]/ },
+                                        { char: 'A', desc: 'upper', test: /[A-Z]/ },
+                                        { char: '1', desc: 'number', test: /[0-9]/ },
+                                        { char: '#&?', desc: 'symbol', test: /[!@#$%^&*(),.?":{}|<>]/ },
+                                        { char: '12+', desc: 'chars', test: /.{12,}/ },
+                                    ].map((rule, idx) => {
+                                        const passed = rule.test.test(formData.password);
+                                        return (
+                                            <div key={idx} className="rule">
+                                                <div className="rule_char" style={{color: passed ? 'green' : 'white'}}>{rule.char}</div>
+                                                <div className="rule_desc" style={{color: passed ? 'green' : 'white'}}>
+                                                    {rule.desc}
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
                                 {fieldErrors.password && (
                                     <div className="field_error">{fieldErrors.password}</div>
                                 )}
@@ -740,15 +810,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                         </div>
                         <div className="field_col">
 
-                            {Object.keys(fieldErrors).length > 0 && (
-                                <div className="validation_errors_block">
-                                    {Object.values(fieldErrors).map((error, idx) => (
-                                        <div key={idx} className="field_error_global">
-                                            {error}
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
+
 
                             <label className="check_block">
                                 <input
@@ -796,7 +858,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                         <button
                             type="submit"
                             className={`valid_btn ${isLoading ? 'loading' : ''}`}
-                            disabled={isLoading || !agreedToTerms}
+                            disabled={isLoading || !isFormValid || !agreedToTerms}
                         >
                             {isLoading ? 'Creating Account...' : 'Agree & Sign up'}
                         </button>

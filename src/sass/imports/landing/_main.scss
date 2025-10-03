@@ -6273,10 +6273,37 @@ body {
   //border-radius: 6px;
 }
 
+.password_rules {
+  display: flex;
+  gap: 35px; /* расстояние между правилами */
+  margin-top: 5px; /* отступ от инпута */
+}
+
+.rule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+.rule_char {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.rule_desc {
+  font-size: 10px;
+}
+
+
 .field_error_global {
-  color: #e74c3c; /* красный */
+  color: #ffffff; /* красный */
   font-size: 13px;
   margin-bottom: 5px;
+}
+
+.field_error{
+  color: #ffffff; /* красный */
 }
 
 .landing_modals .fields_group {
