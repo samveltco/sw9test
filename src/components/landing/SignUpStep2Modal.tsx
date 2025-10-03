@@ -395,6 +395,10 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
             setIsLoading(false);
         }
     };
+    useEffect(() => {
+        console.log("Selected country value:", formData.country?.value);
+    }, [formData.country]);
+
 
     const togglePasswordVisibility = (field: 'password' | 'confirmPassword') => {
         if (field === 'password') {
@@ -416,6 +420,8 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
             });
         }
     };
+    const isCanada = formData.country?.value === "Canada"
+
 
     if (!isOpen) return null;
 
@@ -644,7 +650,13 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                                         state: selected,
                                                     }))
                                                 }
-                                                placeholder={isLoadingStates ? "Loading states..." : "Select State"}
+                                                placeholder={
+                                                    isLoadingStates
+                                                        ? "Loading..."
+                                                        : isCanada
+                                                            ? "Select Province"
+                                                            : "Select State"
+                                                }
                                                 isClearable
                                                 isDisabled={isLoadingStates || !formData.country}
                                                 isLoading={isLoadingStates}
@@ -665,7 +677,7 @@ const SignUpStep2Modal: React.FC<SignUpStep2ModalProps> = ({
                                                 name="zipcode"
                                                 id="ZipCode"
                                                 maxLength={10}
-                                                placeholder="Zip"
+                                                placeholder={isCanada ? "Postal Code" : "Zip"}
                                                 value={formData.zipcode}
                                                 onChange={handleInputChange}
                                                 onClick={handleFieldClick('zipcode')}
