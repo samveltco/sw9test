@@ -230,6 +230,14 @@
   content: "\e92b";
 }
 
+.icon_calendar2:before {
+  content: "\e92c";
+}
+
+.icon_telegram:before {
+  content: "\e92d";
+}
+
 body:has(.popup_block .contractor_main) .contractor_head, body:has(.popup_block .contractor_main) .type_list, body:has(.popup_block .contractor_main) .popup_body .contractor_contacts, .card_details, .check_list, .header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;
