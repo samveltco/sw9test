@@ -246,6 +246,22 @@
   content: "\e92f";
 }
 
+.icon_calendar3:before {
+  content: "\e93c";
+}
+
+.icon_footsteps:before {
+  content: "\e93d";
+}
+
+.icon_server:before {
+  content: "\e93e";
+}
+
+.icon_umbrella:before {
+  content: "\e93f";
+}
+
 .order_details .previous_list, .order_details .history_section .history_list, .order_details .info_list, .order_details .order_list, .order_details .card_details, .order_details .contractor_head, .order_details .type_list, .order_details .popup_body .contractor_contacts, .card_item .card_details, .header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;

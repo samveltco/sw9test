@@ -246,6 +246,22 @@
   content: "\e92f";
 }
 
+.icon_calendar3:before {
+  content: "\e93c";
+}
+
+.icon_footsteps:before {
+  content: "\e93d";
+}
+
+.icon_server:before {
+  content: "\e93e";
+}
+
+.icon_umbrella:before {
+  content: "\e93f";
+}
+
 .header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;

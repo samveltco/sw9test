@@ -246,6 +246,22 @@
   content: "\e92f";
 }
 
+.icon_calendar3:before {
+  content: "\e93c";
+}
+
+.icon_footsteps:before {
+  content: "\e93d";
+}
+
+.icon_server:before {
+  content: "\e93e";
+}
+
+.icon_umbrella:before {
+  content: "\e93f";
+}
+
 .contact_section .social_link, .work_section .work_list, .contractor_section .contractor_list, .header .main_menu, .paging ul {
   padding: 0;
   margin: 0;
