@@ -262,6 +262,10 @@
   content: "\e93f";
 }
 
+.icon_key:before {
+  content: "\e940";
+}
+
 .header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;
@@ -1060,9 +1064,27 @@ button {
     padding: 20px;
     max-width: 100%;
   }
+  .modal_container:has(.msg_section) {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
   .modal_import .modal_body .field_row {
     margin-top: 40px;
   }
+}
+
+.route_modal .modal_head {
+  margin-left: auto;
+}
+.route_modal .modal_description {
+  margin-top: 20px;
+}
+.route_modal .modal_body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 }
 
 .new_note {
@@ -1375,6 +1397,75 @@ button {
   }
   .paging ul {
     justify-content: space-between;
+  }
+}
+
+.msg_section {
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+.msg_section .msg_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.msg_section .msg_item .msg_to {
+  border-radius: 12px;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.msg_section .msg_to.dark {
+  background-color: #19252F;
+}
+.msg_section .msg_to.light {
+  background-color: #4E6577;
+  margin-left: 24px;
+}
+.msg_section .msg_header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 85.71%;
+  line-height: 1.5em;
+  color: #CFCFCF;
+}
+.msg_section .msg_body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.msg_section .msg_text {
+  font-size: 100%;
+  line-height: 1.42em;
+  color: #ffffff;
+  font-weight: 700;
+}
+.msg_section .reply_btn {
+  background: #23425A;
+  border: none;
+  color: #CFCFCF;
+  border-radius: 20px;
+  padding: 7px 20px;
+  cursor: pointer;
+  font-size: 100%;
+  line-height: 1.42em;
+}
+.msg_section .reply_btn:hover {
+  background: #315276;
+}
+@media screen and (max-width: 575px) {
+  .msg_section .msg_body,
+  .msg_section .msg_header {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .msg_section .reply_btn {
+    margin-top: 10px;
   }
 }
 
@@ -2127,6 +2218,14 @@ button {
   -moz-transition: color 0.3s;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
+}
+
+.msg_section .reply_btn {
+  -o-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 
 .error_hint, .primary_btn, .add_btns .standard_btn, .add_btns .primary_btn {

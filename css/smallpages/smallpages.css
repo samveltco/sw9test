@@ -262,6 +262,10 @@
   content: "\e93f";
 }
 
+.icon_key:before {
+  content: "\e940";
+}
+
 .header .profile_contacts, .paging ul {
   padding: 0;
   margin: 0;
@@ -1060,9 +1064,27 @@ button {
     padding: 20px;
     max-width: 100%;
   }
+  .modal_container:has(.msg_section) {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
   .modal_import .modal_body .field_row {
     margin-top: 40px;
   }
+}
+
+.route_modal .modal_head {
+  margin-left: auto;
+}
+.route_modal .modal_description {
+  margin-top: 20px;
+}
+.route_modal .modal_body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 }
 
 .new_note {
@@ -1375,6 +1397,75 @@ button {
   }
   .paging ul {
     justify-content: space-between;
+  }
+}
+
+.msg_section {
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+.msg_section .msg_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.msg_section .msg_item .msg_to {
+  border-radius: 12px;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.msg_section .msg_to.dark {
+  background-color: #19252F;
+}
+.msg_section .msg_to.light {
+  background-color: #4E6577;
+  margin-left: 24px;
+}
+.msg_section .msg_header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 85.71%;
+  line-height: 1.5em;
+  color: #CFCFCF;
+}
+.msg_section .msg_body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.msg_section .msg_text {
+  font-size: 100%;
+  line-height: 1.42em;
+  color: #ffffff;
+  font-weight: 700;
+}
+.msg_section .reply_btn {
+  background: #23425A;
+  border: none;
+  color: #CFCFCF;
+  border-radius: 20px;
+  padding: 7px 20px;
+  cursor: pointer;
+  font-size: 100%;
+  line-height: 1.42em;
+}
+.msg_section .reply_btn:hover {
+  background: #315276;
+}
+@media screen and (max-width: 575px) {
+  .msg_section .msg_body,
+  .msg_section .msg_header {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .msg_section .reply_btn {
+    margin-top: 10px;
   }
 }
 
@@ -1833,6 +1924,17 @@ button {
   justify-content: space-between;
 }
 
+body:has(.manage_teams_section) .popup_block:has(.checkbox_list) .checkbox_list {
+  width: 100%;
+}
+body:has(.manage_teams_section) .popup_block:has(.checkbox_list) .checkbox_list .check_btn {
+  width: 100%;
+}
+body:has(.manage_teams_section) .popup_block:has(.checkbox_list) .field_row {
+  flex-wrap: wrap;
+}
+
+.transaction_history,
 .management_section,
 .payment_section,
 .manage_teams_section,
@@ -1841,6 +1943,7 @@ button {
 .preferred_section {
   max-width: 882px;
 }
+.transaction_history .head_section,
 .management_section .head_section,
 .payment_section .head_section,
 .manage_teams_section .head_section,
@@ -1849,6 +1952,7 @@ button {
 .preferred_section .head_section {
   margin-bottom: 40px;
 }
+.transaction_history .custom_table,
 .management_section .custom_table,
 .payment_section .custom_table,
 .manage_teams_section .custom_table,
@@ -1860,6 +1964,8 @@ button {
   margin-bottom: 0;
   width: 100%;
 }
+.transaction_history .custom_table thead th:last-child,
+.transaction_history .custom_table tbody td:last-child,
 .management_section .custom_table thead th:last-child,
 .management_section .custom_table tbody td:last-child,
 .payment_section .custom_table thead th:last-child,
@@ -1874,6 +1980,7 @@ button {
 .preferred_section .custom_table tbody td:last-child {
   width: 22%;
 }
+.transaction_history .custom_table tbody td,
 .management_section .custom_table tbody td,
 .payment_section .custom_table tbody td,
 .manage_teams_section .custom_table tbody td,
@@ -1883,6 +1990,7 @@ button {
   padding: 10px 10px 10px 0;
   border-top: 1px solid rgba(207, 207, 207, 0.1215686275);
 }
+.transaction_history .custom_table thead th,
 .management_section .custom_table thead th,
 .payment_section .custom_table thead th,
 .manage_teams_section .custom_table thead th,
@@ -1891,6 +1999,7 @@ button {
 .preferred_section .custom_table thead th {
   padding: 0 10px 10px 0;
 }
+.transaction_history.manage_section .custom_table tbody td:first-child,
 .management_section.manage_section .custom_table tbody td:first-child,
 .payment_section.manage_section .custom_table tbody td:first-child,
 .manage_teams_section.manage_section .custom_table tbody td:first-child,
@@ -1899,6 +2008,7 @@ button {
 .preferred_section.manage_section .custom_table tbody td:first-child {
   width: 80%;
 }
+.transaction_history.manage_section.template_table .custom_table thead th:last-child,
 .management_section.manage_section.template_table .custom_table thead th:last-child,
 .payment_section.manage_section.template_table .custom_table thead th:last-child,
 .manage_teams_section.manage_section.template_table .custom_table thead th:last-child,
@@ -1908,6 +2018,7 @@ button {
   text-align: end;
   margin-left: auto;
 }
+.transaction_history.manage_section.template_table .custom_table .row_block,
 .management_section.manage_section.template_table .custom_table .row_block,
 .payment_section.manage_section.template_table .custom_table .row_block,
 .manage_teams_section.manage_section.template_table .custom_table .row_block,
@@ -1917,6 +2028,7 @@ button {
   justify-content: flex-end;
   margin: 0 -10px;
 }
+.transaction_history.management_section,
 .management_section.management_section,
 .payment_section.management_section,
 .manage_teams_section.management_section,
@@ -1925,6 +2037,8 @@ button {
 .preferred_section.management_section {
   max-width: 100%;
 }
+.transaction_history.management_section thead th,
+.transaction_history.management_section tbody td,
 .management_section.management_section thead th,
 .management_section.management_section tbody td,
 .payment_section.management_section thead th,
@@ -1939,6 +2053,98 @@ button {
 .preferred_section.management_section tbody td {
   width: 16%;
 }
+.transaction_history.management_section:has(.icon_key) thead th,
+.transaction_history.management_section:has(.icon_key) tbody td,
+.management_section.management_section:has(.icon_key) thead th,
+.management_section.management_section:has(.icon_key) tbody td,
+.payment_section.management_section:has(.icon_key) thead th,
+.payment_section.management_section:has(.icon_key) tbody td,
+.manage_teams_section.management_section:has(.icon_key) thead th,
+.manage_teams_section.management_section:has(.icon_key) tbody td,
+.recruits_section.management_section:has(.icon_key) thead th,
+.recruits_section.management_section:has(.icon_key) tbody td,
+.manage_section.management_section:has(.icon_key) thead th,
+.manage_section.management_section:has(.icon_key) tbody td,
+.preferred_section.management_section:has(.icon_key) thead th,
+.preferred_section.management_section:has(.icon_key) tbody td {
+  width: 12%;
+}
+.transaction_history.transaction_history,
+.management_section.transaction_history,
+.payment_section.transaction_history,
+.manage_teams_section.transaction_history,
+.recruits_section.transaction_history,
+.manage_section.transaction_history,
+.preferred_section.transaction_history {
+  max-width: 100%;
+}
+.transaction_history.transaction_history thead th,
+.transaction_history.transaction_history tbody td,
+.management_section.transaction_history thead th,
+.management_section.transaction_history tbody td,
+.payment_section.transaction_history thead th,
+.payment_section.transaction_history tbody td,
+.manage_teams_section.transaction_history thead th,
+.manage_teams_section.transaction_history tbody td,
+.recruits_section.transaction_history thead th,
+.recruits_section.transaction_history tbody td,
+.manage_section.transaction_history thead th,
+.manage_section.transaction_history tbody td,
+.preferred_section.transaction_history thead th,
+.preferred_section.transaction_history tbody td {
+  width: 16%;
+}
+.transaction_history.transaction_history:has(.icon_key, .icon_filter) thead th,
+.transaction_history.transaction_history:has(.icon_key, .icon_filter) tbody td,
+.management_section.transaction_history:has(.icon_key, .icon_filter) thead th,
+.management_section.transaction_history:has(.icon_key, .icon_filter) tbody td,
+.payment_section.transaction_history:has(.icon_key, .icon_filter) thead th,
+.payment_section.transaction_history:has(.icon_key, .icon_filter) tbody td,
+.manage_teams_section.transaction_history:has(.icon_key, .icon_filter) thead th,
+.manage_teams_section.transaction_history:has(.icon_key, .icon_filter) tbody td,
+.recruits_section.transaction_history:has(.icon_key, .icon_filter) thead th,
+.recruits_section.transaction_history:has(.icon_key, .icon_filter) tbody td,
+.manage_section.transaction_history:has(.icon_key, .icon_filter) thead th,
+.manage_section.transaction_history:has(.icon_key, .icon_filter) tbody td,
+.preferred_section.transaction_history:has(.icon_key, .icon_filter) thead th,
+.preferred_section.transaction_history:has(.icon_key, .icon_filter) tbody td {
+  width: 12%;
+}
+.transaction_history.transaction_history:has(.icon_filter) thead th,
+.transaction_history.transaction_history:has(.icon_filter) tbody td,
+.management_section.transaction_history:has(.icon_filter) thead th,
+.management_section.transaction_history:has(.icon_filter) tbody td,
+.payment_section.transaction_history:has(.icon_filter) thead th,
+.payment_section.transaction_history:has(.icon_filter) tbody td,
+.manage_teams_section.transaction_history:has(.icon_filter) thead th,
+.manage_teams_section.transaction_history:has(.icon_filter) tbody td,
+.recruits_section.transaction_history:has(.icon_filter) thead th,
+.recruits_section.transaction_history:has(.icon_filter) tbody td,
+.manage_section.transaction_history:has(.icon_filter) thead th,
+.manage_section.transaction_history:has(.icon_filter) tbody td,
+.preferred_section.transaction_history:has(.icon_filter) thead th,
+.preferred_section.transaction_history:has(.icon_filter) tbody td {
+  width: 13%;
+}
+.transaction_history.transaction_history .icon_filter,
+.management_section.transaction_history .icon_filter,
+.payment_section.transaction_history .icon_filter,
+.manage_teams_section.transaction_history .icon_filter,
+.recruits_section.transaction_history .icon_filter,
+.manage_section.transaction_history .icon_filter,
+.preferred_section.transaction_history .icon_filter {
+  margin-left: auto;
+}
+.transaction_history.transaction_history .icon_card,
+.management_section.transaction_history .icon_card,
+.payment_section.transaction_history .icon_card,
+.manage_teams_section.transaction_history .icon_card,
+.recruits_section.transaction_history .icon_card,
+.manage_section.transaction_history .icon_card,
+.preferred_section.transaction_history .icon_card {
+  margin-left: 20px;
+}
+.transaction_history.payment_section,
 .management_section.payment_section,
 .payment_section.payment_section,
 .manage_teams_section.payment_section,
@@ -1947,6 +2153,18 @@ button {
 .preferred_section.payment_section {
   max-width: 100%;
 }
+.transaction_history.payment_section .verification_info,
+.management_section.payment_section .verification_info,
+.payment_section.payment_section .verification_info,
+.manage_teams_section.payment_section .verification_info,
+.recruits_section.payment_section .verification_info,
+.manage_section.payment_section .verification_info,
+.preferred_section.payment_section .verification_info {
+  color: #CFCFCF;
+  font-size: 85.71%;
+  line-height: 1.5em;
+}
+.transaction_history.payment_section .block_sub,
 .management_section.payment_section .block_sub,
 .payment_section.payment_section .block_sub,
 .manage_teams_section.payment_section .block_sub,
@@ -1960,6 +2178,7 @@ button {
   display: block;
   text-align: center;
 }
+.transaction_history.payment_section .payment_list,
 .management_section.payment_section .payment_list,
 .payment_section.payment_section .payment_list,
 .manage_teams_section.payment_section .payment_list,
@@ -1973,6 +2192,7 @@ button {
   display: flex;
   flex-wrap: wrap;
 }
+.transaction_history.payment_section .payment_list li,
 .management_section.payment_section .payment_list li,
 .payment_section.payment_section .payment_list li,
 .manage_teams_section.payment_section .payment_list li,
@@ -1981,6 +2201,7 @@ button {
 .preferred_section.payment_section .payment_list li {
   margin-bottom: 30px;
 }
+.transaction_history.payment_section:not(.head_section) > .page_title,
 .management_section.payment_section:not(.head_section) > .page_title,
 .payment_section.payment_section:not(.head_section) > .page_title,
 .manage_teams_section.payment_section:not(.head_section) > .page_title,
@@ -1989,6 +2210,7 @@ button {
 .preferred_section.payment_section:not(.head_section) > .page_title {
   margin-bottom: 40px;
 }
+.transaction_history.payment_section .block_tools,
 .management_section.payment_section .block_tools,
 .payment_section.payment_section .block_tools,
 .manage_teams_section.payment_section .block_tools,
@@ -1997,12 +2219,13 @@ button {
 .preferred_section.payment_section .block_tools {
   background: #EAFBFE;
   border-radius: 20px;
-  min-height: 140px;
+  min-height: 164px;
   display: flex;
   flex-direction: column;
   padding: 20px 27px;
   height: 100%;
 }
+.transaction_history.payment_section .block_tools .btn_link,
 .management_section.payment_section .block_tools .btn_link,
 .payment_section.payment_section .block_tools .btn_link,
 .manage_teams_section.payment_section .block_tools .btn_link,
@@ -2014,6 +2237,7 @@ button {
   background: none;
   border: none;
 }
+.transaction_history.payment_section .block_tools .page_title,
 .management_section.payment_section .block_tools .page_title,
 .payment_section.payment_section .block_tools .page_title,
 .manage_teams_section.payment_section .block_tools .page_title,
@@ -2028,6 +2252,7 @@ button {
   align-items: baseline;
   gap: unset;
 }
+.transaction_history.payment_section .block_tools .page_title:before,
 .management_section.payment_section .block_tools .page_title:before,
 .payment_section.payment_section .block_tools .page_title:before,
 .manage_teams_section.payment_section .block_tools .page_title:before,
@@ -2037,6 +2262,7 @@ button {
   color: #23425A;
   font-size: 2.4rem;
 }
+.transaction_history.payment_section .expires_block,
 .management_section.payment_section .expires_block,
 .payment_section.payment_section .expires_block,
 .manage_teams_section.payment_section .expires_block,
@@ -2046,7 +2272,9 @@ button {
   font-size: 85.71%;
   line-height: 1.33em;
   color: #23425A;
+  margin-top: auto;
 }
+.transaction_history.payment_section .row_block,
 .management_section.payment_section .row_block,
 .payment_section.payment_section .row_block,
 .manage_teams_section.payment_section .row_block,
@@ -2057,14 +2285,20 @@ button {
   justify-content: space-between;
   margin: 20px -10px 0;
 }
+.transaction_history.payment_section .row_block:has(> a:only-child),
 .management_section.payment_section .row_block:has(> a:only-child),
 .payment_section.payment_section .row_block:has(> a:only-child),
 .manage_teams_section.payment_section .row_block:has(> a:only-child),
 .recruits_section.payment_section .row_block:has(> a:only-child),
 .manage_section.payment_section .row_block:has(> a:only-child),
 .preferred_section.payment_section .row_block:has(> a:only-child) {
-  justify-content: flex-end;
+  justify-content: center;
 }
+.transaction_history.payment_section .row_block .icon_delete,
+.transaction_history.payment_section .row_block .icon_stars,
+.transaction_history.payment_section .row_block .icon_pencil,
+.transaction_history.payment_section .row_block button,
+.transaction_history.payment_section .row_block a,
 .management_section.payment_section .row_block .icon_delete,
 .management_section.payment_section .row_block .icon_stars,
 .management_section.payment_section .row_block .icon_pencil,
@@ -2104,6 +2338,11 @@ button {
   line-height: 1.42em;
   padding: 0 10px;
 }
+.transaction_history.payment_section .row_block .icon_delete:before,
+.transaction_history.payment_section .row_block .icon_stars:before,
+.transaction_history.payment_section .row_block .icon_pencil:before,
+.transaction_history.payment_section .row_block button:before,
+.transaction_history.payment_section .row_block a:before,
 .management_section.payment_section .row_block .icon_delete:before,
 .management_section.payment_section .row_block .icon_stars:before,
 .management_section.payment_section .row_block .icon_pencil:before,
@@ -2138,7 +2377,9 @@ button {
   font-size: 1.6rem;
   line-height: 19px;
 }
-.management_section.recruits_section .standard_btn, .management_section.recruits_section .primary_btn,
+.transaction_history.recruits_section .standard_btn, .transaction_history.recruits_section .primary_btn,
+.management_section.recruits_section .standard_btn,
+.management_section.recruits_section .primary_btn,
 .payment_section.recruits_section .standard_btn,
 .payment_section.recruits_section .primary_btn,
 .manage_teams_section.recruits_section .standard_btn,
@@ -2151,6 +2392,7 @@ button {
 .preferred_section.recruits_section .primary_btn {
   cursor: pointer;
 }
+.transaction_history.recruits_section .paging,
 .management_section.recruits_section .paging,
 .payment_section.recruits_section .paging,
 .manage_teams_section.recruits_section .paging,
@@ -2159,6 +2401,23 @@ button {
 .preferred_section.recruits_section .paging {
   padding-top: 30px;
 }
+.transaction_history.recruits_section:has(.icon_delete) .custom_table thead th:last-child,
+.transaction_history.recruits_section:has(.icon_delete) .custom_table tbody td:last-child,
+.management_section.recruits_section:has(.icon_delete) .custom_table thead th:last-child,
+.management_section.recruits_section:has(.icon_delete) .custom_table tbody td:last-child,
+.payment_section.recruits_section:has(.icon_delete) .custom_table thead th:last-child,
+.payment_section.recruits_section:has(.icon_delete) .custom_table tbody td:last-child,
+.manage_teams_section.recruits_section:has(.icon_delete) .custom_table thead th:last-child,
+.manage_teams_section.recruits_section:has(.icon_delete) .custom_table tbody td:last-child,
+.recruits_section.recruits_section:has(.icon_delete) .custom_table thead th:last-child,
+.recruits_section.recruits_section:has(.icon_delete) .custom_table tbody td:last-child,
+.manage_section.recruits_section:has(.icon_delete) .custom_table thead th:last-child,
+.manage_section.recruits_section:has(.icon_delete) .custom_table tbody td:last-child,
+.preferred_section.recruits_section:has(.icon_delete) .custom_table thead th:last-child,
+.preferred_section.recruits_section:has(.icon_delete) .custom_table tbody td:last-child {
+  width: 5%;
+}
+.transaction_history .all_price,
 .management_section .all_price,
 .payment_section .all_price,
 .manage_teams_section .all_price,
@@ -2173,6 +2432,7 @@ button {
   margin-left: auto;
   text-align: end;
 }
+.transaction_history .paging,
 .management_section .paging,
 .payment_section .paging,
 .manage_teams_section .paging,
@@ -2312,7 +2572,26 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
   margin-bottom: 26px;
 }
 
-.green_btn, .management_section.payment_section .block_tools .btn_link,
+.history_transaction .field_row:not(:has(.field_block)) .field_name {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.history_transaction .field_row:not(:has(.field_block)) .field_name a {
+  color: inherit;
+}
+
+.filters_popup .separate {
+  gap: 0;
+  margin: 30px 0;
+}
+.filters_popup .verification_info {
+  color: #CFCFCF;
+  font-size: 85.71%;
+  line-height: 1.5em;
+}
+
+.green_btn, .transaction_history.payment_section .block_tools .btn_link,
+.management_section.payment_section .block_tools .btn_link,
 .payment_section.payment_section .block_tools .btn_link,
 .manage_teams_section.payment_section .block_tools .btn_link,
 .recruits_section.payment_section .block_tools .btn_link,
@@ -2332,12 +2611,20 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
 .orange_btn, .check_btn, .modal_import .import_link, .custom_table a:before,
 .custom_table .icon_delete:before,
 .custom_table .icon_pencil:before,
-.custom_table .icon_close:before, .tools_section .head_section a {
+.custom_table .icon_close:before, .tools_section .head_section a, .history_transaction .field_row:not(:has(.field_block)) .field_name a {
   -o-transition: color 0.3s;
   -ms-transition: color 0.3s;
   -moz-transition: color 0.3s;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
+}
+
+.msg_section .reply_btn {
+  -o-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 
 .error_hint, .primary_btn, .add_btns .standard_btn, .add_btns .primary_btn {
@@ -2369,7 +2656,7 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
 .check_btn:active, .modal_import .import_link:active, .custom_table a:active:before,
 .custom_table .icon_delete:active:before,
 .custom_table .icon_pencil:active:before,
-.custom_table .icon_close:active:before, .tools_section .head_section a:active {
+.custom_table .icon_close:active:before, .tools_section .head_section a:active, .history_transaction .field_row:not(:has(.field_block)) .field_name a:active {
   color: #085C7D;
 }
 
@@ -2403,7 +2690,7 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
   .check_btn:hover, .modal_import .import_link:hover, .custom_table a:hover:before,
   .custom_table .icon_delete:hover:before,
   .custom_table .icon_pencil:hover:before,
-  .custom_table .icon_close:hover:before, .tools_section .head_section a:hover {
+  .custom_table .icon_close:hover:before, .tools_section .head_section a:hover, .history_transaction .field_row:not(:has(.field_block)) .field_name a:hover {
     color: #085C7D;
   }
   .green_btn:hover,

@@ -93,6 +93,7 @@
   }
 }
 @media screen and (max-width: 768px) {
+  .transaction_history .head_section,
   .management_section .head_section,
   .recruits_section .head_section,
   .manage_teams_section .head_section,
@@ -102,6 +103,7 @@
     flex-direction: column;
     align-items: baseline;
   }
+  .transaction_history.recruits_section .standard_btn,
   .management_section.recruits_section .standard_btn,
   .recruits_section.recruits_section .standard_btn,
   .manage_teams_section.recruits_section .standard_btn,
@@ -110,6 +112,7 @@
   .preferred_section.recruits_section .standard_btn {
     margin-top: 0;
   }
+  .transaction_history .standard_btn,
   .management_section .standard_btn,
   .recruits_section .standard_btn,
   .manage_teams_section .standard_btn,
@@ -118,6 +121,7 @@
   .preferred_section .standard_btn {
     margin-top: 20px;
   }
+  .transaction_history .paging,
   .management_section .paging,
   .recruits_section .paging,
   .manage_teams_section .paging,
@@ -127,6 +131,22 @@
     display: block;
     margin-top: 25px;
   }
+  .transaction_history.transaction_history .icon_card,
+  .transaction_history.transaction_history .icon_filter,
+  .management_section.transaction_history .icon_card,
+  .management_section.transaction_history .icon_filter,
+  .recruits_section.transaction_history .icon_card,
+  .recruits_section.transaction_history .icon_filter,
+  .manage_teams_section.transaction_history .icon_card,
+  .manage_teams_section.transaction_history .icon_filter,
+  .payment_section.transaction_history .icon_card,
+  .payment_section.transaction_history .icon_filter,
+  .manage_section.transaction_history .icon_card,
+  .manage_section.transaction_history .icon_filter,
+  .preferred_section.transaction_history .icon_card,
+  .preferred_section.transaction_history .icon_filter {
+    margin-left: 0;
+  }
   .tools_section .tools_list li {
     flex: 0 0 100%;
     max-width: 100%;
@@ -135,22 +155,28 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
+  .transaction_history,
   .management_section {
     margin-left: 0;
     margin-right: 0;
     display: block;
     width: 100%;
   }
+  .transaction_history tbody,
+  .transaction_history tr,
   .management_section tbody,
   .management_section tr {
     display: block;
     width: 100%;
     margin: 0;
   }
+  .transaction_history thead,
   .management_section thead {
     display: none;
   }
-  .management_section tbody td, .management_section tbody th {
+  .transaction_history tbody td, .transaction_history tbody th,
+  .management_section tbody td,
+  .management_section tbody th {
     display: flex;
     border: none;
     padding: 0 0 15px !important;
@@ -160,7 +186,9 @@
     width: auto !important;
     border-top: 0 !important;
   }
-  .management_section tbody td:before, .management_section tbody th:before {
+  .transaction_history tbody td:before, .transaction_history tbody th:before,
+  .management_section tbody td:before,
+  .management_section tbody th:before {
     display: block;
     content: attr(data-th) ":";
     color: #CFCFCF;
@@ -183,6 +211,8 @@
   .recruits_section .custom_table tbody td:last-child,
   .manage_teams_section .custom_table thead th:last-child,
   .manage_teams_section .custom_table tbody td:last-child,
+  .transaction_history .custom_table thead th:last-child,
+  .transaction_history .custom_table tbody td:last-child,
   .management_section .custom_table thead th:last-child,
   .management_section .custom_table tbody td:last-child,
   .payment_section .custom_table thead th:last-child,
@@ -195,6 +225,7 @@
   }
   .recruits_section .custom_table tbody td,
   .manage_teams_section .custom_table tbody td,
+  .transaction_history .custom_table tbody td,
   .management_section .custom_table tbody td,
   .payment_section .custom_table tbody td,
   .manage_section .custom_table tbody td,
@@ -211,6 +242,11 @@
   .manage_teams_section .custom_table .icon_pencil,
   .manage_teams_section .custom_table button,
   .manage_teams_section .custom_table a,
+  .transaction_history .custom_table .icon_delete,
+  .transaction_history .custom_table .icon_stars,
+  .transaction_history .custom_table .icon_pencil,
+  .transaction_history .custom_table button,
+  .transaction_history .custom_table a,
   .management_section .custom_table .icon_delete,
   .management_section .custom_table .icon_stars,
   .management_section .custom_table .icon_pencil,
@@ -235,6 +271,7 @@
   }
   .recruits_section.payment_section .payment_list,
   .manage_teams_section.payment_section .payment_list,
+  .transaction_history.payment_section .payment_list,
   .management_section.payment_section .payment_list,
   .payment_section.payment_section .payment_list,
   .manage_section.payment_section .payment_list,
@@ -243,6 +280,7 @@
   }
   .recruits_section.manage_section .custom_table tbody td:first-child,
   .manage_teams_section.manage_section .custom_table tbody td:first-child,
+  .transaction_history.manage_section .custom_table tbody td:first-child,
   .management_section.manage_section .custom_table tbody td:first-child,
   .payment_section.manage_section .custom_table tbody td:first-child,
   .manage_section.manage_section .custom_table tbody td:first-child,

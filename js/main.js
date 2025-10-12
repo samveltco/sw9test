@@ -30,7 +30,7 @@ if (
         document.querySelector('.modal_block')?.classList.remove('showed');
     }
 
-    showPopup = function () {
+    showPopup = function (e) {
         document.querySelector('.popup_block')?.classList.add('showed');
     }
 
