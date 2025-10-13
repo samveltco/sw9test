@@ -2211,7 +2211,10 @@ button {
 }
 
 .certification_page .fields_group {
-  max-width: 750px;
+  max-width: 850px;
+  width: 100%;
+}
+.certification_page .custom_table {
   width: 100%;
 }
 .certification_page .certification_header {

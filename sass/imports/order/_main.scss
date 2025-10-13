@@ -339,10 +339,12 @@
 
 .certification_page {
     .fields_group {
-        max-width: 750px;
+        max-width: 850px;
         width: 100%;
     }
-
+    .custom_table{
+        width: 100%;
+    }
     .certification_header {
         width: 100%;
         display: flex;
@@ -376,11 +378,13 @@
     .add_btns {
         margin-top: 10px;
     }
-    .custom_table thead th{
+
+    .custom_table thead th {
         color: $white;
     }
+
     .custom_table thead th,
-    .check_btn{
+    .check_btn {
         font-size: 14px;
         line-height: 1.42em;
     }
@@ -400,9 +404,11 @@
             @include colSize(5);
         }
     }
-    .custom_table{
+
+    .custom_table {
         margin-bottom: 20px;
     }
+
     .create_actions {
         justify-content: center;
     }
