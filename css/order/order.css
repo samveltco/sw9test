@@ -2244,6 +2244,9 @@ button {
 .certification_page .add_btns {
   margin-top: 10px;
 }
+.certification_page .custom_table thead th {
+  color: #ffffff;
+}
 .certification_page .custom_table thead th,
 .certification_page .check_btn {
   font-size: 14px;

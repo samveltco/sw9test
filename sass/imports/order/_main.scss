@@ -376,6 +376,9 @@
     .add_btns {
         margin-top: 10px;
     }
+    .custom_table thead th{
+        color: $white;
+    }
     .custom_table thead th,
     .check_btn{
         font-size: 14px;
