@@ -1085,6 +1085,19 @@ button {
   justify-content: center;
   text-align: center;
   flex-direction: column;
+  margin: 0;
+}
+.route_modal .close_btn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+.route_modal .modal_container {
+  justify-content: center;
+}
+.route_modal .modal_footer {
+  margin: 0;
+  justify-content: center;
 }
 
 .new_note {
@@ -2195,6 +2208,67 @@ button {
   content: "";
   flex: 1;
   border-top: 1px solid #D9D9D9;
+}
+
+.certification_page .fields_group {
+  max-width: 750px;
+  width: 100%;
+}
+.certification_page .certification_header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.certification_page .certification_header .group_name {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+.certification_page .certification_header .group_name:first-child {
+  flex: 0 0 41.66%;
+  max-width: 41.66%;
+}
+.certification_page .group_name {
+  font-size: 100%;
+  line-height: 1.42em;
+  font-weight: 700;
+  color: #ffffff;
+}
+.certification_page .fields_group:has(.custom_table) {
+  margin: 40px 0 0;
+}
+.certification_page .certification_rows {
+  width: 100%;
+}
+.certification_page .add_btns {
+  margin-top: 10px;
+}
+.certification_page .custom_table thead th,
+.certification_page .check_btn {
+  font-size: 14px;
+  line-height: 1.42em;
+}
+.certification_page .cert_row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 23px;
+}
+.certification_page .cert_row .date_expires_col,
+.certification_page .cert_row .field_block {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+.certification_page .cert_row .check_block {
+  flex: 0 0 41.66%;
+  max-width: 41.66%;
+}
+.certification_page .custom_table {
+  margin-bottom: 20px;
+}
+.certification_page .create_actions {
+  justify-content: center;
 }
 
 .green_btn {

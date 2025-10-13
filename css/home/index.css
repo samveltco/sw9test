@@ -1100,6 +1100,19 @@ button {
   justify-content: center;
   text-align: center;
   flex-direction: column;
+  margin: 0;
+}
+.route_modal .close_btn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+.route_modal .modal_container {
+  justify-content: center;
+}
+.route_modal .modal_footer {
+  margin: 0;
+  justify-content: center;
 }
 
 .new_note {
@@ -2469,6 +2482,13 @@ body:has(.card_option) .order_details .order_list ~ .green_btn,
 body:has(.card_option) .order_details .order_list ~ .dark_btn,
 body:has(.card_option) .order_details .order_list ~ .block_user {
   margin-top: 25px;
+}
+
+.order_contractor .validation_btn {
+  background: #19252F !important;
+}
+.order_contractor .popup_body .download_btn.standard_btn, .order_contractor .popup_body .download_btn.primary_btn {
+  margin-left: 0;
 }
 
 .order_details .popup_title {

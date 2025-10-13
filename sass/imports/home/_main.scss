@@ -604,6 +604,16 @@ body:has(.card_option){
         }
     }
 }
+
+.order_contractor{
+    .validation_btn{
+        background: $mainBg !important;
+    }
+    .popup_body  .download_btn.standard_btn{
+        margin-left: 0;
+    }
+}
+
 .order_details {
     .popup_title {
         display: flex;

@@ -1085,6 +1085,19 @@ button {
   justify-content: center;
   text-align: center;
   flex-direction: column;
+  margin: 0;
+}
+.route_modal .close_btn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+.route_modal .modal_container {
+  justify-content: center;
+}
+.route_modal .modal_footer {
+  margin: 0;
+  justify-content: center;
 }
 
 .new_note {

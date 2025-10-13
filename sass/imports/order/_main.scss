@@ -15,6 +15,7 @@
     }
 }
 
+
 .create_fields {
     .fields_group {
         margin-top: 40px;
@@ -335,3 +336,71 @@
 
 }
 
+
+.certification_page {
+    .fields_group {
+        max-width: 750px;
+        width: 100%;
+    }
+
+    .certification_header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .group_name {
+            @include colSize(3);
+        }
+
+        .group_name:first-child {
+            @include colSize(5);
+        }
+    }
+
+    .group_name {
+        @include fontSizeHeight(14, 20);
+        font-weight: 700;
+        color: $white;
+    }
+
+    .fields_group:has(.custom_table) {
+        margin: 40px 0 0;
+    }
+
+    .certification_rows {
+        width: 100%;
+    }
+
+    .add_btns {
+        margin-top: 10px;
+    }
+    .custom_table thead th,
+    .check_btn{
+        font-size: 14px;
+        line-height: 1.42em;
+    }
+
+    .cert_row {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 23px;
+
+        .date_expires_col,
+        .field_block {
+            @include colSize(3);
+        }
+
+        .check_block {
+            @include colSize(5);
+        }
+    }
+    .custom_table{
+        margin-bottom: 20px;
+    }
+    .create_actions {
+        justify-content: center;
+    }
+}

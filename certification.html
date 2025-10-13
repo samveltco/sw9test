@@ -169,110 +169,188 @@
             <div class="available_funds">Funds Available: $1,268.22</div>
         </div>
 
-        <div class="create_fields">
+        <div class="create_fields certification_page">
             <div class="fields_group">
-                <divc class="field_row">
+                <div class="field_row">
                     <div class="field_name">
                         <label for="use_template">Enter 3 or more letters to search contractors!</label>
                     </div>
                     <div class="field_block">
                         <select name="use_template" id="use_template">
                             <option>Select</option>
-                            <option value="1">Value 1</option>
-                            <option value="2">Value 2</option>
-                            <option value="3">Value 3</option>
-                            <option value="4">Value 4</option>
+                            <option value="1">John Doe</option>
+                            <option value="2">Jane Smith</option>
+                            <option value="3">Mike Johnson</option>
+                            <option value="4">Sarah Wilson</option>
                         </select>
                     </div>
-                </divc>
+                </div>
             </div>
+            
             <div class="fields_group">
-                <div class="group_col">
-                    <div class="group_name">Base Pay</div>
-                    <div class="combo_field">
-                        <div class="small_row">
-                            <div class="field_name">
-                                <label for="amount">Amount*</label>
-                            </div>
-                            <div class="field_block">
-                                <input id="amount" name="amount" type="text" maxlength="10" placeholder="$0.00"/>
-                            </div>
-                        </div>
-                        <div class="check_block">
-                            <label class="check_btn">
-                                <input type="checkbox" name="pay_base_rate_as_minimum"/>
-                                Pay Base Rate As Minimum
-                            </label>
-                        </div>
-                    </div>
-                    <div class="combo_field">
-                        <div class="small_row">
-                            <div class="field_name">
-                                <label for="qty">Qty*</label>
-                            </div>
-                            <div class="field_block">
-                                <input id="qty" name="qty" type="text" maxlength="10" placeholder="$0.00"/>
-                            </div>
-                        </div>
-                        <div class="check_block">
-                            <label class="check_btn">
-                                <input type="checkbox" name="pay_outside_of_app"/>
-                                Pay Outside Of App
-                            </label>
-                        </div>
-                    </div>
-                    <div class="small_row">
-                        <div class="field_name">
-                            <label for="estpay">Est.Pay</label>
-                        </div>
-                        <div class="field_block">
-                            <input id="estpay" name="estpay" type="text" maxlength="10" placeholder="$0.00" disabled/>
-                        </div>
-                    </div>
-                    <div class="small_row">
-                        <div class="field_name">
-                            <label for="per">Per*</label>
-                        </div>
-                        <div class="field_block">
-                            <input id="per" name="per" type="text" maxlength="10" placeholder="$0.00"/>
-                            <span class="step_btns">
-										<span class="icon_stepup"></span>
-										<span class="icon_stepdown"></span>
-									</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="group_col">
-                    <div class="group_name">How Pay is Divided</div>
-                    <div class="small_row">
-                        <div class="field_name">
-                            <label for="soft_skills">Soft Skills*</label>
-                        </div>
-                        <div class="field_block">
-                            <input id="soft_skills" name="soft_skills" type="text" maxlength="10" placeholder="$0.00"/>
-                        </div>
-                    </div>
-                    <div class="small_row">
-                        <div class="field_name">
-                            <label for="work">Work*</label>
-                        </div>
-                        <div class="field_block">
-                            <input id="work" name="work" type="text" maxlength="10" placeholder="00"/>
-                        </div>
-                    </div>
-                    <div class="small_row">
-                        <div class="field_name">
-                            <label for="deliverables">Deliverables*</label>
-                        </div>
-                        <div class="field_block">
-                            <input id="deliverables" name="deliverables" type="text" maxlength="10" placeholder="00"/>
-                        </div>
-                    </div>
+                <div class="table_wrapper">
+                    <table class="custom_table">
+                        <thead>
+                            <tr>
+                                <th>Certification</th>
+                                <th>Date Passed</th>
+                                <th>Date Expires</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="pay_base_rate_as_minimum">
+                                        Pay Base Rate As Minimum
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed">
+                                    <div class="field_block"><label for="date_passed_1"><input type="date" id="date_passed_1" name="date_passed_1" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                                <td data-th="Date Expires"></td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_background_1">
+                                        Passed Gold Background Test
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed">
+                                    <div class="field_block"><label for="date_passed_2"><input type="date" id="date_passed_2" name="date_passed_2" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                                <td data-th="Date Expires"></td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_drug_1">
+                                        Passed Gold Drug Test
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed">
+                                    <div class="field_block"><label for="date_passed_3"><input type="date" id="date_passed_3" name="date_passed_3" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                                <td data-th="Date Expires"></td>
+                            </tr>
+
+                            <!-- Row 4 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_cabling_2">
+                                        Cabling Certified
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed">
+                                    <div class="field_block"><label for="date_passed_4"><input type="date" id="date_passed_4" name="date_passed_4" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                                <td data-th="Date Expires"></td>
+                            </tr>
+
+                            <!-- Row 5 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_drug_2">
+                                        Passed Gold Drug Test
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed"></td>
+                                <td data-th="Date Expires">
+                                    <div class="field_block"><label for="date_expires_1"><input type="date" id="date_expires_1" name="date_expires_1" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 6 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_cabling_3">
+                                        Cabling Certified
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed">
+                                    <div class="field_block"><label for="date_passed_6"><input type="date" id="date_passed_6" name="date_passed_6" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                                <td data-th="Date Expires"></td>
+                            </tr>
+
+                            <!-- Row 7 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_background_2">
+                                        Passed Gold Background Test
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed"></td>
+                                <td data-th="Date Expires">
+                                    <div class="field_block"><label for="date_expires_2"><input type="date" id="date_expires_2" name="date_expires_2" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 8 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_drug_3">
+                                        Passed Gold Drug Test
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed">
+                                   <div class="field_block"><label for="date_passed_8"><input type="date" id="date_passed_8" name="date_passed_8" placeholder="mm/dd/yy"></label></div> 
+                                </td>
+                                <td data-th="Date Expires"></td>
+                            </tr>
+
+                            <!-- Row 9 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_cabling_4">
+                                        Cabling Certified
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed">
+                                    <div class="field_block"><label for="date_passed_9"><input type="date" id="date_passed_9" name="date_passed_9" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                                <td data-th="Date Expires"></td>
+                            </tr>
+
+                            <!-- Row 10 -->
+                            <tr>
+                                <td data-th="Certification">
+                                    <label class="check_btn">
+                                        <input type="checkbox" name="cert_background_3">
+                                        Passed Gold Background Test
+                                    </label>
+                                </td>
+                                <td data-th="Date Passed">
+                                    <div class="field_block"><label for="date_passed_10"><input type="date" id="date_passed_10" name="date_passed_10" placeholder="mm/dd/yy"></label></div>
+                                </td>
+                                <td data-th="Date Expires"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
-        <div class="create_actions">
-            <button class="standard_btn light_btn" aria-label="save as draft">Save as draft</button>
+
+            <div class="add_btns">
+                <label class="standard_btn icon_upload">
+                    <input type="file" name="file_attach"/>
+                    Drag and drop your file here or click here to add file
+                </label>
+            </div>
+            <div class="create_actions">
+                <button class="standard_btn lightest_btn" aria-label="Save & Publish">Save & Publish</button>
+            </div>
         </div>
     </div>
 </div>

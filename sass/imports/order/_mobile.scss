@@ -65,7 +65,48 @@
     }
 
 }
+@include mediaTo($size768) {
+.custom_table{
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+    width: 100%;
 
+    tbody,
+    tr {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody {
+        td, th {
+            display: flex;
+            border: none;
+            padding: 0 0 15px !important;
+            margin-bottom: 15px;
+            border-bottom: 1px solid $grayCf;
+            text-align: right;
+
+            &:before {
+                display: block;
+                content: attr(data-th) ':';
+                font-weight: 700;
+                color: $textColor;
+                text-align: left;
+                margin-right: auto;
+                padding-right: 10px;
+            }
+
+        }
+    }
+}
+
+}
 @include mediaTo($size576) {
     .create_fields {
         .field_row {
