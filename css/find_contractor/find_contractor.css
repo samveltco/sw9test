@@ -280,7 +280,7 @@ body:has(.popup_block .contractor_main) .contractor_head, body:has(.popup_block 
   left: 0;
 }
 
-.cards_list .shadow_block.top_shadow {
+.cards_list .shadow_block.top_shadow, .certification_modal .filter_shadow.top_shadow {
   transform: scaleY(-1);
   -moz-transform: scaleY(-1);
   -ms-transform: scaleY(-1);
@@ -822,6 +822,26 @@ button {
     color: #ffffff;
   }
 }
+input[type=radio] + .check_btn:before, .check_btn:has(input[type=radio]):before {
+  border-radius: 50%;
+}
+input[type=radio]:checked + .check_btn:before, .check_btn:has(input[type=radio]:checked):before {
+  background: #23425A;
+  color: #CFCFCF;
+  font-size: 0;
+  position: relative;
+}
+input[type=radio]:checked + .check_btn:before:after, .check_btn:has(input[type=radio]:checked):before:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .cb {
   display: block;
@@ -1107,6 +1127,157 @@ button {
 .route_modal .modal_footer {
   margin: 0;
   justify-content: center;
+}
+
+.certification_modal .modal_container {
+  max-width: 1011px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 35px;
+}
+.certification_modal .inner_container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 20px;
+  max-height: 730px;
+  flex: 1;
+  margin-right: -20px;
+}
+.certification_modal .inner_container::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.certification_modal .inner_container::-webkit-scrollbar-track {
+  background: #19252F;
+  border-radius: 2px;
+}
+.certification_modal .inner_container::-webkit-scrollbar-thumb {
+  background: #23425A;
+  border-radius: 2px;
+}
+.certification_modal .field_row {
+  flex-wrap: wrap;
+}
+.certification_modal .filter_shadow {
+  background: linear-gradient(180deg, rgba(25, 40, 51, 0) 0%, #192833 62.28%);
+  position: absolute;
+  left: 0;
+  right: 15px;
+  height: 214px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  -o-transition: opacity 0.15s;
+  -ms-transition: opacity 0.15s;
+  -moz-transition: opacity 0.15s;
+  -webkit-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+}
+.certification_modal .filter_shadow.top_shadow {
+  top: 0;
+}
+.certification_modal .filter_shadow.bottom_shadow {
+  bottom: 0;
+}
+.certification_modal .filter_shadow.showed {
+  opacity: 1;
+}
+.certification_modal .entity_type_section {
+  max-width: 282px;
+}
+.certification_modal .address_section {
+  max-width: 434px;
+}
+.certification_modal .modal_title {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+.certification_modal .modal_subtitle a {
+  text-decoration: underline;
+  color: inherit;
+}
+.certification_modal .form_section {
+  margin-bottom: 30px;
+}
+.certification_modal .form_section .modal_subtitle {
+  order: unset;
+}
+.certification_modal .form_section:last-child {
+  margin-bottom: 0;
+}
+.certification_modal .section_title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 100%;
+  margin: 15px 0;
+}
+.certification_modal .section_description {
+  color: #CFCFCF;
+  font-size: 85.71%;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.certification_modal .section_description p {
+  margin-bottom: 10px;
+}
+.certification_modal .section_description p:last-child {
+  margin-bottom: 0;
+}
+.certification_modal .radio_block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.certification_modal .radio_block .check_btn {
+  margin-bottom: 0;
+}
+.certification_modal .radio_block.horizontal {
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+.certification_modal .certification_text {
+  color: #CFCFCF;
+  font-size: 85.71%;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+.certification_modal .certification_text p {
+  margin-bottom: 10px;
+}
+.certification_modal .certification_text .certification_list {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+.certification_modal .certification_text .certification_list li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.certification_modal .certification_instructions {
+  color: #CFCFCF;
+  font-size: 85.71%;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.certification_modal .certification_instructions p {
+  margin: 0;
+}
+.certification_modal .field_row:has(.radio_block) {
+  align-items: flex-start;
+}
+.certification_modal .modal_footer {
+  position: relative;
+  z-index: 1;
+}
+@media screen and (max-width: 1024px) {
+  .certification_modal .close_btn {
+    margin: 0;
+  }
+  .certification_modal .modal_title {
+    margin-top: 20px;
+  }
 }
 
 .new_note {
@@ -2507,7 +2678,7 @@ body:has(.popup_block .contractor_main) .contractor_head li span:last-child {
 .sidebar .logout_btn, .menu_btn, .search_btn, .card_item a.message_count,
 .card_item button.message_count, body:has(.popup_block .contractor_main) .popup_body .contractor_info a, .lightest_btn,
 .curry_btn,
-.orange_btn, .check_btn, .modal_import .import_link, .custom_table a:before,
+.orange_btn, .check_btn, .modal_import .import_link, .certification_modal .modal_subtitle a, .custom_table a:before,
 .custom_table .icon_delete:before,
 .custom_table .icon_pencil:before,
 .custom_table .icon_close:before {
@@ -2552,7 +2723,7 @@ body:has(.popup_block .contractor_main) .contractor_head li span:last-child {
   visibility: hidden;
 }
 
-.check_btn:active, .modal_import .import_link:active, .custom_table a:active:before,
+.check_btn:active, .modal_import .import_link:active, .certification_modal .modal_subtitle a:active, .custom_table a:active:before,
 .custom_table .icon_delete:active:before,
 .custom_table .icon_pencil:active:before,
 .custom_table .icon_close:active:before {
@@ -2586,7 +2757,7 @@ body:has(.popup_block .contractor_main) .contractor_head li span:last-child {
 }
 
 @media (hover: hover) {
-  .check_btn:hover, .modal_import .import_link:hover, .custom_table a:hover:before,
+  .check_btn:hover, .modal_import .import_link:hover, .certification_modal .modal_subtitle a:hover, .custom_table a:hover:before,
   .custom_table .icon_delete:hover:before,
   .custom_table .icon_pencil:hover:before,
   .custom_table .icon_close:hover:before {

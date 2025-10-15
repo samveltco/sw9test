@@ -116,4 +116,31 @@ if (
 
         filterContent.dispatchEvent(new Event('scroll'));
     }
+
+    // Certification modal scroll shadows
+    const certificationModal = document.querySelector('.certification_modal .inner_container');
+    if (certificationModal) {
+        certificationModal.addEventListener('scroll', () => {
+            const scrollSize = certificationModal.scrollTop;
+            const listHeight = certificationModal.offsetHeight;
+            const listFullHeight = certificationModal.scrollHeight;
+
+            const topShadow = document.querySelector('.certification_modal .top_shadow');
+            const bottomShadow = document.querySelector('.certification_modal .bottom_shadow');
+
+            if (scrollSize > 0) {
+                topShadow?.classList.add('showed');
+            } else {
+                topShadow?.classList.remove('showed');
+            }
+
+            if (scrollSize < listFullHeight - listHeight) {
+                bottomShadow?.classList.add('showed');
+            } else {
+                bottomShadow?.classList.remove('showed');
+            }
+        });
+
+        certificationModal.dispatchEvent(new Event('scroll'));
+    }
 }

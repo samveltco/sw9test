@@ -1,769 +1,769 @@
 .header,
 .footer,
 body {
-    background: $black17;
+  background: $black17;
 }
 
 .header {
-    padding: 16px 0;
+  padding: 16px 0;
 
-    .header_inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+  .header_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main_logo {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 99;
+
+    img {
+      display: block;
+      width: 129px;
+      height: 44px;
+      object-fit: contain;
     }
+  }
 
-    .main_logo {
-        height: 44px;
-        display: flex;
-        align-items: center;
-        position: relative;
-        z-index: 99;
+  .menu_block {
+    box-shadow: 0 1px 1.1px 0 #FFFFFF1A inset;
+    backdrop-filter: blur(8px);
+    background: rgba($blue51, 25%);
+    padding: 8px;
+    border-radius: 50px;
+    margin-top: 16px;
+  }
 
-        img {
-            display: block;
-            width: 129px;
-            height: 44px;
-            object-fit: contain;
-        }
-    }
+  .main_menu {
+    @include fontSizeHeight(14, 24);
+    color: $white;
 
-    .menu_block {
-        box-shadow: 0 1px 1.1px 0 #FFFFFF1A inset;
-        backdrop-filter: blur(8px);
-        background: rgba($blue51, 25%);
-        padding: 8px;
-        border-radius: 50px;
-        margin-top: 16px;
-    }
+    li {
 
-    .main_menu {
-        @include fontSizeHeight(14, 24);
-        color: $white;
-
-        li {
-
-            &.active {
-                a {
-                    background: $blue04;
-                    color: $black;
-                }
-            }
-        }
-
+      &.active {
         a {
-            color: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 24px;
-            border-radius: 50px;
-            @extend %siteColorHover;
+          background: $blue04;
+          color: $black;
         }
+      }
     }
 
-    .main_menu {
-        @extend %standardList;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
+    a {
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 50px;
+      @extend %siteColorHover;
     }
+  }
+
+  .main_menu {
+    @extend %standardList;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 .main_section {
-    margin-top: 100px;
+  margin-top: 100px;
 
-    .main_title {
-        @include fontSizeHeight(84, 104);
-        font-weight: 400;
-        text-align: center;
-        color: $white;
-        margin: 0 auto;
+  .main_title {
+    @include fontSizeHeight(84, 104);
+    font-weight: 400;
+    text-align: center;
+    color: $white;
+    margin: 0 auto;
 
-        span {
-            font-weight: 700;
-            color: $blue04;
-        }
-
-        b {
-            font-weight: 700;
-        }
+    span {
+      font-weight: 700;
+      color: $blue04;
     }
 
-    .main_description {
-        @include fontSizeHeight(24, 40);
-        font-weight: 400;
-        color: $white;
-        text-align: center;
-        max-width: 700px;
-        margin: 20px auto 0;
+    b {
+      font-weight: 700;
     }
+  }
 
-    .main_btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 60px auto 0;
-        max-width: 500px;
-        gap: 32px;
-    }
+  .main_description {
+    @include fontSizeHeight(24, 40);
+    font-weight: 400;
+    color: $white;
+    text-align: center;
+    max-width: 700px;
+    margin: 20px auto 0;
+  }
 
-    .btn_signUp {
-        @include fontSizeHeight(16, 25);
-        font-weight: 400;
-        background: transparent;
-        border-radius: 50px;
-        padding: 12px 46px;
-        border: 1px solid $blue04;
-        color: $blue04;
-        @extend %opacityHover;
-    }
+  .main_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px auto 0;
+    max-width: 500px;
+    gap: 32px;
+  }
 
-    .btn_signIn {
-        @include fontSizeHeight(16, 25);
-        font-weight: 400;
-        background: $blue04;
-        border-radius: 50px;
-        padding: 12px 46px;
-        border: 1px solid transparent;
-        color: $black;
-        @extend %opacityHover;
-    }
+  .btn_signUp {
+    @include fontSizeHeight(16, 25);
+    font-weight: 400;
+    background: transparent;
+    border-radius: 50px;
+    padding: 12px 46px;
+    border: 1px solid $blue04;
+    color: $blue04;
+    @extend %opacityHover;
+  }
+
+  .btn_signIn {
+    @include fontSizeHeight(16, 25);
+    font-weight: 400;
+    background: $blue04;
+    border-radius: 50px;
+    padding: 12px 46px;
+    border: 1px solid transparent;
+    color: $black;
+    @extend %opacityHover;
+  }
 }
 
 .app_section {
-    margin-top: 220px;
+  margin-top: 220px;
 
-    .app_version {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 60px;
+  .app_version {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 60px;
 
-        a {
-            font-size: 0;
-            line-height: 0;
-            @extend %opacityHover;
-        }
-
-        img {
-            display: block;
-            width: auto;
-            max-width: 100%;
-            height: 40px;
-            object-fit: contain;
-        }
+    a {
+      font-size: 0;
+      line-height: 0;
+      @extend %opacityHover;
     }
 
-    .section_title {
-        @include fontSizeHeight(40, 55);
-        font-weight: 700;
-        text-align: center;
-        color: $white;
-        margin: 0 auto 20px;
-        text-transform: uppercase;
+    img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: 40px;
+      object-fit: contain;
     }
+  }
+
+  .section_title {
+    @include fontSizeHeight(40, 55);
+    font-weight: 700;
+    text-align: center;
+    color: $white;
+    margin: 0 auto 20px;
+    text-transform: uppercase;
+  }
 
 
-    .section_description {
-        @include fontSizeHeight(24, 32);
-        text-align: center;
-        color: $white;
-        margin: 0 auto 20px;
+  .section_description {
+    @include fontSizeHeight(24, 32);
+    text-align: center;
+    color: $white;
+    margin: 0 auto 20px;
+  }
+
+  .phone_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    img {
+      display: block;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      aspect-ratio: auto 506 / 260;
+
     }
-
-    .phone_img {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-
-        img {
-            display: block;
-            max-width: 100%;
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            aspect-ratio: auto 506 / 260;
-
-        }
-    }
+  }
 }
 
 .contractor_section {
-    margin-top: 220px;
+  margin-top: 220px;
 
-    .contractor_list {
-        @extend %standardList;
+  .contractor_list {
+    @extend %standardList;
 
-        li {
-            margin-bottom: 16px;
-        }
+    li {
+      margin-bottom: 16px;
     }
+  }
 
-    .contractor_info {
-        display: flex;
-        align-items: flex-start;
-        font-weight: 700;
-        @include fontSizeHeight(14, 24);
-        color: $white;
-        margin-bottom: 10px;
+  .contractor_info {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 700;
+    @include fontSizeHeight(14, 24);
+    color: $white;
+    margin-bottom: 10px;
 
-        img {
-            display: block;
-            width: auto;
-            max-width: 100%;
-            height: 59px;
-            object-fit: contain;
-            margin-right: 20px;
-            margin-top: -7px;
-        }
+    img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: 59px;
+      object-fit: contain;
+      margin-right: 20px;
+      margin-top: -7px;
     }
+  }
 
-    .inner_title {
-        @include fontSizeHeight(40, 55);
-        color: $white;
-        margin-bottom: 16px;
-        font-weight: 700;
-    }
+  .inner_title {
+    @include fontSizeHeight(40, 55);
+    color: $white;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
 
-    .inner_description {
-        @include fontSizeHeight(24, 40);
-        color: $white;
-    }
+  .inner_description {
+    @include fontSizeHeight(24, 40);
+    color: $white;
+  }
 }
 
 .work_section {
-    margin-top: 220px;
+  margin-top: 220px;
 
-    .section_title {
-        @include fontSizeHeight(40, 55);
-        font-weight: 700;
-        text-align: center;
-        color: $white;
-        margin: 0 auto 20px;
-        text-transform: uppercase;
+  .section_title {
+    @include fontSizeHeight(40, 55);
+    font-weight: 700;
+    text-align: center;
+    color: $white;
+    margin: 0 auto 20px;
+    text-transform: uppercase;
+  }
+
+
+  .section_description {
+    @include fontSizeHeight(24, 32);
+    text-align: center;
+    color: $white;
+    margin: 0 auto 20px;
+  }
+
+  .work_list {
+    @extend %standardList;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    max-width: 715px;
+    margin: 60px auto 0;
+
+    li {
+      @include colSize(4);
     }
+  }
 
+  .top_block {
+    display: flex;
+    justify-content: space-between;
+  }
 
-    .section_description {
-        @include fontSizeHeight(24, 32);
-        text-align: center;
-        color: $white;
-        margin: 0 auto 20px;
+  .number_block {
+    @include fontSizeHeight(24, 40);
+    color: $black;
+    padding: 24px 0;
+  }
+
+  .img_block {
+    padding: 10px 0 0;
+
+    img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: 116px;
+      object-fit: contain;
     }
+  }
 
-    .work_list {
-        @extend %standardList;
-        display: flex;
-        justify-content: center;
-        gap: 60px;
-        max-width: 715px;
-        margin: 60px auto 0;
+  .work_title {
+    @include fontSizeHeight(14, 20);
+    color: $black;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px 0 0;
+    margin-top: auto;
+  }
 
-        li {
-            @include colSize(4);
-        }
+  .work_description {
+    @include fontSizeHeight(14, 21);
+    color: $black;
+    margin-bottom: 4px;
+    text-align: center;
+
+  }
+
+  .work_block {
+    box-shadow: 0 1px 1.1px 0 #FFFFFF1A inset;
+    background: $textColorA4;
+    border-radius: 25px;
+    padding: 0 16px 24px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+    &.special {
+      background: $lightTitle;
     }
-
-    .top_block {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .number_block {
-        @include fontSizeHeight(24, 40);
-        color: $black;
-        padding: 24px 0;
-    }
-
-    .img_block {
-        padding: 10px 0 0;
-
-        img {
-            display: block;
-            width: auto;
-            max-width: 100%;
-            height: 116px;
-            object-fit: contain;
-        }
-    }
-
-    .work_title {
-        @include fontSizeHeight(14, 20);
-        color: $black;
-        font-weight: 700;
-        text-align: center;
-        padding: 5px 0 0;
-        margin-top: auto;
-    }
-
-    .work_description {
-        @include fontSizeHeight(14, 21);
-        color: $black;
-        margin-bottom: 4px;
-        text-align: center;
-
-    }
-
-    .work_block {
-        box-shadow: 0 1px 1.1px 0 #FFFFFF1A inset;
-        background: $textColorA4;
-        border-radius: 25px;
-        padding: 0 16px 24px;
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-
-        &.special {
-            background: $lightTitle;
-        }
-    }
+  }
 }
 
 .contact_section {
-    margin-top: 220px;
+  margin-top: 220px;
 
-    .section_title {
-        @include fontSizeHeight(40, 55);
-        font-weight: 700;
-        color: $white;
-        margin: 0 auto 20px;
-    }
+  .section_title {
+    @include fontSizeHeight(40, 55);
+    font-weight: 700;
+    color: $white;
+    margin: 0 auto 20px;
+  }
 
 
-    .section_description {
-        @include fontSizeHeight(24, 32);
-        color: $white;
-        margin: 0 auto 20px;
-    }
+  .section_description {
+    @include fontSizeHeight(24, 32);
+    color: $white;
+    margin: 0 auto 20px;
+  }
 
-    .contact_row {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -30px;
-    }
+  .contact_row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -30px;
+  }
 
-    .left_col {
-        flex: 1;
-        padding: 0 30px;
-    }
+  .left_col {
+    flex: 1;
+    padding: 0 30px;
+  }
 
-    .right_col {
-        flex: 0 0 500px;
-        max-width: 500px;
-        padding: 0 30px;
-    }
+  .right_col {
+    flex: 0 0 500px;
+    max-width: 500px;
+    padding: 0 30px;
+  }
 
-    .block_contact {
-        background: $siteColor;
+  .block_contact {
+    background: $siteColor;
+    border-radius: 25px;
+    padding: 24px 24px 32px;
+    margin-bottom: 24px;
+  }
+
+  .title_contact {
+    @include fontSizeHeight(36, 32);
+    color: $black;
+    margin: 0 auto 20px;
+  }
+
+  .email_block,
+  .phone_block {
+    @include fontSizeHeight(24, 32);
+    color: $black;
+  }
+
+  .social_list {
+    padding-top: 60px;
+  }
+
+  .social_title {
+    @include fontSizeHeight(14, 24);
+    color: $black;
+    margin: 0 0 8px;
+  }
+
+  .social_link {
+    @extend %standardList;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    li {
+      a {
+        @include fontSizeHeight(14, 24);
+        background: $blue04;
+        padding: 3px 16px;
         border-radius: 25px;
-        padding: 24px 24px 32px;
-        margin-bottom: 24px;
-    }
-
-    .title_contact {
-        @include fontSizeHeight(36, 32);
-        color: $black;
-        margin: 0 auto 20px;
-    }
-
-    .email_block,
-    .phone_block {
-        @include fontSizeHeight(24, 32);
-        color: $black;
-    }
-
-    .social_list {
-        padding-top: 60px;
-    }
-
-    .social_title {
-        @include fontSizeHeight(14, 24);
-        color: $black;
-        margin: 0 0 8px;
-    }
-
-    .social_link {
-        @extend %standardList;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 8px;
-
-        li {
-            a {
-                @include fontSizeHeight(14, 24);
-                background: $blue04;
-                padding: 3px 16px;
-                border-radius: 25px;
-                color: $white;
-                @extend %opacityHover;
-
-            }
-        }
-    }
-
-    .download_btn {
-        background: $siteColor;
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: row-reverse;
-        padding: 22px 26px;
-        @include fontSizeHeight(14, 24);
-        color: $black;
+        color: $white;
         @extend %opacityHover;
+
+      }
     }
+  }
+
+  .download_btn {
+    background: $siteColor;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 22px 26px;
+    @include fontSizeHeight(14, 24);
+    color: $black;
+    @extend %opacityHover;
+  }
 
 }
 
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding-bottom: 40px;
+
+  .footer_logo {
+    padding: 240px 0 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    padding-bottom: 40px;
 
-    .footer_logo {
-        padding: 240px 0 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img {
-            display: block;
-            width: auto;
-            max-width: 100%;
-            height: 189px;
-            object-fit: contain;
-            object-position: left top;
-            margin-bottom: 30px;
-        }
+    img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: 189px;
+      object-fit: contain;
+      object-position: left top;
+      margin-bottom: 30px;
     }
+  }
 
-    .copyrights {
-        @include fontSizeHeight(16, 25);
-        font-weight: 400;
-        color: $white;
-    }
+  .copyrights {
+    @include fontSizeHeight(16, 25);
+    font-weight: 400;
+    color: $white;
+  }
 
 }
 
 .landing_modals {
-    background: rgba($gray36, 80%);
+  background: rgba($gray36, 80%);
 
-    .close_btn {
-        margin-left: auto;
-        color: $light;
+  .close_btn {
+    margin-left: auto;
+    color: $light;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+
+  .modal_container {
+    background: $black17;
+    padding: 24px;
+    max-width: 604px;
+    justify-content: center;
+    min-height: 720px;
+    position: relative;
+    width: 100%;
+    flex: 1;
+
+    &:has(.check_block) {
+      min-height: auto;
+
+      .check_block {
+        margin-top: 60px;
+      }
+
+      .field_col:last-child {
+        margin-bottom: 0;
+      }
+
+      .valid_btn {
+        margin-top: 50px;
+      }
+    }
+
+    &:has(.radio_block) {
+      .valid_btn {
+        margin-top: 40px
+      }
+    }
+
+  }
+
+  .modal_body {
+    padding: 0;
+    max-width: 364px;
+    width: 100%;
+    margin: 0 auto;
+    //flex: 1;
+    //max-height: 300px;
+  }
+
+  .modal_title {
+    color: $light;
+    @include fontSizeHeight(20, 25);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .modal_description {
+    color: $light;
+    @include fontSizeHeight(14, 18);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .fields_group {
+    margin: 70px 0 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 288px;
+    padding-left: 20px;
+    padding-right: 20px;
+    @include customScroll(4px, 2px, 2px, rgb($grayCf, 12%), rgb($blue51, 25%));
+  }
+
+  .field_col {
+    margin-bottom: 40px;
+  }
+
+  .field_block {
+    @include placeholder {
+      color: rgba($white, 50%);
+      @include fontSizeHeight(12, 18);
+      font-weight: 700;
+    }
+
+    &:has(.icon_hide, .icon_show) {
+      input {
+        padding-right: 40px;
+      }
+    }
+
+    .icon_hide,
+    .icon_show {
+      background: none;
+      border: none;
+
+      &:before {
         position: absolute;
-        top: 24px;
-        right: 24px;
-    }
-
-    .modal_container {
-        background: $black17;
-        padding: 24px;
-        max-width: 604px;
-        justify-content: center;
-        min-height: 720px;
-        position: relative;
-        width: 100%;
-        flex: 1;
-
-        &:has(.check_block) {
-            min-height: auto;
-
-            .check_block {
-                margin-top: 60px;
-            }
-
-            .field_col:last-child {
-                margin-bottom: 0;
-            }
-
-            .valid_btn {
-                margin-top: 50px;
-            }
-        }
-
-        &:has(.radio_block) {
-            .valid_btn {
-                margin-top: 40px
-            }
-        }
-
-    }
-
-    .modal_body {
-        padding: 0;
-        max-width: 364px;
-        width: 100%;
-        margin: 0 auto;
-        //flex: 1;
-        //max-height: 300px;
-    }
-
-    .modal_title {
         color: $light;
-        @include fontSizeHeight(20, 25);
-        font-weight: 700;
-        margin-bottom: 8px;
-        text-align: center;
+        right: 15px;
+        top: 13px;
+        font-size: 20px;
+        line-height: 15px;
+      }
     }
 
-    .modal_description {
-        color: $light;
-        @include fontSizeHeight(14, 18);
-        margin-bottom: 8px;
-        text-align: center;
+    select,
+    input {
+      border: 1px solid rgba($grayCf, 12%);
+      background: rgba($blue51, 25%);
+      color: $white;
+
+      &:focus {
+        border: 1px solid rgba($textColor, 0.12);
+        background: $blue2;
+      }
+    }
+  }
+
+  .valid_btn {
+    @include fontSizeHeight(16, 25);
+    font-weight: 400;
+    background: $blue04;
+    border-radius: 50px;
+    padding: 12px 46px;
+    border: 1px solid transparent;
+    color: $black;
+    margin: 20px auto 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: max-content;
+    @extend %opacityHover;
+  }
+
+  .modal_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0;
+    max-width: 364px;
+    width: 100%;
+    margin: 0 auto;
+    gap: 13px;
+    text-align: center;
+
+    &:has(>.btn_modal:only-child) {
+      justify-content: center;
     }
 
-    .fields_group {
-        margin: 70px 0 0;
-        overflow-x: hidden;
-        overflow-y: auto;
-        max-height: 288px;
-        padding-left: 20px;
-        padding-right: 20px;
-        @include customScroll(4px, 2px, 2px, rgb($grayCf, 12%), rgb($blue51, 25%));
-    }
+    a,
+    .btn_modal,
+    button {
+      background: none;
+      color: $light;
+      @include fontSizeHeight(14, 18);
+      @extend %siteColorHover;
 
+    }
+  }
+
+  .fields_group:has(.inner_title ) {
     .field_col {
-        margin-bottom: 40px;
+      text-align: center;
+      color: $light;
+      @include fontSizeHeight(14, 18);
     }
 
-    .field_block {
-        @include placeholder {
-            color: rgba($white, 50%);
-            @include fontSizeHeight(12, 18);
-            font-weight: 700;
-        }
-
-        &:has(.icon_hide, .icon_show) {
-            input {
-                padding-right: 40px;
-            }
-        }
-
-        .icon_hide,
-        .icon_show {
-            background: none;
-            border: none;
-
-            &:before {
-                position: absolute;
-                color: $light;
-                right: 15px;
-                top: 13px;
-                font-size: 20px;
-                line-height: 15px;
-            }
-        }
-
-        select,
-        input {
-            border: 1px solid rgba($grayCf, 12%);
-            background: rgba($blue51, 25%);
-            color: $white;
-
-            &:focus {
-                border: 1px solid rgba($textColor, 0.12);
-                background: $blue2;
-            }
-        }
+    .radio_btn {
+      min-width: 180px;
     }
+  }
 
-    .valid_btn {
-        @include fontSizeHeight(16, 25);
-        font-weight: 400;
-        background: $blue04;
-        border-radius: 50px;
-        padding: 12px 46px;
-        border: 1px solid transparent;
-        color: $black;
-        margin: 20px auto 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: max-content;
-        @extend %opacityHover;
-    }
+  .field_col:has(.radio_block) {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
 
-    .modal_footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-top: 0;
-        max-width: 364px;
-        width: 100%;
-        margin: 0 auto;
-        gap: 13px;
-        text-align: center;
+  .radio_block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        &:has(>.btn_modal:only-child) {
-            justify-content: center;
-        }
+    input {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
 
-        a,
-        .btn_modal,
-        button {
-            background: none;
-            color: $light;
-            @include fontSizeHeight(14, 18);
-            @extend %siteColorHover;
-
-        }
-    }
-
-    .fields_group:has(.inner_title ) {
-        .field_col {
-            text-align: center;
-            color: $light;
-            @include fontSizeHeight(14, 18);
-        }
-
-        .radio_btn {
-            min-width: 180px;
-        }
-    }
-
-    .field_col:has(.radio_block) {
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-    }
-
-    .radio_block {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        input {
-            position: absolute;
-            opacity: 0;
-            width: 1px;
-            height: 1px;
-
-            &:checked + .radio_btn {
-                color: $light;
-                pointer-events: none;
-            }
-
-            &:focus-visible + .radio_btn::before {
-                outline: 2px solid rgba($light, .35);
-                outline-offset: 3px;
-            }
-        }
-
-        .radio_btn {
-            @extend %textUnSelect;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            position: relative;
-            color: $light;
-            min-width: 263px;
-            @include fontSizeHeight(14, 18);
-
-            &::before {
-                content: "";
-                display: block;
-                min-width: 16px;
-                width: 16px;
-                height: 16px;
-                margin-right: 8px;
-                border-radius: 50%;
-                box-sizing: border-box;
-                border: 1px solid $light;
-                background: radial-gradient($light 0px, transparent 0px);
-            }
-        }
-
-        input:checked + .radio_btn::before {
-            background: radial-gradient($light 4px, transparent calc(#{4px} + 1px));
-        }
-    }
-
-    .field_col:has(.check_block) {
-        max-width: 364px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .check_block {
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
+      &:checked + .radio_btn {
         color: $light;
-        @include fontSizeHeight(14, 20);
-        max-width: 323px;
-        width: 100%;
+        pointer-events: none;
+      }
 
-        ~ .error_hint {
-            text-align: left;
-
-            &:before {
-                display: none;
-            }
-        }
-
-        input {
-            @extend %maskedInput;
-
-            &:checked ~ span:before {
-                background: transparent;
-                color: $light;
-                font-size: 1.3rem;
-            }
-        }
-
-        > span {
-            color: $light;
-            cursor: pointer;
-            @extend %textUnSelect;
-            gap: unset;
-
-            &:before {
-                @extend %iconElement;
-                display: flex;
-                align-items: center;
-                align-self: flex-start;
-                justify-content: center;
-                min-width: 16px;
-                height: 16px;
-                border: 1px solid $light;
-                border-radius: 4px;
-                content: "\e91e";
-                font-size: 0;
-                font-weight: 700;
-                margin-right: 6px;
-                @include animStyle(border-color 0.3s);
-            }
-        }
-
-        &[hidden] {
-            width: 0;
-            height: 0;
-            overflow: hidden;
-        }
-
-        a {
-            color: $light;
-            text-decoration: underline;
-        }
-
-        &.has-error span:before {
-            border-color: $error;
-        }
+      &:focus-visible + .radio_btn::before {
+        outline: 2px solid rgba($light, .35);
+        outline-offset: 3px;
+      }
     }
+
+    .radio_btn {
+      @extend %textUnSelect;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: $light;
+      min-width: 263px;
+      @include fontSizeHeight(14, 18);
+
+      &::before {
+        content: "";
+        display: block;
+        min-width: 16px;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: 1px solid $light;
+        background: radial-gradient($light 0px, transparent 0px);
+      }
+    }
+
+    input:checked + .radio_btn::before {
+      background: radial-gradient($light 4px, transparent calc(#{4px} + 1px));
+    }
+  }
+
+  .field_col:has(.check_block) {
+    max-width: 364px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check_block {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    color: $light;
+    @include fontSizeHeight(14, 20);
+    max-width: 323px;
+    width: 100%;
+
+    ~ .error_hint {
+      text-align: left;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    input {
+      @extend %maskedInput;
+
+      &:checked ~ span:before {
+        background: transparent;
+        color: $light;
+        font-size: 1.3rem;
+      }
+    }
+
+    > span {
+      color: $light;
+      cursor: pointer;
+      @extend %textUnSelect;
+      gap: unset;
+
+      &:before {
+        @extend %iconElement;
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        justify-content: center;
+        min-width: 16px;
+        height: 16px;
+        border: 1px solid $light;
+        border-radius: 4px;
+        content: "\e91e";
+        font-size: 0;
+        font-weight: 700;
+        margin-right: 6px;
+        @include animStyle(border-color 0.3s);
+      }
+    }
+
+    &[hidden] {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    a {
+      color: $light;
+      text-decoration: underline;
+    }
+
+    &.has-error span:before {
+      border-color: $error;
+    }
+  }
 }
