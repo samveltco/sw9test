@@ -1657,17 +1657,6 @@
 <!--    </div>-->
 <!--</div>-->
 
-<!--<div class="popup_block order_details bulk_edit">-->
-<!--    <div class="popup_container">-->
-<!--        <div class="popup_head">-->
-<!--            <div class="popup_title">Bulk Edit</div>-->
-<!--            <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>-->
-<!--        </div>-->
-<!--        <div class="popup_body">-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 <!--<div class="popup_block details_payout">-->
 <!--    <div class="popup_container">-->
@@ -1676,7 +1665,7 @@
 <!--            <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>-->
 <!--        </div>-->
 <!--        <div class="popup_body">-->
-<!--            <div class="order_title">Tell us where you`d like to receive your payments-->
+<!--            <div class="order_title">Tell us where you`d like to receive your payments </div>-->
 <!--                <div>-->
 <!--                    <div class="fields_block">-->
 <!--                        <div class="field_row">-->
@@ -1761,8 +1750,6 @@
 <!--            <button class="standard_btn light_btn" aria-label="save as draft">Save</button>-->
 <!--        </div>-->
 <!--    </div>-->
-<!--</div>-->
-
 
 <!--<div class="modal_block certification_modal">-->
 <!--    <div class="modal_container">-->
@@ -1941,6 +1928,466 @@
 <!--    </div>-->
 <!--</div>-->
 
+
+<div class="popup_block bulk_edit showed">
+    <div class="popup_container">
+        <div class="popup_head">
+            <div class="popup_title">Bulk Edit</div>
+            <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>
+        </div>
+        <div class="popup_body">
+            <div class="order_title"><strong>WARNING!</strong> The checked boxes will override ALL DATA in selected work orders</div>
+            
+            <!-- Section 1: Edit data & time -->
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="edit_datetime" checked>
+                    Edit data & time
+                </label>
+                <div class="section_content">
+                    <div class="field_col">
+                        <label class="field_name" for="date_start">Date*</label>
+                        <div class="field_block">
+                            <input type="date" name="date_start" id="date_start" maxlength="50" placeholder="Title">
+                        </div>
+                        <div class="field_block">
+                            <input type="date" name="date_end" aria-label="" id="date_end" maxlength="50" placeholder="Title">
+                        </div>
+                    </div>
+                    <div class="field_col">
+                        <label class="field_name" for="time">Time*</label>
+                        <div class="field_block">
+                            <select name="time_start" aria-label="" id="time_start">
+                                <option>00:00</option>
+                                <option value="1">01:00</option>
+                                <option value="2">02:00</option>
+                                <option value="3">03:00</option>
+                                <option value="4">04:00</option>
+                            </select>
+                        </div>
+                        <div class="field_block">
+                            <select name="time_end" aria-label="" id="time_end">
+                                <option>00:00</option>
+                                <option value="1">01:00</option>
+                                <option value="2">02:00</option>
+                                <option value="3">03:00</option>
+                                <option value="4">04:00</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Edit pay -->
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="edit_pay" checked>
+                    Edit pay
+                </label>
+                <div class="section_content">
+                    <div class="subsection_title">Base Pay</div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Amount</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="base_amount" placeholder="Type"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Qty</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="base_qty" placeholder="Type"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Per</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <select name="base_per">
+                                    <option value="">Select</option>
+                                    <option value="hour">Hour</option>
+                                    <option value="day">Day</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <label class="check_btn">
+                            <input type="checkbox" name="pay_base_min">
+                            Pay base as min.
+                        </label>
+                    </div>
+                    
+                    <div class="subsection_title">How Pay is Divided</div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Communication</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="pay_communication" placeholder="Type"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Work</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="pay_work" placeholder="Type"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Deliverables</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="pay_deliverables" placeholder="Type"/>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="subsection_title">Variable Pay (Optional)</div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Amount</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="var_amount" placeholder="Type"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>After</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="var_after" placeholder="Type"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Max. Qty</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="var_max_qty" placeholder="Type"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Per</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <select name="var_per">
+                                    <option value="">Select</option>
+                                    <option value="hour">Hour</option>
+                                    <option value="day">Day</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="summary_amounts">
+                        <div class="amount_item">
+                            <div class="amount_label">Total Amount<br><span class="sub_label">Selected work order</span></div>
+                            <div class="amount_value">$0.00</div>
+                        </div>
+                        <div class="amount_item">
+                            <div class="amount_label">New Total Amount<br><span class="sub_label">Selected work order</span></div>
+                            <div class="amount_value">$0.00</div>
+                        </div>
+                        <div class="amount_item funds_remaining">
+                            <div class="amount_label">Funds Remaining</div>
+                            <div class="amount_value">$1,268.22</div>
+                        </div>
+                        <div class="amount_item funds_needed">
+                            <div class="amount_label">Funds Needed</div>
+                            <div class="amount_value">$0.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Edit pay location -->
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="edit_pay_location">
+                    Edit pay location
+                </label>
+                <div class="section_content">
+                    <div class="radio_block horizontal">
+                        <label class="check_btn">
+                            <input type="radio" name="pay_location" value="within" checked>
+                            Pay within app
+                        </label>
+                        <label class="check_btn">
+                            <input type="radio" name="pay_location" value="outside">
+                            Pay outside app
+                        </label>
+                    </div>
+                    
+                    <div class="summary_amounts">
+                        <div class="amount_item">
+                            <div class="amount_label">Total Amount<br><span class="sub_label">Selected work order</span></div>
+                            <div class="amount_value">$0.00</div>
+                        </div>
+                        <div class="amount_item">
+                            <div class="amount_label">New Total Amount<br><span class="sub_label">Selected work order</span></div>
+                            <div class="amount_value">$0.00</div>
+                        </div>
+                        <div class="amount_item funds_remaining">
+                            <div class="amount_label">Funds Remaining</div>
+                            <div class="amount_value">$1,268.22</div>
+                        </div>
+                        <div class="amount_item funds_needed">
+                            <div class="amount_label">Funds Needed</div>
+                            <div class="amount_value">$0.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Replace Contacts -->
+            <div class="edit_section">
+                <div class="funds_needed_top">Funds Needed: <span class="amount_value">$0.00</span></div>
+                <label class="check_btn">
+                    <input type="checkbox" name="replace_contacts">
+                    Replace Contacts
+                </label>
+                <div class="section_content">
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Name</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="contact_name" placeholder="Type here..."/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Role</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="text" name="contact_role" placeholder="Type here..."/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Email</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="email" name="contact_email" placeholder="Type here..."/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Office Phone</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="tel" name="contact_office_phone" placeholder="Type here..."/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label>Mobile</label>
+                        </div>
+                        <div class="field_block">
+                            <label>
+                                <input type="tel" name="contact_mobile" placeholder="Type here..."/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <button class="standard_btn lightest_btn icon_plus" aria-label="add contact">Add</button>
+                    </div>
+
+                    <div class="line_blocks">
+                        <div class="block_label">Contact</div>
+                        <div class="table_wrapper ">
+                            <table class="custom_table">
+                                <thead>
+                                <tr>
+                                    <th class="Name">Name</th>
+                                    <th class="Role">Role</th>
+                                    <th class="Phone">Office Phone</th>
+                                    <th class="Mobile">Mobile</th>
+                                    <th class="Email">Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td data-th="Name" >Kelly Follis</td>
+                                    <td data-th="Role" >asdas</td>
+                                    <td data-th="Office Phone"><a href="tel:(651) 260-0938">(651) 260-0938</a></td>
+                                    <td data-th="Mobile"><a href="tel:(651) 260-0938">(651) 260-0938</a></td>
+                                    <td data-th="Email"><a href="mailto:silvergel@yahoo.com">silvergel@yahoo.com</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Documents -->
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="delete_documents" checked>
+                    Delete All Documents
+                </label>
+            </div>
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="upload_documents" checked>
+                    Upload Documents
+                </label>
+                <div class="section_content">
+                    <button class="standard_btn lightest_btn icon_upload" aria-label="upload file">Upload file</button>
+                </div>
+            </div>
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="deliverables_required" checked>
+                    Deliverables Required
+                </label>
+            </div>
+
+            <!-- Section 6: Work Order Fields -->
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="wo_title" checked>
+                    WO Title:
+                </label>
+                <div class="section_content">
+                    <div class="field_block">
+                        <label>
+                            <input type="text" name="wo_title_value" placeholder="Type here."/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="work_type" checked>
+                    Work Type:
+                </label>
+                <div class="section_content">
+                    <div class="field_block">
+                        <label>
+                            <select name="work_type_value">
+                                <option value="">Type here</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="work_description" checked>
+                    Work Description:
+                </label>
+                <div class="section_content">
+                    <div class="field_block">
+                        <label>
+                            <textarea name="work_description_value" placeholder="Type here"></textarea>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="tools_required" checked>
+                    Tools Required:
+                </label>
+                <div class="section_content">
+                    <div class="field_block">
+                        <label>
+                            <textarea name="tools_required_value" placeholder="Type here"></textarea>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="confidential_info" checked>
+                    Confidential Information:
+                </label>
+                <div class="section_content">
+                    <div class="field_block">
+                        <label>
+                            <textarea name="confidential_info_value" placeholder="Type here"></textarea>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="company" checked>
+                    Company:
+                </label>
+                <div class="section_content">
+                    <div class="field_block">
+                        <label>
+                            <select name="company_value">
+                                <option value="">Type here.</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="edit_section">
+                <label class="check_btn">
+                    <input type="checkbox" name="project" checked>
+                    Project:
+                </label>
+                <div class="section_content">
+                    <div class="field_block">
+                        <label>
+                            <select name="project_value">
+                                <option value="">Type here</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal_footer">
+            <button class="standard_btn light_btn" aria-label="update">Update</button>
+        </div>
+    </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>

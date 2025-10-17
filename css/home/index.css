@@ -1286,6 +1286,199 @@ input[type=radio]:checked + .check_btn:before:after, .check_btn:has(input[type=r
   }
 }
 
+.bulk_edit .order_title {
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+.bulk_edit .line_blocks {
+  margin-top: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.bulk_edit .line_blocks::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.bulk_edit .line_blocks::-webkit-scrollbar-track {
+  background: #19252F;
+  border-radius: 2px;
+}
+.bulk_edit .line_blocks::-webkit-scrollbar-thumb {
+  background: #23425A;
+  border-radius: 2px;
+}
+.bulk_edit .line_blocks .block_label {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 100%;
+  line-height: 1.42em;
+}
+.bulk_edit .line_blocks .table_wrapper {
+  margin-top: 10px;
+}
+.bulk_edit .line_blocks table {
+  margin-bottom: 0;
+}
+.bulk_edit .line_blocks table td {
+  white-space: nowrap;
+}
+.bulk_edit .line_blocks a {
+  color: #CFCFCF;
+  font-size: 85.71%;
+  line-height: 1.66em;
+}
+.bulk_edit .field_col {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.bulk_edit .field_col:has(textarea) {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.bulk_edit .field_col .field_name {
+  color: #ffffff;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10px;
+}
+.bulk_edit .field_col .field_name a, .bulk_edit .field_col .field_name button {
+  display: inline;
+  color: #0484BB;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-left: 10px;
+  text-decoration: underline;
+  font-weight: inherit;
+}
+.bulk_edit .field_col:has(.field_block:nth-child(3)) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bulk_edit .field_col:has(.field_block:nth-child(3)) .field_name {
+  margin-bottom: 2px;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.bulk_edit .field_col:has(.field_block:nth-child(3)) .field_block {
+  flex: 1;
+  width: 40%;
+}
+.bulk_edit .field_col textarea {
+  height: 150px;
+}
+.bulk_edit .field_col + .add_btns {
+  margin-top: 31px;
+}
+.bulk_edit .edit_section {
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(207, 207, 207, 0.1);
+  padding-bottom: 20px;
+}
+.bulk_edit .edit_section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.bulk_edit .edit_section > .check_btn {
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  margin-left: -16px;
+}
+.bulk_edit .subsection_title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 100%;
+  line-height: 1.42em;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.bulk_edit textarea {
+  height: 113px;
+}
+.bulk_edit .summary_amounts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+.bulk_edit .summary_amounts .amount_item {
+  text-align: end;
+}
+.bulk_edit .summary_amounts .amount_item.funds_remaining, .bulk_edit .summary_amounts .amount_item:first-child {
+  text-align: start;
+}
+.bulk_edit .summary_amounts .amount_item .amount_label {
+  color: #CFCFCF;
+  font-size: 85.71%;
+  line-height: 1.25em;
+}
+.bulk_edit .summary_amounts .amount_item .amount_label .sub_label {
+  font-size: 10px;
+  opacity: 0.7;
+}
+.bulk_edit .summary_amounts .amount_item .amount_value {
+  font-size: 114.28%;
+  line-height: 1.56em;
+  font-weight: 700;
+  margin-top: 5px;
+}
+.bulk_edit .summary_amounts .amount_item.funds_remaining .amount_value {
+  color: #23425A;
+}
+.bulk_edit .summary_amounts .amount_item.funds_needed .amount_value {
+  color: #800000;
+}
+.bulk_edit .funds_needed_top {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.bulk_edit .funds_needed_top .amount_value {
+  color: #800000;
+  text-align: end;
+}
+.bulk_edit .radio_block.horizontal {
+  flex-wrap: wrap;
+  display: flex;
+}
+.bulk_edit .radio_block.horizontal .check_btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.bulk_edit .contact_info {
+  margin-top: 20px;
+}
+.bulk_edit .contact_info .contact_title {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+@media screen and (max-width: 1024px) {
+  .bulk_edit .popup_container {
+    max-width: 95vw;
+  }
+  .bulk_edit .summary_amounts {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .bulk_edit .summary_amounts .amount_item {
+    min-width: auto;
+  }
+  .bulk_edit .contact_table .contact_row {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.manage_teams .check_btn {
+  margin-bottom: 15px;
+}
+
 .new_note {
   overflow: hidden;
   opacity: 0;
@@ -3297,12 +3490,12 @@ body:has(.card_option) .order_details .order_list ~ .block_user {
 }
 
 .paging a.prev_page, .paging a.next_page, .paging button.prev_page, .paging button.next_page, .header .profile_btn, .field_block .step_btns span, .close_btn, .light_btn,
-.dark_btn, .paging a, .paging button, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
+.dark_btn, .bulk_edit .field_col .field_name a, .bulk_edit .field_col .field_name button, .paging a, .paging button, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
 .sidebar .logout_btn, .menu_btn, .search_btn, .switch_actions .actions_list button, .switch_btns button, .sort_type, .filter_btn,
 .reset_btn, .card_item a.message_count,
 .card_item button.message_count, .order_details .popup_body .contractor_info a, .lightest_btn,
 .curry_btn,
-.orange_btn, .check_btn, .modal_import .import_link, .certification_modal .modal_subtitle a, .custom_table a:before,
+.orange_btn, .check_btn, .modal_import .import_link, .certification_modal .modal_subtitle a, .bulk_edit .line_blocks a, .custom_table a:before,
 .custom_table .icon_delete:before,
 .custom_table .icon_pencil:before,
 .custom_table .icon_close:before, .details_payout .check_btn a, .order_details .line_blocks a,
@@ -3349,7 +3542,7 @@ body:has(.card_option) .order_details .order_list ~ .block_user {
   visibility: hidden;
 }
 
-.check_btn:active, .modal_import .import_link:active, .certification_modal .modal_subtitle a:active, .custom_table a:active:before,
+.check_btn:active, .modal_import .import_link:active, .certification_modal .modal_subtitle a:active, .bulk_edit .line_blocks a:active, .custom_table a:active:before,
 .custom_table .icon_delete:active:before,
 .custom_table .icon_pencil:active:before,
 .custom_table .icon_close:active:before, .details_payout .check_btn a:active, .order_details .line_blocks a:active,
@@ -3370,7 +3563,7 @@ body:has(.card_option) .order_details .order_list ~ .block_user {
 }
 
 .field_block .step_btns span:active, .close_btn:active, .light_btn:active,
-.dark_btn:active, .paging a:active, .paging button:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
+.dark_btn:active, .bulk_edit .field_col .field_name a:active, .bulk_edit .field_col .field_name button:active, .paging a:active, .paging button:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
 .sidebar .logout_btn:active, .menu_btn:active, .search_btn:active, .switch_actions .actions_list button:active, .switch_btns button:active, .sort_type:active, .filter_btn:active,
 .reset_btn:active, .card_item a.message_count:active,
 .card_item button.message_count:active, .order_details .popup_body .contractor_info a:active {
@@ -3387,7 +3580,7 @@ body:has(.card_option) .order_details .order_list ~ .block_user {
 }
 
 @media (hover: hover) {
-  .check_btn:hover, .modal_import .import_link:hover, .certification_modal .modal_subtitle a:hover, .custom_table a:hover:before,
+  .check_btn:hover, .modal_import .import_link:hover, .certification_modal .modal_subtitle a:hover, .bulk_edit .line_blocks a:hover, .custom_table a:hover:before,
   .custom_table .icon_delete:hover:before,
   .custom_table .icon_pencil:hover:before,
   .custom_table .icon_close:hover:before, .details_payout .check_btn a:hover, .order_details .line_blocks a:hover,
@@ -3405,7 +3598,7 @@ body:has(.card_option) .order_details .order_list ~ .block_user {
     color: #000000;
   }
   .field_block .step_btns span:hover, .close_btn:hover, .light_btn:hover,
-  .dark_btn:hover, .paging a:hover, .paging button:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
+  .dark_btn:hover, .bulk_edit .field_col .field_name a:hover, .bulk_edit .field_col .field_name button:hover, .paging a:hover, .paging button:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
   .sidebar .logout_btn:hover, .menu_btn:hover, .search_btn:hover, .switch_actions .actions_list button:hover, .switch_btns button:hover, .sort_type:hover, .filter_btn:hover,
   .reset_btn:hover, .card_item a.message_count:hover,
   .card_item button.message_count:hover, .order_details .popup_body .contractor_info a:hover {

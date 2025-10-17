@@ -736,11 +736,13 @@ button {
     flex: 1;
     margin-right: -20px;
   }
-  .field_row{
+
+  .field_row {
     flex-wrap: wrap;
   }
+
   .filter_shadow {
-    background: linear-gradient(180deg, rgba(25, 40, 51, 0) 0%, #192833 62.28%);
+    background: linear-gradient(180deg, rgba(25, 40, 51, 0) 0%, $coverBg 62.28%);
     position: absolute;
     left: 0;
     right: 15px;
@@ -787,9 +789,11 @@ button {
 
   .form_section {
     margin-bottom: 30px;
+
     .modal_subtitle {
       order: unset;
     }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -884,6 +888,233 @@ button {
     .modal_title {
       margin-top: 20px;
     }
+  }
+}
+
+.bulk_edit {
+
+  .order_title {
+    margin-bottom: 30px;
+    color: $white;
+  }
+
+  .line_blocks {
+    margin-top: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
+
+
+    .block_label {
+      color: $white;
+      font-weight: 700;
+      @include fontSizeHeight(14, 20);
+    }
+
+    .table_wrapper {
+      margin-top: 10px;
+    }
+
+    table {
+      margin-bottom: 0;
+
+      td {
+        white-space: nowrap;
+      }
+    }
+
+    a {
+      color: $textColor;
+      @extend %siteColorHover;
+      @include fontSizeHeight(12, 20);
+
+    }
+  }
+  .field_col {
+    @include colSize(12);
+    margin-bottom: 20px;
+
+    &:has(textarea) {
+      @include colSize(12);
+    }
+
+    .field_name {
+      color: $white;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+
+      a, button {
+        display: inline;
+        color: $secondColor;
+        border: none;
+        background: transparent;
+        padding: 0;
+        margin-left: 10px;
+        text-decoration: underline;
+        font-weight: inherit;
+        @extend %lightHover;
+      }
+    }
+
+    &:has(.field_block:nth-child(3)) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      .field_name {
+        margin-bottom: 2px;
+        @include colSize(12);
+      }
+
+      .field_block {
+        flex: 1;
+        width: 40%;
+      }
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    + .add_btns {
+      margin-top: 31px;
+    }
+  }
+
+  .edit_section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba($textColor, 0.1);
+    padding-bottom: 20px;
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    > .check_btn {
+      font-weight: 700;
+      color: $white;
+      margin-bottom: 15px;
+      margin-left: -16px;
+    }
+  }
+
+
+  .subsection_title {
+    color: $white;
+    font-weight: 700;
+    @include fontSizeHeight(14, 20);
+    margin-bottom: 15px;
+    margin-top: 20px;
+  }
+
+  textarea {
+    height: 113px;
+  }
+
+  .summary_amounts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+
+    .amount_item {
+      text-align: end;
+
+      &.funds_remaining,
+      &:first-child {
+        text-align: start;
+      }
+
+      .amount_label {
+        color: $textColor;
+        @include fontSizeHeight(12, 15);
+
+        .sub_label {
+          font-size: 10px;
+          opacity: 0.7;
+        }
+      }
+
+      .amount_value {
+        @include fontSizeHeight(16, 25);
+        font-weight: 700;
+        margin-top: 5px;
+      }
+
+      &.funds_remaining .amount_value {
+        color: $blue2;
+      }
+
+      &.funds_needed .amount_value {
+        color: $error;
+      }
+    }
+  }
+
+  .funds_needed_top {
+    color: $white;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .amount_value {
+      color: $error;
+      text-align: end;
+    }
+  }
+
+
+  .radio_block.horizontal {
+    flex-wrap: wrap;
+    display: flex;
+
+    .check_btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  .contact_info {
+    margin-top: 20px;
+
+    .contact_title {
+      color: $white;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+  }
+
+  .radio_block.horizontal {
+    // Already exists from certification_modal, reuse
+  }
+
+  @include mediaTo($size960) {
+    .popup_container {
+      max-width: 95vw;
+    }
+
+    .summary_amounts {
+      flex-direction: column;
+      gap: 15px;
+
+      .amount_item {
+        min-width: auto;
+      }
+    }
+
+    .contact_table .contact_row {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+}
+
+.manage_teams {
+  .check_btn {
+    margin-bottom: 15px;
   }
 }
 
