@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="profile_inner form_account">
+            <div class="profile_inner form_account edit_modal">
                 <div class="profile_head">
                     <div class="profile_title">Edit account</div>
                     <button class="close_btn icon_close" aria-label="close" onclick="hideForm()"></button>
@@ -253,11 +253,11 @@
                     </div>
                     <div class="field_row">
                         <div class="field_name">
-                            <label class="field_name" for="CompanyName">Company Name</label>
+                            <label class="field_name" for="Website">Website</label>
                         </div>
                         <div class="field_block">
-                            <input type="text" name="CompanyName" id="CompanyName" maxlength="50"
-                                   placeholder="Company Name"/>
+                            <input type="text" name="Website" id="Website" maxlength="50"
+                                   placeholder="www.sourcew9.com"/>
                         </div>
                     </div>
                     <div class="field_row">
@@ -266,7 +266,7 @@
                         </div>
                         <div class="field_block">
                             <input type="text" name="CurrentPassword" id="CurrentPassword" maxlength="50"
-                                   placeholder="Current Password"/>
+                                   placeholder="************"/>
                             <button aria-label="Show password" class="icon_show"></button>
                         </div>
                     </div>
@@ -288,16 +288,190 @@
                                    placeholder="Confirm New Password"/>
                         </div>
                     </div>
+                    <div class="add_btns">
+                        <label class="standard_btn icon_upload">
+                            <input type="file" name="file_attach"/>
+                            Drag and drop your fail here or click here to add file
+                        </label>
+                    </div>
                     <div class="field_row">
                         <div class="field_name">
                             <label for="Bio">Bio / About</label>
                         </div>
                         <div class="field_block">
-                            <textarea id="Bio" name="Bio"
-                                      placeholder="We are a service project management company that handles networking, POS, and cabling work."
-                                      maxlength="500"></textarea>
+                            <textarea id="Bio" name="Bio" placeholder="I currently work at SouceWi doing project management and general operations.&#10;Platform search ties by words&#10;AimMagnat" maxlength="500"></textarea>
                         </div>
                     </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label for="Bio">Credentials</label>
+                        </div>
+                        <div class="field_block">
+                            <textarea id="Bio" name="Bio" placeholder="Project Management Product Management Quality Assurance" maxlength="500"></textarea>
+                        </div>
+                    </div>
+                    <div class="toolbox_container">
+                        <div class="toolbox_section">
+                            <div class="toolbox_header">
+                                <h3 class="toolbox_title">Minimum Toolbox</h3>
+                                <span class="required_label">REQUIRED</span>
+                            </div>
+                        <label class="check_btn">
+                            <input type="checkbox" name="minimum_toolbox" id="minimum_toolbox"/>
+                            I have a standard minimum tools and equipment needed for all work.
+                        </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">66/110 punch down tool, buttset, RJ45 crimpers, cable tester, 8' ladder, zip ties, velcro, smart phone, Toner, fish tape, hammer drill, Cordless Drill, PTouch Labeler or similar</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">Patch cables, Cat5 cable, RJ45 connectors, button clips, 3M gel connectors</div>
+                            </div>
+                            <div class="toolbox_categories">
+                                <button class="toolbox_category active">Cabling Toolbox</button>
+                                <button class="toolbox_category">POS Toolbox</button>
+                                <button class="toolbox_category">Desktop Toolbox</button>
+                                <button class="toolbox_category">Laptop Toolbox</button>
+                                <button class="toolbox_category">Digital Signage toolbox</button>
+                                <button class="toolbox_category active">Networking Toolbox</button>
+                                <button class="toolbox_category active">Telephony Toolbox</button>
+                                <button class="toolbox_category active">Printer Toolbox</button>
+                                <button class="toolbox_category">Project Management Toolbox</button>
+                                <button class="toolbox_category">Other Toolbox</button>
+                                <button class="toolbox_category">Audio/Visual Toolbox</button>
+                            </div>
+                        </div>
+                        <div class="toolbox_detail_section">
+                            <h3 class="toolbox_title">Networking Toolbox</h3>
+                            <label class="check_btn">
+                                <input type="checkbox" name="networking_toolbox" id="networking_toolbox" checked/>
+                                I have a standard minimum tools and equipment needed for all work.
+                            </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">56/110 punch down tool, buttset, RJ45 crimpers, cable tester, 8' ladder, zip ties, vacuum, smart phone, tone/fish tape, hammer drill, Cordless Drill, PTouch Labeler or similar</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">Patch cables, Cat5 cable, RJ45 connectors, button clips, 3M gel connectors</div>
+                            </div>
+                        </div>
+                        <div class="toolbox_detail_section">
+                            <h3 class="toolbox_title">Printer Toolbox</h3>
+                            <label class="check_btn">
+                                <input type="checkbox" name="printer_toolbox" id="printer_toolbox" checked/>
+                                I have a standard minimum tools and equipment needed for all work.
+                            </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">Cordless Drill, PTouch Labeler or similar</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">Compressed Air</div>
+                            </div>
+                        </div>
+                        <div class="toolbox_detail_section">
+                            <h3 class="toolbox_title">Cabling Toolbox</h3>
+                            <label class="check_btn">
+                                <input type="checkbox" name="cabling_toolbox" id="cabling_toolbox"/>
+                                I have a standard minimum tools and equipment needed for all work.
+                            </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">RJ45 crimpers, cable tester, 8' ladder, toner, fish tape, Hammer Drill, 10-16' Ladder, hole saw & bits, Stud Finder, Cordless Drill, PTouch Labeler or similar</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">Patch cables, Cat5 cable, RJ45 connectors</div>
+                            </div>
+                        </div>
+                        <div class="toolbox_detail_section">
+                            <h3 class="toolbox_title">POS Toolbox / Desktop Toolbox / Laptop Toolbox</h3>
+                            <label class="check_btn">
+                                <input type="checkbox" name="pos_toolbox" id="pos_toolbox"/>
+                                I have a standard minimum tools and equipment needed for all work.
+                            </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">Compressed air, Cordless handheld vacuum, Cordless Drill, PTouch Labeler or similar</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">Standard</div>
+                            </div>
+                        </div>
+                        <div class="toolbox_detail_section">
+                            <h3 class="toolbox_title">Digital Signage toolbox</h3>
+                            <label class="check_btn">
+                                <input type="checkbox" name="digital_signage_toolbox" id="digital_signage_toolbox"/>
+                                I have a standard minimum tools and equipment needed for all work.
+                            </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">RJ45 crimpers, cable tester, 8' ladder, toner, fish tape, Hammer Drill, 10-16' Ladder, hole saw & bits, Stud Finder, Cordless Drill, PTouch Labeler or similar</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">Standard</div>
+                            </div>
+                        </div>
+                        <div class="toolbox_detail_section">
+                            <h3 class="toolbox_title">Other Toolbox</h3>
+                            <label class="check_btn">
+                                <input type="checkbox" name="other_toolbox" id="other_toolbox" checked/>
+                                I have a standard minimum tools and equipment needed for all work.
+                            </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">Other Tools as Required/Based on Work Description</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">n/a</div>
+                            </div>
+                        </div>
+                        <div class="toolbox_detail_section">
+                            <h3 class="toolbox_title">Project Management Toolbox</h3>
+                            <label class="check_btn">
+                                <input type="checkbox" name="project_mgmt_toolbox" id="project_mgmt_toolbox"/>
+                                I have a standard minimum tools and equipment needed for all work.
+                            </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">Microsoft Office, FMS Buyer Access</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">n/a</div>
+                            </div>
+                        </div>
+                        <div class="toolbox_detail_section">
+                            <h3 class="toolbox_title">Audio/Visual Toolbox</h3>
+                            <label class="check_btn">
+                                <input type="checkbox" name="audio_visual_toolbox" id="audio_visual_toolbox"/>
+                                I have a standard minimum tools and equipment needed for all work.
+                            </label>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Toolbox Items:</div>
+                                <div class="item_text">Wire Splicing Kit, Multimeter, RJ45 Crimpers, cable tester, 8' ladder, Toner, Fish Tape, Hammer Drill, 10-16' Ladder, Hole saw & bits, Stud Finder, Cordless Drill, PTouch Labeler or similar</div>
+                            </div>
+                            <div class="toolbox_items">
+                                <div class="item_label">Standard Materials:</div>
+                                <div class="item_text">audio wire & wire connectors</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field_row">
+                        <div class="field_name">
+                            <label for="Bio">Other types of work I can do</label>
+                        </div>
+                        <div class="field_block">
+                            <textarea id="Bio" name="Bio" placeholder="Product Management" maxlength="500"></textarea>
+                        </div>
+                    </div>
+
                     <div class="profile_actions">
                         <button class="standard_btn dark_btn" aria-label="cancel" onclick="NewNoteHidden()">Cancel
                         </button>
@@ -1657,17 +1831,6 @@
 <!--    </div>-->
 <!--</div>-->
 
-<!--<div class="popup_block order_details bulk_edit">-->
-<!--    <div class="popup_container">-->
-<!--        <div class="popup_head">-->
-<!--            <div class="popup_title">Bulk Edit</div>-->
-<!--            <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>-->
-<!--        </div>-->
-<!--        <div class="popup_body">-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 <!--<div class="popup_block details_payout">-->
 <!--    <div class="popup_container">-->
@@ -1676,7 +1839,7 @@
 <!--            <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>-->
 <!--        </div>-->
 <!--        <div class="popup_body">-->
-<!--            <div class="order_title">Tell us where you`d like to receive your payments-->
+<!--            <div class="order_title">Tell us where you`d like to receive your payments </div>-->
 <!--                <div>-->
 <!--                    <div class="fields_block">-->
 <!--                        <div class="field_row">-->
@@ -1761,8 +1924,6 @@
 <!--            <button class="standard_btn light_btn" aria-label="save as draft">Save</button>-->
 <!--        </div>-->
 <!--    </div>-->
-<!--</div>-->
-
 
 <!--<div class="modal_block certification_modal">-->
 <!--    <div class="modal_container">-->
@@ -1941,6 +2102,466 @@
 <!--    </div>-->
 <!--</div>-->
 
+
+<!--<div class="popup_block bulk_edit showed">-->
+<!--    <div class="popup_container">-->
+<!--        <div class="popup_head">-->
+<!--            <div class="popup_title">Bulk Edit</div>-->
+<!--            <button class="close_btn icon_close" aria-label="close" onclick="hidePopup()"></button>-->
+<!--        </div>-->
+<!--        <div class="popup_body">-->
+<!--            <div class="order_title"><strong>WARNING!</strong> The checked boxes will override ALL DATA in selected work orders</div>-->
+<!--            -->
+<!--            &lt;!&ndash; Section 1: Edit data & time &ndash;&gt;-->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="edit_datetime" checked>-->
+<!--                    Edit data & time-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_col">-->
+<!--                        <label class="field_name" for="date_start">Date*</label>-->
+<!--                        <div class="field_block">-->
+<!--                            <input type="date" name="date_start" id="date_start" maxlength="50" placeholder="Title">-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <input type="date" name="date_end" aria-label="" id="date_end" maxlength="50" placeholder="Title">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_col">-->
+<!--                        <label class="field_name" for="time">Time*</label>-->
+<!--                        <div class="field_block">-->
+<!--                            <select name="time_start" aria-label="" id="time_start">-->
+<!--                                <option>00:00</option>-->
+<!--                                <option value="1">01:00</option>-->
+<!--                                <option value="2">02:00</option>-->
+<!--                                <option value="3">03:00</option>-->
+<!--                                <option value="4">04:00</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <select name="time_end" aria-label="" id="time_end">-->
+<!--                                <option>00:00</option>-->
+<!--                                <option value="1">01:00</option>-->
+<!--                                <option value="2">02:00</option>-->
+<!--                                <option value="3">03:00</option>-->
+<!--                                <option value="4">04:00</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Section 2: Edit pay &ndash;&gt;-->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="edit_pay" checked>-->
+<!--                    Edit pay-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="subsection_title">Base Pay</div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Amount</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="base_amount" placeholder="Type"/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Qty</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="base_qty" placeholder="Type"/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Per</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <select name="base_per">-->
+<!--                                    <option value="">Select</option>-->
+<!--                                    <option value="hour">Hour</option>-->
+<!--                                    <option value="day">Day</option>-->
+<!--                                </select>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <label class="check_btn">-->
+<!--                            <input type="checkbox" name="pay_base_min">-->
+<!--                            Pay base as min.-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                    -->
+<!--                    <div class="subsection_title">How Pay is Divided</div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Communication</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="pay_communication" placeholder="Type"/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Work</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="pay_work" placeholder="Type"/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Deliverables</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="pay_deliverables" placeholder="Type"/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    -->
+<!--                    <div class="subsection_title">Variable Pay (Optional)</div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Amount</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="var_amount" placeholder="Type"/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>After</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="var_after" placeholder="Type"/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Max. Qty</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="var_max_qty" placeholder="Type"/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Per</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <select name="var_per">-->
+<!--                                    <option value="">Select</option>-->
+<!--                                    <option value="hour">Hour</option>-->
+<!--                                    <option value="day">Day</option>-->
+<!--                                </select>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    -->
+<!--                    <div class="summary_amounts">-->
+<!--                        <div class="amount_item">-->
+<!--                            <div class="amount_label">Total Amount<br><span class="sub_label">Selected work order</span></div>-->
+<!--                            <div class="amount_value">$0.00</div>-->
+<!--                        </div>-->
+<!--                        <div class="amount_item">-->
+<!--                            <div class="amount_label">New Total Amount<br><span class="sub_label">Selected work order</span></div>-->
+<!--                            <div class="amount_value">$0.00</div>-->
+<!--                        </div>-->
+<!--                        <div class="amount_item funds_remaining">-->
+<!--                            <div class="amount_label">Funds Remaining</div>-->
+<!--                            <div class="amount_value">$1,268.22</div>-->
+<!--                        </div>-->
+<!--                        <div class="amount_item funds_needed">-->
+<!--                            <div class="amount_label">Funds Needed</div>-->
+<!--                            <div class="amount_value">$0.00</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Section 3: Edit pay location &ndash;&gt;-->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="edit_pay_location">-->
+<!--                    Edit pay location-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="radio_block horizontal">-->
+<!--                        <label class="check_btn">-->
+<!--                            <input type="radio" name="pay_location" value="within" checked>-->
+<!--                            Pay within app-->
+<!--                        </label>-->
+<!--                        <label class="check_btn">-->
+<!--                            <input type="radio" name="pay_location" value="outside">-->
+<!--                            Pay outside app-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                    -->
+<!--                    <div class="summary_amounts">-->
+<!--                        <div class="amount_item">-->
+<!--                            <div class="amount_label">Total Amount<br><span class="sub_label">Selected work order</span></div>-->
+<!--                            <div class="amount_value">$0.00</div>-->
+<!--                        </div>-->
+<!--                        <div class="amount_item">-->
+<!--                            <div class="amount_label">New Total Amount<br><span class="sub_label">Selected work order</span></div>-->
+<!--                            <div class="amount_value">$0.00</div>-->
+<!--                        </div>-->
+<!--                        <div class="amount_item funds_remaining">-->
+<!--                            <div class="amount_label">Funds Remaining</div>-->
+<!--                            <div class="amount_value">$1,268.22</div>-->
+<!--                        </div>-->
+<!--                        <div class="amount_item funds_needed">-->
+<!--                            <div class="amount_label">Funds Needed</div>-->
+<!--                            <div class="amount_value">$0.00</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Section 4: Replace Contacts &ndash;&gt;-->
+<!--            <div class="edit_section">-->
+<!--                <div class="funds_needed_top">Funds Needed: <span class="amount_value">$0.00</span></div>-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="replace_contacts">-->
+<!--                    Replace Contacts-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Name</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="contact_name" placeholder="Type here..."/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Role</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="text" name="contact_role" placeholder="Type here..."/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Email</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="email" name="contact_email" placeholder="Type here..."/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Office Phone</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="tel" name="contact_office_phone" placeholder="Type here..."/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <div class="field_name">-->
+<!--                            <label>Mobile</label>-->
+<!--                        </div>-->
+<!--                        <div class="field_block">-->
+<!--                            <label>-->
+<!--                                <input type="tel" name="contact_mobile" placeholder="Type here..."/>-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="field_row">-->
+<!--                        <button class="standard_btn lightest_btn icon_plus" aria-label="add contact">Add</button>-->
+<!--                    </div>-->
+
+<!--                    <div class="line_blocks">-->
+<!--                        <div class="block_label">Contact</div>-->
+<!--                        <div class="table_wrapper ">-->
+<!--                            <table class="custom_table">-->
+<!--                                <thead>-->
+<!--                                <tr>-->
+<!--                                    <th class="Name">Name</th>-->
+<!--                                    <th class="Role">Role</th>-->
+<!--                                    <th class="Phone">Office Phone</th>-->
+<!--                                    <th class="Mobile">Mobile</th>-->
+<!--                                    <th class="Email">Email</th>-->
+<!--                                </tr>-->
+<!--                                </thead>-->
+<!--                                <tbody>-->
+<!--                                <tr>-->
+<!--                                    <td data-th="Name" >Kelly Follis</td>-->
+<!--                                    <td data-th="Role" >asdas</td>-->
+<!--                                    <td data-th="Office Phone"><a href="tel:(651) 260-0938">(651) 260-0938</a></td>-->
+<!--                                    <td data-th="Mobile"><a href="tel:(651) 260-0938">(651) 260-0938</a></td>-->
+<!--                                    <td data-th="Email"><a href="mailto:silvergel@yahoo.com">silvergel@yahoo.com</a></td>-->
+<!--                                </tr>-->
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Section 5: Documents &ndash;&gt;-->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="delete_documents" checked>-->
+<!--                    Delete All Documents-->
+<!--                </label>-->
+<!--            </div>-->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="upload_documents" checked>-->
+<!--                    Upload Documents-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <button class="standard_btn lightest_btn icon_upload" aria-label="upload file">Upload file</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="deliverables_required" checked>-->
+<!--                    Deliverables Required-->
+<!--                </label>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Section 6: Work Order Fields &ndash;&gt;-->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="wo_title" checked>-->
+<!--                    WO Title:-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_block">-->
+<!--                        <label>-->
+<!--                            <input type="text" name="wo_title_value" placeholder="Type here."/>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="work_type" checked>-->
+<!--                    Work Type:-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_block">-->
+<!--                        <label>-->
+<!--                            <select name="work_type_value">-->
+<!--                                <option value="">Type here</option>-->
+<!--                            </select>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="work_description" checked>-->
+<!--                    Work Description:-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_block">-->
+<!--                        <label>-->
+<!--                            <textarea name="work_description_value" placeholder="Type here"></textarea>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="tools_required" checked>-->
+<!--                    Tools Required:-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_block">-->
+<!--                        <label>-->
+<!--                            <textarea name="tools_required_value" placeholder="Type here"></textarea>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="confidential_info" checked>-->
+<!--                    Confidential Information:-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_block">-->
+<!--                        <label>-->
+<!--                            <textarea name="confidential_info_value" placeholder="Type here"></textarea>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="company" checked>-->
+<!--                    Company:-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_block">-->
+<!--                        <label>-->
+<!--                            <select name="company_value">-->
+<!--                                <option value="">Type here.</option>-->
+<!--                            </select>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="edit_section">-->
+<!--                <label class="check_btn">-->
+<!--                    <input type="checkbox" name="project" checked>-->
+<!--                    Project:-->
+<!--                </label>-->
+<!--                <div class="section_content">-->
+<!--                    <div class="field_block">-->
+<!--                        <label>-->
+<!--                            <select name="project_value">-->
+<!--                                <option value="">Type here</option>-->
+<!--                            </select>-->
+<!--                        </label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="modal_footer">-->
+<!--            <button class="standard_btn light_btn" aria-label="update">Update</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script src="js/main.js"></script>
 </body>
