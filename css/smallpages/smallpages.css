@@ -166,7 +166,7 @@
   content: "\e936";
 }
 
-.icon_check:before, .check_btn:before {
+.icon_check:before, .edit_modal .check_btn:before, .check_btn:before {
   content: "\e937";
 }
 
@@ -296,7 +296,7 @@
   object-fit: cover;
 }
 
-.standard_btn:before, .primary_btn:before, .check_btn:before, [class*=icon_]:before, .standard_btn:after, .primary_btn:after, .check_btn:after, [class*=icon_]:after {
+.edit_modal .check_btn:before, .standard_btn:before, .primary_btn:before, .check_btn:before, [class*=icon_]:before, .edit_modal .check_btn:after, .standard_btn:after, .primary_btn:after, .check_btn:after, [class*=icon_]:after {
   font-family: "icon" !important;
   font-style: normal;
   font-weight: normal;
@@ -1470,6 +1470,249 @@ input[type=radio]:checked + .check_btn:before:after, .check_btn:has(input[type=r
 
 .manage_teams .check_btn {
   margin-bottom: 15px;
+}
+
+.edit_modal .add_btns {
+  margin: 30px 0 !important;
+}
+.edit_modal .field_row:has(textarea) {
+  flex-wrap: wrap;
+}
+.edit_modal .field_row:has(textarea) .field_name {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.edit_modal .profile_content {
+  width: 500px !important;
+}
+.edit_modal .resume_section {
+  margin-top: 20px;
+}
+.edit_modal .resume_section .file_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.edit_modal .resume_section .file_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background: #23425A;
+  border-radius: 10px;
+  color: #ffffff;
+}
+.edit_modal .resume_section .file_item span {
+  font-weight: 500;
+}
+.edit_modal .resume_section .file_item button {
+  background: none;
+  border: none;
+  color: #CFCFCF;
+  padding: 0;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.edit_modal .resume_section .file_item button:before {
+  display: block;
+}
+.edit_modal .resume_section .add_btns {
+  margin-top: 20px;
+}
+.edit_modal .credentials_section {
+  margin-top: 20px;
+}
+.edit_modal .credentials_section .credentials_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.edit_modal .credentials_section .credential_tag {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #23425A;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+.edit_modal .required_mark {
+  color: #CFCFCF;
+  font-size: 1.2rem;
+  margin-left: 5px;
+}
+.edit_modal .field_block textarea {
+  min-height: 150px;
+  padding-top: 16px;
+}
+.edit_modal .toolbox_container {
+  margin-top: 30px;
+  padding: 26px 10px;
+  background: #23425A;
+  border-radius: 20px;
+}
+.edit_modal .toolbox_section,
+.edit_modal .toolbox_detail_section {
+  margin-bottom: 20px;
+}
+.edit_modal .toolbox_section:last-child,
+.edit_modal .toolbox_detail_section:last-child {
+  margin-bottom: 0;
+}
+.edit_modal .toolbox_section .toolbox_header,
+.edit_modal .toolbox_detail_section .toolbox_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.edit_modal .toolbox_section .toolbox_title,
+.edit_modal .toolbox_detail_section .toolbox_title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 100%;
+  margin: 0 0 20px;
+}
+.edit_modal .toolbox_section .required_label,
+.edit_modal .toolbox_detail_section .required_label {
+  color: #23425A;
+  background: #800000;
+  font-size: 85.71%;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  display: flex;
+  border-radius: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.edit_modal .toolbox_section .check_btn,
+.edit_modal .toolbox_detail_section .check_btn {
+  margin-bottom: 20px;
+}
+.edit_modal .toolbox_section .toolbox_items,
+.edit_modal .toolbox_section .toolbox_materials,
+.edit_modal .toolbox_detail_section .toolbox_items,
+.edit_modal .toolbox_detail_section .toolbox_materials {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.edit_modal .toolbox_section .toolbox_items .item_label,
+.edit_modal .toolbox_section .toolbox_materials .item_label,
+.edit_modal .toolbox_detail_section .toolbox_items .item_label,
+.edit_modal .toolbox_detail_section .toolbox_materials .item_label {
+  color: #CFCFCF;
+  font-weight: 700;
+  font-size: 85.71%;
+  margin-bottom: 5px;
+  min-width: 120px;
+  padding-right: 10px;
+}
+.edit_modal .toolbox_section .toolbox_items .item_text,
+.edit_modal .toolbox_section .toolbox_materials .item_text,
+.edit_modal .toolbox_detail_section .toolbox_items .item_text,
+.edit_modal .toolbox_detail_section .toolbox_materials .item_text {
+  color: #CFCFCF;
+  font-weight: 275;
+  font-size: 85.71%;
+  line-height: 1.5;
+  margin-left: auto;
+}
+.edit_modal .toolbox_section .toolbox_categories,
+.edit_modal .toolbox_detail_section .toolbox_categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.edit_modal .toolbox_section .toolbox_category,
+.edit_modal .toolbox_detail_section .toolbox_category {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(207, 207, 207, 0.12);
+  background: transparent;
+  color: #CFCFCF;
+  font-size: 85.71%;
+  cursor: pointer;
+  -o-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
+@media (hover: hover) {
+  .edit_modal .toolbox_section .toolbox_category:hover,
+  .edit_modal .toolbox_detail_section .toolbox_category:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+.edit_modal .toolbox_section .toolbox_category.active,
+.edit_modal .toolbox_detail_section .toolbox_category.active {
+  background: #0484BB;
+  color: #ffffff;
+}
+.edit_modal .check_btn {
+  display: inline-flex;
+  vertical-align: top;
+  align-items: center;
+  gap: 13px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  color: #ffffff;
+}
+.edit_modal .check_btn:before {
+  display: block;
+  font-size: 0;
+  min-width: 16px;
+  aspect-ratio: 1;
+  border-radius: 3px;
+  color: #CFCFCF;
+  outline: 1px solid;
+  outline-offset: -1px;
+  margin-top: 2px;
+  -o-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.edit_modal .check_btn:has(:checked):before {
+  font-size: 1.6rem;
+}
+@media (hover: hover) {
+  .edit_modal .check_btn:hover:before {
+    color: #ffffff;
+  }
+}
+input[type=radio] + .edit_modal .check_btn:before, .edit_modal .check_btn:has(input[type=radio]):before {
+  border-radius: 50%;
+}
+input[type=radio]:checked + .edit_modal .check_btn:before, .edit_modal .check_btn:has(input[type=radio]:checked):before {
+  background: #23425A;
+  color: #CFCFCF;
+  font-size: 0;
+  position: relative;
+}
+input[type=radio]:checked + .edit_modal .check_btn:before:after, .edit_modal .check_btn:has(input[type=radio]:checked):before:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 768px) {
+  .edit_modal .toolbox_materials,
+  .edit_modal .toolbox_items {
+    flex-direction: column;
+  }
+  .edit_modal .item_text {
+    margin-left: 0 !important;
+  }
 }
 
 .new_note {
@@ -2990,10 +3233,10 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
 }
 
 .paging a.prev_page, .paging a.next_page, .paging button.prev_page, .paging button.next_page, .header .profile_btn, .field_block .step_btns span, .close_btn, .light_btn,
-.dark_btn, .bulk_edit .field_col .field_name a, .bulk_edit .field_col .field_name button, .paging a, .paging button, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
+.dark_btn, .bulk_edit .field_col .field_name a, .bulk_edit .field_col .field_name button, .edit_modal .resume_section .file_item button, .paging a, .paging button, .header .profile_info a, .sidebar_menu a, .sidebar_button a,
 .sidebar .logout_btn, .menu_btn, .lightest_btn,
 .curry_btn,
-.orange_btn, .check_btn, .modal_import .import_link, .certification_modal .modal_subtitle a, .bulk_edit .line_blocks a, .custom_table a:before,
+.orange_btn, .check_btn, .modal_import .import_link, .certification_modal .modal_subtitle a, .bulk_edit .line_blocks a, .edit_modal .check_btn, .custom_table a:before,
 .custom_table .icon_delete:before,
 .custom_table .icon_pencil:before,
 .custom_table .icon_close:before, .tools_section .head_section a, .history_transaction .field_row:not(:has(.field_block)) .field_name a {
@@ -3020,7 +3263,7 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
   transition: all 0.3s;
 }
 
-.field_block .step_btns span, .check_btn {
+.field_block .step_btns span, .check_btn, .edit_modal .check_btn {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -3029,7 +3272,7 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
   user-select: none;
 }
 
-.check_btn input {
+.check_btn input, .edit_modal .check_btn input {
   position: absolute;
   width: 0;
   height: 0;
@@ -3038,7 +3281,7 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
   visibility: hidden;
 }
 
-.check_btn:active, .modal_import .import_link:active, .certification_modal .modal_subtitle a:active, .bulk_edit .line_blocks a:active, .custom_table a:active:before,
+.check_btn:active, .modal_import .import_link:active, .certification_modal .modal_subtitle a:active, .bulk_edit .line_blocks a:active, .edit_modal .check_btn:active, .custom_table a:active:before,
 .custom_table .icon_delete:active:before,
 .custom_table .icon_pencil:active:before,
 .custom_table .icon_close:active:before, .tools_section .head_section a:active, .history_transaction .field_row:not(:has(.field_block)) .field_name a:active {
@@ -3057,7 +3300,7 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
 }
 
 .field_block .step_btns span:active, .close_btn:active, .light_btn:active,
-.dark_btn:active, .bulk_edit .field_col .field_name a:active, .bulk_edit .field_col .field_name button:active, .paging a:active, .paging button:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
+.dark_btn:active, .bulk_edit .field_col .field_name a:active, .bulk_edit .field_col .field_name button:active, .edit_modal .resume_section .file_item button:active, .paging a:active, .paging button:active, .header .profile_info a:active, .sidebar_menu a:active, .sidebar_button a:active,
 .sidebar .logout_btn:active, .menu_btn:active {
   color: #ffffff;
 }
@@ -3072,7 +3315,7 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
 }
 
 @media (hover: hover) {
-  .check_btn:hover, .modal_import .import_link:hover, .certification_modal .modal_subtitle a:hover, .bulk_edit .line_blocks a:hover, .custom_table a:hover:before,
+  .check_btn:hover, .modal_import .import_link:hover, .certification_modal .modal_subtitle a:hover, .bulk_edit .line_blocks a:hover, .edit_modal .check_btn:hover, .custom_table a:hover:before,
   .custom_table .icon_delete:hover:before,
   .custom_table .icon_pencil:hover:before,
   .custom_table .icon_close:hover:before, .tools_section .head_section a:hover, .history_transaction .field_row:not(:has(.field_block)) .field_name a:hover {
@@ -3088,7 +3331,7 @@ body:has(.manage_teams_section .recruits_section) .checkbox_list .check_btn {
     color: #000000;
   }
   .field_block .step_btns span:hover, .close_btn:hover, .light_btn:hover,
-  .dark_btn:hover, .bulk_edit .field_col .field_name a:hover, .bulk_edit .field_col .field_name button:hover, .paging a:hover, .paging button:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
+  .dark_btn:hover, .bulk_edit .field_col .field_name a:hover, .bulk_edit .field_col .field_name button:hover, .edit_modal .resume_section .file_item button:hover, .paging a:hover, .paging button:hover, .header .profile_info a:hover, .sidebar_menu a:hover, .sidebar_button a:hover,
   .sidebar .logout_btn:hover, .menu_btn:hover {
     color: #ffffff !important;
   }

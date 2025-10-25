@@ -1,50 +1,50 @@
 html {
-  height: 100%;
-  font-size: 10px;
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -ms-overflow-style: scrollbar;
-  -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color: transparent;
+    height: 100%;
+    font-size: 10px;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-size: 140%;
-  color: $textColor;
-  width: 100%;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  min-height: 100%;
-  font-family: "Poppins", sans-serif;
-  background: $mainBg;
-  @include mediaFrom($size768) {
-    &:has(.sidebar) {
-      padding-left: 85px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 140%;
+    color: $textColor;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100%;
+    font-family: "Poppins", sans-serif;
+    background: $mainBg;
+    @include mediaFrom($size768) {
+        &:has(.sidebar) {
+            padding-left: 85px;
+        }
     }
-  }
 
-  &:has(.popup_block.showed),
-  &:has(.profile_inner.opened),
-  &:has(.filter_inner.opened),
-  &:has(.modal_block.showed) {
-    overflow: hidden;
-  }
+    &:has(.popup_block.showed),
+    &:has(.profile_inner.opened),
+    &:has(.filter_inner.opened),
+    &:has(.modal_block.showed) {
+        overflow: hidden;
+    }
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100 dvh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100 dvh;
 }
 
 input,
@@ -53,1482 +53,1750 @@ textarea,
 button,
 a,
 .slick-slide {
-  outline: none !important;
+    outline: none !important;
 }
 
 a,
 a:focus,
 a:hover,
 button:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 a {
-  color: $siteColor;
+    color: $siteColor;
 
-  &:not([href]) {
-    pointer-events: none;
-  }
+    &:not([href]) {
+        pointer-events: none;
+    }
 }
 
 button {
-  cursor: pointer;
-  display: block;
+    cursor: pointer;
+    display: block;
 }
 
 img {
-  max-height: none;
-  border: none;
+    max-height: none;
+    border: none;
 }
 
 input {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 input,
 textarea,
 button {
-  font-family: inherit;
-  font-size: 100%;
+    font-family: inherit;
+    font-size: 100%;
 }
 
 .page_title {
-  margin: 0;
-  font-weight: 700;
-  color: $white;
-  @include fontSize(20);
-  display: flex;
-  align-items: center;
-  gap: 20px;
+    margin: 0;
+    font-weight: 700;
+    color: $white;
+    @include fontSize(20);
+    display: flex;
+    align-items: center;
+    gap: 20px;
 
-  &:before {
-    display: block;
-    font-size: 2.4rem;
-  }
+    &:before {
+        display: block;
+        font-size: 2.4rem;
+    }
 }
 
 .page_row {
-  display: flex;
-  flex-wrap: wrap;
-  @include rowMargin;
+    display: flex;
+    flex-wrap: wrap;
+    @include rowMargin;
 
-  .cb {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+    .cb {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
 .page_container {
-  width: 100%;
-  margin: 0 auto;
-  @include containerPadding;
-  @include mediaFrom($size1600) {
-    max-width: $container1920 + 2*$containerPadding;
-  }
-  @include mediaRange($size1440, $size1600) {
-    max-width: $container1600 + 2*$containerPadding;
-  }
-  @include mediaRange($size1280, $size1440) {
-    max-width: $container1440 + 2*$containerPadding;
-  }
-  @include mediaRange($size960, $size1280) {
-    max-width: $container1280 + 2*$containerPadding;
-  }
+    width: 100%;
+    margin: 0 auto;
+    @include containerPadding;
+    @include mediaFrom($size1600) {
+        max-width: $container1920 + 2*$containerPadding;
+    }
+    @include mediaRange($size1440, $size1600) {
+        max-width: $container1600 + 2*$containerPadding;
+    }
+    @include mediaRange($size1280, $size1440) {
+        max-width: $container1440 + 2*$containerPadding;
+    }
+    @include mediaRange($size960, $size1280) {
+        max-width: $container1280 + 2*$containerPadding;
+    }
 }
 
 .individual_hint,
 .drop_list,
 .drop_block {
-  display: none;
+    display: none;
 }
 
 .error_hint {
-  display: block;
-  max-height: 0;
-  @extend %all300;
-  overflow: hidden;
-  color: $error;
+    display: block;
+    max-height: 0;
+    @extend %all300;
+    overflow: hidden;
+    color: $error;
 }
 
 .help-block.form-error {
-  display: none !important;
+    display: none !important;
 }
 
 .has-error {
-  .error_hint,
-  ~ .error_hint {
-    max-height: 60px;
-  }
+    .error_hint,
+    ~ .error_hint {
+        max-height: 60px;
+    }
 }
 
 .field_block {
-  position: relative;
-  @include placeholder {
-    color: rgba($white, 0.4);
-  }
-
-  input,
-  textarea,
-  select {
-    width: 100%;
-    border: 1px solid rgba($textColor, 0.12);
-    background: $blue2;
-    padding: 8px 16px;
-    border-radius: 20px;
-    color: $white;
-
-    &:focus {
-      background: $mainBg;
-      color: rgba($white, 0.5);
-    }
-  }
-
-  textarea {
-    resize: none;
-    display: block;
-  }
-
-  select,
-  input {
-    height: 40px;
-    @include mediaTo($size960) {
-      height: 36px;
-    }
-  }
-
-  input:disabled {
-    border-color: transparent;
-    background: transparent;
-    color: $textColor;
-    opacity: 0.5;
-  }
-
-  .error_message {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 0 16px;
-    margin-top: 4px;
-    color: $error;
-    @include fontSize(12);
-    font-weight: 275;
-  }
-
-  .step_btns {
-    position: absolute;
-    right: 16px;
-    top: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    width: 20px;
-
-    &:before {
-      border-top: 2px solid;
-      content: "";
-      display: block;
-      border-radius: 2px;
-      margin: 2px 0;
-      order: 1;
+    position: relative;
+    @include placeholder {
+        color: rgba($white, 0.4);
     }
 
-    span {
-      display: flex;
-      justify-content: center;
-      flex: 1;
-      font-size: 0.8rem;
-      cursor: pointer;
-      @extend %textUnSelect;
-      @extend %lightHover;
+    input,
+    textarea,
+    select {
+        width: 100%;
+        border: 1px solid rgba($textColor, 0.12);
+        background: $blue2;
+        padding: 8px 16px;
+        border-radius: 20px;
+        color: $white;
 
-      &:first-child {
-        align-items: flex-end;
-      }
-
-      &:nth-child(2) {
-        align-items: flex-start;
-        order: 3;
-      }
-    }
-  }
-}
-
-.field_row {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-
-  &:not(:first-of-type) {
-    margin-top: 20px;
-  }
-
-  .field_name {
-    flex: 0 0 35%;
-    max-width: 35%;
-    align-self: center;
-
-    label {
-      color: $white;
-      font-weight: 700;
-    }
-  }
-
-  .field_hint {
-    font-weight: 275;
-    margin-top: 2px;
-  }
-
-  .field_block {
-    flex: 1;
-    width: 20%;
-
-    input {
-      width: 100%;
+        &:focus {
+            background: $mainBg;
+            color: rgba($white, 0.5);
+        }
     }
 
     textarea {
-      height: 113px;
+        resize: none;
+        display: block;
     }
 
-    &:has(.icon_hide, .icon_show) {
-      input {
-        padding-right: 40px;
-      }
+    select,
+    input {
+        height: 40px;
+        @include mediaTo($size960) {
+            height: 36px;
+        }
     }
 
-    .icon_hide,
-    .icon_show {
-      background: none;
-      border: none;
+    input:disabled {
+        border-color: transparent;
+        background: transparent;
+        color: $textColor;
+        opacity: 0.5;
+    }
 
-      &:before {
+    .error_message {
         position: absolute;
-        color: $light;
-        right: 15px;
-        top: 13px;
-        font-size: 20px;
-        line-height: 15px;
-      }
+        top: 100%;
+        left: 0;
+        padding: 0 16px;
+        margin-top: 4px;
+        color: $error;
+        @include fontSize(12);
+        font-weight: 275;
     }
 
-  }
+    .step_btns {
+        position: absolute;
+        right: 16px;
+        top: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        width: 20px;
 
-  &:has(textarea) {
+        &:before {
+            border-top: 2px solid;
+            content: "";
+            display: block;
+            border-radius: 2px;
+            margin: 2px 0;
+            order: 1;
+        }
+
+        span {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            font-size: 0.8rem;
+            cursor: pointer;
+            @extend %textUnSelect;
+            @extend %lightHover;
+
+            &:first-child {
+                align-items: flex-end;
+            }
+
+            &:nth-child(2) {
+                align-items: flex-start;
+                order: 3;
+            }
+        }
+    }
+}
+
+.field_row {
+    display: flex;
     align-items: flex-start;
+    gap: 20px;
 
-  }
+    &:not(:first-of-type) {
+        margin-top: 20px;
+    }
 
-  @include mediaTo($size576) {
-    flex-wrap: wrap;
-    gap: 4px;
     .field_name {
-      @include colSize(12);
+        flex: 0 0 35%;
+        max-width: 35%;
+        align-self: center;
 
-      label:first-child:last-child {
-        height: auto;
-        margin-top: 0
-      }
+        label {
+            color: $white;
+            font-weight: 700;
+        }
     }
+
+    .field_hint {
+        font-weight: 275;
+        margin-top: 2px;
+    }
+
     .field_block {
-      @include colSize(12);
+        flex: 1;
+        width: 20%;
 
-      + .field_block {
-        margin-top: 8px;
-      }
+        input {
+            width: 100%;
+        }
+
+        textarea {
+            height: 113px;
+        }
+
+        &:has(.icon_hide, .icon_show) {
+            input {
+                padding-right: 40px;
+            }
+        }
+
+        .icon_hide,
+        .icon_show {
+            background: none;
+            border: none;
+
+            &:before {
+                position: absolute;
+                color: $light;
+                right: 15px;
+                top: 13px;
+                font-size: 20px;
+                line-height: 15px;
+            }
+        }
+
     }
-  }
+
+    &:has(textarea) {
+        align-items: flex-start;
+
+    }
+
+    @include mediaTo($size576) {
+        flex-wrap: wrap;
+        gap: 4px;
+        .field_name {
+            @include colSize(12);
+
+            label:first-child:last-child {
+                height: auto;
+                margin-top: 0
+            }
+        }
+        .field_block {
+            @include colSize(12);
+
+            + .field_block {
+                margin-top: 8px;
+            }
+        }
+    }
 }
 
 .close_btn {
-  color: rgba($light, 0.5);
-  @extend %linkTypeBtn;
-  font-size: 2.4rem;
-  @extend %lightHover;
+    color: rgba($light, 0.5);
+    @extend %linkTypeBtn;
+    font-size: 2.4rem;
+    @extend %lightHover;
 
-  &:before {
-    display: block;
-  }
+    &:before {
+        display: block;
+    }
 
-  @include mediaTo($size960) {
-    padding: 0 12px;
-    margin: -12px -12px -12px auto;
-  }
+    @include mediaTo($size960) {
+        padding: 0 12px;
+        margin: -12px -12px -12px auto;
+    }
 }
 
 .check_btn {
-  display: inline-flex;
-  vertical-align: top;
-  align-items: flex-start;
-  gap: 13px;
-  position: relative;
-  overflow: hidden;
-  @extend %textUnSelect;
-  @extend %siteColorHover;
-  cursor: pointer;
-  @extend %iconElement;
-  @extend .icon_check;
-  color: $white;
-
-  input {
-    @extend %maskedInput;
-  }
-
-  &:before {
-    display: block;
-    font-size: 0;
-    min-width: 16px;
-    aspect-ratio: 1;
-    border-radius: 3px;
-    color: $textColor;
-    outline: 1px solid;
-    outline-offset: -1px;
-    margin-top: 2px;
-    @include animStyle(color 0.3s);
-  }
-
-  &:has(:checked):before {
-    font-size: 1.6rem;
-  }
-
-  @media(hover: hover) {
-    &:hover:before {
-      color: $white;
-    }
-  }
-
-  input[type="radio"] + &:before,
-  &:has(input[type="radio"]):before {
-    border-radius: 50%;
-  }
-
-  input[type="radio"]:checked + &:before,
-  &:has(input[type="radio"]:checked):before {
-    background: $blue2;
-    color: $textColor;
-    font-size: 0;
+    display: inline-flex;
+    vertical-align: top;
+    align-items: flex-start;
+    gap: 13px;
     position: relative;
+    overflow: hidden;
+    @extend %textUnSelect;
+    @extend %siteColorHover;
+    cursor: pointer;
+    @extend %iconElement;
+    @extend .icon_check;
+    color: $white;
 
-    &:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 6px;
-      height: 6px;
-      background: $white;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
+    input {
+        @extend %maskedInput;
     }
-  }
+
+    &:before {
+        display: block;
+        font-size: 0;
+        min-width: 16px;
+        aspect-ratio: 1;
+        border-radius: 3px;
+        color: $textColor;
+        outline: 1px solid;
+        outline-offset: -1px;
+        margin-top: 2px;
+        @include animStyle(color 0.3s);
+    }
+
+    &:has(:checked):before {
+        font-size: 1.6rem;
+    }
+
+    @media(hover: hover) {
+        &:hover:before {
+            color: $white;
+        }
+    }
+
+    input[type="radio"] + &:before,
+    &:has(input[type="radio"]):before {
+        border-radius: 50%;
+    }
+
+    input[type="radio"]:checked + &:before,
+    &:has(input[type="radio"]:checked):before {
+        background: $blue2;
+        color: $textColor;
+        font-size: 0;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: $white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 }
 
 .cb {
-  display: block;
-  clear: both;
+    display: block;
+    clear: both;
 }
 
 .secondary_btn {
-  @extend %secondaryBtn;
+    @extend %secondaryBtn;
 }
 
 .standard_text {
-  @extend %standardText;
+    @extend %standardText;
 }
 
 .hidden_label {
-  display: none;
+    display: none;
 }
 
 @keyframes loadAnimation {
-  9% {
-    box-shadow: none;
-  }
-  10% {
-    box-shadow: -8px 0 0;
-  }
-  35% {
-    box-shadow: -8px 0 0;
-  }
-  35.1% {
-    box-shadow: -8px 0 0, 8px 0 0;
-  }
-  60% {
-    box-shadow: -8px 0 0, 8px 0 0;
-  }
-  60.1% {
-    box-shadow: -8px 0 0, 8px 0 0, 24px 0 0;
-  }
-  85% {
-    box-shadow: -8px 0 0, 8px 0 0, 24px 0 0;
-  }
-  85.1% {
-    box-shadow: none
-  }
-  100% {
-    box-shadow: none
-  }
+    9% {
+        box-shadow: none;
+    }
+    10% {
+        box-shadow: -8px 0 0;
+    }
+    35% {
+        box-shadow: -8px 0 0;
+    }
+    35.1% {
+        box-shadow: -8px 0 0, 8px 0 0;
+    }
+    60% {
+        box-shadow: -8px 0 0, 8px 0 0;
+    }
+    60.1% {
+        box-shadow: -8px 0 0, 8px 0 0, 24px 0 0;
+    }
+    85% {
+        box-shadow: -8px 0 0, 8px 0 0, 24px 0 0;
+    }
+    85.1% {
+        box-shadow: none
+    }
+    100% {
+        box-shadow: none
+    }
 }
 
 .content {
-  padding: 36px 20px;
-  flex: 1;
-  @include mediaFrom($size576) {
-    .welcome_block {
-      display: none;
+    padding: 36px 20px;
+    flex: 1;
+    @include mediaFrom($size576) {
+        .welcome_block {
+            display: none;
+        }
     }
-  }
-  @include mediaTo($size576) {
-    padding-top: 16px;
-    .welcome_block {
-      padding-bottom: 12px;
+    @include mediaTo($size576) {
+        padding-top: 16px;
+        .welcome_block {
+            padding-bottom: 12px;
+        }
     }
-  }
 }
 
 .standard_btn {
-  height: 40px;
-  border: 1px solid rgba($textColor, 0.12);
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  gap: 8px;
-  @extend %iconElement;
-  border-radius: 20px;
+    height: 40px;
+    border: 1px solid rgba($textColor, 0.12);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 8px;
+    @extend %iconElement;
+    border-radius: 20px;
 
-  &:before {
-    display: block;
-  }
-
-  @include mediaTo($size960) {
-    height: 36px;
-  }
-
-  &:has(input) {
-    position: relative;
-
-    input {
-      @extend %coverLayer;
-      opacity: 0;
-      z-index: 1;
+    &:before {
+        display: block;
     }
-  }
+
+    @include mediaTo($size960) {
+        height: 36px;
+    }
+
+    &:has(input) {
+        position: relative;
+
+        input {
+            @extend %coverLayer;
+            opacity: 0;
+            z-index: 1;
+        }
+    }
 }
 
 .light_btn {
-  background: $secondColor;
+    background: $secondColor;
 }
 
 .dark_btn {
-  background: $siteColor;
+    background: $siteColor;
 }
 
 .lightest_btn {
-  background: $light;
+    background: $light;
 }
 
 .curry_btn {
-  background-color: $B3;
+    background-color: $B3;
 }
 
 .orange_btn {
-  background-color: $B2;
+    background-color: $B2;
 }
 
 .green_btn {
-  background-color: $B1;
+    background-color: $B1;
 }
 
 .light_btn,
 .dark_btn {
-  color: rgba($white, 0.8);
-  @extend %lightHover;
+    color: rgba($white, 0.8);
+    @extend %lightHover;
 
-  &:before {
-    color: $white;
-  }
+    &:before {
+        color: $white;
+    }
 }
 
 .lightest_btn,
 .curry_btn,
 .orange_btn {
-  color: rgba($mainBg, 0.8);
-  @extend %darkHover;
+    color: rgba($mainBg, 0.8);
+    @extend %darkHover;
 
-  &:before {
-    color: $mainBg;
-  }
+    &:before {
+        color: $mainBg;
+    }
 }
 
 .green_btn {
-  color: rgba($mainBg, 0.8);
-  @extend %opacityHover;
+    color: rgba($mainBg, 0.8);
+    @extend %opacityHover;
 
-  &:before {
-    color: $mainBg;
-  }
+    &:before {
+        color: $mainBg;
+    }
 }
 
 .primary_btn {
-  @extend .standard_btn;
-  color: $secondColor;
-  background: $mainBg;
-  @extend %standardBgHover;
-  @extend %all300;
+    @extend .standard_btn;
+    color: $secondColor;
+    background: $mainBg;
+    @extend %standardBgHover;
+    @extend %all300;
 
 }
 
 .modal {
-  &_block {
-    @include popupBlock($mainBg, 0.8);
-    @include popupFade(0.5s);
-    padding: 0 20px;
-  }
-
-  &_container {
-    @include popupContainer($coverBg, 514px, 40px);
-    border-radius: 20px;
-    margin: 0 auto;
-    min-height: 560px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  &_head {
-    display: flex;
-    flex-wrap: wrap;
-    color: $light;
-    gap: 10px;
-    align-items: flex-start;
-    padding-bottom: 20px;
-  }
-
-  &_body {
-    margin: auto 0;
-  }
-
-  &_title {
-    @include fontSize(20);
-    font-weight: 700;
-    flex: 1;
-  }
-
-  &_subtitle {
-    order: 1;
-    @include fontSize(12);
-    @include colSize(12);
-  }
-
-  .close_btn {
-    margin-top: 3px;
-  }
-
-  &_footer {
-    margin-top: auto;
-    display: flex;
-    justify-content: flex-end;
-    gap: 16px;
-    padding-top: 20px;
-  }
-
-  &_import {
-    .modal_body {
-      margin: 0;
-
-      .field_row {
-        margin-top: 60px;
-      }
+    &_block {
+        @include popupBlock($mainBg, 0.8);
+        @include popupFade(0.5s);
+        padding: 0 20px;
     }
 
-    .info_block {
-      margin-top: 20px;
-    }
-
-    .block_sub {
-      color: $white;
-      font-weight: 700;
-      @include fontSizeHeight(14, 20);
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    .import_link {
-      color: $light;
-      font-weight: 275;
-      @include fontSizeHeight(12, 15);
-      margin-bottom: 24px;
-      text-decoration: underline;
-      @extend %siteColorHover;
-    }
-  }
-
-  @include mediaTo($size960) {
     &_container {
-      width: 480px;
-      min-height: 520px;
-      padding: 20px;
-      max-width: 100%;
+        @include popupContainer($coverBg, 514px, 40px);
+        border-radius: 20px;
+        margin: 0 auto;
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
+    }
 
-      &:has(.msg_section) {
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
+    &_head {
+        display: flex;
+        flex-wrap: wrap;
+        color: $light;
+        gap: 10px;
+        align-items: flex-start;
+        padding-bottom: 20px;
     }
+
+    &_body {
+        margin: auto 0;
+    }
+
+    &_title {
+        @include fontSize(20);
+        font-weight: 700;
+        flex: 1;
+    }
+
+    &_subtitle {
+        order: 1;
+        @include fontSize(12);
+        @include colSize(12);
+    }
+
+    .close_btn {
+        margin-top: 3px;
+    }
+
+    &_footer {
+        margin-top: auto;
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        padding-top: 20px;
+    }
+
     &_import {
-      .modal_body .field_row {
-        margin-top: 40px;
-      }
+        .modal_body {
+            margin: 0;
+
+            .field_row {
+                margin-top: 60px;
+            }
+        }
+
+        .info_block {
+            margin-top: 20px;
+        }
+
+        .block_sub {
+            color: $white;
+            font-weight: 700;
+            @include fontSizeHeight(14, 20);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .import_link {
+            color: $light;
+            font-weight: 275;
+            @include fontSizeHeight(12, 15);
+            margin-bottom: 24px;
+            text-decoration: underline;
+            @extend %siteColorHover;
+        }
     }
-  }
+
+    @include mediaTo($size960) {
+        &_container {
+            width: 480px;
+            min-height: 520px;
+            padding: 20px;
+            max-width: 100%;
+
+            &:has(.msg_section) {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+        }
+        &_import {
+            .modal_body .field_row {
+                margin-top: 40px;
+            }
+        }
+    }
 
 }
 
 .route_modal {
-  .modal_head {
-    margin-left: auto;
-  }
+    .modal_head {
+        margin-left: auto;
+    }
 
-  .modal_description {
-    margin-top: 20px;
-  }
+    .modal_description {
+        margin-top: 20px;
+    }
 
-  .modal_body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    margin: 0;
-  }
+    .modal_body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        margin: 0;
+    }
 
-  .close_btn {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-  }
+    .close_btn {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+    }
 
-  .modal_container {
-    justify-content: center;
-  }
+    .modal_container {
+        justify-content: center;
+    }
 
-  .modal_footer {
-    margin: 0;
-    justify-content: center;
-  }
+    .modal_footer {
+        margin: 0;
+        justify-content: center;
+    }
 }
 
 .certification_modal {
-  .modal_container {
-    max-width: 1011px;
-    width: 100%;
-    position: relative;
-    margin: 0 auto;
-    margin-bottom: 35px;
-  }
-
-  .inner_container {
-    @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-right: 20px;
-    max-height: 730px;
-    flex: 1;
-    margin-right: -20px;
-  }
-
-  .field_row {
-    flex-wrap: wrap;
-  }
-
-  .filter_shadow {
-    background: linear-gradient(180deg, rgba(25, 40, 51, 0) 0%, $coverBg 62.28%);
-    position: absolute;
-    left: 0;
-    right: 15px;
-    height: 214px;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1;
-    @include animStyle(opacity 0.15s);
-
-    &.top_shadow {
-      top: 0;
-      @extend %horizontalRotate;
+    .modal_container {
+        max-width: 1011px;
+        width: 100%;
+        position: relative;
+        margin: 0 auto;
+        margin-bottom: 35px;
     }
 
-    &.bottom_shadow {
-      bottom: 0;
+    .inner_container {
+        @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-right: 20px;
+        max-height: 730px;
+        flex: 1;
+        margin-right: -20px;
     }
 
-    &.showed {
-      opacity: 1;
+    .field_row {
+        flex-wrap: wrap;
     }
-  }
 
-  .entity_type_section {
-    max-width: 282px;
-  }
+    .filter_shadow {
+        background: linear-gradient(180deg, rgba(25, 40, 51, 0) 0%, $coverBg 62.28%);
+        position: absolute;
+        left: 0;
+        right: 15px;
+        height: 214px;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1;
+        @include animStyle(opacity 0.15s);
 
-  .address_section {
-    max-width: 434px;
-  }
+        &.top_shadow {
+            top: 0;
+            @extend %horizontalRotate;
+        }
 
-  .modal_title {
-    margin-top: 50px;
-    margin-bottom: 10px;
-  }
+        &.bottom_shadow {
+            bottom: 0;
+        }
 
-  .modal_subtitle {
-    a {
-      text-decoration: underline;
-      color: inherit;
-      @extend %siteColorHover;
+        &.showed {
+            opacity: 1;
+        }
     }
-  }
 
-  .form_section {
-    margin-bottom: 30px;
+    .entity_type_section {
+        max-width: 282px;
+    }
+
+    .address_section {
+        max-width: 434px;
+    }
+
+    .modal_title {
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
 
     .modal_subtitle {
-      order: unset;
+        a {
+            text-decoration: underline;
+            color: inherit;
+            @extend %siteColorHover;
+        }
     }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+    .form_section {
+        margin-bottom: 30px;
 
-  .section_title {
-    color: $white;
-    font-weight: 700;
-    @include fontSize(14);
-    margin: 15px 0;
-  }
+        .modal_subtitle {
+            order: unset;
+        }
 
-  .section_description {
-    color: $textColor;
-    @include fontSize(12);
-    line-height: 1.4;
-    margin-bottom: 20px;
-
-    p {
-      margin-bottom: 10px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .radio_block {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 15px;
-
-    .check_btn {
-      margin-bottom: 0;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
-    &.horizontal {
-      flex-direction: row;
-      gap: 20px;
-      width: 100%;
-    }
-  }
-
-  .certification_text {
-    color: $textColor;
-    @include fontSize(12);
-    line-height: 1.4;
-    margin-bottom: 15px;
-
-    p {
-      margin-bottom: 10px;
+    .section_title {
+        color: $white;
+        font-weight: 700;
+        @include fontSize(14);
+        margin: 15px 0;
     }
 
-    .certification_list {
-      margin: 10px 0;
-      padding-left: 20px;
-
-      li {
-        margin-bottom: 8px;
+    .section_description {
+        color: $textColor;
+        @include fontSize(12);
         line-height: 1.4;
-      }
-    }
-  }
+        margin-bottom: 20px;
 
-  .certification_instructions {
-    color: $textColor;
-    @include fontSize(12);
-    line-height: 1.4;
-    margin-bottom: 20px;
+        p {
+            margin-bottom: 10px;
 
-    p {
-      margin: 0;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
     }
-  }
 
-  .field_row {
-    &:has(.radio_block) {
-      align-items: flex-start;
-    }
-  }
+    .radio_block {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
 
-  .modal_footer {
-    position: relative;
-    z-index: 1;
-  }
+        .check_btn {
+            margin-bottom: 0;
+        }
 
-  @include mediaTo($size960) {
-    .close_btn {
-      margin: 0;
+        &.horizontal {
+            flex-direction: row;
+            gap: 20px;
+            width: 100%;
+        }
     }
-    .modal_title {
-      margin-top: 20px;
+
+    .certification_text {
+        color: $textColor;
+        @include fontSize(12);
+        line-height: 1.4;
+        margin-bottom: 15px;
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .certification_list {
+            margin: 10px 0;
+            padding-left: 20px;
+
+            li {
+                margin-bottom: 8px;
+                line-height: 1.4;
+            }
+        }
     }
-  }
+
+    .certification_instructions {
+        color: $textColor;
+        @include fontSize(12);
+        line-height: 1.4;
+        margin-bottom: 20px;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .field_row {
+        &:has(.radio_block) {
+            align-items: flex-start;
+        }
+    }
+
+    .modal_footer {
+        position: relative;
+        z-index: 1;
+    }
+
+    @include mediaTo($size960) {
+        .close_btn {
+            margin: 0;
+        }
+        .modal_title {
+            margin-top: 20px;
+        }
+    }
 }
 
 .bulk_edit {
 
-  .order_title {
-    margin-bottom: 30px;
-    color: $white;
-  }
-
-  .line_blocks {
-    margin-top: 20px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
-
-
-    .block_label {
-      color: $white;
-      font-weight: 700;
-      @include fontSizeHeight(14, 20);
+    .order_title {
+        margin-bottom: 30px;
+        color: $white;
     }
 
-    .table_wrapper {
-      margin-top: 10px;
+    .line_blocks {
+        margin-top: 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
+
+
+        .block_label {
+            color: $white;
+            font-weight: 700;
+            @include fontSizeHeight(14, 20);
+        }
+
+        .table_wrapper {
+            margin-top: 10px;
+        }
+
+        table {
+            margin-bottom: 0;
+
+            td {
+                white-space: nowrap;
+            }
+        }
+
+        a {
+            color: $textColor;
+            @extend %siteColorHover;
+            @include fontSizeHeight(12, 20);
+
+        }
     }
 
-    table {
-      margin-bottom: 0;
-
-      td {
-        white-space: nowrap;
-      }
-    }
-
-    a {
-      color: $textColor;
-      @extend %siteColorHover;
-      @include fontSizeHeight(12, 20);
-
-    }
-  }
-  .field_col {
-    @include colSize(12);
-    margin-bottom: 20px;
-
-    &:has(textarea) {
-      @include colSize(12);
-    }
-
-    .field_name {
-      color: $white;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 10px;
-
-      a, button {
-        display: inline;
-        color: $secondColor;
-        border: none;
-        background: transparent;
-        padding: 0;
-        margin-left: 10px;
-        text-decoration: underline;
-        font-weight: inherit;
-        @extend %lightHover;
-      }
-    }
-
-    &:has(.field_block:nth-child(3)) {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-
-      .field_name {
-        margin-bottom: 2px;
+    .field_col {
         @include colSize(12);
-      }
+        margin-bottom: 20px;
 
-      .field_block {
-        flex: 1;
-        width: 40%;
-      }
+        &:has(textarea) {
+            @include colSize(12);
+        }
+
+        .field_name {
+            color: $white;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+
+            a, button {
+                display: inline;
+                color: $secondColor;
+                border: none;
+                background: transparent;
+                padding: 0;
+                margin-left: 10px;
+                text-decoration: underline;
+                font-weight: inherit;
+                @extend %lightHover;
+            }
+        }
+
+        &:has(.field_block:nth-child(3)) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            .field_name {
+                margin-bottom: 2px;
+                @include colSize(12);
+            }
+
+            .field_block {
+                flex: 1;
+                width: 40%;
+            }
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        + .add_btns {
+            margin-top: 31px;
+        }
+    }
+
+    .edit_section {
+        margin-bottom: 30px;
+        border-bottom: 1px solid rgba($textColor, 0.1);
+        padding-bottom: 20px;
+
+        &:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        > .check_btn {
+            font-weight: 700;
+            color: $white;
+            margin-bottom: 15px;
+            margin-left: -16px;
+        }
+    }
+
+
+    .subsection_title {
+        color: $white;
+        font-weight: 700;
+        @include fontSizeHeight(14, 20);
+        margin-bottom: 15px;
+        margin-top: 20px;
     }
 
     textarea {
-      height: 150px;
-    }
-
-    + .add_btns {
-      margin-top: 31px;
-    }
-  }
-
-  .edit_section {
-    margin-bottom: 30px;
-    border-bottom: 1px solid rgba($textColor, 0.1);
-    padding-bottom: 20px;
-
-    &:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-    }
-
-    > .check_btn {
-      font-weight: 700;
-      color: $white;
-      margin-bottom: 15px;
-      margin-left: -16px;
-    }
-  }
-
-
-  .subsection_title {
-    color: $white;
-    font-weight: 700;
-    @include fontSizeHeight(14, 20);
-    margin-bottom: 15px;
-    margin-top: 20px;
-  }
-
-  textarea {
-    height: 113px;
-  }
-
-  .summary_amounts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
-
-    .amount_item {
-      text-align: end;
-
-      &.funds_remaining,
-      &:first-child {
-        text-align: start;
-      }
-
-      .amount_label {
-        color: $textColor;
-        @include fontSizeHeight(12, 15);
-
-        .sub_label {
-          font-size: 10px;
-          opacity: 0.7;
-        }
-      }
-
-      .amount_value {
-        @include fontSizeHeight(16, 25);
-        font-weight: 700;
-        margin-top: 5px;
-      }
-
-      &.funds_remaining .amount_value {
-        color: $blue2;
-      }
-
-      &.funds_needed .amount_value {
-        color: $error;
-      }
-    }
-  }
-
-  .funds_needed_top {
-    color: $white;
-    font-weight: 700;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-
-    .amount_value {
-      color: $error;
-      text-align: end;
-    }
-  }
-
-
-  .radio_block.horizontal {
-    flex-wrap: wrap;
-    display: flex;
-
-    .check_btn {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
-
-  .contact_info {
-    margin-top: 20px;
-
-    .contact_title {
-      color: $white;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-  }
-
-  .radio_block.horizontal {
-    // Already exists from certification_modal, reuse
-  }
-
-  @include mediaTo($size960) {
-    .popup_container {
-      max-width: 95vw;
+        height: 113px;
     }
 
     .summary_amounts {
-      flex-direction: column;
-      gap: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 20px;
 
-      .amount_item {
-        min-width: auto;
-      }
+        .amount_item {
+            text-align: end;
+
+            &.funds_remaining,
+            &:first-child {
+                text-align: start;
+            }
+
+            .amount_label {
+                color: $textColor;
+                @include fontSizeHeight(12, 15);
+
+                .sub_label {
+                    font-size: 10px;
+                    opacity: 0.7;
+                }
+            }
+
+            .amount_value {
+                @include fontSizeHeight(16, 25);
+                font-weight: 700;
+                margin-top: 5px;
+            }
+
+            &.funds_remaining .amount_value {
+                color: $blue2;
+            }
+
+            &.funds_needed .amount_value {
+                color: $error;
+            }
+        }
     }
 
-    .contact_table .contact_row {
-      flex-direction: column;
-      gap: 15px;
+    .funds_needed_top {
+        color: $white;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+
+        .amount_value {
+            color: $error;
+            text-align: end;
+        }
     }
-  }
+
+
+    .radio_block.horizontal {
+        flex-wrap: wrap;
+        display: flex;
+
+        .check_btn {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    .contact_info {
+        margin-top: 20px;
+
+        .contact_title {
+            color: $white;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+    }
+
+    @include mediaTo($size960) {
+        .popup_container {
+            max-width: 95vw;
+        }
+
+        .summary_amounts {
+            flex-direction: column;
+            gap: 15px;
+
+            .amount_item {
+                min-width: auto;
+            }
+        }
+
+        .contact_table .contact_row {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
 }
 
 .manage_teams {
-  .check_btn {
-    margin-bottom: 15px;
-  }
+    .check_btn {
+        margin-bottom: 15px;
+    }
+}
+
+.edit_modal {
+
+    .add_btns {
+        margin: 30px 0 !important;
+    }
+
+    .field_row:has(textarea) {
+        flex-wrap: wrap;
+
+        .field_name {
+            @include colSize(12);
+        }
+    }
+
+    .profile_content {
+        width: 500px !important;
+    }
+
+    .resume_section {
+        margin-top: 20px;
+
+        .file_list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .file_item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background: $blue2;
+            border-radius: 10px;
+            color: $white;
+
+            span {
+                font-weight: 500;
+            }
+
+            button {
+                background: none;
+                border: none;
+                color: $textColor;
+                padding: 0;
+                font-size: 1.6rem;
+                cursor: pointer;
+                @extend %lightHover;
+
+                &:before {
+                    display: block;
+                }
+            }
+        }
+
+        .add_btns {
+            margin-top: 20px;
+        }
+    }
+
+    .credentials_section {
+        margin-top: 20px;
+
+        .credentials_tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .credential_tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background: $blue2;
+            border-radius: 10px;
+            color: $white;
+            font-weight: 500;
+            font-size: 1.4rem;
+        }
+    }
+
+    .required_mark {
+        color: $textColor;
+        font-size: 1.2rem;
+        margin-left: 5px;
+    }
+
+    .field_block textarea {
+        min-height: 150px;
+        padding-top: 16px;
+    }
+
+    .toolbox_container {
+        margin-top: 30px;
+        padding: 26px 10px;
+        background: $blue2;
+        border-radius: 20px;
+        //border-top: 1px solid rgba($grayCf, 12%);
+        //border-bottom: 1px solid rgba($grayCf, 12%);
+    }
+
+    .toolbox_section,
+    .toolbox_detail_section {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .toolbox_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+
+        .toolbox_title {
+            color: $white;
+            font-weight: 700;
+            @include fontSize(14);
+            margin: 0 0 20px;
+        }
+
+        .required_label {
+            color: $blue2;
+            background: $error;
+            @include fontSize(12);
+            text-transform: uppercase;
+            padding: 2px 10px;
+            display: flex;
+            border-radius: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check_btn {
+            margin-bottom: 20px;
+        }
+
+        .toolbox_items,
+        .toolbox_materials {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+
+            .item_label {
+                color: $textColor;
+                font-weight: 700;
+                @include fontSize(12);
+                margin-bottom: 5px;
+                min-width: 120px;
+                padding-right: 10px;
+            }
+
+            .item_text {
+                color: $textColor;
+                font-weight: 275;
+                @include fontSize(12);
+                line-height: 1.5;
+                margin-left: auto;
+            }
+        }
+
+        .toolbox_categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .toolbox_category {
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba($grayCf, 12%);
+            background: transparent;
+            color: $textColor;
+            @include fontSize(12);
+            cursor: pointer;
+            @include animStyle(background 0.3s);
+
+            @media(hover: hover) {
+                &:hover {
+                    background: rgba($white, 0.1);
+                }
+            }
+
+            &.active {
+                background: $blue04;
+                color: $white;
+            }
+        }
+    }
+
+    .check_btn {
+        display: inline-flex;
+        vertical-align: top;
+        align-items: center;
+        gap: 13px;
+        position: relative;
+        overflow: hidden;
+        @extend %textUnSelect;
+        @extend %siteColorHover;
+        cursor: pointer;
+        @extend %iconElement;
+        @extend .icon_check;
+        color: $white;
+
+        input {
+            @extend %maskedInput;
+        }
+
+        &:before {
+            display: block;
+            font-size: 0;
+            min-width: 16px;
+            aspect-ratio: 1;
+            border-radius: 3px;
+            color: $textColor;
+            outline: 1px solid;
+            outline-offset: -1px;
+            margin-top: 2px;
+            @include animStyle(color 0.3s);
+        }
+
+        &:has(:checked):before {
+            font-size: 1.6rem;
+        }
+
+        @media(hover: hover) {
+            &:hover:before {
+                color: $white;
+            }
+        }
+
+        input[type="radio"] + &:before,
+        &:has(input[type="radio"]):before {
+            border-radius: 50%;
+        }
+
+        input[type="radio"]:checked + &:before,
+        &:has(input[type="radio"]:checked):before {
+            background: $blue2;
+            color: $textColor;
+            font-size: 0;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 6px;
+                height: 6px;
+                background: $white;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    @include mediaTo($size768) {
+        .toolbox_materials,
+        .toolbox_items {
+            flex-direction: column;
+        }
+        .item_text {
+            margin-left: 0 !important;
+        }
+    }
 }
 
 .new_note {
-  overflow: hidden;
-  opacity: 0;
-  margin-top: 24px;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 24px;
 
-  textarea {
-    height: 100px;
-  }
+    textarea {
+        height: 100px;
+    }
 
-  .field_col {
-    color: $white;
-    font-weight: 700;
-    gap: 16px;
-    display: flex;
-    flex-direction: column;
-  }
+    .field_col {
+        color: $white;
+        font-weight: 700;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+    }
 
-  &.showed {
-    opacity: 1;
-    @include animStyles(height 0s 0.5s, opacity 0.5s);
-  }
+    &.showed {
+        opacity: 1;
+        @include animStyles(height 0s 0.5s, opacity 0.5s);
+    }
 }
 
 .add_btns {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
 
-  .standard_btn {
-    color: rgba($mainBg, 0.8);
-    background: rgba($light, 0.5);
-    @extend %all300;
-    @media(hover: hover) {
-      &:hover {
-        color: $mainBg;
-        background: $light;
-      }
-    }
+    .standard_btn {
+        color: rgba($mainBg, 0.8);
+        background: rgba($light, 0.5);
+        @extend %all300;
+        @media(hover: hover) {
+            &:hover {
+                color: $mainBg;
+                background: $light;
+            }
+        }
 
-    &:before {
-      color: $mainBg;
-      background: $light;
-      @extend %centerBlock;
-      height: 100%;
-      aspect-ratio: 1;
-      margin-left: -20px;
-      margin-right: 8px;
-      border-radius: 50%
+        &:before {
+            color: $mainBg;
+            background: $light;
+            @extend %centerBlock;
+            height: 100%;
+            aspect-ratio: 1;
+            margin-left: -20px;
+            margin-right: 8px;
+            border-radius: 50%
+        }
     }
-  }
 }
 
 .custom_table {
-  border-collapse: collapse;
-  margin: 0 -30px 40px;
-  font-weight: 400;
-  width: max-content;
-  max-width: 100%;
-  overflow: auto;
-  font-size: 1.2rem;
-  line-height: 18px;
+    border-collapse: collapse;
+    margin: 0 -30px 40px;
+    font-weight: 400;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    font-size: 1.2rem;
+    line-height: 18px;
 
-  .row_block {
-    display: flex;
-    align-items: center;
-  }
-
-
-  a,
-  .icon_delete,
-  .icon_pencil,
-  .icon_close {
-    font-size: 0;
-    line-height: 0;
-    padding: 0 10px;
-    display: inline-block;
-
-    &:before {
-      font-size: 1.6rem;
-      color: $textColor;
-      @extend %siteColorHover;
-    }
-  }
-
-  thead {
-    tr {
-      text-align: left;
+    .row_block {
+        display: flex;
+        align-items: center;
     }
 
-    th {
-      padding: 0 30px;
-      color: $textColor;
-      font-weight: 700;
-    }
-  }
 
-  tbody {
-    td {
-      padding: 16px 30px 0;
-      color: $textColor;
-    }
-  }
+    a,
+    .icon_delete,
+    .icon_pencil,
+    .icon_close {
+        font-size: 0;
+        line-height: 0;
+        padding: 0 10px;
+        display: inline-block;
 
-  @include mediaTo($size576) {
-    margin-left: 0;
-    margin-right: 0;
-    display: block;
-    width: 100%;
-
-    tbody,
-    tr {
-      display: block;
-      width: 100%;
-      margin: 0;
+        &:before {
+            font-size: 1.6rem;
+            color: $textColor;
+            @extend %siteColorHover;
+        }
     }
 
     thead {
-      display: none;
+        tr {
+            text-align: left;
+        }
+
+        th {
+            padding: 0 30px;
+            color: $textColor;
+            font-weight: 700;
+        }
     }
 
     tbody {
-      td, th {
-        display: flex;
-        border: none;
-        padding: 0 0 15px !important;
-        margin-bottom: 15px;
-        border-bottom: 1px solid $grayCf;
-        text-align: right;
+        td {
+            padding: 16px 30px 0;
+            color: $textColor;
+        }
+    }
 
-        &:before {
-          display: block;
-          content: attr(data-th) ':';
-          font-weight: 700;
-          color: $textColor;
-          text-align: left;
-          margin-right: auto;
-          padding-right: 10px;
+    @include mediaTo($size576) {
+        margin-left: 0;
+        margin-right: 0;
+        display: block;
+        width: 100%;
+
+        tbody,
+        tr {
+            display: block;
+            width: 100%;
+            margin: 0;
         }
 
-      }
+        thead {
+            display: none;
+        }
+
+        tbody {
+            td, th {
+                display: flex;
+                border: none;
+                padding: 0 0 15px !important;
+                margin-bottom: 15px;
+                border-bottom: 1px solid $grayCf;
+                text-align: right;
+
+                &:before {
+                    display: block;
+                    content: attr(data-th) ':';
+                    font-weight: 700;
+                    color: $textColor;
+                    text-align: left;
+                    margin-right: auto;
+                    padding-right: 10px;
+                }
+
+            }
+        }
     }
-  }
 }
 
 
 .popup_block {
-  background: $coverBg;
-  border-radius: 20px 0 0 20px;
-  width: 0;
-  @include overHidden;
-  z-index: 100;
-  padding: 40px 0;
-  right: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  @include animStyle(width 0.5s);
+    background: $coverBg;
+    border-radius: 20px 0 0 20px;
+    width: 0;
+    @include overHidden;
+    z-index: 100;
+    padding: 40px 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    @include animStyle(width 0.5s);
 
-  &.showed {
-    width: 514px;
+    &.showed {
+        width: 514px;
+
+        &:after {
+            height: 100%;
+            opacity: 1;
+            @include animStyles(height 0s 0s, opacity 0.5s);
+        }
+
+        .popup_container {
+            z-index: 1000;
+        }
+    }
 
     &:after {
-      height: 100%;
-      opacity: 1;
-      @include animStyles(height 0s 0s, opacity 0.5s);
+        position: fixed;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        opacity: 0;
+        background: rgba($mainBg, 0.8);
+        @include animStyles(height 0s 0.5s, opacity 0.5s);
+        z-index: 101;
     }
 
-    .popup_container {
-      z-index: 1000;
-    }
-  }
 
-  &:after {
-    position: fixed;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    opacity: 0;
-    background: rgba($mainBg, 0.8);
-    @include animStyles(height 0s 0.5s, opacity 0.5s);
-    z-index: 101;
-  }
-
-
-  .popup_head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-    // width: 514px;
-    padding: 0 0 24px;
-  }
-
-  .popup_title {
-    color: $light;
-    @include fontSize(20);
-    font-weight: 700;
-  }
-
-  .close_btn {
-    margin-top: 3px;
-  }
-
-  .popup_container {
-    flex: 1;
-    width: 500px;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-left: 40px;
-    padding-right: 20px;
-    margin-right: 20px;
-    @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
-
-    &:has(.new_note.showed) {
-      .standard_btn.light_btn.icon_plus {
-        pointer-events: none;
-        opacity: 12%;
-      }
-    }
-  }
-
-  .dark_btn {
-    color: $textColor;
-    background: $blue2;
-  }
-
-  .light_btn {
-    color: rgba($white, 80%);
-    background: $siteColor;
-  }
-
-  .popup_footer {
-    padding-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 16px;
-  }
-
-  &:has(.popup_block.showed) {
-    &:before {
-      height: 100%;
-      opacity: 1;
-      @include animStyles(height 0s 0s, opacity 0.5s);
-    }
-  }
-
-  @include mediaTo($size960) {
-    padding: 20px 0;
-    max-width: 100vw;
-    &.showed {
-      width: 480px;
-
-    }
     .popup_head {
-      //  width: 480px;
-      padding: 0 0 20px;
-      max-width: 100vw;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        // width: 514px;
+        padding: 0 0 24px;
+    }
+
+    .popup_title {
+        color: $light;
+        @include fontSize(20);
+        font-weight: 700;
+    }
+
+    .close_btn {
+        margin-top: 3px;
     }
 
     .popup_container {
-      width: 480px;
-      padding-left: 20px;
-      margin-right: 0;
-      max-width: 100vw;
+        flex: 1;
+        width: 500px;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-left: 40px;
+        padding-right: 20px;
+        margin-right: 20px;
+        @include customScroll(4px, 2px, 2px, $mainBg, $blue2);
+
+        &:has(.new_note.showed) {
+            .standard_btn.light_btn.icon_plus {
+                pointer-events: none;
+                opacity: 12%;
+            }
+        }
     }
-  }
+
+    .dark_btn {
+        color: $textColor;
+        background: $blue2;
+    }
+
+    .light_btn {
+        color: rgba($white, 80%);
+        background: $siteColor;
+    }
+
+    .popup_footer {
+        padding-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+    }
+
+    &:has(.popup_block.showed) {
+        &:before {
+            height: 100%;
+            opacity: 1;
+            @include animStyles(height 0s 0s, opacity 0.5s);
+        }
+    }
+
+    @include mediaTo($size960) {
+        padding: 20px 0;
+        max-width: 100vw;
+        &.showed {
+            width: 480px;
+
+        }
+        .popup_head {
+            //  width: 480px;
+            padding: 0 0 20px;
+            max-width: 100vw;
+        }
+
+        .popup_container {
+            width: 480px;
+            padding-left: 20px;
+            margin-right: 0;
+            max-width: 100vw;
+        }
+    }
 }
 
 .paging {
-  margin-left: auto;
+    margin-left: auto;
 
-  ul {
-    @extend %standardList;
-    display: flex;
-    color: $white;
-    gap: 8px;
-  }
-
-  a, button, span {
-    display: block;
-    padding: 0 8px 4px;
-    @include fontSize(12);
-    font-weight: 700;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid;
-    color: rgba($white, 0.2);
-
-    &.current_page {
-      color: $secondColor;
-      pointer-events: none;
+    ul {
+        @extend %standardList;
+        display: flex;
+        color: $white;
+        gap: 8px;
     }
-  }
 
-  a, button {
-    @extend %lightHover;
-
-    &.prev_page,
-    &.next_page {
-      font-size: 0;
-      color: $white;
-      @extend %standardHover;
-
-      &.inactive {
-        opacity: 0.5;
-        pointer-events: none;
-      }
-
-      &:before {
+    a, button, span {
         display: block;
-        font-size: 1.2rem;
-        line-height: 1.5em;
-      }
-    }
-  }
+        padding: 0 8px 4px;
+        @include fontSize(12);
+        font-weight: 700;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid;
+        color: rgba($white, 0.2);
 
-  @include mediaTo($size960) {
-    ul {
-      height: 36px;
-      align-items: center;
+        &.current_page {
+            color: $secondColor;
+            pointer-events: none;
+        }
     }
-  }
-  @include mediaTo($size768) {
-    @include colSize(12);
-    ul {
-      justify-content: space-between;
+
+    a, button {
+        @extend %lightHover;
+
+        &.prev_page,
+        &.next_page {
+            font-size: 0;
+            color: $white;
+            @extend %standardHover;
+
+            &.inactive {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+
+            &:before {
+                display: block;
+                font-size: 1.2rem;
+                line-height: 1.5em;
+            }
+        }
     }
-  }
+
+    @include mediaTo($size960) {
+        ul {
+            height: 36px;
+            align-items: center;
+        }
+    }
+    @include mediaTo($size768) {
+        @include colSize(12);
+        ul {
+            justify-content: space-between;
+        }
+    }
 }
 
 
 .msg_section {
-  margin-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 15px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
 
-  .msg_list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+    .msg_list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-  .msg_item .msg_to {
-    border-radius: 12px;
-    padding: 15px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+    .msg_item .msg_to {
+        border-radius: 12px;
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 
-  .msg_to.dark {
-    background-color: $mainBg;
-  }
+    .msg_to.dark {
+        background-color: $mainBg;
+    }
 
-  .msg_to.light {
-    background-color: $mainBg4E;
-    margin-left: 24px
-  }
+    .msg_to.light {
+        background-color: $mainBg4E;
+        margin-left: 24px
+    }
 
-  .msg_header {
-    display: flex;
-    justify-content: space-between;
-    @include fontSizeHeight(12, 18);
-    color: $textColor;
-  }
-
-  .msg_body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .msg_text {
-    @include fontSizeHeight(14, 20);
-    color: $white;
-    font-weight: 700;
-
-  }
-
-  .reply_btn {
-    background: $blue2;
-    border: none;
-    color: $textColor;
-    border-radius: 20px;
-    padding: 7px 20px;
-    cursor: pointer;
-    @include fontSizeHeight(14, 20);
-    @extend %back300;
-  }
-
-  .reply_btn:hover {
-    background: #315276;
-  }
-
-  @include mediaTo($size576) {
-    .msg_body,
     .msg_header {
-      flex-direction: column;
-      align-items: baseline;
+        display: flex;
+        justify-content: space-between;
+        @include fontSizeHeight(12, 18);
+        color: $textColor;
     }
+
+    .msg_body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .msg_text {
+        @include fontSizeHeight(14, 20);
+        color: $white;
+        font-weight: 700;
+
+    }
+
     .reply_btn {
-      margin-top: 10px;
+        background: $blue2;
+        border: none;
+        color: $textColor;
+        border-radius: 20px;
+        padding: 7px 20px;
+        cursor: pointer;
+        @include fontSizeHeight(14, 20);
+        @extend %back300;
     }
-  }
+
+    .reply_btn:hover {
+        background: #315276;
+    }
+
+    @include mediaTo($size576) {
+        .msg_body,
+        .msg_header {
+            flex-direction: column;
+            align-items: baseline;
+        }
+        .reply_btn {
+            margin-top: 10px;
+        }
+    }
 }
